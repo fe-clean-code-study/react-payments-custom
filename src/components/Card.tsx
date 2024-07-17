@@ -1,39 +1,48 @@
-interface CardProps {
+import { formatCardNumber, formatExpiredDate } from "../domain";
+
+interface FilledCard {
+  type: "filled";
   cardName: string;
-  cardNumber: [string, string, string, string];
+  cardNumber: string[];
   userName: string;
   expiredMonth: string;
   expiredYear: string;
 }
 
-function Card({
-  cardName = "공개 카드",
-  cardNumber = ["0000", "1111", "2222", "3333"],
-  userName = "NAME",
-  expiredMonth = "MM",
-  expiredYear = "YY",
-}: Partial<CardProps>) {
+interface EmptyCard {
+  type: "empty";
+}
+
+type CardProps = FilledCard | EmptyCard;
+
+function Card(props: CardProps) {
   return (
     <div className="card-box">
-      <div className="empty-card">
-        <div className="card-top">
-          <span className="card-text">{cardName}</span>
-        </div>
-        <div className="card-middle">
-          <div className="small-card__chip"></div>
-        </div>
-        <div className="card-bottom">
-          <div className="card-bottom__number">
-            <span className="card-text">{cardNumber.join("-")}</span>
+      {props.type === "empty" ? (
+        <div className="empty-card">+</div>
+      ) : (
+        <div className="small-card">
+          <div className="card-top">
+            <span className="card-text">{props.cardName}</span>
           </div>
-          <div className="card-bottom__info">
-            <span className="card-text">{userName}</span>
-            <span className="card-text">
-              {expiredMonth + "/" + expiredYear}
-            </span>
+          <div className="card-middle">
+            <div className="small-card__chip"></div>
+          </div>
+          <div className="card-bottom">
+            <div className="card-bottom__number">
+              <span className="card-text">
+                {formatCardNumber(props.cardNumber)}
+              </span>
+            </div>
+            <div className="card-bottom__info">
+              <span className="card-text">{props.userName || "NAME"}</span>
+              <span className="card-text">
+                {formatExpiredDate(props.expiredMonth, props.expiredYear)}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
