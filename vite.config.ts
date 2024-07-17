@@ -12,9 +12,9 @@ export default mergeConfig(
       environment: 'jsdom',
       setupFiles: './src/setupTests.ts',
       coverage: {
-        reportsDirectory: "./.coverage",
-        reporter: ['lcov', 'json', 'json-summary']
+        reportsDirectory: './.coverage',
+        reporter: ['lcov', 'json', 'json-summary'],
       },
     },
-  })
-)
+  }),
+);
