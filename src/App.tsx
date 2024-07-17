@@ -5,9 +5,9 @@ function App() {
       <h2>1️⃣ 카드 추가</h2>
       <div className="root">
         <div className="app">
-          <h2 className="page-title">
+          <h3 className="page-title">
             카드 추가
-          </h2>
+          </h3>
           <div className="card-box">
             <div className="empty-card">
               <div className="card-top"></div>
@@ -66,9 +66,9 @@ function App() {
       <h2>2️⃣ 카드 추가 - 카드사 선택</h2>
       <div className="root">
         <div className="app">
-          <h2 className="page-title">
+          <h3 className="page-title">
             카드 추가
-          </h2>
+          </h3>
           <div className="card-box">
             <div className="small-card">
               <div className="card-top">
@@ -172,9 +172,9 @@ function App() {
       <h2>3️⃣ 카드 추가 - 입력 완료</h2>
       <div className="root">
         <div className="app">
-          <h2 className="page-title">
+          <h3 className="page-title">
             카드 추가
-          </h2>
+          </h3>
           <div className="card-box">
             <div className="small-card">
               <div className="card-top">
