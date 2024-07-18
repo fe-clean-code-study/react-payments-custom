@@ -24,15 +24,12 @@ function Card(props: CardProps) {
   };
 
   return (
-    <div
-      className="card-box lex-column-center pointer mb-5"
-      onClick={handleClick}
-    >
+    <div className="card-box flex-column-center pointer" onClick={handleClick}>
       {props.type === "empty" ? (
         <div className="empty-card">+</div>
       ) : (
         <>
-          <div className="small-card">
+          <div className="small-card" style={{ marginBottom: "8px" }}>
             <div className="card-top">
               <span className="card-text">{props.cardName}</span>
             </div>
