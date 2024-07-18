@@ -1,25 +1,44 @@
-import { Card } from "./components";
-import { CardEdit, CardList } from "./pages";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import { CardEdit, CardList, CardNicknameEdit } from "./pages";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="/react-payments" replace />,
+  },
+  {
+    path: "/react-payments",
+    children: [
+      {
+        index: true,
+        element: <CardList />,
+      },
+      {
+        path: "card-edit",
+        children: [
+          {
+            index: true,
+            element: <CardEdit />,
+          },
+          {
+            path: ":id",
+            element: <CardNicknameEdit />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <>
-      <div className="root">
-        <div className="app">
-          <Card type="empty" />
-          <Card
-            type="filled"
-            cardName="일반 카드"
-            cardNumber={["1", "", "", "3453"]}
-            userName=""
-            expiredMonth=""
-            expiredYear="22"
-          />
-        </div>
-      </div>
-      <CardEdit />
-      <CardList />
-    </>
+    <div className="root">
+      <RouterProvider router={router} />
+    </div>
   );
 }
 
