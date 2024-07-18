@@ -1,14 +1,5 @@
 import { formatCardNumber, formatExpiredDate } from "../domain";
-
-interface CardInfo {
-  id: string;
-  cardName: string;
-  cardNumber: string[];
-  userName: string;
-  expiredMonth: string;
-  expiredYear: string;
-  nickname: string;
-}
+import { CardInfo } from "../types";
 
 interface BaseCard {
   type: "filled" | "empty";
