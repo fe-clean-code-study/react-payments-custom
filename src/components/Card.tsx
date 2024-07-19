@@ -8,6 +8,7 @@ interface BaseCard {
 
 interface FilledCard extends BaseCard, Omit<CardInfo, "id"> {
   type: "filled";
+  size: "small" | "big";
 }
 
 interface EmptyCard extends BaseCard {
@@ -29,22 +30,26 @@ function Card(props: CardProps) {
         <div className="empty-card">+</div>
       ) : (
         <>
-          <div className="small-card" style={{ marginBottom: "8px" }}>
+          <div className={props.size + "-card"} style={{ marginBottom: "8px" }}>
             <div className="card-top">
-              <span className="card-text">{props.cardName}</span>
+              <span className={"card-text__" + props.size}>
+                {props.cardName}
+              </span>
             </div>
             <div className="card-middle">
-              <div className="small-card__chip"></div>
+              <div className={props.size + "-card__chip"}></div>
             </div>
             <div className="card-bottom">
               <div className="card-bottom__number">
-                <span className="card-text">
+                <span className={"card-text__" + props.size}>
                   {formatCardNumber(props.cardNumber)}
                 </span>
               </div>
               <div className="card-bottom__info">
-                <span className="card-text">{props.userName || "NAME"}</span>
-                <span className="card-text">
+                <span className={"card-text__" + props.size}>
+                  {props.userName || "NAME"}
+                </span>
+                <span className={"card-text__" + props.size}>
                   {formatExpiredDate(props.expiredMonth, props.expiredYear)}
                 </span>
               </div>
