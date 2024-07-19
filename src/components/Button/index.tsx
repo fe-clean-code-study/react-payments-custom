@@ -1,16 +1,15 @@
 import { PropsWithChildren } from 'react';
+import * as S from './index.style';
 
 interface ButtonProps extends PropsWithChildren {
-  onClick?: (...props: any[]) => void;
-  type?: 'keypad' | 'transparent';
-  nativeType?: 'button' | 'reset' | 'submit';
+  onClick?: () => void;
+  type?: 'button' | 'reset' | 'submit';
   invalid?: boolean;
 }
 
 const Button = ({
   onClick,
-  type = 'keypad',
-  nativeType = 'button',
+  type = 'button',
   invalid = false,
   children,
 }: ButtonProps) => {
@@ -19,14 +18,9 @@ const Button = ({
   };
 
   return (
-    <button
-      type={nativeType}
-      disabled={invalid}
-      className='button-box'
-      onClick={handleClickButton}
-    >
+    <S.Button type={type} disabled={invalid} onClick={handleClickButton}>
       {children}
-    </button>
+    </S.Button>
   );
 };
 
