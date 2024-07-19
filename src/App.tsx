@@ -4,6 +4,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { CardEdit, CardList, CardNicknameEdit } from "./pages";
+import { CardInfoListProvider } from "./context";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="root">
-      <RouterProvider router={router} />
+      <CardInfoListProvider>
+        <RouterProvider router={router} />
+      </CardInfoListProvider>
     </div>
   );
 }
