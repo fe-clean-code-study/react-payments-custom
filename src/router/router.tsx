@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Home from '../pages/Home';
+import { Home } from '../pages';
 import Payments from '../pages/Payments';
 import CardList from '../pages/CardList';
 import CardRegist from '../pages/CardRegist';
