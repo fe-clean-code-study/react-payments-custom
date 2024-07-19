@@ -92,8 +92,15 @@ function CardEdit() {
             <div className="flex-center w-15">•</div>
           </div>
         </div>
-        <div className="button-box mt-10">
-          <span className="button-text">다음</span>
+        <div
+          className="button-box"
+          style={{
+            position: "absolute",
+            bottom: "25px",
+            right: "25px",
+          }}
+        >
+          <span className="button-text">확인</span>
         </div>
       </div>
 

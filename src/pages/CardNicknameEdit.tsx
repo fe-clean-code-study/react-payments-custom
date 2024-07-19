@@ -30,8 +30,15 @@ function CardNicknameEdit() {
           placeholder="카드의 별칭을 입력해주세요."
         />
       </div>
-      <div className="button-box mt-50">
-        <span className="button-text">다음</span>
+      <div
+        className="button-box"
+        style={{
+          position: "absolute",
+          bottom: "25px",
+          right: "25px",
+        }}
+      >
+        <span className="button-text">확인</span>
       </div>
     </div>
   );
