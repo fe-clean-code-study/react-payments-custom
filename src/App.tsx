@@ -6,6 +6,7 @@ import theme from './styles/theme';
 function App() {
   return (
     <>
+      <div id='root-modal'></div>
       <ThemeProvider theme={theme}>
         <RouterProvider router={router} />
       </ThemeProvider>
