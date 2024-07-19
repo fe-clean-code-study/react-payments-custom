@@ -46,7 +46,7 @@ function Card(props: CardProps) {
                 </span>
               </div>
               <div className="card-bottom__info">
-                <span className={"card-text__" + props.size}>
+                <span className={"card-text__" + props.size + " ellipsis"}>
                   {props.userName || "NAME"}
                 </span>
                 <span className={"card-text__" + props.size}>
