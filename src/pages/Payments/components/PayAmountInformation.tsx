@@ -3,14 +3,17 @@ import {
   InformationBody,
   InformationHeader,
 } from '../../../components';
+import * as S from '../index.style';
 
 const PayAmountInformation = () => {
   return (
     <Information>
       <InformationHeader>결제 금액</InformationHeader>
       <InformationBody>
-        <div>총 결제 금액</div>
-        <div>323,600원</div>
+        <S.PayAmountBody>
+          <div>총 결제 금액</div>
+          <div>323,600원</div>
+        </S.PayAmountBody>
       </InformationBody>
     </Information>
   );

@@ -10,3 +10,10 @@ export const ButtonContainer = styled.div`
 export const ButtonLabel = styled.div`
   padding: 5px;
 `;
+
+export const PayAmountBody = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: bold;
+`;
