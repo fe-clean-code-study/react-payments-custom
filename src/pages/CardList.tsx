@@ -1,36 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { Card } from "../components";
-import { CardInfo } from "../types";
-
-const data: CardInfo[] = [
-  {
-    id: "jlkjfsld1",
-    cardName: "일반 카드",
-    cardNumber: ["1111", "2222", "3333", "4444"],
-    userName: "정찬욱",
-    expiredMonth: "12",
-    expiredYear: "25",
-    nickname: "닉네임1",
-  },
-  {
-    id: "jlkjfsld2",
-    cardName: "일반 카드",
-    cardNumber: ["1111", "2222", "3333", "4444"],
-    userName: "정찬욱",
-    expiredMonth: "12",
-    expiredYear: "25",
-    nickname: "닉네임2",
-  },
-];
+import { useContext } from "react";
+import { CardInfoContext } from "../context";
 
 function CardList() {
   const navigate = useNavigate();
+  const { cardInfoList } = useContext(CardInfoContext);
 
   return (
     <div className="app">
       <h2 className="page-title mb-10">보유 카드</h2>
       <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-        {data.map(
+        {cardInfoList.map(
           ({
             id,
             cardName,
@@ -43,6 +24,7 @@ function CardList() {
             <Card
               key={id}
               type="filled"
+              size="small"
               cardName={cardName}
               cardNumber={cardNumber}
               userName={userName}

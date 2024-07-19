@@ -27,6 +27,7 @@ function CardEdit() {
         </div>
         <Card
           type="filled"
+          size="small"
           cardName=""
           cardNumber={["", "", "", ""]}
           userName=""
