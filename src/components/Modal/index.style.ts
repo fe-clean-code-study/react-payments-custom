@@ -28,3 +28,17 @@ export const Modal = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   z-index: 10;
 `;
+
+export const ModalHeader = styled.header`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ModalBody = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+`;

@@ -26,3 +26,5 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 };
 
 export default Modal;
+export { default as ModalHeader } from './ModalHeader';
+export { default as ModalBody } from './ModalBody';
