@@ -1,20 +1,20 @@
 import { Button } from '../../components';
 import { useNavigate } from 'react-router-dom';
-import './home.css';
+import * as S from './index.style';
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <S.Container>
       <Button
         onClick={() => {
           navigate('/payments');
         }}
       >
-        <span className='button-label'>열기</span>
+        <S.ButtonLabel>열기</S.ButtonLabel>
       </Button>
-    </div>
+    </S.Container>
   );
 };
 
