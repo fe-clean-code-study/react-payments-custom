@@ -42,3 +42,10 @@ export const ModalBody = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
 `;
+
+export const ModalFooter = styled.footer`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+`;
