@@ -1,5 +1,6 @@
-import Button from '../components/Button';
+import { Button } from '../../components';
 import { useNavigate } from 'react-router-dom';
+import './home.css';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -7,11 +8,12 @@ const Home = () => {
   return (
     <div>
       <Button
-        label='열기'
         onClick={() => {
           navigate('/payments');
         }}
-      />
+      >
+        <span className='button-label'>열기</span>
+      </Button>
     </div>
   );
 };
