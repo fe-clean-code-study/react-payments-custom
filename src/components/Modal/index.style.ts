@@ -34,12 +34,16 @@ export const Modal = styled.div`
 export const ModalHeader = styled.header`
   width: 100%;
   height: 70px;
+  padding: 10px;
+
   display: flex;
   flex-direction: column;
 `;
 
 export const ModalBody = styled.div`
   width: 100%;
+  padding: 10px;
+
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -48,6 +52,7 @@ export const ModalBody = styled.div`
 export const ModalFooter = styled.footer`
   width: 100%;
   height: 70px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
