@@ -38,11 +38,13 @@ function CardEdit() {
     dispatch({
       type: "ADD",
       payload: {
-        cardName: "테스트 카드",
+        cardName,
         cardNumber,
         expiredMonth,
         expiredYear,
         userName,
+        nickname: cardName,
+        color,
       },
     });
   };

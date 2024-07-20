@@ -13,26 +13,7 @@ export const CardInfoContext = createContext<CardInfoContextType>({
 });
 
 export function CardInfoListProvider({ children }: React.PropsWithChildren) {
-  const [cardInfoList, dispatch] = useReducer(cardInfoReducer, [
-    {
-      id: "jlkjfsld1",
-      cardName: "일반 카드",
-      cardNumber: ["1111", "2222", "3333", "4444"],
-      userName: "정찬욱1",
-      expiredMonth: "12",
-      expiredYear: "25",
-      nickname: "닉네임1",
-    },
-    {
-      id: "jlkjfsld2",
-      cardName: "일반 카드",
-      cardNumber: ["1111", "2222", "3333", "4444"],
-      userName: "정찬욱",
-      expiredMonth: "12",
-      expiredYear: "25",
-      nickname: "닉네임2",
-    },
-  ]);
+  const [cardInfoList, dispatch] = useReducer(cardInfoReducer, []);
 
   const cardInfoContextValue = useMemo(
     () => ({ cardInfoList, dispatch }),
@@ -48,21 +29,14 @@ export function CardInfoListProvider({ children }: React.PropsWithChildren) {
 
 export default CardInfoListProvider;
 
-type Action = { type: "ADD"; payload: Omit<CardInfo, "id" | "nickname"> };
+type Action = { type: "ADD"; payload: Omit<CardInfo, "id"> };
 
 const cardInfoReducer = (state: CardInfo[], action: Action) => {
   switch (action.type) {
     case "ADD": {
-      const { cardName, cardNumber, userName, expiredMonth, expiredYear } =
-        action.payload;
       const newCard: CardInfo = {
         id: getRandomId(6),
-        cardName,
-        cardNumber,
-        userName,
-        expiredMonth,
-        expiredYear,
-        nickname: "",
+        ...action.payload,
       };
 
       return [newCard, ...state];

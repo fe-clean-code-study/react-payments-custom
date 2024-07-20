@@ -9,7 +9,6 @@ interface BaseCard {
 interface FilledCard extends BaseCard, Omit<CardInfo, "id"> {
   type: "filled";
   size: "small" | "big";
-  color: string;
 }
 
 interface EmptyCard extends BaseCard {

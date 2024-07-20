@@ -6,4 +6,5 @@ export interface CardInfo {
   expiredMonth: string;
   expiredYear: string;
   nickname: string;
+  color: string;
 }
