@@ -1,39 +1,6 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
-import { CardEdit, CardList, CardNicknameEdit } from "./pages";
+import { RouterProvider } from "react-router-dom";
 import { CardInfoListProvider } from "./context";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Navigate to="/react-payments" replace />,
-  },
-  {
-    path: "/react-payments",
-    children: [
-      {
-        index: true,
-        element: <CardList />,
-      },
-      {
-        path: "card-edit",
-        children: [
-          {
-            index: true,
-            element: <CardEdit />,
-          },
-          {
-            path: ":id",
-            element: <CardNicknameEdit />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+import { router } from "./routes";
 
 function App() {
   return (
