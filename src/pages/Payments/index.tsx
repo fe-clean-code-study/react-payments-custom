@@ -23,7 +23,7 @@ const Payments = () => {
   return (
     <>
       <ModalHeader></ModalHeader>
-      <form>
+      <S.Form>
         <ModalBody>
           <FormProvider {...methods}>
             <PayCardInformation />
@@ -41,7 +41,7 @@ const Payments = () => {
             </Button>
           </S.ButtonContainer>
         </ModalFooter>
-      </form>
+      </S.Form>
     </>
   );
 };

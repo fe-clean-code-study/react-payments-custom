@@ -15,8 +15,8 @@ export const DeemBackground = styled.div`
 `;
 
 export const Modal = styled.div`
-  min-width: 375px;
-  min-height: 220px;
+  min-width: 400px;
+  min-height: 250px;
 
   border-radius: 10px;
 
@@ -46,6 +46,7 @@ export const ModalBody = styled.div`
 export const ModalFooter = styled.footer`
   width: 100%;
   height: 70px;
+
   display: flex;
   flex-direction: column;
 `;
