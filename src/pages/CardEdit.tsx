@@ -1,7 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import { Card } from "../components";
+import { Card, Modal } from "../components";
 import { useContext, useState } from "react";
 import { CardInfoContext } from "../context";
+
+const CARD_NAME_LIST = [
+  { name: "찬욱 카드", color: "#E24141" },
+  { name: "효리 카드", color: "#547CE4" },
+  { name: "수연 카드", color: "#73BC6D" },
+  { name: "세진 카드", color: "#DE59B9" },
+  { name: "진경 카드", color: "#94DACD" },
+  { name: "종길 카드", color: "#E76E9A" },
+  { name: "건우 카드", color: "#F37D3B" },
+  { name: "혜성 카드", color: "#FBCD58" },
+];
 
 function CardEdit() {
   const navigate = useNavigate();
@@ -9,6 +20,8 @@ function CardEdit() {
   const [expiredMonth, setExpiredMonth] = useState<string>("");
   const [expiredYear, setExpiredYear] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
+  const [cardName, setCardName] = useState<string>("");
+  const [color, setColor] = useState<string>("");
   const { dispatch } = useContext(CardInfoContext);
 
   const handleInputCardNumber = (value: string, index: number) => {
@@ -34,6 +47,8 @@ function CardEdit() {
     });
   };
 
+  const [modal, setModal] = useState(false);
+
   return (
     <>
       <div className="app">
@@ -58,12 +73,13 @@ function CardEdit() {
         <Card
           type="filled"
           size="small"
-          cardName="테스트 카드"
+          cardName={cardName}
           cardNumber={cardNumber}
           userName={userName}
           expiredMonth={expiredMonth}
           expiredYear={expiredYear}
           nickname=""
+          color={color}
         />
         <form onSubmit={handleSubmit}>
           <div className="input-container">
@@ -92,6 +108,7 @@ function CardEdit() {
                 maxLength={4}
                 value={cardNumber[2]}
                 onChange={(e) => handleInputCardNumber(e.target.value, 2)}
+                onFocus={() => setModal(true)}
               />
               -
               <input
@@ -204,6 +221,30 @@ function CardEdit() {
             </button>
           </div>
         </form>
+
+        <Modal isOpen={modal} onClose={() => setModal(false)}>
+          <div
+            className="flex-center"
+            style={{ flexWrap: "wrap", gap: "10px" }}
+          >
+            {CARD_NAME_LIST.map(({ name, color }) => (
+              <div
+                className="modal-item-container"
+                onClick={() => {
+                  setCardName(name);
+                  setColor(color);
+                  setModal(false);
+                }}
+              >
+                <div
+                  className="modal-item-dot"
+                  style={{ backgroundColor: color }}
+                ></div>
+                <span className="modal-item-name">{name}</span>
+              </div>
+            ))}
+          </div>
+        </Modal>
       </div>
 
       {/* <h2>2️⃣ 카드 추가 - 카드사 선택</h2>
