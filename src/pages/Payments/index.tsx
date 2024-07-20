@@ -6,19 +6,22 @@ import {
   PayTermInformation,
 } from './components';
 import * as S from './index.style';
+import { useEffect, useState } from 'react';
 
 const Payments = () => {
-  // defaultValues 는 cards 목록을 가지고 와서 가장 첫번째로 해야함 - 없으면 undefined
+  const [validate, setValidate] = useState(false);
   const methods = useForm({
     defaultValues: {
       card: undefined,
       checkTerm: false,
     },
   });
-  // 카드 불러와야 함...
-  // 1. 카드 컴포넌트 만들기
-  // 2. 카드 전역 state 만들기
-  // 3. CardSelector 만들기
+  const { watch, trigger } = methods;
+  const watchValues = watch(['card', 'checkTerm']);
+
+  useEffect(() => {
+    trigger().then((validate) => setValidate(validate));
+  }, [watchValues]);
 
   return (
     <>
@@ -36,7 +39,7 @@ const Payments = () => {
             <Button type='reset'>
               <S.ButtonLabel>취소하기</S.ButtonLabel>
             </Button>
-            <Button type='submit'>
+            <Button type={validate ? 'submit' : 'reset'}>
               <S.ButtonLabel>결제하기</S.ButtonLabel>
             </Button>
           </S.ButtonContainer>

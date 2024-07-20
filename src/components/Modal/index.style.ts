@@ -17,6 +17,8 @@ export const DeemBackground = styled.div`
 export const Modal = styled.div`
   min-width: 400px;
   min-height: 250px;
+  max-height: 100vh;
+  overflow-y: scroll;
 
   border-radius: 10px;
 

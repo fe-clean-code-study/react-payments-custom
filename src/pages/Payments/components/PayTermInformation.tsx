@@ -1,3 +1,4 @@
+import { useFormContext } from 'react-hook-form';
 import {
   Information,
   InformationBody,
@@ -6,6 +7,8 @@ import {
 import * as S from '../index.style';
 
 const PayTermInfomation = () => {
+  const { register } = useFormContext();
+
   return (
     <Information>
       <InformationHeader>약관 이용 및 동의</InformationHeader>
@@ -17,7 +20,12 @@ const PayTermInfomation = () => {
         </S.TermInformationTop>
         <S.TermInformationBottom>
           <div>주문 내용을 확인하였으며 정보 제공 등에 동의합니다.</div>
-          <input type='radio' />
+          <input
+            type='checkbox'
+            {...register('checkTerm', {
+              required: true,
+            })}
+          />
         </S.TermInformationBottom>
       </InformationBody>
     </Information>

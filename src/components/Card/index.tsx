@@ -8,10 +8,12 @@ interface CardProps {
   cardUser?: string;
   company?: CardCompany;
   size?: 'small' | 'big';
+  clickable?: boolean;
+  onClick?: () => void;
 }
 
 const Card = ({
-  type = 'register',
+  type = 'empty',
   size = 'small',
   company = 'none',
   numbers = ['0000', '0000', '0000', '0000'],
@@ -20,11 +22,23 @@ const Card = ({
     day: '00',
   },
   cardUser = 'User',
+  clickable = false,
+  onClick,
 }: CardProps) => {
+  const handleClickCard = () => {
+    onClick && onClick();
+  };
+
   return (
     <S.Container>
-      <S.Card type={type} size={size} company={company}>
-        {type === 'register' && (
+      <S.Card
+        onClick={handleClickCard}
+        type={type}
+        size={size}
+        clickable={clickable}
+        company={company}
+      >
+        {type === 'register' ? (
           <>
             <S.CardTop>{company}</S.CardTop>
             <S.CardMiddle>
@@ -41,6 +55,10 @@ const Card = ({
                 {endDate.month}/{endDate.day}
               </S.CardBottomRight>
             </S.CardBottom>
+          </>
+        ) : (
+          <>
+            <span className='material-symbols-outlined'>add</span>
           </>
         )}
       </S.Card>

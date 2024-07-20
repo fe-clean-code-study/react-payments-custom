@@ -2,20 +2,30 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import * as S from './index.style';
-import { useState } from 'react';
 import Card from '../Card';
+import { useNavigate } from 'react-router-dom';
+import { MyCard } from '../../types';
 
-const CardSlider = () => {
+interface CardSliderProps {
+  cards: MyCard[];
+  onChange?: (value: MyCard) => void;
+}
+
+const CardSlider = ({ cards, onChange }: CardSliderProps) => {
+  const navigate = useNavigate();
   const settings = {
+    centerMode: true,
     dots: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    beforeChange: (index: number) => {
+      onChange && onChange(cards[index]);
+    },
   };
-  const [card, setCard] = useState();
 
   return (
-    <S.SlideWrapper className='slide-container'>
+    <S.SlideWrapper>
       <Slider {...settings}>
         <div>
           <Card />
@@ -23,18 +33,14 @@ const CardSlider = () => {
         <div>
           <Card />
         </div>
-        <div>
+        {cards.map((card, index) => (
+          <S.ItemWrapper key={index}>
+            <Card {...card} />
+          </S.ItemWrapper>
+        ))}
+        <S.LastItemWrapper onClick={() => navigate('/card-list')}>
           <Card />
-        </div>
-        <div>
-          <Card />
-        </div>
-        <div>
-          <Card />
-        </div>
-        <div>
-          <Card />
-        </div>
+        </S.LastItemWrapper>
       </Slider>
     </S.SlideWrapper>
   );

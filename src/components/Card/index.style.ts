@@ -5,6 +5,7 @@ interface CardProps {
   type: 'register' | 'empty';
   size: 'small' | 'big';
   company: CardCompany;
+  clickable: boolean;
 }
 
 interface CardChipProps {
@@ -37,6 +38,8 @@ export const Card = styled.div<CardProps>`
   user-select: ${({ type }) => (type === 'empty' ? 'none' : 'auto')};
   border-radius: 5px;
   padding: 10px 20px;
+
+  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
 `;
 
 export const CardTop = styled.div`
