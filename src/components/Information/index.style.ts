@@ -24,8 +24,4 @@ export const InformationHeader = styled.div`
 export const InformationBody = styled.div`
   width: 100%;
   padding: 10px 5px;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
 `;
