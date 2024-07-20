@@ -8,7 +8,17 @@ import {
 import * as S from './index.style';
 
 const Payments = () => {
-  const methods = useForm();
+  // defaultValues 는 cards 목록을 가지고 와서 가장 첫번째로 해야함 - 없으면 undefined
+  const methods = useForm({
+    defaultValues: {
+      card: undefined,
+      checkTerm: false,
+    },
+  });
+  // 카드 불러와야 함...
+  // 1. 카드 컴포넌트 만들기
+  // 2. 카드 전역 state 만들기
+  // 3. CardSelector 만들기
 
   return (
     <>
