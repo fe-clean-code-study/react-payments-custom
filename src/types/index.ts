@@ -15,3 +15,10 @@ export interface CardEndDate {
   month: string;
   day: string;
 }
+
+export interface MyCard {
+  numbers: CardNumber;
+  endDate: CardEndDate;
+  cardUser: string;
+  company: CardCompany;
+}
