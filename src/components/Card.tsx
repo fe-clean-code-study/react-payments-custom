@@ -9,6 +9,7 @@ interface BaseCard {
 interface FilledCard extends BaseCard, Omit<CardInfo, "id"> {
   type: "filled";
   size: "small" | "big";
+  color: string;
 }
 
 interface EmptyCard extends BaseCard {
@@ -30,7 +31,10 @@ function Card(props: CardProps) {
         <div className="empty-card">+</div>
       ) : (
         <>
-          <div className={props.size + "-card"} style={{ marginBottom: "8px" }}>
+          <div
+            className={props.size + "-card"}
+            style={{ marginBottom: "8px", backgroundColor: props.color }}
+          >
             <div className="card-top">
               <span className={"card-text__" + props.size}>
                 {props.cardName}
