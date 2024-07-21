@@ -13,8 +13,15 @@ const useRouter = () => {
 
 
   const currentRoute = routes.find(({ path }) => {
-    const locationSegments = location.split('/').filter(Boolean)
-    return `/${locationSegments[depth]}` === path
+    const locationSegments = location
+      .split('/')
+      .map(segment => `/${segment}`)
+      .slice(1)
+
+    if (locationSegments.length === depth && path === '/')  {
+      return true
+    }
+    return locationSegments[depth] === path
   })
 
 
