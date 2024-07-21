@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import App from "../App.tsx";
+import App from "../Example.tsx";
 import { render } from "@testing-library/react";
 
 describe('간단한 컴포넌트 테스트', () => {
