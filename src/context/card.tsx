@@ -29,7 +29,9 @@ export function CardInfoListProvider({ children }: React.PropsWithChildren) {
 
 export default CardInfoListProvider;
 
-type Action = { type: "ADD"; payload: Omit<CardInfo, "id"> };
+type Action =
+  | { type: "ADD"; payload: Omit<CardInfo, "id"> }
+  | { type: "UPDATE_NICKNAME"; payload: Pick<CardInfo, "id" | "nickname"> };
 
 const cardInfoReducer = (state: CardInfo[], action: Action) => {
   switch (action.type) {
@@ -40,6 +42,22 @@ const cardInfoReducer = (state: CardInfo[], action: Action) => {
       };
 
       return [newCard, ...state];
+    }
+    case "UPDATE_NICKNAME": {
+      const { id, nickname } = action.payload;
+      const index = state.findIndex((cardInfo) => cardInfo.id === id)!;
+      const selectedCardInfo = state[index];
+
+      const updatedCardInfo: CardInfo = {
+        ...selectedCardInfo,
+        nickname: nickname.length === 0 ? selectedCardInfo.nickname : nickname,
+      };
+
+      return [
+        ...state.slice(0, index),
+        updatedCardInfo,
+        ...state.slice(index + 1),
+      ];
     }
   }
 };
