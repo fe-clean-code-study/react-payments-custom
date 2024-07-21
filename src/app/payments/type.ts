@@ -1,4 +1,5 @@
 export interface ICard {
+  id?: string
   type: string
   nickname?: string
   cardNumbers: Array<{
