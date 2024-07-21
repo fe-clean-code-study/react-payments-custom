@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Home, Payments, CardList } from '../pages';
-import CardRegist from '../pages/CardRegist';
+import { Home, Payments, CardList, CardRegist } from '../pages';
 import CardAlias from '../pages/CardAlias';
 
 const router = createBrowserRouter([
