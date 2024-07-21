@@ -22,3 +22,8 @@ export interface MyCard {
   cardUser: string;
   company: CardCompany;
 }
+
+export interface MyCardForm extends MyCard {
+  securityCode: string;
+  password: [string, string, string, string];
+}
