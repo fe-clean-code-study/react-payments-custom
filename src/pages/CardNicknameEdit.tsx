@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CardInfoContext } from "../context";
 import { Card } from "../components";
@@ -6,9 +6,17 @@ import { Card } from "../components";
 function CardNicknameEdit() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { cardInfoList } = useContext(CardInfoContext);
-
+  const { cardInfoList, dispatch } = useContext(CardInfoContext);
   const currentCardInfo = cardInfoList.find((cardInfo) => cardInfo.id === id)!;
+  const [nickname, setNickname] = useState(currentCardInfo.nickname);
+
+  const handleUpdateNickname = () => {
+    if (currentCardInfo.nickname !== nickname) {
+      dispatch({ type: "UPDATE_NICKNAME", payload: { id: id!, nickname } });
+    }
+
+    navigate("/");
+  };
 
   return (
     <div className="app flex-column-center">
@@ -29,6 +37,8 @@ function CardNicknameEdit() {
               ? "카드의 별칭을 입력해주세요."
               : "카드 별칭 (선택)"
           }
+          value={nickname === currentCardInfo.cardName ? "" : nickname}
+          onChange={(e) => setNickname(e.target.value)}
         />
       </div>
       <div
@@ -40,7 +50,7 @@ function CardNicknameEdit() {
         }}
       >
         {/* 이전 주소에 따른 차이 */}
-        <span className="button-text" onClick={() => navigate("/")}>
+        <span className="button-text" onClick={handleUpdateNickname}>
           확인
         </span>
       </div>
