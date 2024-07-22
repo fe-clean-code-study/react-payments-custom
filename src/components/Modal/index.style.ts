@@ -19,6 +19,7 @@ export const Modal = styled.div`
   min-height: 250px;
   max-height: 100vh;
   overflow-y: scroll;
+  position: relative;
 
   display: flex;
   justify-content: center;
