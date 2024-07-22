@@ -19,5 +19,4 @@ export const Input = styled.input<InputProps>`
   flex-grow: 1;
   font-size: 16px;
   text-align: ${({ textAlign }) => textAlign};
-  cursor: pointer;
 `;

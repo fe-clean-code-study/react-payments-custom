@@ -21,11 +21,7 @@ const CardList = () => {
             <S.NoneCardText>아직 보유중인 카드가 없어요.</S.NoneCardText>
           )}
         </S.CardUl>
-        <Card
-          type='empty'
-          clickable={true}
-          onClick={() => navigate('/card-regist')}
-        />
+        <Card clickable={true} onClick={() => navigate('/card-regist')} />
       </ModalBody>
     </>
   );

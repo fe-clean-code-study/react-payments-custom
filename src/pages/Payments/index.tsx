@@ -25,26 +25,28 @@ const Payments = () => {
 
   return (
     <>
-      <ModalHeader></ModalHeader>
-      <S.Form>
-        <ModalBody>
+      <ModalHeader>Pay 결제</ModalHeader>
+      <ModalBody>
+        <S.Form>
           <FormProvider {...methods}>
-            <PayCardInformation />
-            <PayAmountInformation />
-            <PayTermInformation />
+            <S.InformationList>
+              <PayCardInformation />
+              <PayAmountInformation />
+              <PayTermInformation />
+            </S.InformationList>
           </FormProvider>
-        </ModalBody>
-        <ModalFooter>
-          <S.ButtonContainer>
-            <Button type='reset'>
-              <S.ButtonLabel>취소하기</S.ButtonLabel>
-            </Button>
-            <Button type={validate ? 'submit' : 'reset'}>
-              <S.ButtonLabel>결제하기</S.ButtonLabel>
-            </Button>
-          </S.ButtonContainer>
-        </ModalFooter>
-      </S.Form>
+        </S.Form>
+      </ModalBody>
+      <ModalFooter>
+        <S.ButtonContainer>
+          <Button type='reset'>
+            <S.ButtonLabel>취소하기</S.ButtonLabel>
+          </Button>
+          <Button type={validate ? 'submit' : 'reset'}>
+            <S.ButtonLabel>결제하기</S.ButtonLabel>
+          </Button>
+        </S.ButtonContainer>
+      </ModalFooter>
     </>
   );
 };

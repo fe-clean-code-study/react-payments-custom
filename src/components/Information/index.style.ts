@@ -13,7 +13,6 @@ export const InformationHeader = styled.div`
   width: 100%;
 
   font-size: 20px;
-  font-weight: bold;
 
   display: flex;
   flex-direction: column;

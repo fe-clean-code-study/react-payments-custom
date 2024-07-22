@@ -22,7 +22,7 @@ export const Modal = styled.div`
   position: relative;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
 
@@ -46,13 +46,14 @@ export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  flex-grow: 1;
 `;
 
 export const ModalFooter = styled.footer`
   width: 100%;
-  height: 70px;
-  padding: 10px;
+  padding: 20px;
+
+  bottom: 0px;
 
   display: flex;
-  flex-direction: column;
 `;

@@ -12,7 +12,6 @@ export const NoneCardText = styled.div`
 
 export const CardUl = styled.ul`
   width: 100%;
-  min-height: 300px;
 
   display: flex;
   flex-direction: column;

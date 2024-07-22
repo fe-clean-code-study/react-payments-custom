@@ -4,6 +4,11 @@ export const Form = styled.form`
   width: 100%;
 `;
 
+export const FooterButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+
 export const InputNumbersContainer = styled.div`
   width: 100%;
 `;

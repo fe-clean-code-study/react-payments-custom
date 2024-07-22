@@ -1,5 +1,11 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import { ModalBody, ModalFooter, ModalHeader, Card } from '../../components';
+import {
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Card,
+  Button,
+} from '../../components';
 import * as S from './index.style';
 import { MyCardForm } from '../../types';
 import {
@@ -11,6 +17,7 @@ import {
   InputCard,
 } from './components';
 import { useModal } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
 
 const CardRegist = () => {
   const methods = useForm<MyCardForm>({
@@ -24,6 +31,7 @@ const CardRegist = () => {
     },
   });
   const { watch } = methods;
+  const navigate = useNavigate();
   const { isOpen, close, open } = useModal(true);
 
   return (
@@ -52,7 +60,17 @@ const CardRegist = () => {
           </S.Form>
         </FormProvider>
       </ModalBody>
-      <ModalFooter></ModalFooter>
+      <ModalFooter>
+        <S.FooterButtonContainer>
+          <Button
+            onClick={() => {
+              navigate('/card-alias');
+            }}
+          >
+            다음
+          </Button>
+        </S.FooterButtonContainer>
+      </ModalFooter>
     </>
   );
 };

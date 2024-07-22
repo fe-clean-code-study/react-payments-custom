@@ -18,7 +18,9 @@ const Home = () => {
         <S.ButtonLabel>열기</S.ButtonLabel>
       </Button>
       <Modal isOpen={isOpen}>
-        <Outlet />
+        <S.ContentContainer>
+          <Outlet />
+        </S.ContentContainer>
       </Modal>
     </S.Container>
   );
