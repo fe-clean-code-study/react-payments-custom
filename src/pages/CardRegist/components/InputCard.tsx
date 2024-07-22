@@ -1,22 +1,16 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import { Card, CardSelector } from '../../../components';
-import { useModal } from '../../../hooks';
+import { CardSelector } from '../../../components';
 
-const InputCard = () => {
-  const { control, watch } = useFormContext();
-  const { isOpen, close, open } = useModal(true);
+interface InputCardProps {
+  isOpen: boolean;
+  close: () => void;
+}
+
+const InputCard = ({ isOpen, close }: InputCardProps) => {
+  const { control } = useFormContext();
 
   return (
     <div>
-      <Card
-        numbers={watch('numbers')}
-        endDate={watch('endDate')}
-        cardUser={watch('cardUser')}
-        company={watch('company')}
-        onClick={() => {
-          open();
-        }}
-      />
       <Controller
         name='company'
         control={control}
