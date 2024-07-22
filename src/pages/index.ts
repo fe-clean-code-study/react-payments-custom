@@ -1,3 +1,3 @@
-export { default as CardList } from "./CardList";
-export { default as CardEdit } from "./CardEdit";
-export { default as CardNicknameEdit } from "./CardNicknameEdit";
+export { default as CardListPage } from "./CardListPage";
+export { default as CardEditPage } from "./CardEditPage";
+export { default as CardNicknameEditPage } from "./CardNicknameEditPage";

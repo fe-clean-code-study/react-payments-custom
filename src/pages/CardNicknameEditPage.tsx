@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useCardInfo } from "../contexts";
 import { Card } from "../components";
 
-function CardNicknameEdit() {
+function CardNicknameEditPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { cardInfoList, dispatch } = useCardInfo();
@@ -21,22 +21,14 @@ function CardNicknameEdit() {
   return (
     <div className="app flex-column-center">
       <div className="flex-center">
-        <h2 className="page-title mb-10">
-          {currentCardInfo.nickname.length === 0
-            ? "카드등록이 완료되었습니다."
-            : "카드 별칭 수정"}
-        </h2>
+        <h2 className="page-title mb-10">카드 별칭 수정</h2>
       </div>
       <Card type="filled" size="big" {...currentCardInfo} />
       <div className="input-container flex-center w-100">
         <input
           className="input-underline w-75"
           type="text"
-          placeholder={
-            currentCardInfo.nickname.length === 0
-              ? "카드의 별칭을 입력해주세요."
-              : "카드 별칭 (선택)"
-          }
+          placeholder="카드 별칭 (선택)"
           value={nickname === currentCardInfo.cardName ? "" : nickname}
           onChange={(e) => setNickname(e.target.value)}
         />
@@ -57,4 +49,4 @@ function CardNicknameEdit() {
   );
 }
 
-export default CardNicknameEdit;
+export default CardNicknameEditPage;

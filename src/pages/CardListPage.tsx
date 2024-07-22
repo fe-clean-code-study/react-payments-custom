@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "../components";
 import { useCardInfo } from "../contexts";
 
-function CardList() {
+function CardListPage() {
   const navigate = useNavigate();
   const { cardInfoList, dispatch } = useCardInfo();
 
@@ -23,6 +23,7 @@ function CardList() {
               onClick={() => navigate(`card-edit/${cardInfo.id}`)}
             />
             <button
+              className="pointer"
               style={{ position: "absolute", top: "-10px", right: "50px" }}
               onClick={() => handleDeleteCard(cardInfo.id)}
             >
@@ -37,4 +38,4 @@ function CardList() {
   );
 }
 
-export default CardList;
+export default CardListPage;

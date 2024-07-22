@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { CardEdit, CardList, CardNicknameEdit } from "../pages";
+import { CardEditPage, CardListPage, CardNicknameEditPage } from "../pages";
 
 const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter([
   {
@@ -11,18 +11,18 @@ const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <CardList />,
+        element: <CardListPage />,
       },
       {
         path: "card-edit",
         children: [
           {
             index: true,
-            element: <CardEdit />,
+            element: <CardEditPage />,
           },
           {
             path: ":id",
-            element: <CardNicknameEdit />,
+            element: <CardNicknameEditPage />,
           },
         ],
       },
