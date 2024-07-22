@@ -15,6 +15,7 @@ interface InputProps {
   type?: HTMLInputTypeAttribute;
   textAlign?: 'center' | 'left';
   onlyNumber?: boolean;
+  readonly?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -28,6 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       textAlign = 'left',
       placeholder = '',
       type = 'text',
+      readonly = false,
     },
     ref,
   ) => {
@@ -56,6 +58,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        readOnly={readonly}
         autoComplete='new-password'
       />
     );
