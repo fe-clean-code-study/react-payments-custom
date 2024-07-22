@@ -42,7 +42,7 @@ const InputEndDate = () => {
             />
             /
             <Controller
-              name='endDate.date'
+              name='endDate.day'
               control={control}
               rules={{ maxLength: 2, minLength: 2, max: 31, required: true }}
               render={({ field: { onChange } }) => (

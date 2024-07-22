@@ -25,7 +25,7 @@ const InputNumbers = () => {
         <S.InputNumbersContainer>
           <InputWrapper>
             <Controller
-              name='numbers[0]'
+              name='numbers.0'
               rules={{ maxLength: 4, minLength: 4, required: true }}
               control={control}
               render={({ field: { onChange } }) => (
@@ -42,7 +42,7 @@ const InputNumbers = () => {
               )}
             />
             <Controller
-              name='numbers[1]'
+              name='numbers.1'
               rules={{ maxLength: 4, minLength: 4, required: true }}
               control={control}
               render={({ field: { onChange } }) => (
@@ -59,7 +59,7 @@ const InputNumbers = () => {
               )}
             />
             <Controller
-              name='numbers[2]'
+              name='numbers.2'
               rules={{ maxLength: 4, minLength: 4, required: true }}
               control={control}
               render={({ field: { onChange } }) => (
@@ -77,7 +77,7 @@ const InputNumbers = () => {
               )}
             />
             <Controller
-              name='numbers[3]'
+              name='numbers.3'
               rules={{ maxLength: 4, minLength: 4, required: true }}
               control={control}
               render={({ field: { onChange } }) => (

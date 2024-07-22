@@ -3,3 +3,4 @@ export { default as InputEndDate } from './InputEndDate';
 export { default as InputCardUser } from './InputCardUser';
 export { default as InputSecurityCode } from './InputSecurityCode';
 export { default as InputPassword } from './InputPassword';
+export { default as InputCard } from './InputCard';

@@ -54,7 +54,7 @@ const InputPassword = () => {
         <S.InputPasswordListContainer>
           {password.map((value, index) => (
             <Controller
-              name={`passwrod[${index}]`}
+              name={`passwrod.${index}`}
               control={control}
               render={({ field: { onChange } }) => (
                 <S.InputPasswordItemContainer>
