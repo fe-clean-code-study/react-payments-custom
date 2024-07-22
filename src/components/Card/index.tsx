@@ -1,8 +1,8 @@
+import { cardCompany } from '../../constants';
 import { CardCompany, CardEndDate, CardNumber } from '../../types';
 import * as S from './index.style';
 
 interface CardProps {
-  type?: 'register' | 'empty';
   numbers?: CardNumber;
   endDate?: CardEndDate;
   cardUser?: string;
@@ -13,39 +13,40 @@ interface CardProps {
 }
 
 const Card = ({
-  type = 'empty',
   size = 'small',
   company = 'none',
-  numbers = ['0000', '0000', '0000', '0000'],
+  numbers = ['', '', '', ''],
   endDate = {
-    month: '00',
-    day: '00',
+    month: 'MM',
+    day: 'YY',
   },
-  cardUser = 'User',
+  cardUser = undefined,
   clickable = false,
   onClick,
 }: CardProps) => {
   const handleClickCard = () => {
     onClick && onClick();
   };
+  const editedNumbers = numbers.map((number, index) =>
+    index < 2 ? number : '●'.repeat(number.length),
+  );
 
   return (
     <S.Container>
       <S.Card
         onClick={handleClickCard}
-        type={type}
         size={size}
         clickable={clickable}
         company={company}
       >
-        {type === 'register' ? (
+        {company !== 'none' ? (
           <>
-            <S.CardTop>{company}</S.CardTop>
+            <S.CardTop>{cardCompany[company]}</S.CardTop>
             <S.CardMiddle>
               <S.CardChip size={size} />
               <S.CardNumberList>
-                {numbers.map((number) => (
-                  <S.CardNumberItem key={number}>{number}</S.CardNumberItem>
+                {editedNumbers.map((number, index) => (
+                  <S.CardNumberItem key={index}>{number}</S.CardNumberItem>
                 ))}
               </S.CardNumberList>
             </S.CardMiddle>
@@ -57,9 +58,7 @@ const Card = ({
             </S.CardBottom>
           </>
         ) : (
-          <>
-            <span className='material-symbols-outlined'>add</span>
-          </>
+          <span className='material-symbols-outlined'>add</span>
         )}
       </S.Card>
     </S.Container>

@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { CardCompany } from '../../types';
 
 interface CardProps {
-  type: 'register' | 'empty';
   size: 'small' | 'big';
   company: CardCompany;
   clickable: boolean;
@@ -31,11 +30,11 @@ export const Card = styled.div<CardProps>`
   height: ${({ size }) => (size === 'small' ? 130 : 180)}px;
   font-size: ${({ size }) => (size === 'small' ? 12 : 16)}px;
 
-  background: ${({ theme, type, company }) =>
-    type === 'empty' ? theme.color.blackAlpha30 : theme.cardColor[company]};
+  background: ${({ theme, company }) =>
+    company === 'none' ? theme.color.blackAlpha30 : theme.cardColor[company]};
   box-shadow: 3px 3px 5px ${({ theme }) => theme.color.blackAlpha30};
 
-  user-select: ${({ type }) => (type === 'empty' ? 'none' : 'auto')};
+  user-select: ${({ company }) => (company === 'none' ? 'none' : 'auto')};
   border-radius: 5px;
   padding: 10px 20px;
 
@@ -82,7 +81,11 @@ export const CardNumberList = styled.div`
   justify-content: space-around;
 `;
 
-export const CardNumberItem = styled.div``;
+export const CardNumberItem = styled.div`
+  min-width: 30px;
+  flex-grow: 1;
+  text-align: center;
+`;
 
 export const CardBottomLeft = styled.div``;
 
