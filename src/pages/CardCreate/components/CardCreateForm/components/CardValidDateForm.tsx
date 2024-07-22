@@ -19,14 +19,12 @@ const CardValidDateForm = () => {
 
     if (currentValue && !isNumericString(currentValue)) return;
 
-    const cardNumbers = Number(currentValue);
-
     setCardInfo((prev) => ({
       ...prev,
       validMonth:
-        currentInput === monthRef.current ? cardNumbers : prev.validMonth,
+        currentInput === monthRef.current ? currentValue : prev.validMonth,
       validYear:
-        currentInput === yearRef.current ? cardNumbers : prev.validYear,
+        currentInput === yearRef.current ? currentValue : prev.validYear,
     }));
 
     if (currentValue.length === 2 && currentInput === monthRef.current) {

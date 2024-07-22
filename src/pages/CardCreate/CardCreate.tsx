@@ -9,8 +9,8 @@ const CardCreate = () => {
     name: '',
     numbers: [[], [], [], []],
     ownerName: '',
-    validMonth: 0,
-    validYear: 0,
+    validMonth: '',
+    validYear: '',
   });
 
   return (

@@ -11,12 +11,8 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 const Card = ({ color, cardInfo, ...props }: CardProps) => {
   const { name, numbers, ownerName, validMonth, validYear } = cardInfo;
 
-  const validMonthText = validMonth
-    ? validMonth.toString().padStart(2, '0')
-    : 'MM';
-  const validYearText = validYear
-    ? validYear.toString().slice(-2).padStart(2, '0')
-    : 'YY';
+  const validMonthText = validMonth ? validMonth.padStart(2, '0') : 'MM';
+  const validYearText = validYear ? validYear.slice(-2).padStart(2, '0') : 'YY';
 
   return (
     <CardLayout color={color} {...props}>
