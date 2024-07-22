@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Card, Modal } from "../components";
-import { useContext, useState } from "react";
-import { CardInfoContext } from "../context";
+import { useState } from "react";
+import { useCardInfo } from "../contexts";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -22,7 +22,7 @@ function CardEdit() {
   const [userName, setUserName] = useState<string>("");
   const [cardName, setCardName] = useState<string>("");
   const [color, setColor] = useState<string>("");
-  const { dispatch } = useContext(CardInfoContext);
+  const { dispatch } = useCardInfo();
 
   const handleInputCardNumber = (value: string, index: number) => {
     const copy = [...cardNumber];

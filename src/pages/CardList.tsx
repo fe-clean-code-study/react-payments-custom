@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Card } from "../components";
-import { useContext } from "react";
-import { CardInfoContext } from "../context";
+import { useCardInfo } from "../contexts";
 
 function CardList() {
   const navigate = useNavigate();
-  const { cardInfoList } = useContext(CardInfoContext);
+  const { cardInfoList } = useCardInfo();
 
   return (
     <div className="app">

@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { CardInfoContext } from "../context";
+import { useCardInfo } from "../contexts";
 import { Card } from "../components";
 
 function CardNicknameEdit() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { cardInfoList, dispatch } = useContext(CardInfoContext);
+  const { cardInfoList, dispatch } = useCardInfo();
   const currentCardInfo = cardInfoList.find((cardInfo) => cardInfo.id === id)!;
   const [nickname, setNickname] = useState(currentCardInfo.nickname);
 
@@ -49,7 +49,6 @@ function CardNicknameEdit() {
           right: "25px",
         }}
       >
-        {/* 이전 주소에 따른 차이 */}
         <span className="button-text" onClick={handleUpdateNickname}>
           확인
         </span>

@@ -1,13 +1,13 @@
 import { RouterProvider } from "react-router-dom";
-import { CardInfoListProvider } from "./context";
+import { CardInfoProvider } from "./contexts";
 import { router } from "./routes";
 
 function App() {
   return (
     <div className="root">
-      <CardInfoListProvider>
+      <CardInfoProvider>
         <RouterProvider router={router} />
-      </CardInfoListProvider>
+      </CardInfoProvider>
     </div>
   );
 }
