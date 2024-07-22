@@ -23,7 +23,22 @@ export interface MyCard {
   company: CardCompany;
 }
 
+export type CardPassword = [string, string, string, string];
+
 export interface MyCardForm extends MyCard {
   securityCode: string;
-  password: [string, string, string, string];
+  password: CardPassword;
 }
+
+export type KeypadNumbers = [
+  number,
+  number,
+  number,
+  number,
+  number,
+  number,
+  number,
+  number,
+  number,
+  number,
+];
