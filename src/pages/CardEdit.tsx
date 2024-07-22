@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Card, Icon, Modal } from "../components";
 import { useState } from "react";
-import { useCardInfo } from "../contexts";
+import CardNicknameEdit from "./CardNicknameEdit";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -16,13 +16,15 @@ const CARD_NAME_LIST = [
 
 function CardEdit() {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [cardNumber, setCardNumber] = useState<string[]>(["", "", "", ""]);
   const [expiredMonth, setExpiredMonth] = useState<string>("");
   const [expiredYear, setExpiredYear] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [cardName, setCardName] = useState<string>("");
   const [color, setColor] = useState<string>("");
-  const { dispatch } = useCardInfo();
+
+  const [pageState, setPageState] = useState<"init" | "nickname">("init");
 
   const handleInputCardNumber = (value: string, index: number) => {
     const copy = [...cardNumber];
@@ -35,185 +37,205 @@ function CardEdit() {
   const handleSubmit: React.FormEventHandler = (e) => {
     e.preventDefault();
 
-    dispatch({
-      type: "ADD",
-      payload: {
-        cardName,
-        cardNumber,
-        expiredMonth,
-        expiredYear,
-        userName,
-        nickname: cardName,
-        color,
-      },
-    });
+    setPageState("nickname");
   };
 
   const [modal, setModal] = useState(false);
 
-  return (
-    <div className="app">
-      <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-        <button
-          style={{
-            padding: 0,
-            height: "24px",
-            marginLeft: "-10px",
-            border: "none",
-            backgroundColor: "transparent",
-            cursor: "pointer",
-          }}
-          onClick={() => navigate("..")}
-        >
-          <Icon name="arrowLeft" />
-        </button>
-        <h3 className="page-title">카드 추가</h3>
-      </div>
-      <Card
-        type="filled"
-        size="small"
-        cardName={cardName}
-        cardNumber={cardNumber}
-        userName={userName}
-        expiredMonth={expiredMonth}
-        expiredYear={expiredYear}
-        nickname=""
-        color={color}
-      />
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <span className="input-title">카드 번호</span>
-          <div className="input-box">
-            <input
-              name="test"
-              className="input-basic"
-              type="text"
-              maxLength={4}
-              value={cardNumber[0]}
-              onChange={(e) => handleInputCardNumber(e.target.value, 0)}
-            />
-            -
-            <input
-              className="input-basic"
-              type="text"
-              maxLength={4}
-              value={cardNumber[1]}
-              onChange={(e) => handleInputCardNumber(e.target.value, 1)}
-            />
-            -
-            <input
-              className="input-basic"
-              type="password"
-              maxLength={4}
-              value={cardNumber[2]}
-              onChange={(e) => handleInputCardNumber(e.target.value, 2)}
-              onFocus={() => setModal(true)}
-            />
-            -
-            <input
-              className="input-basic"
-              type="password"
-              maxLength={4}
-              value={cardNumber[3]}
-              onChange={(e) => handleInputCardNumber(e.target.value, 3)}
-            />
-          </div>
-        </div>
-        <div className="input-container">
-          <span className="input-title">만료일</span>
-          <div className="input-box w-50">
-            <input
-              className="input-basic"
-              type="text"
-              placeholder="MM"
-              maxLength={2}
-              value={expiredMonth}
-              onChange={(e) => setExpiredMonth(e.target.value)}
-            />
-            /
-            <input
-              className="input-basic"
-              type="text"
-              placeholder="YY"
-              maxLength={2}
-              value={expiredYear}
-              onChange={(e) => setExpiredYear(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="input-container">
-          <span className="input-title">카드 소유자 이름</span>
-          <input
-            className="input-basic"
-            type="text"
-            placeholder="카드에 표시된 이름과 동일하게 입력하세요."
-            maxLength={30}
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </div>
-        <div className="input-container">
-          <span className="input-title">보안코드(CVC/CVV)</span>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <input className="input-basic w-25" type="password" maxLength={3} />
-            <Icon name="questionCircle" />
-          </div>
-        </div>
-        <div className="input-container">
-          <span className="input-title">카드 비밀번호</span>
-          <div style={{ display: "flex", gap: "5px" }}>
-            <input className="input-basic w-15" type="password" maxLength={1} />
-            <input className="input-basic w-15" type="password" maxLength={1} />
-            <div className="flex-center w-15">•</div>
-            <div className="flex-center w-15">•</div>
-          </div>
-        </div>
-        <div
-          className="button-box"
-          style={{
-            position: "absolute",
-            bottom: "25px",
-            right: "33px",
-          }}
-        >
+  if (!id && pageState === "init") {
+    return (
+      <div className="app">
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
           <button
-            className="button-text"
             style={{
+              padding: 0,
+              height: "24px",
+              marginLeft: "-10px",
               border: "none",
               backgroundColor: "transparent",
-              fontSize: "1em",
-              margin: 0,
-              padding: 0,
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("..")}
+          >
+            <Icon name="arrowLeft" />
+          </button>
+          <h3 className="page-title">카드 추가</h3>
+        </div>
+        <Card
+          type="filled"
+          size="small"
+          cardName={cardName}
+          cardNumber={cardNumber}
+          userName={userName}
+          expiredMonth={expiredMonth}
+          expiredYear={expiredYear}
+          nickname=""
+          color={color}
+        />
+        <form onSubmit={handleSubmit}>
+          <div className="input-container">
+            <span className="input-title">카드 번호</span>
+            <div className="input-box">
+              <input
+                name="test"
+                className="input-basic"
+                type="text"
+                maxLength={4}
+                value={cardNumber[0]}
+                onChange={(e) => handleInputCardNumber(e.target.value, 0)}
+              />
+              -
+              <input
+                className="input-basic"
+                type="text"
+                maxLength={4}
+                value={cardNumber[1]}
+                onChange={(e) => handleInputCardNumber(e.target.value, 1)}
+              />
+              -
+              <input
+                className="input-basic"
+                type="password"
+                maxLength={4}
+                value={cardNumber[2]}
+                onChange={(e) => handleInputCardNumber(e.target.value, 2)}
+                onFocus={() => setModal(true)}
+              />
+              -
+              <input
+                className="input-basic"
+                type="password"
+                maxLength={4}
+                value={cardNumber[3]}
+                onChange={(e) => handleInputCardNumber(e.target.value, 3)}
+              />
+            </div>
+          </div>
+          <div className="input-container">
+            <span className="input-title">만료일</span>
+            <div className="input-box w-50">
+              <input
+                className="input-basic"
+                type="text"
+                placeholder="MM"
+                maxLength={2}
+                value={expiredMonth}
+                onChange={(e) => setExpiredMonth(e.target.value)}
+              />
+              /
+              <input
+                className="input-basic"
+                type="text"
+                placeholder="YY"
+                maxLength={2}
+                value={expiredYear}
+                onChange={(e) => setExpiredYear(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="input-container">
+            <span className="input-title">카드 소유자 이름</span>
+            <input
+              className="input-basic"
+              type="text"
+              placeholder="카드에 표시된 이름과 동일하게 입력하세요."
+              maxLength={30}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </div>
+          <div className="input-container">
+            <span className="input-title">보안코드(CVC/CVV)</span>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <input
+                className="input-basic w-25"
+                type="password"
+                maxLength={3}
+              />
+              <Icon name="questionCircle" />
+            </div>
+          </div>
+          <div className="input-container">
+            <span className="input-title">카드 비밀번호</span>
+            <div style={{ display: "flex", gap: "5px" }}>
+              <input
+                className="input-basic w-15"
+                type="password"
+                maxLength={1}
+              />
+              <input
+                className="input-basic w-15"
+                type="password"
+                maxLength={1}
+              />
+              <div className="flex-center w-15">•</div>
+              <div className="flex-center w-15">•</div>
+            </div>
+          </div>
+          <div
+            className="button-box"
+            style={{
+              position: "absolute",
+              bottom: "25px",
+              right: "33px",
             }}
           >
-            다음
-          </button>
-        </div>
-      </form>
-
-      <Modal isOpen={modal} onClose={() => setModal(false)}>
-        <div className="flex-center" style={{ flexWrap: "wrap", gap: "10px" }}>
-          {CARD_NAME_LIST.map(({ name, color }) => (
-            <div
-              key={name}
-              className="modal-item-container"
-              onClick={() => {
-                setCardName(name);
-                setColor(color);
-                setModal(false);
+            <button
+              className="button-text"
+              style={{
+                border: "none",
+                backgroundColor: "transparent",
+                fontSize: "1em",
+                margin: 0,
+                padding: 0,
               }}
             >
+              다음
+            </button>
+          </div>
+        </form>
+
+        <Modal isOpen={modal} onClose={() => setModal(false)}>
+          <div
+            className="flex-center"
+            style={{ flexWrap: "wrap", gap: "10px" }}
+          >
+            {CARD_NAME_LIST.map(({ name, color }) => (
               <div
-                className="modal-item-dot"
-                style={{ backgroundColor: color }}
-              ></div>
-              <span className="modal-item-name">{name}</span>
-            </div>
-          ))}
-        </div>
-      </Modal>
-    </div>
-  );
+                key={name}
+                className="modal-item-container"
+                onClick={() => {
+                  setCardName(name);
+                  setColor(color);
+                  setModal(false);
+                }}
+              >
+                <div
+                  className="modal-item-dot"
+                  style={{ backgroundColor: color }}
+                ></div>
+                <span className="modal-item-name">{name}</span>
+              </div>
+            ))}
+          </div>
+        </Modal>
+      </div>
+    );
+  }
+
+  if (id || pageState === "nickname") {
+    return (
+      <CardNicknameEdit
+        id={id}
+        cardName={cardName}
+        cardNumber={cardNumber}
+        expiredMonth={expiredMonth}
+        expiredYear={expiredYear}
+        userName={userName}
+        color={color}
+      />
+    );
+  }
 }
 
 export default CardEdit;
