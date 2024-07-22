@@ -4,20 +4,31 @@ import { useCardInfo } from "../contexts";
 
 function CardList() {
   const navigate = useNavigate();
-  const { cardInfoList } = useCardInfo();
+  const { cardInfoList, dispatch } = useCardInfo();
+
+  const handleDeleteCard = (id: string) => {
+    dispatch({ type: "DELETE", payload: { id } });
+  };
 
   return (
     <div className="app">
       <h2 className="page-title mb-10">보유 카드</h2>
       <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
         {cardInfoList.map((cardInfo) => (
-          <Card
-            key={cardInfo.id}
-            type="filled"
-            size="small"
-            {...cardInfo}
-            onClick={() => navigate(`card-edit/${cardInfo.id}`)}
-          />
+          <div key={cardInfo.id} style={{ position: "relative" }}>
+            <Card
+              type="filled"
+              size="small"
+              {...cardInfo}
+              onClick={() => navigate(`card-edit/${cardInfo.id}`)}
+            />
+            <button
+              style={{ position: "absolute", top: "-10px", right: "50px" }}
+              onClick={() => handleDeleteCard(cardInfo.id)}
+            >
+              X
+            </button>
+          </div>
         ))}
 
         <Card type="empty" onClick={() => navigate("card-edit")} />
