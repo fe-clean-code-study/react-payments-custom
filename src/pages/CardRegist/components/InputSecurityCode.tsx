@@ -13,7 +13,9 @@ const InputSecurityCode = () => {
 
   return (
     <Information>
-      <InformationHeader>보안코드(CVC/CVV)</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>보안코드(CVC/CVV)</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <S.InputSecurityCodeContainer>
           <InputWrapper>

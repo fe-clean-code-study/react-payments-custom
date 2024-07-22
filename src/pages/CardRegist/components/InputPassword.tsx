@@ -47,7 +47,9 @@ const InputPassword = () => {
 
   return (
     <Information>
-      <InformationHeader>카드 비밀번호</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>카드 비밀번호</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <S.InputPasswordListContainer>
           {password.map((value, index) => (

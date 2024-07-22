@@ -18,7 +18,9 @@ const InputNumbers = () => {
 
   return (
     <Information>
-      <InformationHeader>카드 번호</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>카드 번호</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <S.InputNumbersContainer>
           <InputWrapper>

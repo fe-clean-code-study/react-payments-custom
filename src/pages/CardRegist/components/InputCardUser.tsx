@@ -6,13 +6,16 @@ import {
   Input,
   InputWrapper,
 } from '../../../components';
+import * as S from '../index.style';
 
 const InputCardUser = () => {
   const { control } = useFormContext();
 
   return (
     <Information>
-      <InformationHeader>카드 소유자이름(선택)</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>카드 소유자이름(선택)</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <InputWrapper>
           <Controller

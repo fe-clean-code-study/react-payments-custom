@@ -16,7 +16,9 @@ const InputEndDate = () => {
 
   return (
     <Information>
-      <InformationHeader>만료일</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>만료일</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <S.InputEndDateContainer>
           <InputWrapper>
