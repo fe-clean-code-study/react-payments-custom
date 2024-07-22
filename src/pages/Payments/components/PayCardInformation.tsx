@@ -9,6 +9,7 @@ import CardSlider from '../../../components/CardSlider';
 import { RootState } from '../../../store';
 import { useNavigate } from 'react-router-dom';
 import { Controller, useFormContext } from 'react-hook-form';
+import * as S from '../index.style';
 
 const PayCardInfomation = () => {
   const navigate = useNavigate();
@@ -17,7 +18,9 @@ const PayCardInfomation = () => {
 
   return (
     <Information>
-      <InformationHeader>보유카드</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>보유카드</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <Controller
           name='card'

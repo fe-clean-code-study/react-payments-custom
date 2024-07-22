@@ -11,7 +11,9 @@ const PayTermInfomation = () => {
 
   return (
     <Information>
-      <InformationHeader>약관 이용 및 동의</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>약관 이용 및 동의</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <S.TermInformationTop>
           <div>거래정보 제공 동의:</div>

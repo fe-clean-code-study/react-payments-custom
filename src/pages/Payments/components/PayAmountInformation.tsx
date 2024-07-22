@@ -8,7 +8,9 @@ import * as S from '../index.style';
 const PayAmountInformation = () => {
   return (
     <Information>
-      <InformationHeader>결제 금액</InformationHeader>
+      <InformationHeader>
+        <S.TitleText>결제 금액</S.TitleText>
+      </InformationHeader>
       <InformationBody>
         <S.PayAmountBody>
           <div>총 결제 금액</div>
