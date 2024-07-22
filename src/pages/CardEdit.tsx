@@ -1,7 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Card, Icon, Modal } from "../components";
 import { useState } from "react";
-import CardNicknameEdit from "./CardNicknameEdit";
+import { useCardInfo } from "../contexts";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -16,15 +16,15 @@ const CARD_NAME_LIST = [
 
 function CardEdit() {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const [cardNumber, setCardNumber] = useState<string[]>(["", "", "", ""]);
-  const [expiredMonth, setExpiredMonth] = useState<string>("");
-  const [expiredYear, setExpiredYear] = useState<string>("");
-  const [userName, setUserName] = useState<string>("");
-  const [cardName, setCardName] = useState<string>("");
-  const [color, setColor] = useState<string>("");
-
-  const [pageState, setPageState] = useState<"init" | "nickname">("init");
+  const [cardNumber, setCardNumber] = useState(["", "", "", ""]);
+  const [expiredMonth, setExpiredMonth] = useState("");
+  const [expiredYear, setExpiredYear] = useState("");
+  const [userName, setUserName] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [color, setColor] = useState("");
+  const [nickname, setNickname] = useState("");
+  const { dispatch } = useCardInfo();
+  const [step, setStep] = useState<"init" | "nickname">("init");
 
   const handleInputCardNumber = (value: string, index: number) => {
     const copy = [...cardNumber];
@@ -34,45 +34,60 @@ function CardEdit() {
     setCardNumber(copy);
   };
 
-  const handleSubmit: React.FormEventHandler = (e) => {
-    e.preventDefault();
+  const handleNextStep = () => {
+    setStep("nickname");
+  };
 
-    setPageState("nickname");
+  const handleAddCardInfo = () => {
+    dispatch({
+      type: "ADD",
+      payload: {
+        cardName,
+        cardNumber,
+        expiredMonth,
+        expiredYear,
+        userName,
+        color,
+        nickname: nickname.length > 0 ? nickname : cardName,
+      },
+    });
+
+    navigate("/");
   };
 
   const [modal, setModal] = useState(false);
 
-  if (!id && pageState === "init") {
-    return (
-      <div className="app">
-        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-          <button
-            style={{
-              padding: 0,
-              height: "24px",
-              marginLeft: "-10px",
-              border: "none",
-              backgroundColor: "transparent",
-              cursor: "pointer",
-            }}
-            onClick={() => navigate("..")}
-          >
-            <Icon name="arrowLeft" />
-          </button>
-          <h3 className="page-title">카드 추가</h3>
-        </div>
-        <Card
-          type="filled"
-          size="small"
-          cardName={cardName}
-          cardNumber={cardNumber}
-          userName={userName}
-          expiredMonth={expiredMonth}
-          expiredYear={expiredYear}
-          nickname=""
-          color={color}
-        />
-        <form onSubmit={handleSubmit}>
+  return (
+    <>
+      {step === "init" && (
+        <div className="app">
+          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            <button
+              style={{
+                padding: 0,
+                height: "24px",
+                marginLeft: "-10px",
+                border: "none",
+                backgroundColor: "transparent",
+                cursor: "pointer",
+              }}
+              onClick={() => navigate("..")}
+            >
+              <Icon name="arrowLeft" />
+            </button>
+            <h3 className="page-title">카드 추가</h3>
+          </div>
+          <Card
+            type="filled"
+            size="small"
+            cardName={cardName}
+            cardNumber={cardNumber}
+            userName={userName}
+            expiredMonth={expiredMonth}
+            expiredYear={expiredYear}
+            nickname=""
+            color={color}
+          />
           <div className="input-container">
             <span className="input-title">카드 번호</span>
             <div className="input-box">
@@ -189,53 +204,79 @@ function CardEdit() {
                 margin: 0,
                 padding: 0,
               }}
+              onClick={handleNextStep}
             >
               다음
             </button>
           </div>
-        </form>
 
-        <Modal isOpen={modal} onClose={() => setModal(false)}>
-          <div
-            className="flex-center"
-            style={{ flexWrap: "wrap", gap: "10px" }}
-          >
-            {CARD_NAME_LIST.map(({ name, color }) => (
-              <div
-                key={name}
-                className="modal-item-container"
-                onClick={() => {
-                  setCardName(name);
-                  setColor(color);
-                  setModal(false);
-                }}
-              >
+          <Modal isOpen={modal} onClose={() => setModal(false)}>
+            <div
+              className="flex-center"
+              style={{ flexWrap: "wrap", gap: "10px" }}
+            >
+              {CARD_NAME_LIST.map(({ name, color }) => (
                 <div
-                  className="modal-item-dot"
-                  style={{ backgroundColor: color }}
-                ></div>
-                <span className="modal-item-name">{name}</span>
-              </div>
-            ))}
+                  key={name}
+                  className="modal-item-container"
+                  onClick={() => {
+                    setCardName(name);
+                    setColor(color);
+                    setModal(false);
+                  }}
+                >
+                  <div
+                    className="modal-item-dot"
+                    style={{ backgroundColor: color }}
+                  ></div>
+                  <span className="modal-item-name">{name}</span>
+                </div>
+              ))}
+            </div>
+          </Modal>
+        </div>
+      )}
+      {step === "nickname" && (
+        <div className="app flex-column-center">
+          <div className="flex-center">
+            <h2 className="page-title mb-10">카드등록이 완료되었습니다.</h2>
           </div>
-        </Modal>
-      </div>
-    );
-  }
-
-  if (id || pageState === "nickname") {
-    return (
-      <CardNicknameEdit
-        id={id}
-        cardName={cardName}
-        cardNumber={cardNumber}
-        expiredMonth={expiredMonth}
-        expiredYear={expiredYear}
-        userName={userName}
-        color={color}
-      />
-    );
-  }
+          <Card
+            type="filled"
+            size="big"
+            cardName={cardName}
+            cardNumber={cardNumber}
+            userName={userName}
+            expiredMonth={expiredMonth}
+            expiredYear={expiredYear}
+            nickname=""
+            color={color}
+          />
+          <div className="input-container flex-center w-100">
+            <input
+              className="input-underline w-75"
+              type="text"
+              placeholder="카드의 별칭을 입력해주세요."
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+            />
+          </div>
+          <div
+            className="button-box"
+            style={{
+              position: "absolute",
+              bottom: "25px",
+              right: "25px",
+            }}
+          >
+            <span className="button-text" onClick={handleAddCardInfo}>
+              확인
+            </span>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default CardEdit;
