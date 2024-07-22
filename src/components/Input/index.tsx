@@ -2,6 +2,7 @@ import {
   ChangeEvent,
   HTMLInputTypeAttribute,
   forwardRef,
+  useEffect,
   useState,
 } from 'react';
 import * as S from './index.style';
@@ -34,6 +35,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     const [value, setValue] = useState<string>(defaultValue);
+
+    useEffect(() => {
+      setValue(defaultValue);
+    }, [defaultValue]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       const newValue = event.target.value;

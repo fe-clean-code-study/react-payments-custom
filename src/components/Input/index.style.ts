@@ -5,15 +5,19 @@ interface InputProps {
 }
 
 export const Input = styled.input<InputProps>`
-  width: 50px;
+  width: 10px;
   height: 100%;
-  background: transparent;
+  padding: 5px 0px;
 
-  padding: 5px;
+  background: transparent;
   border: none;
   outline: none;
 
-  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
+  font-size: 16px;
   text-align: ${({ textAlign }) => textAlign};
+  cursor: pointer;
 `;
