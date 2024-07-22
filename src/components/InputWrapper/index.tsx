@@ -1,12 +1,20 @@
-import { PropsWithChildren } from 'react';
+import { HTMLAttributes, PropsWithChildren } from 'react';
 import * as S from './index.style';
 
-interface InputWrapperProps extends PropsWithChildren {
+interface InputWrapperProps extends HTMLAttributes<HTMLDivElement> {
   type?: 'fill' | 'flushed';
 }
 
-const InputWrapper = ({ type = 'fill', children }: InputWrapperProps) => {
-  return <S.Container type={type}>{children}</S.Container>;
+const InputWrapper: React.FC<PropsWithChildren<InputWrapperProps>> = ({
+  type = 'fill',
+  children,
+  ...props
+}) => {
+  return (
+    <S.Container type={type} {...props}>
+      {children}
+    </S.Container>
+  );
 };
 
 export default InputWrapper;
