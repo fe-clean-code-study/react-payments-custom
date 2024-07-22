@@ -1,13 +1,6 @@
-export type CardCompany =
-  | 'none'
-  | 'suyeon'
-  | 'sejin'
-  | 'chanwook'
-  | 'jonggil'
-  | 'hyori'
-  | 'hyesong'
-  | 'jingyeong'
-  | 'geonwoo';
+import { cardCompany } from '../constants';
+
+export type CardCompany = keyof typeof cardCompany | 'none';
 
 export type CardNumber = [string, string, string, string];
 
