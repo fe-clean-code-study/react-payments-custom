@@ -1,4 +1,4 @@
-import usePayments from "../usePayments.tsx";
+import {usePayments} from "../paymentsContext.tsx";
 import {useRouter} from "../../../libs/router";
 import Card from "../Card.tsx";
 

@@ -1,10 +1,11 @@
-import { IRouteProps } from "./type.ts";
-import useRouter from "./useRouter.ts";
+import { TRouteProps } from "./type.ts";
+import {useContext} from "react";
+import {RouterContext} from "./Router.tsx";
 
-export default function Route({ path, element }: IRouteProps) {
-  const router = useRouter()
+export default function Route({ path, element }: TRouteProps) {
+  const { currentRoute } = useContext(RouterContext)
 
-  if (path === router.path) {
+  if (path === currentRoute.path) {
     return element
   }else {
     return null

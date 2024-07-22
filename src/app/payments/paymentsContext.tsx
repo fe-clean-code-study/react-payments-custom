@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useContext, useState} from "react";
 import {ICard} from "./type.ts";
 
 interface IPaymentContext {
@@ -6,19 +6,22 @@ interface IPaymentContext {
   addCard: (card: ICard) => void
   removeCard: (id: string) => void
 }
-export const PaymentsContext = createContext<IPaymentContext | null>(null)
 
-export default function PaymentsProvider ({
+const PaymentsContext = createContext<IPaymentContext | null>(null)
+
+export const usePayments = () => useContext(PaymentsContext)
+
+export const PaymentsProvider = ({
   children
 } : {
   children: React.ReactNode
-}) {
+}) => {
   const [cards, setCards] = useState([])
 
   const addCard = (card: ICard) => {
     setCards(prev => [...prev, {
       ...card,
-      id: new Date().toString()
+      id: new Date().getTime()
     }])
   }
 

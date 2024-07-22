@@ -1,29 +1,13 @@
-import {useContext, useEffect, useState} from "react";
-import { RouterContext } from "./RouterProvider.tsx";
+import {useContext, useEffect} from "react";
+import { RouterContext } from "./Router.tsx";
 
 const useRouter = () => {
   const routerContext = useContext(RouterContext)
   if (routerContext === null) {
-    throw new Error('useRouter must be used in <RouterProvider>...</RouterProvider>')
+    throw new Error('useRouter must be used in <Router>...</Router>')
   }
 
-  const { routes, depth } = routerContext
-
-  const [location, setLocation] = useState(window.location.pathname);
-
-
-  const currentRoute = routes.find(({ path }) => {
-    const locationSegments = location
-      .split('/')
-      .map(segment => `/${segment}`)
-      .slice(1)
-
-    if (locationSegments.length === depth && path === '/')  {
-      return true
-    }
-    return locationSegments[depth] === path
-  })
-
+  const { location, setLocation, currentRoute } = routerContext
 
   useEffect(() => {
     const handlePopState = () => {
@@ -33,7 +17,7 @@ const useRouter = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, []);
+  }, [setLocation]);
 
   const go = (path: string | -1) => {
     if (path === -1){
@@ -44,7 +28,7 @@ const useRouter = () => {
     }
   }
 
-  return { location, go, ...currentRoute }
+  return { location, go, path: currentRoute.path, data: currentRoute.data }
 }
 
 export default useRouter
