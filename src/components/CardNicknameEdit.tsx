@@ -40,6 +40,7 @@ function CardNicknameEdit({ cardForm, onConfirm }: CardNicknameEditProps) {
           type="text"
           placeholder="카드의 별칭을 입력해주세요."
           value={nickname}
+          maxLength={10}
           onChange={(e) => handleNickname(e.target.value)}
         />
       </div>

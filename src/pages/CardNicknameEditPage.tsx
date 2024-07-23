@@ -30,6 +30,7 @@ function CardNicknameEditPage() {
           type="text"
           placeholder="카드 별칭 (선택)"
           value={nickname === currentCardInfo.cardName ? "" : nickname}
+          maxLength={10}
           onChange={(e) => setNickname(e.target.value)}
         />
       </div>
