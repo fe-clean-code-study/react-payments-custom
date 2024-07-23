@@ -10,6 +10,7 @@ import * as S from './index.style';
 interface InputProps {
   onChange?: (value: string) => void;
   onComplete?: () => void;
+  onBlur?: () => void;
   defaultValue?: string;
   maxLength?: number;
   placeholder?: string;
@@ -24,6 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     {
       onChange,
       onComplete,
+      onBlur,
       defaultValue = '',
       maxLength,
       onlyNumber = false,
@@ -45,7 +47,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       if (onlyNumber && /^\d*$/.test(newValue)) {
         setValue(newValue);
         onChange && onChange(newValue);
-      } else {
+      } else if (!onlyNumber) {
         setValue(newValue);
         onChange && onChange(newValue);
       }
@@ -61,6 +63,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         maxLength={maxLength}
         type={type}
         value={value}
+        onBlur={onBlur}
         onChange={handleChange}
         placeholder={placeholder}
         readOnly={readonly}

@@ -7,9 +7,16 @@ import {
   InputWrapper,
 } from '../../../components';
 import * as S from '../index.style';
+import { useEffect, useState } from 'react';
 
 const InputSecurityCode = () => {
-  const { control } = useFormContext();
+  const { control, getFieldState, formState } = useFormContext();
+  const [isInvalidation, setIsInvalidation] = useState<boolean>(false);
+  const { invalid } = getFieldState('securityCode', formState);
+
+  useEffect(() => {
+    setIsInvalidation(invalid);
+  }, [invalid]);
 
   return (
     <Information>
@@ -18,10 +25,14 @@ const InputSecurityCode = () => {
       </InformationHeader>
       <InformationBody>
         <S.InputSecurityCodeContainer>
-          <InputWrapper>
+          <InputWrapper isInvalidation={isInvalidation}>
             <Controller
               name='securityCode'
               control={control}
+              rules={{
+                required: true,
+                validate: (value) => value.length === 3,
+              }}
               render={({ field: { onChange } }) => (
                 <Input
                   maxLength={3}

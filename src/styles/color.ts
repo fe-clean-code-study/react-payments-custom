@@ -6,6 +6,7 @@ const color = {
   grayFont: '#575757',
   blackAlpha30: '#00000030',
   darkYellow: '#cbba64',
+  red: '#E24141',
 };
 
 export default color;

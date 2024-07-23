@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 interface ContainerProps {
   type: 'fill' | 'flushed';
+  isInvalidation?: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -14,6 +15,8 @@ export const Container = styled.div<ContainerProps>`
     type === 'fill' ? theme.color.grayBackground : 'transparent'};
   border-bottom: ${({ theme, type }) =>
     type === 'flushed' ? `1px solid ${theme.color.grayBackground}` : 'none'};
+  border: ${({ theme, isInvalidation }) =>
+    isInvalidation ? `2px solid ${theme.color.red}` : 'none'};
 
   display: flex;
   align-items: center;

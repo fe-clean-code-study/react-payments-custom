@@ -15,14 +15,19 @@ import suffle from '../../../utils/suffle';
 
 const InputPassword = () => {
   const defaultNumbers: KeypadNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const [password, setPassword] = useState<CardPassword>(['', '', '', '']);
+  const [password, setPassword] = useState<CardPassword>(['', '']);
   const [index, setIndex] = useState(0);
+  const [isInvalidation, setIsInvalidation] = useState<boolean>(false);
   const { control } = useFormContext();
   const { isOpen, open, close } = useModal(false);
 
   useEffect(() => {
     if (password.every((value) => value.length === 1)) {
+      setIsInvalidation(false);
       close();
+      return;
+    } else if (password.some((value) => value.length === 1)) {
+      setIsInvalidation(true);
     }
   }, [password, close]);
 
@@ -55,10 +60,15 @@ const InputPassword = () => {
           {password.map((value, index) => (
             <Controller
               name={`passwrod.${index}`}
+              rules={{
+                required: true,
+                validate: (value) => value.length === 1,
+              }}
               control={control}
               render={({ field: { onChange } }) => (
                 <S.InputPasswordItemContainer>
                   <InputWrapper
+                    isInvalidation={isInvalidation}
                     onClick={() => {
                       handleClickInput(index);
                     }}
@@ -76,6 +86,22 @@ const InputPassword = () => {
               )}
             />
           ))}
+          <S.InputPasswordItemContainer>
+            <Input
+              defaultValue={'1'}
+              type='password'
+              textAlign='center'
+              readonly={true}
+            />
+          </S.InputPasswordItemContainer>
+          <S.InputPasswordItemContainer>
+            <Input
+              defaultValue={'1'}
+              type='password'
+              textAlign='center'
+              readonly={true}
+            />
+          </S.InputPasswordItemContainer>
         </S.InputPasswordListContainer>
         <Keypad
           onClick={handleClickKeypad}

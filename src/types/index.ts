@@ -16,7 +16,7 @@ export interface MyCard {
   company: CardCompany;
 }
 
-export type CardPassword = [string, string, string, string];
+export type CardPassword = [string, string];
 
 export interface MyCardForm extends MyCard {
   securityCode: string;

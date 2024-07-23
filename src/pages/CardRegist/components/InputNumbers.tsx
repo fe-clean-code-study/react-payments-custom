@@ -7,14 +7,20 @@ import {
 } from '../../../components';
 import * as S from '../index.style';
 import { Input } from '../../../components';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const InputNumbers = () => {
-  const { control } = useFormContext();
+  const { control, getFieldState, formState } = useFormContext();
+  const [isInvalidation, setIsInvalidation] = useState<boolean>(false);
   const firstInputRef = useRef<HTMLInputElement>(null);
   const secondInputRef = useRef<HTMLInputElement>(null);
   const thirdInputRef = useRef<HTMLInputElement>(null);
   const fourthInputRef = useRef<HTMLInputElement>(null);
+  const { invalid } = getFieldState('numbers', formState);
+
+  useEffect(() => {
+    setIsInvalidation(invalid);
+  }, [invalid]);
 
   return (
     <Information>
@@ -23,16 +29,21 @@ const InputNumbers = () => {
       </InformationHeader>
       <InformationBody>
         <S.InputNumbersContainer>
-          <InputWrapper>
+          <InputWrapper isInvalidation={isInvalidation}>
             <Controller
               name='numbers.0'
-              rules={{ maxLength: 4, minLength: 4, required: true }}
+              rules={{
+                validate: (value) => value.length === 4,
+                required: true,
+              }}
               control={control}
-              render={({ field: { onChange } }) => (
+              render={({ field: { value, onChange, onBlur } }) => (
                 <Input
                   onlyNumber={true}
                   ref={firstInputRef}
+                  defaultValue={value}
                   onChange={onChange}
+                  onBlur={onBlur}
                   maxLength={4}
                   textAlign='center'
                   onComplete={() => {
@@ -43,13 +54,18 @@ const InputNumbers = () => {
             />
             <Controller
               name='numbers.1'
-              rules={{ maxLength: 4, minLength: 4, required: true }}
+              rules={{
+                validate: (value) => value.length === 4,
+                required: true,
+              }}
               control={control}
-              render={({ field: { onChange } }) => (
+              render={({ field: { value, onChange, onBlur } }) => (
                 <Input
                   onlyNumber={true}
                   ref={secondInputRef}
+                  defaultValue={value}
                   onChange={onChange}
+                  onBlur={onBlur}
                   textAlign='center'
                   maxLength={4}
                   onComplete={() => {
@@ -60,14 +76,19 @@ const InputNumbers = () => {
             />
             <Controller
               name='numbers.2'
-              rules={{ maxLength: 4, minLength: 4, required: true }}
+              rules={{
+                validate: (value) => value.length === 4,
+                required: true,
+              }}
               control={control}
-              render={({ field: { onChange } }) => (
+              render={({ field: { value, onChange, onBlur } }) => (
                 <Input
                   onlyNumber={true}
                   ref={thirdInputRef}
+                  defaultValue={value}
                   type='password'
                   onChange={onChange}
+                  onBlur={onBlur}
                   textAlign='center'
                   maxLength={4}
                   onComplete={() => {
@@ -78,15 +99,20 @@ const InputNumbers = () => {
             />
             <Controller
               name='numbers.3'
-              rules={{ maxLength: 4, minLength: 4, required: true }}
+              rules={{
+                validate: (value) => value.length === 4,
+                required: true,
+              }}
               control={control}
-              render={({ field: { onChange } }) => (
+              render={({ field: { value, onChange, onBlur } }) => (
                 <Input
                   onlyNumber={true}
                   ref={fourthInputRef}
+                  defaultValue={value}
                   type='password'
                   textAlign='center'
                   onChange={onChange}
+                  onBlur={onBlur}
                   maxLength={4}
                 />
               )}

@@ -29,6 +29,7 @@ const CardRegist = () => {
       securityCode: '',
       password: ['', '', '', ''],
     },
+    mode: 'onChange',
   });
   const { watch } = methods;
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import {
   Information,
@@ -10,9 +10,15 @@ import {
 import * as S from '../index.style';
 
 const InputEndDate = () => {
-  const { control } = useFormContext();
+  const { control, getFieldState, formState } = useFormContext();
+  const [isInvalidation, setIsInvalidation] = useState<boolean>(false);
   const firstInputRef = useRef<HTMLInputElement>(null);
   const secondInputRef = useRef<HTMLInputElement>(null);
+  const { invalid } = getFieldState('endDate', formState);
+
+  useEffect(() => {
+    setIsInvalidation(invalid);
+  }, [invalid]);
 
   return (
     <Information>
@@ -21,7 +27,7 @@ const InputEndDate = () => {
       </InformationHeader>
       <InformationBody>
         <S.InputEndDateContainer>
-          <InputWrapper>
+          <InputWrapper isInvalidation={isInvalidation}>
             <Controller
               name='endDate.month'
               rules={{ maxLength: 2, minLength: 2, max: 12, required: true }}
