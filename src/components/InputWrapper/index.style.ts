@@ -13,10 +13,12 @@ export const Container = styled.div<ContainerProps>`
 
   background-color: ${({ theme, type }) =>
     type === 'fill' ? theme.color.grayBackground : 'transparent'};
-  border-bottom: ${({ theme, type }) =>
-    type === 'flushed' ? `1px solid ${theme.color.grayBackground}` : 'none'};
+  border-bottom: ${({ theme, type, isInvalidation }) =>
+    isInvalidation === false && type === 'flushed'
+      ? `1px solid ${theme.color.grayBackground}`
+      : 'none'};
   border: ${({ theme, isInvalidation }) =>
-    isInvalidation ? `2px solid ${theme.color.red}` : 'none'};
+    isInvalidation === true ? `2px solid ${theme.color.red}` : ''};
 
   display: flex;
   align-items: center;

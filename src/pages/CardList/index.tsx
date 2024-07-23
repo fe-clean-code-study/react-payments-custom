@@ -29,7 +29,9 @@ const CardList = () => {
           {cards.length > 0 ? (
             cards.map((card) => (
               <S.CardLi key={card.id}>
-                <Card {...card} />
+                <div onClick={() => navigate(`/card-alias/${card.id}`)}>
+                  <Card {...card} />
+                </div>
                 <S.CardNameText>{card.cardAlias}</S.CardNameText>
                 <S.ButtonContainer>
                   <Button onClick={() => dispatch(removeCard({ id: card.id }))}>
