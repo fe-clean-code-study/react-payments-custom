@@ -128,7 +128,10 @@ function CardInfoEdit({
         </div>
       </div>
       <div className="input-container">
-        <span className="input-title">카드 소유자 이름</span>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <span className="input-title">카드 소유자 이름</span>
+          <span className="input-title">{userName.length}/30</span>
+        </div>
         <input
           className="input-basic"
           type="text"
