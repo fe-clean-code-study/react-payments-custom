@@ -25,8 +25,7 @@ const InputPassword = () => {
     if (password.every((value) => value.length === 1)) {
       setIsInvalidation(false);
       close();
-      return;
-    } else if (password.some((value) => value.length === 1)) {
+    } else {
       setIsInvalidation(true);
     }
   }, [password, close]);
