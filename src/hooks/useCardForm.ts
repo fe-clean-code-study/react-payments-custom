@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isPositiveInteger } from "../utils";
 
 const useCardForm = () => {
   const [cardNumber, setCardNumber] = useState(["", "", "", ""]);
@@ -12,15 +13,22 @@ const useCardForm = () => {
   const handleCardNumber = (value: string, index: number) => {
     const copy = [...cardNumber];
     copy[index] = value;
-    setCardNumber(copy);
+
+    if (isPositiveInteger(value) || value === "") {
+      setCardNumber(copy);
+    }
   };
 
   const handleExpiredMonth = (value: string) => {
-    setExpiredMonth(value);
+    if (isPositiveInteger(value, 12) || value === "") {
+      setExpiredMonth(value);
+    }
   };
 
   const handleExpiredYear = (value: string) => {
-    setExpiredYear(value);
+    if (isPositiveInteger(value) || value === "") {
+      setExpiredYear(value);
+    }
   };
 
   const handleUserName = (value: string) => {
