@@ -52,6 +52,7 @@ const InputNumbers = () => {
                 />
               )}
             />
+            -
             <Controller
               name='numbers.1'
               rules={{
@@ -74,6 +75,7 @@ const InputNumbers = () => {
                 />
               )}
             />
+            -
             <Controller
               name='numbers.2'
               rules={{
@@ -97,6 +99,7 @@ const InputNumbers = () => {
                 />
               )}
             />
+            -
             <Controller
               name='numbers.3'
               rules={{
