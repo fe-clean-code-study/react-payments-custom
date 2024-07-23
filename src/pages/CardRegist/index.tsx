@@ -18,6 +18,9 @@ import {
 } from './components';
 import { useModal } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addCard } from '../../store';
+import generateID from '../../utils/generateId';
 
 const CardRegist = () => {
   const methods = useForm<MyCardForm>({
@@ -27,13 +30,14 @@ const CardRegist = () => {
       cardUser: '',
       company: 'none',
       securityCode: '',
-      password: ['', '', '', ''],
+      password: ['', ''],
     },
     mode: 'onChange',
   });
-  const { watch } = methods;
+  const { watch, formState, getValues } = methods;
   const navigate = useNavigate();
   const { isOpen, close, open } = useModal(true);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -62,15 +66,19 @@ const CardRegist = () => {
         </FormProvider>
       </ModalBody>
       <ModalFooter>
-        <S.FooterButtonContainer>
-          <Button
-            onClick={() => {
-              navigate('/card-alias');
-            }}
-          >
-            다음
-          </Button>
-        </S.FooterButtonContainer>
+        {Object.values(formState.errors).length === 0 && (
+          <S.FooterButtonContainer>
+            <Button
+              onClick={() => {
+                const id = generateID();
+                dispatch(addCard({ card: { ...getValues(), id } }));
+                navigate(`/card-alias/${id}`);
+              }}
+            >
+              다음
+            </Button>
+          </S.FooterButtonContainer>
+        )}
       </ModalFooter>
     </>
   );

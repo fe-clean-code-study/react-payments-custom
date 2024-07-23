@@ -9,7 +9,7 @@ const router = createBrowserRouter([
       { element: <Payments />, path: '/payments' },
       { element: <CardList />, path: '/card-list' },
       { element: <CardRegist />, path: '/card-regist' },
-      { element: <CardAlias />, path: '/card-alias' },
+      { element: <CardAlias />, path: '/card-alias/:id' },
     ],
   },
 ]);

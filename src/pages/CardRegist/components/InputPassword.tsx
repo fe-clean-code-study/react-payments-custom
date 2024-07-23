@@ -44,7 +44,7 @@ const InputPassword = () => {
 
   const handleClickKeypad = (value: string, index: number) => {
     const nextState: CardPassword = [...password];
-    nextState.splice(index, 1, value);
+    nextState[index] = value;
 
     setPassword(nextState);
     setIndex(index + 1);
@@ -59,7 +59,7 @@ const InputPassword = () => {
         <S.InputPasswordListContainer>
           {password.map((value, index) => (
             <Controller
-              name={`passwrod.${index}`}
+              name={`password.${index}`}
               rules={{
                 required: true,
                 validate: (value) => value.length === 1,

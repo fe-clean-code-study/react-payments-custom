@@ -14,6 +14,7 @@ export interface MyCard {
   endDate: CardEndDate;
   cardUser: string;
   company: CardCompany;
+  cardAlias?: string;
 }
 
 export type CardPassword = [string, string];

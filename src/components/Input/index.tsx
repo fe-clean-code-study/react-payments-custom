@@ -40,7 +40,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     useEffect(() => {
       setValue(defaultValue);
-    }, [defaultValue]);
+      onChange && onChange(defaultValue);
+    }, [onChange, defaultValue]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       const newValue = event.target.value;
