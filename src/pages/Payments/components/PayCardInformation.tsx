@@ -26,6 +26,7 @@ const PayCardInfomation = () => {
           name='card'
           rules={{
             required: true,
+            validate: (value) => value !== undefined,
           }}
           control={control}
           defaultValue={cards.length > 0 ? cards[0] : undefined}

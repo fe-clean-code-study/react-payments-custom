@@ -9,19 +9,19 @@ import * as S from './index.style';
 import { useEffect, useState } from 'react';
 
 const Payments = () => {
-  const [validate, setValidate] = useState(false);
+  const [isInvalidation, setIsInvalidation] = useState(true);
   const methods = useForm({
     defaultValues: {
       card: undefined,
       checkTerm: false,
     },
+    mode: 'onChange',
   });
-  const { watch, trigger } = methods;
-  const watchValues = watch(['card', 'checkTerm']);
+  const { formState } = methods;
 
   useEffect(() => {
-    trigger().then((validate) => setValidate(validate));
-  }, [watchValues]);
+    setIsInvalidation(!formState.isValid);
+  }, [formState.isValid]);
 
   return (
     <>
@@ -42,7 +42,7 @@ const Payments = () => {
           <Button type='reset'>
             <S.ButtonLabel>취소하기</S.ButtonLabel>
           </Button>
-          <Button type={validate ? 'submit' : 'reset'}>
+          <Button type={isInvalidation ? 'reset' : 'submit'}>
             <S.ButtonLabel>결제하기</S.ButtonLabel>
           </Button>
         </S.ButtonContainer>

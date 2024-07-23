@@ -25,7 +25,7 @@ const PayTermInfomation = () => {
           <input
             type='checkbox'
             {...register('checkTerm', {
-              required: true,
+              validate: (value) => value === true,
             })}
           />
         </S.TermInformationBottom>

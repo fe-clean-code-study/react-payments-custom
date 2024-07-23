@@ -5,6 +5,7 @@ import * as S from './index.style';
 import Card from '../Card';
 import { useNavigate } from 'react-router-dom';
 import { MyCard } from '../../types';
+import { useEffect } from 'react';
 
 interface CardSliderProps {
   cards: MyCard[];
@@ -19,20 +20,18 @@ const CardSlider = ({ cards, onChange }: CardSliderProps) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    beforeChange: (index: number) => {
+    afterChange: (index: number) => {
       onChange && onChange(cards[index]);
     },
   };
 
+  useEffect(() => {
+    onChange && onChange(cards[0]);
+  }, [onChange, cards]);
+
   return (
     <S.SlideWrapper>
       <Slider {...settings}>
-        <div>
-          <Card />
-        </div>
-        <div>
-          <Card />
-        </div>
         {cards.map((card, index) => (
           <S.ItemWrapper key={index}>
             <Card {...card} />
