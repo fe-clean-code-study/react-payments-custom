@@ -20,6 +20,17 @@ const cardSlice = createSlice({
       console.log(card);
       state.cards.push(card);
     },
+    removeCard: (state, actions) => {
+      const { id } = actions.payload;
+      state.cards = state.cards.filter((card) => card.id !== id);
+    },
+    addCardName: (state, actions) => {
+      const { id, cardAlias } = actions.payload;
+      const targetCard = state.cards.find((card) => card.id === id);
+      if (targetCard) {
+        targetCard.cardAlias = cardAlias;
+      }
+    },
   },
 });
 
@@ -28,6 +39,6 @@ const store = configureStore({
   reducer: cardSlice.reducer,
 });
 
-export const { addCard } = cardSlice.actions;
+export const { addCard, removeCard, addCardName } = cardSlice.actions;
 
 export default store;

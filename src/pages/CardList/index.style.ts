@@ -17,3 +17,16 @@ export const CardUl = styled.ul`
   flex-direction: column;
   align-content: center;
 `;
+
+export const CardLi = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const CardNameText = styled.div`
+  font-size: 16px;
+`;
+
+export const ButtonContainer = styled.div``;
