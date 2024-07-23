@@ -5,6 +5,7 @@ import {
   ModalHeader,
   Card,
   Button,
+  PrevIcon,
 } from '../../components';
 import * as S from './index.style';
 import { MyCardForm } from '../../types';
@@ -20,7 +21,7 @@ import { useModal } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../../store';
-import generateID from '../../utils/generateId';
+import generateID from '../../utils/generateID';
 
 const CardRegist = () => {
   const methods = useForm<MyCardForm>({
@@ -42,7 +43,10 @@ const CardRegist = () => {
   return (
     <>
       <ModalHeader>
-        <h3 className='page-title'>카드 추가</h3>
+        <S.HeaderTitleText>
+          <PrevIcon onClick={() => navigate('/card-list')} />
+          카드 추가
+        </S.HeaderTitleText>
       </ModalHeader>
       <ModalBody>
         <Card

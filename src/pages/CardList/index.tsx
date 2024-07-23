@@ -1,5 +1,11 @@
 import { useSelector } from 'react-redux';
-import { Button, Card, ModalBody, ModalHeader } from '../../components';
+import {
+  Button,
+  Card,
+  ModalBody,
+  ModalHeader,
+  PrevIcon,
+} from '../../components';
 import * as S from './index.style';
 import { removeCard, RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +19,10 @@ const CardList = () => {
   return (
     <>
       <ModalHeader>
-        <S.HeaderText>보유 카드</S.HeaderText>
+        <S.HeaderText>
+          <PrevIcon onClick={() => navigate('/payments')} />
+          보유 카드
+        </S.HeaderText>
       </ModalHeader>
       <ModalBody>
         <S.CardUl>

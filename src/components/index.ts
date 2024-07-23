@@ -6,6 +6,7 @@ export { default as InputWrapper } from './InputWrapper';
 export { default as Input } from './Input';
 export { default as Keypad } from './Keypad';
 export { default as CardSelector } from './CardSelector';
+export { default as PrevIcon } from './PrevIcon';
 export * from './Modal';
 export * from './Information';
 export * from './Keypad';

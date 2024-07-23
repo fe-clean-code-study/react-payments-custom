@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const HeaderText = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 16px;
 `;
 
