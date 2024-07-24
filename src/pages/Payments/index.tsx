@@ -1,12 +1,13 @@
+import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { ModalHeader, ModalBody, Button, ModalFooter } from '../../components';
+
 import {
   PayAmountInformation,
   PayCardInformation,
   PayTermInformation,
 } from './components';
 import * as S from './index.style';
-import { useEffect, useState } from 'react';
+import { ModalHeader, ModalBody, Button, ModalFooter } from '../../components';
 
 const Payments = () => {
   const [isInvalidation, setIsInvalidation] = useState(true);
