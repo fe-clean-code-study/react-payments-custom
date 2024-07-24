@@ -10,7 +10,7 @@ const Home = () => {
 
   const handleClickOpenButton = () => {
     open();
-    navigate('/payments');
+    navigate('/payment');
   };
 
   return (

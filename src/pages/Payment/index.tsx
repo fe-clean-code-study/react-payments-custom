@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -9,8 +8,7 @@ import {
 import * as S from './index.style';
 import { ModalHeader, ModalBody, Button, ModalFooter } from '../../components';
 
-const Payments = () => {
-  const [isInvalidation, setIsInvalidation] = useState(true);
+const Payment = () => {
   const methods = useForm({
     defaultValues: {
       card: undefined,
@@ -20,36 +18,35 @@ const Payments = () => {
   });
   const { formState } = methods;
 
-  useEffect(() => {
-    setIsInvalidation(!formState.isValid);
-  }, [formState.isValid]);
-
   return (
     <>
       <ModalHeader>Pay 결제</ModalHeader>
-      <ModalBody>
+      <FormProvider {...methods}>
         <S.Form>
-          <FormProvider {...methods}>
+          <ModalBody>
             <S.InformationList>
+              {/* <CardSelction />
+              <PaymentAmount />
+              <TermAgreement /> */}
               <PayCardInformation />
               <PayAmountInformation />
               <PayTermInformation />
             </S.InformationList>
-          </FormProvider>
+          </ModalBody>
+          <ModalFooter>
+            <S.ButtonContainer>
+              <Button type='reset'>
+                <S.ButtonLabel>취소하기</S.ButtonLabel>
+              </Button>
+              <Button type={formState.isValid ? 'submit' : 'reset'}>
+                <S.ButtonLabel>결제하기</S.ButtonLabel>
+              </Button>
+            </S.ButtonContainer>
+          </ModalFooter>
         </S.Form>
-      </ModalBody>
-      <ModalFooter>
-        <S.ButtonContainer>
-          <Button type='reset'>
-            <S.ButtonLabel>취소하기</S.ButtonLabel>
-          </Button>
-          <Button type={isInvalidation ? 'reset' : 'submit'}>
-            <S.ButtonLabel>결제하기</S.ButtonLabel>
-          </Button>
-        </S.ButtonContainer>
-      </ModalFooter>
+      </FormProvider>
     </>
   );
 };
 
-export default Payments;
+export default Payment;

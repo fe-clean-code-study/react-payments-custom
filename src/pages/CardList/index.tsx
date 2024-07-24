@@ -20,7 +20,7 @@ const CardList = () => {
     <>
       <ModalHeader>
         <S.HeaderText>
-          <PrevIcon onClick={() => navigate('/payments')} />
+          <PrevIcon onClick={() => navigate('/payment')} />
           보유 카드
         </S.HeaderText>
       </ModalHeader>
