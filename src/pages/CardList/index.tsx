@@ -1,4 +1,9 @@
+import { MouseEvent } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import * as S from './index.style';
 import {
   Button,
   Card,
@@ -6,15 +11,41 @@ import {
   ModalHeader,
   PrevIcon,
 } from '../../components';
-import * as S from './index.style';
 import { removeCard, RootState } from '../../store';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 const CardList = () => {
   const cards = useSelector((state: RootState) => state.cards);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleClickRemoveButton = (id: string) => {
+    dispatch(removeCard({ id }));
+  };
+
+  const handleClickRegisteredCard = (id: string) => {
+    navigate(`/card-alias/${id}`);
+  };
+
+  const handleClickCardUL = (event: MouseEvent<HTMLUListElement>) => {
+    const { currentTarget, target } = event;
+
+    if (currentTarget instanceof HTMLUListElement) {
+      const $li = currentTarget.querySelector('li') as HTMLLIElement;
+      const { id } = $li.dataset;
+
+      if (target instanceof HTMLButtonElement) {
+        id && handleClickRemoveButton(id);
+      }
+
+      if (target instanceof HTMLDivElement) {
+        id && handleClickRegisteredCard(id);
+      }
+    }
+  };
+
+  const handleClickAddCard = () => {
+    navigate('/card-regist');
+  };
 
   return (
     <>
@@ -25,26 +56,20 @@ const CardList = () => {
         </S.HeaderText>
       </ModalHeader>
       <ModalBody>
-        <S.CardUl>
+        <S.CardUl onClick={handleClickCardUL}>
           {cards.length > 0 ? (
             cards.map((card) => (
-              <S.CardLi key={card.id}>
-                <div onClick={() => navigate(`/card-alias/${card.id}`)}>
-                  <Card {...card} />
-                </div>
+              <S.CardLi data-id={card.id} key={card.id}>
+                <Card {...card} />
                 <S.CardNameText>{card.cardAlias}</S.CardNameText>
-                <S.ButtonContainer>
-                  <Button onClick={() => dispatch(removeCard({ id: card.id }))}>
-                    삭제
-                  </Button>
-                </S.ButtonContainer>
+                <Button>삭제</Button>
               </S.CardLi>
             ))
           ) : (
             <S.NoneCardText>아직 보유중인 카드가 없어요.</S.NoneCardText>
           )}
         </S.CardUl>
-        <Card clickable={true} onClick={() => navigate('/card-regist')} />
+        <Card onClick={handleClickAddCard} />
       </ModalBody>
     </>
   );

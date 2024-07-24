@@ -1,7 +1,8 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+
 import { MyCard } from '../types';
 
-export type CardState = MyCard & { id: string };
+export type CardState = MyCard;
 
 interface CardsState {
   cards: CardState[];

@@ -1,14 +1,7 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import {
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-  Card,
-  Button,
-  PrevIcon,
-} from '../../components';
-import * as S from './index.style';
-import { MyCardForm } from '../../types';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import {
   InputNumbers,
   InputEndDate,
@@ -17,10 +10,18 @@ import {
   InputPassword,
   InputCard,
 } from './components';
+import * as S from './index.style';
+import {
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Card,
+  Button,
+  PrevIcon,
+} from '../../components';
 import { useModal } from '../../hooks';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { addCard } from '../../store';
+import { MyCardForm } from '../../types';
 import generateID from '../../utils/generateID';
 
 const CardRegist = () => {

@@ -2,15 +2,11 @@ import * as S from './index.style';
 import GoogleIcon from '../GoogleIcon';
 
 import { cardCompany } from '~/constants';
-import { CardCompany, CardEndDate, CardNumber } from '~/types';
+import { DefaultCard } from '~/types';
 
-interface CardProps {
-  numbers?: CardNumber;
-  endDate?: CardEndDate;
-  cardUser?: string;
-  company?: CardCompany;
+interface CardProps extends Partial<DefaultCard> {
   size?: 'small' | 'big';
-  onClick?: () => void;
+  onClick?: (card?: DefaultCard) => void;
 }
 
 const Card = ({

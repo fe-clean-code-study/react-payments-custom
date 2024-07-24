@@ -36,8 +36,8 @@ const CardSlider = ({ cards, onChange }: CardSliderProps) => {
   return (
     <S.SlideWrapper>
       <Slider {...settings}>
-        {cards.map((card, index) => (
-          <S.ItemWrapper key={index}>
+        {cards.map((card) => (
+          <S.ItemWrapper key={card.id}>
             <Card {...card} />
           </S.ItemWrapper>
         ))}

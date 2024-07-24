@@ -4,22 +4,26 @@ export type CardCompany = keyof typeof cardCompany | 'none';
 
 export type CardNumber = [string, string, string, string];
 
+export type CardPassword = [string, string];
+
 export interface CardEndDate {
   month: string;
   day: string;
 }
 
-export interface MyCard {
+export interface DefaultCard {
   numbers: CardNumber;
   endDate: CardEndDate;
-  cardUser: string;
+  cardUser?: string;
   company: CardCompany;
+}
+
+export interface RegisteredCard extends DefaultCard {
+  id: string;
   cardAlias?: string;
 }
 
-export type CardPassword = [string, string];
-
-export interface MyCardForm extends MyCard {
+export interface CardForm extends RegisteredCard {
   securityCode: string;
   password: CardPassword;
 }
