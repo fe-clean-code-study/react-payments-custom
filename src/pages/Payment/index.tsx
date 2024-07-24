@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { PaymentAmount, CardSelection, PayTermInformation } from './components';
+import { PaymentAmount, CardSelection, TermAgreement } from './components';
 import * as S from './index.style';
 
 import { ModalHeader, ModalBody, Button, ModalFooter } from '~/components';
@@ -23,12 +23,9 @@ const Payment = () => {
         <S.Form>
           <ModalBody>
             <S.InformationList>
-              {/* <CardSelction />
-              <PaymentAmount />
-              <TermAgreement /> */}
               <CardSelection />
               <PaymentAmount amount={'500,000,000'} />
-              <PayTermInformation />
+              <TermAgreement />
             </S.InformationList>
           </ModalBody>
           <ModalFooter>

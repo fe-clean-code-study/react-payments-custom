@@ -1,14 +1,11 @@
 import { useFormContext } from 'react-hook-form';
 
-import TitleText from './TitleText';
-import {
-  Information,
-  InformationBody,
-  InformationHeader,
-} from '../../../components';
-import * as S from '../index.style';
+import * as S from './index.style';
+import TitleText from '../TitleText';
 
-const PayTermInfomation = () => {
+import { Information, InformationBody, InformationHeader } from '~/components';
+
+const TermAgreement = () => {
   const { register } = useFormContext();
 
   return (
@@ -36,4 +33,4 @@ const PayTermInfomation = () => {
   );
 };
 
-export default PayTermInfomation;
+export default TermAgreement;
