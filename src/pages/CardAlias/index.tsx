@@ -1,4 +1,9 @@
+import { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import * as S from './index.style';
 import {
   Button,
   Card,
@@ -7,21 +12,24 @@ import {
   ModalBody,
   ModalFooter,
 } from '../../components';
-import * as S from './index.style';
-import { useSelector } from 'react-redux';
 import { addCardName, CardState, RootState } from '../../store';
-import { useDispatch } from 'react-redux';
-import { useRef } from 'react';
 
 const CardAlias = () => {
   const navigate = useNavigate();
-  const params = useParams();
   const dispatch = useDispatch();
+  const params = useParams();
   const { id } = params;
+
   const targetCard = useSelector((state: RootState) => {
     return state.cards.find((card) => card.id === id) as CardState;
   });
+  const { cardAlias } = targetCard;
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleClickConfirmButton = () => {
+    navigate('/card-list');
+    dispatch(addCardName({ id, cardAlias: inputRef.current?.value }));
+  };
 
   return (
     <>
@@ -37,7 +45,7 @@ const CardAlias = () => {
                 <Input
                   ref={inputRef}
                   placeholder='카드 이름을 입력해주세요.'
-                  defaultValue={targetCard.cardAlias}
+                  defaultValue={cardAlias}
                 />
               </InputWrapper>
             </S.InputContainer>
@@ -46,14 +54,7 @@ const CardAlias = () => {
       </ModalBody>
       <ModalFooter>
         <S.ButtonContainer>
-          <Button
-            onClick={() => {
-              navigate('/card-list');
-              dispatch(addCardName({ id, cardAlias: inputRef.current?.value }));
-            }}
-          >
-            확인
-          </Button>
+          <Button onClick={handleClickConfirmButton}>확인</Button>
         </S.ButtonContainer>
       </ModalFooter>
     </>
