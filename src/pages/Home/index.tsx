@@ -1,8 +1,9 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import * as S from './index.style';
-import { Button, Modal } from '../../components';
-import { useModal } from '../../hooks';
+
+import { Button, Modal } from '~/components';
+import { useModal } from '~/hooks';
 
 const Home = () => {
   const navigate = useNavigate();

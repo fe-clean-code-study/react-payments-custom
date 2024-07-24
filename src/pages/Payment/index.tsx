@@ -6,7 +6,8 @@ import {
   PayTermInformation,
 } from './components';
 import * as S from './index.style';
-import { ModalHeader, ModalBody, Button, ModalFooter } from '../../components';
+
+import { ModalHeader, ModalBody, Button, ModalFooter } from '~/components';
 
 const Payment = () => {
   const methods = useForm({

@@ -1,9 +1,10 @@
 import { ThemeProvider } from '@emotion/react';
-import router from './router/router';
-import { RouterProvider } from 'react-router-dom';
-import theme from './styles/theme';
 import { Provider } from 'react-redux';
-import store from './store';
+import { RouterProvider } from 'react-router-dom';
+
+import router from '~/router/router';
+import store from '~/store';
+import theme from '~/styles/theme';
 
 function App() {
   return (
