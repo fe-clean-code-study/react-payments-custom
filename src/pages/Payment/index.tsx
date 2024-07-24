@@ -1,10 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form';
 
-import {
-  PayAmountInformation,
-  CardSelection,
-  PayTermInformation,
-} from './components';
+import { PaymentAmount, CardSelection, PayTermInformation } from './components';
 import * as S from './index.style';
 
 import { ModalHeader, ModalBody, Button, ModalFooter } from '~/components';
@@ -13,6 +9,7 @@ const Payment = () => {
   const methods = useForm({
     defaultValues: {
       card: undefined,
+      amount: '500,000,000',
       checkTerm: false,
     },
     mode: 'onChange',
@@ -30,7 +27,7 @@ const Payment = () => {
               <PaymentAmount />
               <TermAgreement /> */}
               <CardSelection />
-              <PayAmountInformation />
+              <PaymentAmount amount={'500,000,000'} />
               <PayTermInformation />
             </S.InformationList>
           </ModalBody>
