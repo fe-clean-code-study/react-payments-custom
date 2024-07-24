@@ -6,7 +6,7 @@ export { default as InputWrapper } from './InputWrapper';
 export { default as Input } from './Input';
 export { default as Keypad } from './Keypad';
 export { default as CardSlider } from './CardSlider';
-export { default as CardSelector } from './CardSelector';
+export { default as CompanySelection } from './CompanySelection';
 export { default as PrevIcon } from './PrevIcon';
 export { default as GoogleIcon } from './GoogleIcon';
 export * from './Modal';

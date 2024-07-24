@@ -1,19 +1,24 @@
+import { MouseEvent } from 'react';
+
 import * as S from './index.style';
 import { cardCompany } from '../../constants';
-import { MouseEvent } from 'react';
 import { CardCompany } from '../../types';
 
 function isCardCompany(key: string): key is keyof typeof cardCompany {
   return key in cardCompany;
 }
 
-interface CardSelectorProps {
+interface CompanySelectionProps {
   isOpen: boolean;
   onClose?: () => void;
   onClick?: (company: CardCompany) => void;
 }
 
-const CardSelector = ({ isOpen, onClose, onClick }: CardSelectorProps) => {
+const CompanySelection = ({
+  isOpen,
+  onClose,
+  onClick,
+}: CompanySelectionProps) => {
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const { target } = event;
 
@@ -58,4 +63,4 @@ const CardSelector = ({ isOpen, onClose, onClick }: CardSelectorProps) => {
   );
 };
 
-export default CardSelector;
+export default CompanySelection;

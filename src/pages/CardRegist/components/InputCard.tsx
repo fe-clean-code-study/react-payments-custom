@@ -1,5 +1,6 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import { CardSelector } from '../../../components';
+
+import { CompanySelection } from '../../../components';
 
 interface InputCardProps {
   isOpen: boolean;
@@ -15,7 +16,7 @@ const InputCard = ({ isOpen, close }: InputCardProps) => {
         name='company'
         control={control}
         render={({ field: { onChange } }) => (
-          <CardSelector
+          <CompanySelection
             isOpen={isOpen}
             onClose={() => {
               close();
