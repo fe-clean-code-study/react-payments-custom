@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { CardCompany } from '../../types';
+
+import { CardCompany } from '~/types';
 
 interface CardProps {
   size: 'small' | 'big';

@@ -1,3 +1,4 @@
+import TitleText from './TitleText';
 import {
   Information,
   InformationBody,
@@ -9,7 +10,7 @@ const PayAmountInformation = () => {
   return (
     <Information>
       <InformationHeader>
-        <S.TitleText>결제 금액</S.TitleText>
+        <TitleText label={'결제 금액'} />
       </InformationHeader>
       <InformationBody>
         <S.PayAmountBody>

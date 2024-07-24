@@ -1,4 +1,5 @@
 import * as S from './index.style';
+import GoogleIcon from '../GoogleIcon';
 
 import { cardCompany } from '~/constants';
 import { CardCompany, CardEndDate, CardNumber } from '~/types';
@@ -9,7 +10,6 @@ interface CardProps {
   cardUser?: string;
   company?: CardCompany;
   size?: 'small' | 'big';
-  clickable?: boolean;
   onClick?: () => void;
 }
 
@@ -22,31 +22,33 @@ const Card = ({
     day: 'YY',
   },
   cardUser = undefined,
-  clickable = false,
   onClick,
 }: CardProps) => {
+  const clickable = onClick ? true : false;
+  const encryptedNumbers = numbers.map((number, index) => {
+    return index < 2 ? number : '●'.repeat(number.length);
+  });
   const handleClickCard = () => {
     onClick && onClick();
   };
-  const editedNumbers = numbers.map((number, index) =>
-    index < 2 ? number : '●'.repeat(number.length),
-  );
 
   return (
     <S.Container>
       <S.Card
+        clickable={clickable}
         onClick={handleClickCard}
         size={size}
-        clickable={clickable}
         company={company}
       >
-        {company !== 'none' ? (
+        {company === 'none' ? (
+          <GoogleIcon name='add' />
+        ) : (
           <>
             <S.CardTop>{cardCompany[company]}</S.CardTop>
             <S.CardMiddle>
               <S.CardChip size={size} />
               <S.CardNumberList>
-                {editedNumbers.map((number, index) => (
+                {encryptedNumbers.map((number, index) => (
                   <S.CardNumberItem key={index}>{number}</S.CardNumberItem>
                 ))}
               </S.CardNumberList>
@@ -58,8 +60,6 @@ const Card = ({
               </S.CardBottomRight>
             </S.CardBottom>
           </>
-        ) : (
-          <span className='material-symbols-outlined'>add</span>
         )}
       </S.Card>
     </S.Container>

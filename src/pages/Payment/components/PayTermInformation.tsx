@@ -1,4 +1,6 @@
 import { useFormContext } from 'react-hook-form';
+
+import TitleText from './TitleText';
 import {
   Information,
   InformationBody,
@@ -12,7 +14,7 @@ const PayTermInfomation = () => {
   return (
     <Information>
       <InformationHeader>
-        <S.TitleText>약관 이용 및 동의</S.TitleText>
+        <TitleText label={'약관 이용 및 동의'} />
       </InformationHeader>
       <InformationBody>
         <S.TermInformationTop>

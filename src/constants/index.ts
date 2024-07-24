@@ -8,3 +8,8 @@ export const cardCompany = Object.freeze({
   jingyeong: '진경카드',
   geonwoo: '건우카드',
 });
+
+export const googleIcon = Object.freeze({
+  arrowBack: 'arrow_back',
+  add: 'add',
+});

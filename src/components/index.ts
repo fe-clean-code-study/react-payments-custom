@@ -8,6 +8,7 @@ export { default as Keypad } from './Keypad';
 export { default as CardSlider } from './CardSlider';
 export { default as CardSelector } from './CardSelector';
 export { default as PrevIcon } from './PrevIcon';
+export { default as GoogleIcon } from './GoogleIcon';
 export * from './Modal';
 export * from './Information';
 export * from './Keypad';
