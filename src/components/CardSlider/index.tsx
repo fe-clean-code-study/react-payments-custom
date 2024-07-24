@@ -1,11 +1,12 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import * as S from './index.style';
-import Card from '../Card';
-import { useNavigate } from 'react-router-dom';
 import { MyCard } from '../../types';
-import { useEffect } from 'react';
+import Card from '../Card';
 
 interface CardSliderProps {
   cards: MyCard[];

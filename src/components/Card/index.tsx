@@ -1,6 +1,7 @@
-import { cardCompany } from '../../constants';
-import { CardCompany, CardEndDate, CardNumber } from '../../types';
 import * as S from './index.style';
+
+import { cardCompany } from '~/constants';
+import { CardCompany, CardEndDate, CardNumber } from '~/types';
 
 interface CardProps {
   numbers?: CardNumber;

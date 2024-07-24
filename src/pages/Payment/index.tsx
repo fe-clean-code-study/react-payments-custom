@@ -2,7 +2,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import {
   PayAmountInformation,
-  PayCardInformation,
+  CardSelection,
   PayTermInformation,
 } from './components';
 import * as S from './index.style';
@@ -29,7 +29,7 @@ const Payment = () => {
               {/* <CardSelction />
               <PaymentAmount />
               <TermAgreement /> */}
-              <PayCardInformation />
+              <CardSelection />
               <PayAmountInformation />
               <PayTermInformation />
             </S.InformationList>

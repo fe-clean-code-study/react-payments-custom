@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+
 import * as S from './index.style';
 
 interface InformationProps extends PropsWithChildren {}
