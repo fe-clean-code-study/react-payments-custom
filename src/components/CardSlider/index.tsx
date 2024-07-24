@@ -25,6 +25,9 @@ const CardSlider = ({ cards, onChange }: CardSliderProps) => {
       onChange && onChange(cards[index]);
     },
   };
+  const handleClickAddCard = () => {
+    navigate('/card-list');
+  };
 
   useEffect(() => {
     onChange && onChange(cards[0]);
@@ -38,9 +41,9 @@ const CardSlider = ({ cards, onChange }: CardSliderProps) => {
             <Card {...card} />
           </S.ItemWrapper>
         ))}
-        <S.LastItemWrapper onClick={() => navigate('/card-list')}>
-          <Card />
-        </S.LastItemWrapper>
+        <S.ItemWrapper>
+          <Card company='none' onClick={handleClickAddCard} />
+        </S.ItemWrapper>
       </Slider>
     </S.SlideWrapper>
   );
