@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
-  InputNumbers,
+  InputCardNumbers,
   InputEndDate,
   InputCardUser,
   InputSecurityCode,
@@ -57,7 +57,7 @@ const CardRegist = () => {
         <FormProvider {...methods}>
           <S.Form>
             <InputCompany isOpen={isOpen} close={close} />
-            <InputNumbers />
+            <InputCardNumbers />
             <InputEndDate />
             <InputCardUser />
             {/* <InputSecurityCode /> */}

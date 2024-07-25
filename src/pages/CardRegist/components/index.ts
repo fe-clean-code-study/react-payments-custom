@@ -1,5 +1,5 @@
 export { default as InputCompany } from './InputCompany';
-export { default as InputNumbers } from './InputNumbers';
+export { default as InputCardNumbers } from './InputCardNumbers';
 export { default as InputEndDate } from './InputEndDate';
 export { default as InputCardUser } from './InputCardUser';
 export { default as InputSecurityCode } from './InputSecurityCode';
