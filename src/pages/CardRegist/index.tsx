@@ -8,9 +8,10 @@ import {
   InputCardUser,
   InputSecurityCode,
   InputPassword,
-  InputCard,
+  InputCompany,
 } from './components';
 import * as S from './index.style';
+
 import {
   ModalBody,
   ModalFooter,
@@ -18,28 +19,24 @@ import {
   Card,
   Button,
   PrevIcon,
-} from '../../components';
-import { useModal } from '../../hooks';
-import { addCard } from '../../store';
-import { MyCardForm } from '../../types';
-import generateID from '../../utils/generateID';
+} from '~/components';
+import { useModal } from '~/hooks';
+import { addCard } from '~/store';
+import { CardForm } from '~/types';
+import generateID from '~/utils/generateID';
 
 const CardRegist = () => {
-  const methods = useForm<MyCardForm>({
-    defaultValues: {
-      numbers: ['', '', '', ''],
-      endDate: { month: '', day: '' },
-      cardUser: '',
-      company: 'none',
-      securityCode: '',
-      password: ['', ''],
-    },
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isOpen, close, open } = useModal(true);
+  const methods = useForm<CardForm>({
     mode: 'onChange',
   });
   const { watch, formState, getValues } = methods;
-  const navigate = useNavigate();
-  const { isOpen, close, open } = useModal(true);
-  const dispatch = useDispatch();
+
+  const handleClickCard = () => {
+    open();
+  };
 
   return (
     <>
@@ -55,18 +52,16 @@ const CardRegist = () => {
           endDate={watch('endDate')}
           cardUser={watch('cardUser')}
           company={watch('company')}
-          onClick={() => {
-            open();
-          }}
+          onClick={handleClickCard}
         />
         <FormProvider {...methods}>
           <S.Form>
-            <InputCard isOpen={isOpen} close={close} />
+            <InputCompany isOpen={isOpen} close={close} />
             <InputNumbers />
             <InputEndDate />
             <InputCardUser />
-            <InputSecurityCode />
-            <InputPassword />
+            {/* <InputSecurityCode /> */}
+            {/* <InputPassword /> */}
           </S.Form>
         </FormProvider>
       </ModalBody>
