@@ -22,7 +22,10 @@ const Card = ({
 }: CardProps) => {
   const clickable = onClick ? true : false;
   const encryptedNumbers = numbers.map((number, index) => {
-    return index < 2 ? number : '●'.repeat(number.length);
+    if (typeof number === 'string') {
+      return index < 2 ? number : '●'.repeat(number.length);
+    }
+    return number;
   });
   const handleClickCard = () => {
     onClick && onClick();
