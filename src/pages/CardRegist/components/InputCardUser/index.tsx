@@ -1,13 +1,14 @@
 import { Controller, useFormContext } from 'react-hook-form';
 
-import TitleText from './TitleText';
+import TitleText from '../TitleText';
+
 import {
   Information,
   InformationBody,
   InformationHeader,
   Input,
   InputWrapper,
-} from '../../../components';
+} from '~/components';
 
 const InputCardUser = () => {
   const { control } = useFormContext();
@@ -15,7 +16,7 @@ const InputCardUser = () => {
   return (
     <Information>
       <InformationHeader>
-        <TitleText label={'카드 사용자 이름(선택)'} />
+        <TitleText label={'카드 사용자 이름(선택, 최대 20자)'} />
       </InformationHeader>
       <InformationBody>
         <InputWrapper>
