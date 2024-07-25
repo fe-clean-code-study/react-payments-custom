@@ -16,10 +16,6 @@ export const FooterButtonContainer = styled.div`
   justify-content: end;
 `;
 
-export const InputEndDateContainer = styled.div`
-  width: 150px;
-`;
-
 export const InputSecurityCodeContainer = styled.div`
   width: 100px;
 `;
