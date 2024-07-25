@@ -9,6 +9,7 @@ export { default as CardSlider } from './CardSlider';
 export { default as CompanySelection } from './CompanySelection';
 export { default as PrevIcon } from './PrevIcon';
 export { default as GoogleIcon } from './GoogleIcon';
+export { default as DeemBackground } from './DeemBackground';
 export * from './Modal';
 export * from './Information';
 export * from './Keypad';

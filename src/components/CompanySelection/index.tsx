@@ -9,57 +9,38 @@ function isCardCompany(key: string): key is keyof typeof cardCompany {
 }
 
 interface CompanySelectionProps {
-  isOpen: boolean;
-  onClose?: () => void;
   onClick?: (company: CardCompany) => void;
 }
 
-const CompanySelection = ({
-  isOpen,
-  onClose,
-  onClick,
-}: CompanySelectionProps) => {
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+const CompanySelection = ({ onClick }: CompanySelectionProps) => {
+  const handleClickCompany = (event: MouseEvent<HTMLDivElement>) => {
     const { target } = event;
 
     if (target instanceof HTMLElement) {
-      if (target.classList.contains('palete-background')) {
-        onClose && onClose();
-        return;
-      }
       const $palateItem = target.closest('.palete-item');
 
       if ($palateItem instanceof HTMLElement) {
         const { company } = $palateItem.dataset;
 
-        if (company) {
-          onClick && onClick(company as CardCompany);
-          onClose && onClose();
+        if (company && isCardCompany(company)) {
+          onClick && onClick(company);
         }
       }
     }
   };
 
   return (
-    isOpen && (
-      <S.DeemBackground className='palete-background' onClick={handleClick}>
-        <S.Container>
-          {Object.entries(cardCompany).map(
-            ([key, value]) =>
-              isCardCompany(key) && (
-                <S.PaleteItem
-                  data-company={key}
-                  className='palete-item'
-                  key={key}
-                >
-                  <S.Color companey={key} />
-                  <S.CompanyName>{value}</S.CompanyName>
-                </S.PaleteItem>
-              ),
-          )}
-        </S.Container>
-      </S.DeemBackground>
-    )
+    <S.Container onClick={handleClickCompany}>
+      {Object.entries(cardCompany).map(
+        ([key, value]) =>
+          isCardCompany(key) && (
+            <S.PaleteItem data-company={key} className='palete-item' key={key}>
+              <S.Color companey={key} />
+              <S.CompanyName>{value}</S.CompanyName>
+            </S.PaleteItem>
+          ),
+      )}
+    </S.Container>
   );
 };
 
