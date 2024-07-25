@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
+
+import TitleText from './TitleText';
 import {
   Information,
   InformationBody,
@@ -23,7 +25,7 @@ const InputEndDate = () => {
   return (
     <Information>
       <InformationHeader>
-        <S.TitleText>만료일</S.TitleText>
+        <TitleText label={'카드 만료일'} />
       </InformationHeader>
       <InformationBody>
         <S.InputEndDateContainer>

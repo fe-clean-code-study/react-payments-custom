@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
+
+import TitleText from './TitleText';
 import {
   Information,
   InformationBody,
@@ -7,11 +10,10 @@ import {
   InputWrapper,
   Keypad,
 } from '../../../components';
-import * as S from '../index.style';
 import { useModal } from '../../../hooks';
-import { useEffect, useState } from 'react';
 import { CardPassword, KeypadNumbers } from '../../../types';
 import suffle from '../../../utils/suffle';
+import * as S from '../index.style';
 
 const InputPassword = () => {
   const defaultNumbers: KeypadNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -52,7 +54,7 @@ const InputPassword = () => {
   return (
     <Information>
       <InformationHeader>
-        <S.TitleText>카드 비밀번호</S.TitleText>
+        <TitleText label={'카드 비밀번호'} />
       </InformationHeader>
       <InformationBody>
         <S.InputPasswordListContainer>
