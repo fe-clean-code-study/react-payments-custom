@@ -60,7 +60,7 @@ const CardRegist = () => {
             <InputCardNumbers />
             <InputEndDate />
             <InputCardUser />
-            {/* <InputSecurityCode /> */}
+            <InputSecurityCode />
             {/* <InputPassword /> */}
           </S.Form>
         </FormProvider>

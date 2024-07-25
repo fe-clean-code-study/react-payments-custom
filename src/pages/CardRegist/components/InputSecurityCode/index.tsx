@@ -1,31 +1,28 @@
 import { Controller, useFormContext } from 'react-hook-form';
+
+import * as S from './index.style';
+import TitleText from '../TitleText';
+
 import {
   Information,
   InformationBody,
   InformationHeader,
   Input,
   InputWrapper,
-} from '../../../components';
-import * as S from '../index.style';
-import { useEffect, useState } from 'react';
+} from '~/components';
 
 const InputSecurityCode = () => {
   const { control, getFieldState, formState } = useFormContext();
-  const [isInvalidation, setIsInvalidation] = useState<boolean>(false);
   const { invalid } = getFieldState('securityCode', formState);
-
-  useEffect(() => {
-    setIsInvalidation(invalid);
-  }, [invalid]);
 
   return (
     <Information>
       <InformationHeader>
-        <S.TitleText>보안코드(CVC/CVV)</S.TitleText>
+        <TitleText label={'보안코드(CVC/CVV)'} />
       </InformationHeader>
       <InformationBody>
         <S.InputSecurityCodeContainer>
-          <InputWrapper isInvalidation={isInvalidation}>
+          <InputWrapper isInvalidation={invalid}>
             <Controller
               name='securityCode'
               control={control}
@@ -36,6 +33,7 @@ const InputSecurityCode = () => {
               render={({ field: { onChange } }) => (
                 <Input
                   maxLength={3}
+                  type={'password'}
                   textAlign='center'
                   onlyNumber={true}
                   onChange={onChange}

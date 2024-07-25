@@ -16,10 +16,6 @@ export const FooterButtonContainer = styled.div`
   justify-content: end;
 `;
 
-export const InputSecurityCodeContainer = styled.div`
-  width: 100px;
-`;
-
 export const InputPasswordListContainer = styled.div`
   display: flex;
   gap: 10px;
