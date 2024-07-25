@@ -1,7 +1,8 @@
-import { HTMLAttributes, PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
+
 import * as S from './index.style';
 
-interface InputWrapperProps extends HTMLAttributes<HTMLDivElement> {
+interface InputWrapperProps extends ComponentProps<'div'> {
   type?: 'fill' | 'flushed';
   isInvalidation?: boolean;
 }
