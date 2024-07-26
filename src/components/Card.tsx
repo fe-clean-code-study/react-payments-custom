@@ -25,14 +25,18 @@ function Card(props: CardProps) {
   };
 
   return (
-    <div className="card-box flex-column-center pointer" onClick={handleClick}>
+    <div className="card-box flex-column-center" onClick={handleClick}>
       {props.type === "empty" ? (
-        <div className="empty-card">+</div>
+        <div className="empty-card pointer">+</div>
       ) : (
         <>
           <div
             className={props.size + "-card"}
-            style={{ marginBottom: "8px", backgroundColor: props.color }}
+            style={{
+              marginBottom: "8px",
+              backgroundColor: props.color,
+              cursor: props.size === "small" ? "pointer" : "default",
+            }}
           >
             <div className="card-top">
               <span className={"card-text__" + props.size}>
@@ -59,7 +63,12 @@ function Card(props: CardProps) {
             </div>
           </div>
           {props.nickname.length > 0 && (
-            <span className="card-nickname">{props.nickname}</span>
+            <span
+              className={props.size === "small" ? "card-name" : ""}
+              style={{ cursor: "default" }}
+            >
+              {props.nickname}
+            </span>
           )}
         </>
       )}

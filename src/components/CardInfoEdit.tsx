@@ -177,7 +177,7 @@ function CardInfoEdit({
           {CARD_NAME_LIST.map(({ name, color }) => (
             <div
               key={name}
-              className="modal-item-container"
+              className="modal-item-container pointer"
               onClick={() => {
                 handleCardNameAndColor(name, color);
                 onClose();
