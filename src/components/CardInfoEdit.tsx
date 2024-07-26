@@ -36,7 +36,7 @@ function CardInfoEdit({
     handleUserName,
     handleCardNameAndColor,
   } = cardForm;
-  const { isOpen, onOpen, onClose } = useModal();
+  const { isOpen, onOpen, onClose } = useModal(true);
 
   return (
     <div className="app">
@@ -66,6 +66,7 @@ function CardInfoEdit({
         expiredYear={expiredYear}
         nickname=""
         color={color}
+        onClick={onOpen}
       />
       <div className="input-container">
         <span className="input-title">카드 번호</span>
