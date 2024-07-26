@@ -12,6 +12,7 @@ export const Form = styled.form`
 `;
 
 export const FooterButtonContainer = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 `;
