@@ -1,4 +1,5 @@
 export const cardCompany = Object.freeze({
+  none: 'none',
   suyeon: '수연카드',
   sejin: '세진카드',
   chanwook: '찬욱카드',
