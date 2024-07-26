@@ -1,5 +1,9 @@
 import { useCardForm, useModal } from "../hooks";
-import { Button, Card, Icon, Modal } from ".";
+import Button from "./Button";
+import Card from "./Card";
+import Title from "./Title";
+import Icon from "./Icon";
+import Modal from "./Modal";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -56,7 +60,9 @@ function CardInfoEdit({
         >
           <Icon name="arrowLeft" />
         </button>
-        <h3 className="page-title">카드 추가</h3>
+        <Title level={3} className="page-title">
+          카드 추가
+        </Title>
       </div>
       <Card
         type="filled"

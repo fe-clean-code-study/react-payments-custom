@@ -1,6 +1,7 @@
 import { CardInfo } from "../types";
 import Button from "./Button";
 import Card from "./Card";
+import Title from "./Title";
 
 interface CardNicknameEditProps {
   title: string;
@@ -30,7 +31,9 @@ function CardNicknameEdit({
   return (
     <div className="app flex-column-center">
       <div className="flex-center">
-        <h2 className="page-title mb-10">{title}</h2>
+        <Title level={2} className="page-title mb-10">
+          {title}
+        </Title>
       </div>
       <Card
         type="filled"

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Card } from "../components";
+import { Button, Card, Title } from "../components";
 import { useCardInfo } from "../contexts";
 
 function CardListPage() {
@@ -12,7 +12,9 @@ function CardListPage() {
 
   return (
     <div className="app">
-      <h2 className="page-title mb-10">보유 카드</h2>
+      <Title level={2} className="page-title mb-10">
+        보유 카드
+      </Title>
       <div
         style={{
           display: "flex",
