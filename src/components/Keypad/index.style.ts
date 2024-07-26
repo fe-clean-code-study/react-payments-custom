@@ -1,15 +1,8 @@
 import styled from '@emotion/styled';
 
-export const DeemBackground = styled.div`
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 2;
-
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.color.deemBackground};
-`;
+interface KeypadItemProps {
+  order: number;
+}
 
 export const KeypadContainer = styled.div`
   width: 100%;
@@ -24,10 +17,6 @@ export const KeypadContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 90px);
 `;
-
-interface KeypadItemProps {
-  order: number;
-}
 
 export const KeypadItem = styled.div<KeypadItemProps>`
   color: ${({ theme }) => theme.color.mainGreen};
