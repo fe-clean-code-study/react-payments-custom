@@ -94,7 +94,6 @@ function CardInfoEdit({
             maxLength={4}
             value={cardNumber[2]}
             onChange={(e) => handleCardNumber(e.target.value, 2)}
-            onFocus={onOpen}
           />
           -
           <input
