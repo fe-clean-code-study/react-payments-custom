@@ -5,6 +5,7 @@ export const Form = styled.form`
 `;
 
 export const InformationList = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
