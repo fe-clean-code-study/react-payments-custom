@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { MouseEvent, PropsWithChildren } from 'react';
 
 import * as S from './index.style';
 
@@ -10,7 +10,8 @@ const DeemBackground: React.FC<PropsWithChildren<DeemBackgroundProps>> = ({
   children,
   onClose,
 }) => {
-  const handleClickBackground = () => {
+  const handleClickBackground = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return;
     onClose && onClose();
   };
 
