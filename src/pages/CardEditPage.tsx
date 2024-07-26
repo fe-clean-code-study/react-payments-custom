@@ -41,7 +41,13 @@ function CardEditPage() {
         />
       )}
       {step === "nickname" && (
-        <CardNicknameEdit cardForm={cardForm} onConfirm={handleAddCardInfo} />
+        <CardNicknameEdit
+          title="카드등록이 완료되었습니다."
+          placeholder="카드의 별칭을 입력해주세요."
+          cardInfo={cardForm}
+          onChangeNickname={cardForm.handleNickname}
+          onConfirm={handleAddCardInfo}
+        />
       )}
     </>
   );
