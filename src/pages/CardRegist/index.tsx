@@ -38,6 +38,13 @@ const CardRegist = () => {
     open();
   };
 
+  const handleClickConfirmButton = () => {
+    const id = generateID();
+
+    dispatch(addCard({ card: { ...getValues(), id } }));
+    navigate(`/card-alias/${id}`);
+  };
+
   return (
     <>
       <ModalHeader>
@@ -68,15 +75,7 @@ const CardRegist = () => {
       <ModalFooter>
         {formState.isValid && (
           <S.FooterButtonContainer>
-            <Button
-              onClick={() => {
-                const id = generateID();
-                dispatch(addCard({ card: { ...getValues(), id } }));
-                navigate(`/card-alias/${id}`);
-              }}
-            >
-              다음
-            </Button>
+            <Button onClick={handleClickConfirmButton}>다음</Button>
           </S.FooterButtonContainer>
         )}
       </ModalFooter>
