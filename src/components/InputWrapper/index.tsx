@@ -2,7 +2,7 @@ import { ComponentProps, PropsWithChildren } from 'react';
 
 import * as S from './index.style';
 
-interface InputWrapperProps extends ComponentProps<'div'> {
+export interface InputWrapperProps extends ComponentProps<'div'> {
   type?: 'fill' | 'flushed';
   isInvalidation?: boolean;
 }
