@@ -45,13 +45,15 @@ const useCardForm = () => {
   };
 
   return {
-    cardNumber,
-    expiredMonth,
-    expiredYear,
-    userName,
-    cardName,
-    color,
-    nickname,
+    cardInfo: {
+      cardNumber,
+      expiredMonth,
+      expiredYear,
+      userName,
+      cardName,
+      color,
+      nickname,
+    },
     handleCardNumber,
     handleExpiredMonth,
     handleExpiredYear,

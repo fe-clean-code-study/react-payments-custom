@@ -24,12 +24,14 @@ function CardInfoEdit({
   onNavigateBack,
 }: CardInfoEditProps) {
   const {
-    cardNumber,
-    expiredMonth,
-    expiredYear,
-    userName,
-    cardName,
-    color,
+    cardInfo: {
+      cardNumber,
+      expiredMonth,
+      expiredYear,
+      userName,
+      cardName,
+      color,
+    },
     handleCardNumber,
     handleExpiredMonth,
     handleExpiredYear,

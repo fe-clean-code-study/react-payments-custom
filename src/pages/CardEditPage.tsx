@@ -19,12 +19,12 @@ function CardEditPage() {
   };
 
   const handleAddCardInfo = () => {
-    const { nickname, cardName } = cardForm;
+    const { nickname, cardName } = cardForm.cardInfo;
 
     dispatch({
       type: "ADD",
       payload: {
-        ...cardForm,
+        ...cardForm.cardInfo,
         nickname: nickname.length > 0 ? nickname : cardName,
       },
     });
@@ -44,7 +44,7 @@ function CardEditPage() {
         <CardNicknameEdit
           title="카드등록이 완료되었습니다."
           placeholder="카드의 별칭을 입력해주세요."
-          cardInfo={cardForm}
+          cardInfo={cardForm.cardInfo}
           onChangeNickname={cardForm.handleNickname}
           onConfirm={handleAddCardInfo}
         />
