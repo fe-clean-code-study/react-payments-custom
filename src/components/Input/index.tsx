@@ -10,10 +10,19 @@ export interface InputProps extends ComponentProps<'input'> {
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { onComplete, onChange, onlyNumber = false, textAlign = 'left', ...props },
+    {
+      onComplete,
+      onChange,
+      defaultValue,
+      onlyNumber = false,
+      textAlign = 'left',
+      ...props
+    },
     ref,
   ) => {
-    const [value, setState] = useState<string>('');
+    const [value, setState] = useState<
+      string | number | readonly string[] | undefined
+    >(defaultValue);
 
     const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
       const { target } = event;
