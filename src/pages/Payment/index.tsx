@@ -33,7 +33,10 @@ const Payment = () => {
               <Button type='reset'>
                 <S.ButtonLabel>취소하기</S.ButtonLabel>
               </Button>
-              <Button type={formState.isValid ? 'submit' : 'reset'}>
+              <Button
+                disabled={!formState.isValid}
+                type={formState.isValid ? 'submit' : 'reset'}
+              >
                 <S.ButtonLabel>결제하기</S.ButtonLabel>
               </Button>
             </S.ButtonContainer>

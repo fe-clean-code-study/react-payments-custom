@@ -1,16 +1,16 @@
 import { PropsWithChildren } from 'react';
 import * as S from './index.style';
 
-interface ButtonProps extends PropsWithChildren {
+export interface ButtonProps extends PropsWithChildren {
   onClick?: () => void;
   type?: 'button' | 'reset' | 'submit';
-  invalid?: boolean;
+  disabled?: boolean;
 }
 
 const Button = ({
   onClick,
   type = 'button',
-  invalid = false,
+  disabled = false,
   children,
 }: ButtonProps) => {
   const handleClickButton = () => {
@@ -18,7 +18,7 @@ const Button = ({
   };
 
   return (
-    <S.Button type={type} disabled={invalid} onClick={handleClickButton}>
+    <S.Button type={type} disabled={disabled} onClick={handleClickButton}>
       {children}
     </S.Button>
   );

@@ -26,6 +26,10 @@ export const Button = styled.button<ButtonProps>`
 
   cursor: pointer;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &:hover {
     filter: brightness(0.9);
   }
