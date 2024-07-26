@@ -5,12 +5,12 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import * as S from './index.style';
-import { MyCard } from '../../types';
+import { RegisteredCard } from '~/types';
 import Card from '../Card';
 
 interface CardSliderProps {
-  cards: MyCard[];
-  onChange?: (value: MyCard) => void;
+  cards: RegisteredCard[];
+  onChange?: (value: RegisteredCard) => void;
 }
 
 const CardSlider = ({ cards, onChange }: CardSliderProps) => {

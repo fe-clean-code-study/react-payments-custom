@@ -4,7 +4,7 @@ import GoogleIcon from '../GoogleIcon';
 import { cardCompany } from '~/constants';
 import { DefaultCard } from '~/types';
 
-interface CardProps extends Partial<DefaultCard> {
+export interface CardProps extends Partial<DefaultCard> {
   size?: 'small' | 'big';
   onClick?: (card?: DefaultCard) => void;
 }
@@ -21,7 +21,7 @@ const Card = ({
   onClick,
 }: CardProps) => {
   const clickable = onClick ? true : false;
-  const encryptedNumbers = numbers.map((number, index) => {
+  const encryptedNumbers = Array.from(numbers).map((number, index) => {
     if (typeof number === 'string') {
       return index < 2 ? number : '●'.repeat(number.length);
     }
