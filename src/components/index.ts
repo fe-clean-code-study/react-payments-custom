@@ -4,3 +4,4 @@ export { default as Icon } from "./Icon";
 export { default as CardInfoEdit } from "./CardInfoEdit";
 export { default as CardNicknameEdit } from "./CardNicknameEdit";
 export { default as Button } from "./Button";
+export { default as Title } from "./Title";
