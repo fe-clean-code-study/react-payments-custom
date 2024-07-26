@@ -1,4 +1,5 @@
 import { CardInfo } from "../types";
+import Button from "./Button";
 import Card from "./Card";
 
 interface CardNicknameEditProps {
@@ -57,12 +58,15 @@ function CardNicknameEdit({
         style={{
           position: "absolute",
           bottom: "25px",
-          right: "25px",
+          right: "33px",
         }}
       >
-        <span className="button-text pointer" onClick={onConfirm}>
+        <Button className="button-text" onClick={onConfirm}>
           확인
-        </span>
+        </Button>
+        {/* <span className="button-text pointer" onClick={onConfirm}>
+          확인
+        </span> */}
       </div>
     </div>
   );

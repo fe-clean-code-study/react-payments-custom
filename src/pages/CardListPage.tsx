@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Card } from "../components";
+import { Button, Card } from "../components";
 import { useCardInfo } from "../contexts";
 
 function CardListPage() {
@@ -37,8 +37,7 @@ function CardListPage() {
               {...cardInfo}
               onClick={() => navigate(`card-edit/${cardInfo.id}`)}
             />
-            <button
-              className="pointer"
+            <Button
               style={{
                 position: "absolute",
                 top: "-10px",
@@ -46,13 +45,12 @@ function CardListPage() {
                 width: "25px",
                 height: "25px",
                 backgroundColor: "#e5e5e5",
-                border: "none",
                 borderRadius: "50%",
               }}
               onClick={() => handleDeleteCard(cardInfo.id)}
             >
               X
-            </button>
+            </Button>
           </div>
         ))}
 

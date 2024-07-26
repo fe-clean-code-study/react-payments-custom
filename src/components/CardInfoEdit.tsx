@@ -1,5 +1,5 @@
 import { useCardForm, useModal } from "../hooks";
-import { Card, Icon, Modal } from ".";
+import { Button, Card, Icon, Modal } from ".";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -167,19 +167,9 @@ function CardInfoEdit({
           right: "33px",
         }}
       >
-        <button
-          className="button-text pointer"
-          style={{
-            border: "none",
-            backgroundColor: "transparent",
-            fontSize: "1em",
-            margin: 0,
-            padding: 0,
-          }}
-          onClick={onNextStep}
-        >
+        <Button className="button-text" onClick={onNextStep}>
           다음
-        </button>
+        </Button>
       </div>
 
       <Modal isOpen={isOpen} onClose={onClose}>
