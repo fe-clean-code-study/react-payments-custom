@@ -23,7 +23,7 @@ export interface RegisteredCard extends DefaultCard {
   cardAlias?: string;
 }
 
-export interface CardForm extends RegisteredCard {
+export interface CardForm extends Omit<RegisteredCard, 'id'> {
   securityCode: string;
   password: CardPassword;
 }

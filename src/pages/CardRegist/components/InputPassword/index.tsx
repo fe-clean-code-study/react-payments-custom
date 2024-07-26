@@ -1,4 +1,4 @@
-import { MouseEvent, useRef, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import * as S from './index.style';
@@ -17,15 +17,13 @@ import { useModal } from '~/hooks';
 
 const InputPassword = () => {
   const [index, setIndex] = useState(0);
-  const { control } = useFormContext();
+  const { control, setValue, getFieldState, formState } = useFormContext();
   const { isOpen, open, close } = useModal(false);
-  const inputRefArray = useRef<(HTMLInputElement | null)[]>([null, null]);
+  const { invalid } = getFieldState('password', formState);
 
   const handleClickKeypad = (value: string) => {
-    if (inputRefArray.current[index]) {
-      inputRefArray.current[index].value = value;
-      setIndex(index + 1);
-    }
+    setValue(`password.${index}`, value, { shouldValidate: true });
+    setIndex(index + 1);
     if (index === 1) {
       close();
     }
@@ -51,25 +49,22 @@ const InputPassword = () => {
       </InformationHeader>
       <InformationBody>
         <S.InputPasswordListContainer onClick={handleClickInput}>
-          {inputRefArray.current.map((_, index) => (
+          {[...new Array(2).fill(null)].map((_, index) => (
             <S.InputPasswordItemContainer data-index={index}>
-              <InputWrapper>
+              <InputWrapper isInvalidation={invalid}>
                 <Controller
                   name={`password.${index}`}
                   control={control}
                   rules={{
                     required: true,
-                    validate: (value) => value.length === 1,
+                    validate: (value) =>
+                      value !== undefined && value.length === 1,
                   }}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: { value, onChange, ref } }) => (
                     <Input
-                      ref={(element) => {
-                        if (element instanceof HTMLInputElement) {
-                          inputRefArray.current[index] = element;
-                        }
-                      }}
+                      ref={ref}
+                      value={value}
                       onChange={onChange}
-                      defaultValue={value}
                       type='password'
                       textAlign='center'
                       maxLength={1}

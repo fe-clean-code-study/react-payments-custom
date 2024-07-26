@@ -66,7 +66,7 @@ const CardRegist = () => {
         </FormProvider>
       </ModalBody>
       <ModalFooter>
-        {Object.values(formState.errors).length === 0 && (
+        {formState.isValid && (
           <S.FooterButtonContainer>
             <Button
               onClick={() => {
