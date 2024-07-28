@@ -3,12 +3,12 @@ export interface ICard {
   type: string
   nickname?: string
   cardNumbers: Array<{
-    numbers: number
+    numbers: string
     isPrivate: boolean
   }>
-  expirationMonth: number
-  expirationYear: number
+  expirationMonth: string
+  expirationYear: string
   owner?: string
-  securityCode: number
+  securityCode: string
   password: Array<0|1|2|3|4|5|6|7|8|9>
 }

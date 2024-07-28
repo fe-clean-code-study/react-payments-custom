@@ -1,6 +1,6 @@
-import {ICard} from "./type.ts";
+import { ICard } from "./type.ts";
 
-export default function Card({ type, nickname, cardNumbers, expirationMonth, expirationYear, owner }: ICard) {
+export default function Card({ type, nickname, cardNumbers = [], expirationMonth, expirationYear, owner }: ICard) {
   return (
     <>
       <div className='card-box'>
@@ -14,7 +14,7 @@ export default function Card({ type, nickname, cardNumbers, expirationMonth, exp
           <div className="card-bottom">
             <div className="card-bottom__number">
             <span className="card-text">{
-              cardNumbers.map(({ numbers, isPrivate}) => isPrivate ? 'oooo' : numbers).join(' - ')
+              cardNumbers.map(({ numbers, isPrivate }) => isPrivate ? 'oooo' : numbers).join(' - ')
             }</span>
             </div>
             <div className="card-bottom__info">

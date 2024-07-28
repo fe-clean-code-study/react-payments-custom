@@ -1,4 +1,4 @@
-import {IFormOptions} from "../../../libs/form/useForm.ts";
+import {IFormOptions} from "../../../libs/form";
 import {ICard} from "../type.ts";
 
 export const createCardFormOptions: IFormOptions<ICard> = {
@@ -34,4 +34,26 @@ export const createCardFormOptions: IFormOptions<ICard> = {
     check: (value) => value.length >= 1,
     nextField: 'password.3'
   }
+}
+
+export const initialCard: ICard = {
+  id: '',
+  type: '',
+  cardNumbers: [{
+    numbers: '',
+    isPrivate: false
+  },{
+    numbers: '',
+    isPrivate: false
+  },{
+    numbers: '',
+    isPrivate: true
+  },{
+    numbers: '',
+    isPrivate: true
+  }],
+  expirationMonth: '',
+  expirationYear: '',
+  securityCode: '',
+  password: []
 }

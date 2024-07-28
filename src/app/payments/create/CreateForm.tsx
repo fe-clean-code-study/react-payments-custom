@@ -1,12 +1,11 @@
+import {useFormContext} from "../../../libs/form";
+import { ICard } from "../type.ts";
 import {usePayments} from "../paymentsContext.tsx";
-import useForm from "../../../libs/form/useForm.ts";
-import {ICard} from "../type.ts";
-import {createCardFormOptions} from "./createCardFormOptions.ts";
 import {useRouter} from "../../../libs/router";
 
-export default function CreatePage() {
+export default function CreateForm() {
   const { addCard } = usePayments()
-  const { register, getValues, handleSubmit} = useForm<ICard>(createCardFormOptions)
+  const { register, handleSubmit } = useFormContext<ICard>()
   const router = useRouter()
 
   const onSubmit = (formData: ICard) => {
@@ -16,12 +15,11 @@ export default function CreatePage() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>카드 생성 페이지</div>
       <div className="input-container">
         <span className="input-title">카드 번호</span>
         <div className="input-box">
           {
-            Array.from({ length: 4 }).map((_, index) => (
+            Array.from({length: 4}).map((_, index) => (
               <input
                 key={`cardNumber-${index}`}
                 className="input-basic"
@@ -51,7 +49,8 @@ export default function CreatePage() {
       </div>
       <div className="input-container">
         <span className="input-title">카드 소유자 이름(선택)</span>
-        <input type="text" className="input-basic" {...register('owner')}/>
+        <input type="text" className="input-basic"
+               placeholder="카드에 표시된 이름과 동일하게 입력하세요." {...register('owner')}/>
       </div>
       <div className="input-container">
         <span className="input-title">보안코드(CVC/CVV)</span>
@@ -60,7 +59,7 @@ export default function CreatePage() {
       <div className="input-container">
         <span className="input-title">카드 비밀번호</span>
         {
-          Array.from({ length: 4 }).map((_, index) => (
+          Array.from({length: 4}).map((_, index) => (
             <input
               key={`cardPassword-${index}`}
               className="input-basic w-15"
@@ -70,8 +69,9 @@ export default function CreatePage() {
           ))
         }
       </div>
-
-      <button>다음</button>
+      <div className="button-box">
+        <span className="button-text">다음</span>
+      </div>
     </form>
   )
 }

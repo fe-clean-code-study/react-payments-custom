@@ -1,8 +1,7 @@
-import { FormKey } from "./formKeyType.ts";
-
-const makeFormValues = <T>(inputValues: Record<FormKey<T>, string>) => {
+import {FormKey} from "./type.ts";
+const makeFormValues = <T>(inputValues: Record<FormKey<T>, string>, defaultValues = {} as T)=> {
   const keyLists = Object.keys(inputValues).map(key => key.split('.'))
-  const result = {} as T;
+  const result = {...defaultValues};
 
   keyLists.forEach(keyList => {
     const lastKey = keyList.join('.')

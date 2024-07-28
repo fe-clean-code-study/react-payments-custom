@@ -1,37 +1,18 @@
-import React, {
-  useRef,
-  useState,
-  HTMLInputTypeAttribute,
-  HTMLAttributes
-} from "react";
-
-import { FormKey } from "./formKeyType.ts";
+import React, { useRef, useState } from "react";
 import makeFormValues from "./makeFormValues.ts";
-import {Simulate} from "react-dom/test-utils";
-import submit = Simulate.submit;
+import { IFormData, IFormOptions, UseFormReturnType, TInputRef, TInputValues, TWatchUsed, FormKey } from './type.ts';
 
-interface IFormData {
-  [key: string]: unknown;
-}
-export interface IFormOptions<T> {
-  [key: FormKey<T>]: {
-    type?: HTMLInputTypeAttribute;
-    default?: unknown;
-    check?: (value: unknown) => boolean;
-    nextField?: FormKey<T>;
-  }
+interface UseFormParams<T> {
+  formOptions?: IFormOptions<T>;
+  defaultValues?: T;
 }
 
-const useForm = <T extends IFormData>(formOptions?: IFormOptions<T>) => {
-  type TInputRef = Record<FormKey<T>, HTMLInputElement | null>;
-  type TInputValues = Record<FormKey<T>, string>
-  type TWatchUsed = Record<FormKey<T>, boolean>;
-
-  const inputRef = useRef<TInputRef>({} as TInputRef);
-  const [watchValues, setWatchValues] = useState<TInputValues>({} as TInputValues);
+const useForm = <T extends IFormData>({ formOptions, defaultValues }: UseFormParams<T> = {}): UseFormReturnType<T> => {
+  const inputRef = useRef<TInputRef<T>>({} as TInputRef<T>);
+  const [watchValues, setWatchValues] = useState<TInputValues<T>>({} as TInputValues<T>);
 
   let watchUsedAll = false;
-  let watchUsed= {} as TWatchUsed;
+  let watchUsed = {} as TWatchUsed<T>;
 
   const _focusNext = (key: FormKey<T>, value: string) => {
     if (formOptions && formOptions[key] && formOptions[key].check && formOptions[key].check(value)) {
@@ -44,12 +25,12 @@ const useForm = <T extends IFormData>(formOptions?: IFormOptions<T>) => {
 
   const _setWatchValue = (key: FormKey<T>, value: string) => {
     if (!(watchUsedAll || watchUsed[key])) {
-      return
+      return;
     }
     setWatchValues((prev) => ({ ...prev, [key]: value }));
   };
 
-  const register = (key: FormKey<T> | string): Pick<HTMLAttributes<HTMLInputElement>, 'name' | 'onChange' | 'ref' | 'type' | 'defaultValue'> => ({
+  const register = (key: FormKey<T> | string) => ({
     name: String(key),
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
@@ -57,9 +38,9 @@ const useForm = <T extends IFormData>(formOptions?: IFormOptions<T>) => {
       _focusNext(key as FormKey<T>, value);
     },
     ref: (element: HTMLInputElement | null) => {
-      inputRef.current = {...inputRef.current, [key] : element};
+      inputRef.current = { ...inputRef.current, [key]: element };
     },
-    type: formOptions ? formOptions[key]?.type : undefined,
+    type: formOptions?.[key]?.type,
     defaultValue: formOptions ? formOptions[key]?.default : undefined
   });
 
@@ -71,16 +52,16 @@ const useForm = <T extends IFormData>(formOptions?: IFormOptions<T>) => {
 
   const watch = (key?: FormKey<T>) => {
     if (key) {
-      watchUsed = {...watchUsed, [key] : true}
+      watchUsed = { ...watchUsed, [key]: true };
       return watchValues[key];
     }
     watchUsedAll = true;
-    return makeFormValues(watchValues)
+    return makeFormValues<T>(watchValues, defaultValues)
   };
 
   const getValues = (key?: FormKey<T>) => {
     if (key) {
-      return inputRef.current[key].value
+      return inputRef.current[key].value;
     }
     const values: T = {} as T;
     Object.keys(inputRef.current).forEach((formKey) => {
@@ -88,16 +69,16 @@ const useForm = <T extends IFormData>(formOptions?: IFormOptions<T>) => {
       if (element) {
         values[formKey as keyof T] = element.value;
       }
-    })
-    return makeFormValues(values)
+    });
+    return makeFormValues(values, defaultValues);
   };
 
   const handleSubmit = (submitFn: (formData: T) => void) => {
     return (e: React.FormEvent) => {
-      e.preventDefault()
-      submitFn(getValues())
-    }
-  }
+      e.preventDefault();
+      submitFn(getValues());
+    };
+  };
 
   return { register, watch, setValue, getValues, handleSubmit };
 };
