@@ -4,6 +4,7 @@ import Card from "./Card";
 import Title from "./Title";
 import Icon from "./Icon";
 import Modal from "./Modal";
+import Input from "./Input";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -79,24 +80,21 @@ function CardInfoEdit({
       <div className="input-container">
         <span className="input-title">카드 번호</span>
         <div className="input-box">
-          <input
-            name="test"
+          <Input
             className="input-basic"
-            type="text"
             maxLength={4}
             value={cardNumber[0]}
             onChange={(e) => handleCardNumber(e.target.value, 0)}
           />
           -
-          <input
+          <Input
             className="input-basic"
-            type="text"
             maxLength={4}
             value={cardNumber[1]}
             onChange={(e) => handleCardNumber(e.target.value, 1)}
           />
           -
-          <input
+          <Input
             className="input-basic"
             type="password"
             maxLength={4}
@@ -104,7 +102,7 @@ function CardInfoEdit({
             onChange={(e) => handleCardNumber(e.target.value, 2)}
           />
           -
-          <input
+          <Input
             className="input-basic"
             type="password"
             maxLength={4}
@@ -116,18 +114,18 @@ function CardInfoEdit({
       <div className="input-container">
         <span className="input-title">만료일</span>
         <div className="input-box w-50">
-          <input
+          <Input
             className="input-basic"
-            type="text"
             placeholder="MM"
+            min={1}
+            max={12}
             maxLength={2}
             value={expiredMonth}
             onChange={(e) => handleExpiredMonth(e.target.value)}
           />
           /
-          <input
+          <Input
             className="input-basic"
-            type="text"
             placeholder="YY"
             maxLength={2}
             value={expiredYear}
@@ -140,9 +138,8 @@ function CardInfoEdit({
           <span className="input-title">카드 소유자 이름</span>
           <span className="input-title">{userName.length}/30</span>
         </div>
-        <input
+        <Input
           className="input-basic"
-          type="text"
           placeholder="카드에 표시된 이름과 동일하게 입력하세요."
           maxLength={30}
           value={userName}
@@ -152,15 +149,15 @@ function CardInfoEdit({
       <div className="input-container">
         <span className="input-title">보안코드(CVC/CVV)</span>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <input className="input-basic w-25" type="password" maxLength={3} />
+          <Input className="input-basic w-25" type="password" maxLength={3} />
           <Icon name="questionCircle" />
         </div>
       </div>
       <div className="input-container">
         <span className="input-title">카드 비밀번호</span>
         <div style={{ display: "flex", gap: "5px" }}>
-          <input className="input-basic w-15" type="password" maxLength={1} />
-          <input className="input-basic w-15" type="password" maxLength={1} />
+          <Input className="input-basic w-15" type="password" maxLength={1} />
+          <Input className="input-basic w-15" type="password" maxLength={1} />
           <div className="flex-center w-15">•</div>
           <div className="flex-center w-15">•</div>
         </div>

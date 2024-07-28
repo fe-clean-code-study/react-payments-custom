@@ -1,6 +1,7 @@
 import { CardInfo } from "../types";
 import Button from "./Button";
 import Card from "./Card";
+import Input from "./Input";
 import Title from "./Title";
 
 interface CardNicknameEditProps {
@@ -42,9 +43,8 @@ function CardNicknameEdit({
         color={color}
       />
       <div className="input-container flex-center w-100">
-        <input
+        <Input
           className="input-underline w-75"
-          type="text"
           placeholder={placeholder}
           value={nickname}
           maxLength={10}
