@@ -7,6 +7,7 @@ interface CardNicknameEditProps {
   title: string;
   placeholder: string;
   cardInfo: Omit<CardInfo, "id">;
+  nickname: string;
   onChangeNickname: (value: string) => void;
   onConfirm: () => void;
 }
@@ -15,18 +16,12 @@ function CardNicknameEdit({
   title,
   placeholder,
   cardInfo,
+  nickname,
   onChangeNickname,
   onConfirm,
 }: CardNicknameEditProps) {
-  const {
-    cardNumber,
-    expiredMonth,
-    expiredYear,
-    userName,
-    cardName,
-    color,
-    nickname,
-  } = cardInfo;
+  const { cardNumber, expiredMonth, expiredYear, userName, cardName, color } =
+    cardInfo;
 
   return (
     <div className="app flex-column-center">
@@ -43,7 +38,7 @@ function CardNicknameEdit({
         userName={userName}
         expiredMonth={expiredMonth}
         expiredYear={expiredYear}
-        nickname={nickname}
+        nickname=""
         color={color}
       />
       <div className="input-container flex-center w-100">
@@ -51,7 +46,7 @@ function CardNicknameEdit({
           className="input-underline w-75"
           type="text"
           placeholder={placeholder}
-          value={cardName === nickname ? "" : nickname}
+          value={nickname}
           maxLength={10}
           onChange={(e) => onChangeNickname(e.target.value)}
         />

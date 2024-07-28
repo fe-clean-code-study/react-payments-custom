@@ -23,6 +23,7 @@ function CardNicknameEditPage() {
       title="카드 별칭 수정"
       placeholder="카드 별칭 (선택)"
       cardInfo={currentCardInfo}
+      nickname={nickname}
       onChangeNickname={setNickname}
       onConfirm={handleUpdateNickname}
     />
