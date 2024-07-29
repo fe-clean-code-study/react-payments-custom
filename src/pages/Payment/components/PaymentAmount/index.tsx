@@ -1,7 +1,7 @@
 import * as S from './index.style';
 import TitleText from '../TitleText';
 
-import { Information, InformationBody, InformationHeader } from '~/components';
+import { Card, CardBody, CardHeader } from '~/components';
 
 interface PaymentAmountProps {
   amount: string;
@@ -9,17 +9,17 @@ interface PaymentAmountProps {
 
 const PaymentAmount = ({ amount }: PaymentAmountProps) => {
   return (
-    <Information>
-      <InformationHeader>
+    <Card>
+      <CardHeader>
         <TitleText label={'결제 금액'} />
-      </InformationHeader>
-      <InformationBody>
+      </CardHeader>
+      <CardBody>
         <S.PayAmountBody>
           <div>총 결제 금액</div>
           <div>{amount}원</div>
         </S.PayAmountBody>
-      </InformationBody>
-    </Information>
+      </CardBody>
+    </Card>
   );
 };
 

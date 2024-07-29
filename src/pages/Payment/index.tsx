@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { PaymentAmount, CardSelection, TermAgreement } from './components';
 import * as S from './index.style';
 
-import { ModalHeader, ModalBody, Button, ModalFooter } from '~/components';
+import { CardHeader, CardBody, Button, CardFooter } from '~/components';
 
 const Payment = () => {
   const methods = useForm({
@@ -18,17 +18,17 @@ const Payment = () => {
 
   return (
     <>
-      <ModalHeader>Pay 결제</ModalHeader>
+      <CardHeader>Pay 결제</CardHeader>
       <FormProvider {...methods}>
         <S.Form>
-          <ModalBody>
+          <CardBody>
             <S.InformationList>
               <CardSelection />
               <PaymentAmount amount={'500,000,000'} />
               <TermAgreement />
             </S.InformationList>
-          </ModalBody>
-          <ModalFooter>
+          </CardBody>
+          <CardFooter>
             <S.ButtonContainer>
               <Button type='reset'>
                 <S.ButtonLabel>취소하기</S.ButtonLabel>
@@ -40,7 +40,7 @@ const Payment = () => {
                 <S.ButtonLabel>결제하기</S.ButtonLabel>
               </Button>
             </S.ButtonContainer>
-          </ModalFooter>
+          </CardFooter>
         </S.Form>
       </FormProvider>
     </>

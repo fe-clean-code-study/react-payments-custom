@@ -5,12 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import TitleText from '../TitleText';
 
 import { CardSlider } from '~/components';
-import {
-  CreditCard,
-  Information,
-  InformationBody,
-  InformationHeader,
-} from '~/components';
+import { CreditCard, Card, CardBody, CardHeader } from '~/components';
 import { RootState } from '~/store';
 
 const PayCardInfomation = () => {
@@ -23,11 +18,11 @@ const PayCardInfomation = () => {
   };
 
   return (
-    <Information>
-      <InformationHeader>
+    <Card>
+      <CardHeader>
         <TitleText label='보유 카드' />
-      </InformationHeader>
-      <InformationBody>
+      </CardHeader>
+      <CardBody>
         <Controller
           name='card'
           control={control}
@@ -44,8 +39,8 @@ const PayCardInfomation = () => {
             )
           }
         />
-      </InformationBody>
-    </Information>
+      </CardBody>
+    </Card>
   );
 };
 
