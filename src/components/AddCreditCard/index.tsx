@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 import * as S from './index.style';
 import GoogleIcon from '../GoogleIcon';
 
-interface AddCreditCardProps extends PropsWithChildren {
+export interface AddCreditCardProps extends PropsWithChildren {
   onClick?: () => void;
 }
 
