@@ -2,12 +2,13 @@ import { PropsWithChildren } from 'react';
 
 import * as S from './index.style';
 
-interface InformationProps extends PropsWithChildren {}
+export interface CardProps extends PropsWithChildren {}
 
-const Information = ({ children }: InformationProps) => {
-  return <S.Information>{children}</S.Information>;
+const Card = ({ children }: CardProps) => {
+  return <S.Card>{children}</S.Card>;
 };
 
-export default Information;
-export { default as InformationHeader } from './InformationHeader';
-export { default as InformationBody } from './InformationBody';
+export default Card;
+export { default as CardHeader } from './CardHeader';
+export { default as CardBody } from './CardBody';
+export { default as CardFooter } from './CardFooter';

@@ -7,8 +7,8 @@ import * as S from './index.style';
 import {
   Button,
   CreditCard,
-  ModalBody,
-  ModalHeader,
+  CardBody,
+  CardHeader,
   PrevIcon,
 } from '../../components';
 import { removeCard, RootState } from '../../store';
@@ -49,13 +49,13 @@ const CardList = () => {
 
   return (
     <>
-      <ModalHeader>
+      <CardHeader>
         <S.HeaderText>
           <PrevIcon onClick={() => navigate('/payment')} />
           보유 카드
         </S.HeaderText>
-      </ModalHeader>
-      <ModalBody>
+      </CardHeader>
+      <CardBody>
         <S.CardUl onClick={handleClickCardUL}>
           {cards.length > 0 ? (
             cards.map((card) => (
@@ -70,7 +70,7 @@ const CardList = () => {
           )}
         </S.CardUl>
         <CreditCard onClick={handleClickAddCard} />
-      </ModalBody>
+      </CardBody>
     </>
   );
 };

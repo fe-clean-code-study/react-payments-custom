@@ -1,6 +1,5 @@
 export { default as Button } from './Button';
-export { default as Modal } from './Modal';
-export { default as Information } from './Information';
+export { default as Card } from './Card';
 export { default as CreditCard } from './CreditCard';
 export { default as InputWrapper } from './InputWrapper';
 export { default as Input } from './Input';
@@ -10,6 +9,5 @@ export { default as CompanySelection } from './CompanySelection';
 export { default as PrevIcon } from './PrevIcon';
 export { default as GoogleIcon } from './GoogleIcon';
 export { default as DeemBackground } from './DeemBackground';
-export * from './Modal';
-export * from './Information';
+export * from './Card';
 export * from './Keypad';

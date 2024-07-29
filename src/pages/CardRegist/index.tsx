@@ -13,9 +13,9 @@ import {
 import * as S from './index.style';
 
 import {
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
+  CardBody,
+  CardFooter,
+  CardHeader,
   CreditCard,
   Button,
   PrevIcon,
@@ -47,13 +47,13 @@ const CardRegist = () => {
 
   return (
     <>
-      <ModalHeader>
+      <CardHeader>
         <S.HeaderTitleText>
           <PrevIcon onClick={() => navigate('/card-list')} />
           카드 추가
         </S.HeaderTitleText>
-      </ModalHeader>
-      <ModalBody>
+      </CardHeader>
+      <CardBody>
         <CreditCard
           numbers={watch('numbers')}
           endDate={watch('endDate')}
@@ -71,14 +71,14 @@ const CardRegist = () => {
             <InputPassword />
           </S.Form>
         </FormProvider>
-      </ModalBody>
-      <ModalFooter>
+      </CardBody>
+      <CardFooter>
         {formState.isValid && (
           <S.FooterButtonContainer>
             <Button onClick={handleClickConfirmButton}>다음</Button>
           </S.FooterButtonContainer>
         )}
-      </ModalFooter>
+      </CardFooter>
     </>
   );
 };

@@ -1,18 +1,18 @@
 import { useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import * as S from './index.style';
+
 import {
   Button,
   CreditCard,
   Input,
   InputWrapper,
-  ModalBody,
-  ModalFooter,
-} from '../../components';
-import { addCardName, CardState, RootState } from '../../store';
+  CardBody,
+  CardFooter,
+} from '~/components';
+import { addCardName, CardState, RootState } from '~/store';
 
 const CardAlias = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const CardAlias = () => {
 
   return (
     <>
-      <ModalBody>
+      <CardBody>
         <S.BodyContainer>
           <S.ContentContainer>
             <S.TextContainer>
@@ -51,12 +51,12 @@ const CardAlias = () => {
             </S.InputContainer>
           </S.ContentContainer>
         </S.BodyContainer>
-      </ModalBody>
-      <ModalFooter>
+      </CardBody>
+      <CardFooter>
         <S.ButtonContainer>
           <Button onClick={handleClickConfirmButton}>확인</Button>
         </S.ButtonContainer>
-      </ModalFooter>
+      </CardFooter>
     </>
   );
 };
