@@ -18,7 +18,7 @@ import {
   CardHeader,
   CreditCard,
   Button,
-  PrevIcon,
+  GoogleIcon,
 } from '~/components';
 import { useModal } from '~/hooks';
 import { addCard } from '~/store';
@@ -38,6 +38,10 @@ const CardRegist = () => {
     open();
   };
 
+  const handleClickBackButton = () => {
+    navigate('/card-list');
+  };
+
   const handleClickConfirmButton = () => {
     const id = generateID();
 
@@ -49,7 +53,7 @@ const CardRegist = () => {
     <>
       <CardHeader>
         <S.HeaderTitleText>
-          <PrevIcon onClick={() => navigate('/card-list')} />
+          <GoogleIcon name='arrowBack' onClick={handleClickBackButton} />
           카드 추가
         </S.HeaderTitleText>
       </CardHeader>

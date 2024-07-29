@@ -6,7 +6,6 @@ export { default as Input } from './Input';
 export { default as Keypad } from './Keypad';
 export { default as CardSlider } from './CardSlider';
 export { default as CompanySelection } from './CompanySelection';
-export { default as PrevIcon } from './PrevIcon';
 export { default as GoogleIcon } from './GoogleIcon';
 export { default as DeemBackground } from './DeemBackground';
 export * from './Card';
