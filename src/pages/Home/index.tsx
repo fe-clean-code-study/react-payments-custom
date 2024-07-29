@@ -2,12 +2,12 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 import * as S from './index.style';
 
-import { Button, Modal } from '~/components';
+import { Button, Card, DeemBackground } from '~/components';
 import { useModal } from '~/hooks';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { isOpen, open } = useModal();
+  const { isOpen, open } = useModal(false);
 
   const handleClickOpenButton = () => {
     open();
@@ -19,11 +19,15 @@ const Home = () => {
       <Button onClick={handleClickOpenButton}>
         <S.ButtonLabel>열기</S.ButtonLabel>
       </Button>
-      <Modal isOpen={isOpen}>
-        <S.ContentContainer>
-          <Outlet />
-        </S.ContentContainer>
-      </Modal>
+      {isOpen && (
+        <DeemBackground>
+          <Card>
+            <S.ContentContainer>
+              <Outlet />
+            </S.ContentContainer>
+          </Card>
+        </DeemBackground>
+      )}
     </S.Container>
   );
 };
