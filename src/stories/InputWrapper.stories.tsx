@@ -1,7 +1,8 @@
 import { ThemeProvider } from '@emotion/react';
-import theme from '~/styles/theme';
+
 import { InputWrapper } from '~/components';
 import { InputWrapperProps } from '~/components/InputWrapper';
+import theme from '~/styles/theme';
 
 export default {
   title: 'components/InputWrapper',
