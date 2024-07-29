@@ -9,16 +9,22 @@ export const Container = styled.div`
 export const ButtonLabel = styled.div`
   width: 100px;
   height: 50px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-size: 16px;
 `;
 
 export const ContentContainer = styled.div`
   width: 400px;
   height: 700px;
+  background-color: ${({ theme }) => theme.color.white};
+
+  overflow-x: hidden;
   overflow-y: scroll;
+
   display: flex;
   flex-direction: column;
 `;

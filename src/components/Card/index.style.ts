@@ -7,6 +7,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  flex-grow: 1;
 
   background-color: ${({ theme }) => theme.color.white};
 `;
@@ -28,6 +29,7 @@ export const CardBody = styled.div`
 
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 
   background-color: ${({ theme }) => theme.color.white};
 `;
