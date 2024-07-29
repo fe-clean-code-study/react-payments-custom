@@ -8,5 +8,6 @@ export { default as Slide } from './Slide';
 export { default as CompanySelection } from './CompanySelection';
 export { default as GoogleIcon } from './GoogleIcon';
 export { default as DeemBackground } from './DeemBackground';
+export { default as AddCreditCard } from './AddCreditCard';
 export * from './Card';
 export * from './Keypad';

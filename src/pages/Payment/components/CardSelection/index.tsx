@@ -7,8 +7,13 @@ import * as S from './index.style';
 import TitleText from '../TitleText';
 
 import { Slide } from '~/components';
-import { CreditCard, Card, CardBody, CardHeader } from '~/components';
-import AddCreditCard from '~/components/AddCreditCard';
+import {
+  CreditCard,
+  Card,
+  CardBody,
+  CardHeader,
+  AddCreditCard,
+} from '~/components';
 import { RootState } from '~/store';
 
 const PayCardInfomation = () => {

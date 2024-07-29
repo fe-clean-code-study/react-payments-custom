@@ -10,8 +10,8 @@ import {
   CardBody,
   CardHeader,
   GoogleIcon,
+  AddCreditCard,
 } from '~/components';
-import AddCreditCard from '~/components/AddCreditCard';
 import { removeCard, RootState } from '~/store';
 
 const CardList = () => {
