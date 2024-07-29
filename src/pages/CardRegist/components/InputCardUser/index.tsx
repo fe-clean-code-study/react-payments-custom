@@ -2,23 +2,17 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import TitleText from '../TitleText';
 
-import {
-  Information,
-  InformationBody,
-  InformationHeader,
-  Input,
-  InputWrapper,
-} from '~/components';
+import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
 
 const InputCardUser = () => {
   const { control } = useFormContext();
 
   return (
-    <Information>
-      <InformationHeader>
+    <Card>
+      <CardHeader>
         <TitleText label={'카드 사용자 이름(선택, 최대 20자)'} />
-      </InformationHeader>
-      <InformationBody>
+      </CardHeader>
+      <CardBody>
         <InputWrapper>
           <Controller
             name='cardUser'
@@ -33,8 +27,8 @@ const InputCardUser = () => {
             )}
           />
         </InputWrapper>
-      </InformationBody>
-    </Information>
+      </CardBody>
+    </Card>
   );
 };
 

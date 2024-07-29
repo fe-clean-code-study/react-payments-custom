@@ -4,12 +4,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import * as S from './index.style';
 import TitleText from '../TitleText';
 
-import {
-  Information,
-  InformationBody,
-  InformationHeader,
-  InputWrapper,
-} from '~/components';
+import { Card, CardBody, CardHeader, InputWrapper } from '~/components';
 import { Input } from '~/components';
 
 const InputCardNumbers = () => {
@@ -23,11 +18,11 @@ const InputCardNumbers = () => {
   const { invalid } = getFieldState('numbers', formState);
 
   return (
-    <Information>
-      <InformationHeader>
+    <Card>
+      <CardHeader>
         <TitleText label={'카드번호'} />
-      </InformationHeader>
-      <InformationBody>
+      </CardHeader>
+      <CardBody>
         <S.InputNumbersContainer>
           <InputWrapper isInvalidation={invalid}>
             {inputRefArray.current.map((_, index) => (
@@ -60,8 +55,8 @@ const InputCardNumbers = () => {
             ))}
           </InputWrapper>
         </S.InputNumbersContainer>
-      </InformationBody>
-    </Information>
+      </CardBody>
+    </Card>
   );
 };
 

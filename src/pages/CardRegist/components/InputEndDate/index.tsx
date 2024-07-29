@@ -4,13 +4,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import * as S from './index.style';
 import TitleText from '../TitleText';
 
-import {
-  Information,
-  InformationBody,
-  InformationHeader,
-  InputWrapper,
-  Input,
-} from '~/components';
+import { Card, CardBody, CardHeader, InputWrapper, Input } from '~/components';
 
 const InputEndDate = () => {
   const { control, getFieldState, formState } = useFormContext();
@@ -18,11 +12,11 @@ const InputEndDate = () => {
   const { invalid } = getFieldState('endDate', formState);
 
   return (
-    <Information>
-      <InformationHeader>
+    <Card>
+      <CardHeader>
         <TitleText label={'카드 만료일'} />
-      </InformationHeader>
-      <InformationBody>
+      </CardHeader>
+      <CardBody>
         <S.InputEndDateContainer>
           <InputWrapper isInvalidation={invalid}>
             <Controller
@@ -61,8 +55,8 @@ const InputEndDate = () => {
             />
           </InputWrapper>
         </S.InputEndDateContainer>
-      </InformationBody>
-    </Information>
+      </CardBody>
+    </Card>
   );
 };
 

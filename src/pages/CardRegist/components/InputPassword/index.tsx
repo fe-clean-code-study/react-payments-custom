@@ -6,13 +6,7 @@ import KeypadModal from './KeypadModal';
 import ReadonlyPassword from './ReadonlyPassword';
 import TitleText from '../TitleText';
 
-import {
-  Information,
-  InformationBody,
-  InformationHeader,
-  Input,
-  InputWrapper,
-} from '~/components';
+import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
 import { useModal } from '~/hooks';
 
 const InputPassword = () => {
@@ -43,11 +37,11 @@ const InputPassword = () => {
   };
 
   return (
-    <Information>
-      <InformationHeader>
+    <Card>
+      <CardHeader>
         <TitleText label={'카드 비밀번호'} />
-      </InformationHeader>
-      <InformationBody>
+      </CardHeader>
+      <CardBody>
         <S.InputPasswordListContainer onClick={handleClickInput}>
           {[...new Array(2).fill(null)].map((_, index) => (
             <S.InputPasswordItemContainer data-index={index}>
@@ -82,8 +76,8 @@ const InputPassword = () => {
             close={close}
           />
         </S.InputPasswordListContainer>
-      </InformationBody>
-    </Information>
+      </CardBody>
+    </Card>
   );
 };
 

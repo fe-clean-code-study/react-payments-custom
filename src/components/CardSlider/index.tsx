@@ -9,7 +9,7 @@ import CreditCard from '../CreditCard';
 
 import { RegisteredCard } from '~/types';
 
-interface CardSliderProps {
+export interface CardSliderProps {
   cards: RegisteredCard[];
   onChange?: (value: RegisteredCard) => void;
 }
