@@ -1,21 +1,31 @@
+import { useCallback } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import * as S from './index.style';
 import TitleText from '../TitleText';
 
-import { CardSlider } from '~/components';
+import { Slide } from '~/components';
 import { CreditCard, Card, CardBody, CardHeader } from '~/components';
+import AddCreditCard from '~/components/AddCreditCard';
 import { RootState } from '~/store';
 
 const PayCardInfomation = () => {
   const navigate = useNavigate();
   const cards = useSelector((state: RootState) => state.cards);
-  const { control } = useFormContext();
+  const { control, setValue } = useFormContext();
 
   const clickEmptyCard = () => {
     navigate('/card-list');
   };
+
+  const handleChangeSlide = useCallback(
+    (index: number) => {
+      setValue('card', cards[index], { shouldValidate: true });
+    },
+    [setValue, cards],
+  );
 
   return (
     <Card>
@@ -31,11 +41,20 @@ const PayCardInfomation = () => {
             required: true,
             validate: (value) => value !== undefined,
           }}
-          render={({ field: { onChange } }) =>
+          render={() =>
             cards.length === 0 ? (
-              <CreditCard onClick={clickEmptyCard} />
+              <AddCreditCard onClick={clickEmptyCard} />
             ) : (
-              <CardSlider cards={cards} onChange={onChange} />
+              <Slide onChange={handleChangeSlide}>
+                {cards.map((card) => (
+                  <S.CardItemContainer>
+                    <CreditCard key={card.id} {...card} />
+                  </S.CardItemContainer>
+                ))}
+                <S.CardItemContainer>
+                  <AddCreditCard onClick={clickEmptyCard} />
+                </S.CardItemContainer>
+              </Slide>
             )
           }
         />

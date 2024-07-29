@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Card = styled.div`
   width: 100%;
-  overflow-y: scroll;
   padding: 10px 20px;
 
   display: flex;
