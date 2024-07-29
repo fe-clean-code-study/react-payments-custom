@@ -4,7 +4,7 @@ import * as S from './index.style';
 
 import { KeypadNumbers } from '~/types';
 
-interface KeypadProps {
+export interface KeypadProps {
   numbers?: KeypadNumbers;
   onClick?: (value: string) => void;
 }
