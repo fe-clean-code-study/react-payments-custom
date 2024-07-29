@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 import * as S from './index.style';
 
-import { Button, Card, DeemBackground } from '~/components';
+import { Button, Card as Modal, DeemBackground } from '~/components';
 import { useModal } from '~/hooks';
 
 const Home = () => {
@@ -21,11 +21,13 @@ const Home = () => {
       </Button>
       {isOpen && (
         <DeemBackground>
-          <Card>
+          <S.ContentContainer>
             <S.ContentContainer>
-              <Outlet />
+              <Modal>
+                <Outlet />
+              </Modal>
             </S.ContentContainer>
-          </Card>
+          </S.ContentContainer>
         </DeemBackground>
       )}
     </S.Container>
