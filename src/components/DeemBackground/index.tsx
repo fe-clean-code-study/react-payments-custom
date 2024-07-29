@@ -2,7 +2,7 @@ import { MouseEvent, PropsWithChildren } from 'react';
 
 import * as S from './index.style';
 
-interface DeemBackgroundProps {
+export interface DeemBackgroundProps {
   onClose?: () => void;
 }
 
