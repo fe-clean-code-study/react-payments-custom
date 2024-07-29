@@ -11,7 +11,7 @@ export default {
   argTypes: {
     company: {
       control: 'inline-radio',
-      options: [...Object.keys(cardCompany)],
+      options: [...Object.keys(cardCompany), undefined],
     },
     numbers: {
       control: {
