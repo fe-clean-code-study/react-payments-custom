@@ -1,6 +1,7 @@
 import { MouseEvent } from 'react';
 
 import * as S from './index.style';
+
 import { cardCompany } from '~/constants';
 import { CardCompany } from '~/types';
 
@@ -8,7 +9,7 @@ function isCardCompany(key: string): key is keyof typeof cardCompany {
   return key in cardCompany;
 }
 
-interface CompanySelectionProps {
+export interface CompanySelectionProps {
   onClick?: (company: CardCompany) => void;
 }
 
