@@ -1,6 +1,6 @@
 import { cardCompany } from '../constants';
 
-export type CardCompany = keyof typeof cardCompany | 'none';
+export type CardCompany = keyof typeof cardCompany;
 
 export type CardNumber = [string, string, string, string];
 

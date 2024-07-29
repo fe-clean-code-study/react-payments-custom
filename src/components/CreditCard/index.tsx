@@ -1,5 +1,4 @@
 import * as S from './index.style';
-import GoogleIcon from '../GoogleIcon';
 
 import { cardCompany } from '~/constants';
 import { DefaultCard } from '~/types';
@@ -11,7 +10,7 @@ export interface CreditCardProps extends Partial<DefaultCard> {
 
 const CreditCard = ({
   size = 'small',
-  company = 'none',
+  company,
   numbers = ['', '', '', ''],
   endDate = {
     month: 'MM',
@@ -27,6 +26,7 @@ const CreditCard = ({
     }
     return number;
   });
+
   const handleClickCard = () => {
     onClick && onClick();
   };
@@ -39,27 +39,21 @@ const CreditCard = ({
         size={size}
         company={company}
       >
-        {company === 'none' ? (
-          <GoogleIcon name='add' />
-        ) : (
-          <>
-            <S.CardTop>{cardCompany[company]}</S.CardTop>
-            <S.CardMiddle>
-              <S.CardChip size={size} />
-              <S.CardNumberList>
-                {encryptedNumbers.map((number, index) => (
-                  <S.CardNumberItem key={index}>{number}</S.CardNumberItem>
-                ))}
-              </S.CardNumberList>
-            </S.CardMiddle>
-            <S.CardBottom>
-              <S.CardBottomLeft>{cardUser}</S.CardBottomLeft>
-              <S.CardBottomRight>
-                {endDate.month}/{endDate.day}
-              </S.CardBottomRight>
-            </S.CardBottom>
-          </>
-        )}
+        <S.CardTop>{company && cardCompany[company]}</S.CardTop>
+        <S.CardMiddle>
+          <S.CardChip size={size} />
+          <S.CardNumberList>
+            {encryptedNumbers.map((number, index) => (
+              <S.CardNumberItem key={index}>{number}</S.CardNumberItem>
+            ))}
+          </S.CardNumberList>
+        </S.CardMiddle>
+        <S.CardBottom>
+          <S.CardBottomLeft>{cardUser}</S.CardBottomLeft>
+          <S.CardBottomRight>
+            {endDate.month}/{endDate.day}
+          </S.CardBottomRight>
+        </S.CardBottom>
       </S.CreditCard>
     </S.Container>
   );

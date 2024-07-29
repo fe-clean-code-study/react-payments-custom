@@ -4,7 +4,7 @@ import { CardCompany } from '~/types';
 
 interface CreditCardProps {
   size: 'small' | 'big';
-  company: CardCompany;
+  company?: CardCompany;
   clickable: boolean;
 }
 
@@ -32,7 +32,7 @@ export const CreditCard = styled.div<CreditCardProps>`
   font-size: ${({ size }) => (size === 'small' ? 12 : 16)}px;
 
   background: ${({ theme, company }) =>
-    company === 'none' ? theme.color.blackAlpha30 : theme.cardColor[company]};
+    company ? theme.cardColor[company] : theme.cardColor.none};
   box-shadow: 3px 3px 5px ${({ theme }) => theme.color.blackAlpha30};
 
   user-select: ${({ company }) => (company === 'none' ? 'none' : 'auto')};
