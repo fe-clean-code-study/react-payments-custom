@@ -7,6 +7,8 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const CardHeader = styled.div`
@@ -16,6 +18,8 @@ export const CardHeader = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const CardBody = styled.div`
@@ -24,6 +28,8 @@ export const CardBody = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const CardFooter = styled.div`
@@ -32,4 +38,6 @@ export const CardFooter = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  background-color: ${({ theme }) => theme.color.white};
 `;
