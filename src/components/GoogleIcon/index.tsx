@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { googleIcon } from '~/constants';
 
-interface GoogleIconProps extends ComponentProps<'span'> {
+export interface GoogleIconProps extends ComponentProps<'span'> {
   name: keyof typeof googleIcon;
 }
 
