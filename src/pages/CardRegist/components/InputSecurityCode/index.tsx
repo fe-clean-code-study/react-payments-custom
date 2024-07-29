@@ -3,24 +3,18 @@ import { Controller, useFormContext } from 'react-hook-form';
 import * as S from './index.style';
 import TitleText from '../TitleText';
 
-import {
-  Information,
-  InformationBody,
-  InformationHeader,
-  Input,
-  InputWrapper,
-} from '~/components';
+import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
 
 const InputSecurityCode = () => {
   const { control, getFieldState, formState } = useFormContext();
   const { invalid } = getFieldState('securityCode', formState);
 
   return (
-    <Information>
-      <InformationHeader>
+    <Card>
+      <CardHeader>
         <TitleText label={'보안코드(CVC/CVV)'} />
-      </InformationHeader>
-      <InformationBody>
+      </CardHeader>
+      <CardBody>
         <S.InputSecurityCodeContainer>
           <InputWrapper isInvalidation={invalid}>
             <Controller
@@ -42,8 +36,8 @@ const InputSecurityCode = () => {
             />
           </InputWrapper>
         </S.InputSecurityCodeContainer>
-      </InformationBody>
-    </Information>
+      </CardBody>
+    </Card>
   );
 };
 
