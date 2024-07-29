@@ -11,6 +11,7 @@ import {
   CardHeader,
   GoogleIcon,
 } from '~/components';
+import AddCreditCard from '~/components/AddCreditCard';
 import { removeCard, RootState } from '~/store';
 
 const CardList = () => {
@@ -73,7 +74,7 @@ const CardList = () => {
             <S.NoneCardText>아직 보유중인 카드가 없어요.</S.NoneCardText>
           )}
         </S.CardUl>
-        <CreditCard onClick={handleClickAddCard} />
+        <AddCreditCard onClick={handleClickAddCard} />
       </CardBody>
     </>
   );
