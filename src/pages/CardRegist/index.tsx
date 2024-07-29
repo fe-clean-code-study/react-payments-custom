@@ -16,7 +16,7 @@ import {
   ModalBody,
   ModalFooter,
   ModalHeader,
-  Card,
+  CreditCard,
   Button,
   PrevIcon,
 } from '~/components';
@@ -54,7 +54,7 @@ const CardRegist = () => {
         </S.HeaderTitleText>
       </ModalHeader>
       <ModalBody>
-        <Card
+        <CreditCard
           numbers={watch('numbers')}
           endDate={watch('endDate')}
           cardUser={watch('cardUser')}

@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './index.style';
 import {
   Button,
-  Card,
+  CreditCard,
   Input,
   InputWrapper,
   ModalBody,
@@ -39,7 +39,7 @@ const CardAlias = () => {
             <S.TextContainer>
               <S.CompleteText>카드등록이 완료되었습니다.</S.CompleteText>
             </S.TextContainer>
-            <Card size='big' {...targetCard} />
+            <CreditCard size='big' {...targetCard} />
             <S.InputContainer>
               <InputWrapper type='flushed'>
                 <Input

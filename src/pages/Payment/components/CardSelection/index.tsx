@@ -6,7 +6,7 @@ import TitleText from '../TitleText';
 
 import { CardSlider } from '~/components';
 import {
-  Card,
+  CreditCard,
   Information,
   InformationBody,
   InformationHeader,
@@ -38,7 +38,7 @@ const PayCardInfomation = () => {
           }}
           render={({ field: { onChange } }) =>
             cards.length === 0 ? (
-              <Card clickable={true} onClick={clickEmptyCard} />
+              <CreditCard onClick={clickEmptyCard} />
             ) : (
               <CardSlider cards={cards} onChange={onChange} />
             )

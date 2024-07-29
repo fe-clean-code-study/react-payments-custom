@@ -1,12 +1,13 @@
 import { ThemeProvider } from '@emotion/react';
-import theme from '~/styles/theme';
-import { Card } from '~/components';
-import { CardProps } from '~/components/Card';
+
+import { CreditCard } from '~/components';
+import { CreditCardProps } from '~/components/CreditCard';
 import { cardCompany } from '~/constants';
+import theme from '~/styles/theme';
 
 export default {
-  title: 'components/Card',
-  component: Card,
+  title: 'components/CreditCard',
+  component: CreditCard,
   argTypes: {
     company: {
       control: 'inline-radio',
@@ -36,10 +37,10 @@ export default {
   },
 };
 
-export const Default = (args: CardProps) => {
+export const Default = (args: CreditCardProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <Card {...args} />
+      <CreditCard {...args} />
     </ThemeProvider>
   );
 };

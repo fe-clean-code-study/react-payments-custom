@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './index.style';
 import {
   Button,
-  Card,
+  CreditCard,
   ModalBody,
   ModalHeader,
   PrevIcon,
@@ -60,7 +60,7 @@ const CardList = () => {
           {cards.length > 0 ? (
             cards.map((card) => (
               <S.CardLi data-id={card.id} key={card.id}>
-                <Card {...card} />
+                <CreditCard {...card} />
                 <S.CardNameText>{card.cardAlias}</S.CardNameText>
                 <Button>삭제</Button>
               </S.CardLi>
@@ -69,7 +69,7 @@ const CardList = () => {
             <S.NoneCardText>아직 보유중인 카드가 없어요.</S.NoneCardText>
           )}
         </S.CardUl>
-        <Card onClick={handleClickAddCard} />
+        <CreditCard onClick={handleClickAddCard} />
       </ModalBody>
     </>
   );

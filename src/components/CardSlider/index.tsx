@@ -5,8 +5,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import * as S from './index.style';
+import CreditCard from '../CreditCard';
+
 import { RegisteredCard } from '~/types';
-import Card from '../Card';
 
 interface CardSliderProps {
   cards: RegisteredCard[];
@@ -38,11 +39,11 @@ const CardSlider = ({ cards, onChange }: CardSliderProps) => {
       <Slider {...settings}>
         {cards.map((card) => (
           <S.ItemWrapper key={card.id}>
-            <Card {...card} />
+            <CreditCard {...card} />
           </S.ItemWrapper>
         ))}
         <S.ItemWrapper>
-          <Card company='none' onClick={handleClickAddCard} />
+          <CreditCard company='none' onClick={handleClickAddCard} />
         </S.ItemWrapper>
       </Slider>
     </S.SlideWrapper>
