@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 
 export const Card = styled.div`
   width: 100%;
+  overflow-y: scroll;
   padding: 10px 20px;
 
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   flex-grow: 1;
 
   background-color: ${({ theme }) => theme.color.white};

@@ -23,8 +23,8 @@ export const ContentContainer = styled.div`
   background-color: ${({ theme }) => theme.color.white};
 
   overflow-x: hidden;
-  overflow-y: scroll;
 
   display: flex;
   flex-direction: column;
+  position: relative;
 `;

@@ -24,7 +24,7 @@ const Keypad = ({
   };
 
   return (
-    <S.KeypadContainer onClick={handleClickKeypad}>
+    <S.KeypadList onClick={handleClickKeypad}>
       {numbers.map((number, index) => (
         <S.KeypadItem
           order={index === 8 || index === 9 ? index + 1 : index}
@@ -36,7 +36,7 @@ const Keypad = ({
       ))}
       <S.LeftEmptyItem />
       <S.RightEmptyItem />
-    </S.KeypadContainer>
+    </S.KeypadList>
   );
 };
 

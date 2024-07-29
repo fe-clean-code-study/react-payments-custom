@@ -4,11 +4,8 @@ interface KeypadItemProps {
   order: number;
 }
 
-export const KeypadContainer = styled.div`
+export const KeypadList = styled.div`
   width: 100%;
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
 
   background-color: ${({ theme }) => theme.color.white};
   z-index: 3;

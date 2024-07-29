@@ -22,11 +22,9 @@ const Home = () => {
       {isOpen && (
         <DeemBackground>
           <S.ContentContainer>
-            <S.ContentContainer>
-              <Modal>
-                <Outlet />
-              </Modal>
-            </S.ContentContainer>
+            <Modal>
+              <Outlet />
+            </Modal>
           </S.ContentContainer>
         </DeemBackground>
       )}

@@ -1,3 +1,5 @@
+import * as S from './index.style';
+
 import { DeemBackground, Keypad } from '~/components';
 import { KeypadNumbers } from '~/types';
 import suffle from '~/utils/suffle';
@@ -14,7 +16,9 @@ const KeypadModal = ({ isOpen, close, onSelect }: KeypadModalProps) => {
   return (
     isOpen && (
       <DeemBackground onClose={close}>
-        <Keypad onClick={onSelect} numbers={suffle(keypadNumbers)} />
+        <S.KeypadContainer>
+          <Keypad onClick={onSelect} numbers={suffle(keypadNumbers)} />
+        </S.KeypadContainer>
       </DeemBackground>
     )
   );

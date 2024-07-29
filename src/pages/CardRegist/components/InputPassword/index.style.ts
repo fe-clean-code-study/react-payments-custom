@@ -10,3 +10,10 @@ export const InputPasswordItemContainer = styled.div`
   display: flex;
   gap: 5px;
 `;
+
+export const KeypadContainer = styled.div`
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`;
