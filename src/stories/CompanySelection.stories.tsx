@@ -5,7 +5,7 @@ import { CompanySelectionProps } from '~/components/CompanySelection';
 import theme from '~/styles/theme';
 
 export default {
-  name: 'components/CompanySelection',
+  title: 'components/CompanySelection',
   component: CompanySelection,
 };
 
