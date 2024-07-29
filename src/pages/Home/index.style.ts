@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import { Card } from '~/components/Card/index.style';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,9 +24,13 @@ export const ContentContainer = styled.div`
   height: 700px;
   background-color: ${({ theme }) => theme.color.white};
 
-  overflow-x: hidden;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
   position: relative;
+`;
+
+export const Modal = styled(Card)`
+  overflow-y: scroll;
 `;
