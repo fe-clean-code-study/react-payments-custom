@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 18
           cache: "pnpm"
-      - run: pnpm
+      - run: pnpm chromatic
       #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
