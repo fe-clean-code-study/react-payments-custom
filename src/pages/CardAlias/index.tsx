@@ -44,7 +44,7 @@ const CardAlias = () => {
               <InputWrapper type='flushed'>
                 <Input
                   ref={inputRef}
-                  placeholder='카드 이름을 입력해주세요.'
+                  placeholder='카드 별칭(선택)'
                   defaultValue={cardAlias}
                 />
               </InputWrapper>
