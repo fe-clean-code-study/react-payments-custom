@@ -14,6 +14,8 @@ describe("useCardForm 훅 테스트", () => {
       cardName: "",
       color: "",
       nickname: "",
+      cardSecurityCode: "",
+      cardPassword: ["", ""],
     });
   });
 
