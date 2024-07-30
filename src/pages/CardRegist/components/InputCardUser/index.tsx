@@ -1,17 +1,23 @@
 import { Controller, useFormContext } from 'react-hook-form';
 
+import * as S from './index.style';
 import TitleText from '../TitleText';
 
 import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
 
 const InputCardUser = () => {
-  const { control } = useFormContext();
+  const { control, getValues } = useFormContext();
   const MAX_LENGTH = 30;
 
   return (
     <Card>
       <CardHeader>
-        <TitleText label={'카드 사용자 이름(선택, 최대 20자)'} />
+        <S.HeaderContainer>
+          <TitleText label={`카드 사용자 이름(선택, 최대 ${MAX_LENGTH}자)`} />
+          <S.InputLenghtStatus>
+            ({getValues('cardUser').length}/{MAX_LENGTH})
+          </S.InputLenghtStatus>
+        </S.HeaderContainer>
       </CardHeader>
       <CardBody>
         <InputWrapper>
