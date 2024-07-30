@@ -158,7 +158,7 @@ export const cardRegsitFormValidate = {
   form: {
     numbers: {
       validate: (value: string[]) => {
-        return value.every((v) => v.length === 4);
+        return value.length === 4 && value.every((v) => v.length === 4);
       },
       message: '카드번호를 정확히 입력해주세요.',
     },
@@ -182,7 +182,7 @@ export const cardRegsitFormValidate = {
     },
     password: {
       validate: (value: string[]) => {
-        return value.every((v) => v.length === 1);
+        return value.length === 2 && value.every((v) => v.length === 1);
       },
       message: '비밀번호를 정확히 입력해주세요.',
     },
