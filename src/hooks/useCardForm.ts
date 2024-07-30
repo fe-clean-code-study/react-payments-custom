@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { isPositiveInteger } from "../utils";
+import { filterDigits, isPositiveInteger } from "../utils";
 
 const useCardForm = () => {
   const [cardNumber, setCardNumber] = useState(["", "", "", ""]);
@@ -11,28 +11,35 @@ const useCardForm = () => {
   const [nickname, setNickname] = useState("");
 
   const handleCardNumber = (value: string, index: number) => {
+    const filteredValue = filterDigits(value);
     const copy = [...cardNumber];
-    copy[index] = value;
+    copy[index] = filteredValue;
 
-    if (isPositiveInteger(value) || value === "") {
+    if (isPositiveInteger(filteredValue) || filteredValue === "") {
       setCardNumber(copy);
     }
   };
 
   const handleExpiredMonth = (value: string) => {
-    if (isPositiveInteger(value, 12) || value === "") {
-      setExpiredMonth(value);
+    const filteredValue = filterDigits(value);
+
+    if (isPositiveInteger(filteredValue, 12) || filteredValue === "") {
+      setExpiredMonth(filteredValue);
     }
   };
 
   const handleExpiredYear = (value: string) => {
-    if (isPositiveInteger(value) || value === "") {
-      setExpiredYear(value);
+    const filteredValue = filterDigits(value);
+
+    if (isPositiveInteger(filteredValue) || filteredValue === "") {
+      setExpiredYear(filteredValue);
     }
   };
 
   const handleUserName = (value: string) => {
-    setUserName(value);
+    const trimmedValue = value.trim();
+
+    setUserName(trimmedValue);
   };
 
   const handleCardNameAndColor = (name: string, cardColor: string) => {
@@ -41,7 +48,9 @@ const useCardForm = () => {
   };
 
   const handleNickname = (value: string) => {
-    setNickname(value);
+    const trimmedValue = value.trim();
+
+    setNickname(trimmedValue);
   };
 
   return {

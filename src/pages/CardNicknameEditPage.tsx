@@ -10,6 +10,12 @@ function CardNicknameEditPage() {
   const currentCardInfo = cardInfoList.find((cardInfo) => cardInfo.id === id)!;
   const [nickname, setNickname] = useState(currentCardInfo.nickname);
 
+  const handleChangeNickname = (value: string) => {
+    const trimmedValue = value.trim();
+
+    setNickname(trimmedValue);
+  };
+
   const handleUpdateNickname = () => {
     if (currentCardInfo.nickname !== nickname) {
       dispatch({ type: "UPDATE_NICKNAME", payload: { id: id!, nickname } });
@@ -24,7 +30,7 @@ function CardNicknameEditPage() {
       placeholder="카드 별칭 (선택)"
       cardInfo={currentCardInfo}
       nickname={nickname}
-      onChangeNickname={setNickname}
+      onChangeNickname={handleChangeNickname}
       onConfirm={handleUpdateNickname}
     />
   );
