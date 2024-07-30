@@ -5,6 +5,7 @@ import Title from "./Title";
 import Icon from "./Icon";
 import Modal from "./Modal";
 import Input from "./Input";
+import CardNumberInput from "./CardNumberInput";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -82,40 +83,10 @@ function CardInfoEdit({
         color={color}
         onClick={onOpen}
       />
-      <div className="input-container">
-        <span className="input-title">카드 번호</span>
-        <div className="input-box">
-          <Input
-            className="input-basic"
-            maxLength={4}
-            value={cardNumber[0]}
-            onChange={(e) => handleCardNumber(e.target.value, 0)}
-          />
-          -
-          <Input
-            className="input-basic"
-            maxLength={4}
-            value={cardNumber[1]}
-            onChange={(e) => handleCardNumber(e.target.value, 1)}
-          />
-          -
-          <Input
-            className="input-basic"
-            type="password"
-            maxLength={4}
-            value={cardNumber[2]}
-            onChange={(e) => handleCardNumber(e.target.value, 2)}
-          />
-          -
-          <Input
-            className="input-basic"
-            type="password"
-            maxLength={4}
-            value={cardNumber[3]}
-            onChange={(e) => handleCardNumber(e.target.value, 3)}
-          />
-        </div>
-      </div>
+      <CardNumberInput
+        cardNumber={cardNumber}
+        handleCardNumber={handleCardNumber}
+      />
       <div className="input-container">
         <span className="input-title">만료일</span>
         <div className="input-box w-50">
