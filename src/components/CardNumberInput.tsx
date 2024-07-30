@@ -1,6 +1,6 @@
-import { useState } from "react";
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
+import { useBlur } from "../hooks";
 
 interface CardNumberInputProps {
   cardNumber: string[];
@@ -11,7 +11,7 @@ const CardNumberInput = ({
   cardNumber,
   handleCardNumber,
 }: CardNumberInputProps) => {
-  const [blurred, setBlurred] = useState(false);
+  const { blurred, handleBlur } = useBlur();
 
   return (
     <div className="input-container">
@@ -22,9 +22,7 @@ const CardNumberInput = ({
           maxLength={4}
           value={cardNumber[0]}
           onChange={(e) => handleCardNumber(e.target.value, 0)}
-          onBlur={() => {
-            setBlurred(true);
-          }}
+          onBlur={handleBlur}
         />
         -
         <Input
@@ -32,9 +30,7 @@ const CardNumberInput = ({
           maxLength={4}
           value={cardNumber[1]}
           onChange={(e) => handleCardNumber(e.target.value, 1)}
-          onBlur={() => {
-            setBlurred(true);
-          }}
+          onBlur={handleBlur}
         />
         -
         <Input
@@ -43,9 +39,7 @@ const CardNumberInput = ({
           maxLength={4}
           value={cardNumber[2]}
           onChange={(e) => handleCardNumber(e.target.value, 2)}
-          onBlur={() => {
-            setBlurred(true);
-          }}
+          onBlur={handleBlur}
         />
         -
         <Input
@@ -54,9 +48,7 @@ const CardNumberInput = ({
           maxLength={4}
           value={cardNumber[3]}
           onChange={(e) => handleCardNumber(e.target.value, 3)}
-          onBlur={() => {
-            setBlurred(true);
-          }}
+          onBlur={handleBlur}
         />
       </div>
       <ValidationMessage

@@ -1,6 +1,6 @@
-import { useState } from "react";
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
+import { useBlur } from "../hooks";
 
 interface CardExpiryInputProps {
   expiredMonth: string;
@@ -15,7 +15,7 @@ const CardExpiryInput = ({
   handleExpiredMonth,
   handleExpiredYear,
 }: CardExpiryInputProps) => {
-  const [blurred, setBlurred] = useState(false);
+  const { blurred, handleBlur } = useBlur();
 
   return (
     <div className="input-container">
@@ -29,7 +29,7 @@ const CardExpiryInput = ({
           maxLength={2}
           value={expiredMonth}
           onChange={(e) => handleExpiredMonth(e.target.value)}
-          onBlur={() => setBlurred(true)}
+          onBlur={handleBlur}
         />
         /
         <Input
@@ -38,7 +38,7 @@ const CardExpiryInput = ({
           maxLength={2}
           value={expiredYear}
           onChange={(e) => handleExpiredYear(e.target.value)}
-          onBlur={() => setBlurred(true)}
+          onBlur={handleBlur}
         />
       </div>
       <ValidationMessage

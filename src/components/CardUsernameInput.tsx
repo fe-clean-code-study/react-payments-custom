@@ -1,6 +1,6 @@
-import { useState } from "react";
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
+import { useBlur } from "../hooks";
 
 interface CardUsernameInputProps {
   username: string;
@@ -11,7 +11,7 @@ const CardUsernameInput = ({
   username,
   handleUsername,
 }: CardUsernameInputProps) => {
-  const [blurred, setBlurred] = useState(false);
+  const { blurred, handleBlur } = useBlur();
 
   return (
     <div className="input-container">
@@ -25,7 +25,7 @@ const CardUsernameInput = ({
         maxLength={30}
         value={username}
         onChange={(e) => handleUsername(e.target.value)}
-        onBlur={() => setBlurred(true)}
+        onBlur={handleBlur}
       />
       <ValidationMessage
         isValid={() => username.length < 1}
