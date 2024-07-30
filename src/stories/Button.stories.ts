@@ -26,6 +26,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
+    children: "Button",
+  },
+};
+
+export const Border: Story = {
+  args: {
     style: { border: "1px solid black" },
     children: "Button",
   },
