@@ -17,8 +17,7 @@
     "test:ui": "vitest --ui",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "pnpm dlx chromatic --project-token=chpt_f73500da864f010"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^18.3.1",
