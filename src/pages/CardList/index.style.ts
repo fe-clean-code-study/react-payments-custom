@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const HeaderText = styled.div`
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 20px;
 `;
 
 export const NoneCardText = styled.div`
