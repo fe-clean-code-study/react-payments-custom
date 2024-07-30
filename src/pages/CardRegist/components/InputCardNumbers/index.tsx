@@ -26,32 +26,35 @@ const InputCardNumbers = () => {
         <S.InputNumbersContainer>
           <InputWrapper isInvalidation={invalid}>
             {inputRefArray.current.map((_, index) => (
-              <Controller
-                key={index}
-                name={`numbers.${index}`}
-                control={control}
-                rules={{
-                  validate: (value) => value.length === 4,
-                  required: true,
-                }}
-                render={({ field: { onChange } }) => (
-                  <Input
-                    onlyNumber={true}
-                    textAlign='center'
-                    ref={(element) => {
-                      if (element instanceof HTMLInputElement) {
-                        inputRefArray.current[index] = element;
-                      }
-                    }}
-                    type={index < 2 ? 'text' : 'password'}
-                    onChange={onChange}
-                    maxLength={4}
-                    onComplete={() => {
-                      inputRefArray.current[index + 1]?.focus();
-                    }}
-                  />
-                )}
-              />
+              <>
+                <Controller
+                  key={index}
+                  name={`numbers.${index}`}
+                  control={control}
+                  rules={{
+                    validate: (value) => value.length === 4,
+                    required: true,
+                  }}
+                  render={({ field: { onChange } }) => (
+                    <Input
+                      onlyNumber={true}
+                      textAlign='center'
+                      ref={(element) => {
+                        if (element instanceof HTMLInputElement) {
+                          inputRefArray.current[index] = element;
+                        }
+                      }}
+                      type={index < 2 ? 'text' : 'password'}
+                      onChange={onChange}
+                      maxLength={4}
+                      onComplete={() => {
+                        inputRefArray.current[index + 1]?.focus();
+                      }}
+                    />
+                  )}
+                />
+                {index < 3 && <S.Divider> - </S.Divider>}
+              </>
             ))}
           </InputWrapper>
         </S.InputNumbersContainer>
