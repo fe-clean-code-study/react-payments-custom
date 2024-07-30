@@ -7,6 +7,9 @@ import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
 
 const InputCardUser = () => {
   const { control, getValues } = useFormContext();
+  const currentInputLength = getValues('cardUser')
+    ? getValues('cardUser').length
+    : 0;
   const MAX_LENGTH = 30;
 
   return (
@@ -15,7 +18,7 @@ const InputCardUser = () => {
         <S.HeaderContainer>
           <TitleText label={`카드 사용자 이름(선택, 최대 ${MAX_LENGTH}자)`} />
           <S.InputLenghtStatus>
-            ({getValues('cardUser').length}/{MAX_LENGTH})
+            ({currentInputLength}/{MAX_LENGTH})
           </S.InputLenghtStatus>
         </S.HeaderContainer>
       </CardHeader>
