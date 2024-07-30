@@ -58,7 +58,7 @@ const CardNumberInput = ({
           }}
         />
       </div>
-      <div style={{ height: "14px", paddingTop: "5px" }}>
+      <div style={{ height: "10px", paddingTop: "5px" }}>
         {blurred && !cardNumber.every((number) => number.length === 4) && (
           <span className="input-title" style={{ color: "red" }}>
             카드 번호가 유효하지 않습니다.

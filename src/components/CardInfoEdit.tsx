@@ -6,6 +6,7 @@ import Icon from "./Icon";
 import Modal from "./Modal";
 import Input from "./Input";
 import CardNumberInput from "./CardNumberInput";
+import CardExpiryInput from "./CardExpiryInput";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -87,28 +88,12 @@ function CardInfoEdit({
         cardNumber={cardNumber}
         handleCardNumber={handleCardNumber}
       />
-      <div className="input-container">
-        <span className="input-title">만료일</span>
-        <div className="input-box w-50">
-          <Input
-            className="input-basic"
-            placeholder="MM"
-            min={1}
-            max={12}
-            maxLength={2}
-            value={expiredMonth}
-            onChange={(e) => handleExpiredMonth(e.target.value)}
-          />
-          /
-          <Input
-            className="input-basic"
-            placeholder="YY"
-            maxLength={2}
-            value={expiredYear}
-            onChange={(e) => handleExpiredYear(e.target.value)}
-          />
-        </div>
-      </div>
+      <CardExpiryInput
+        expiredMonth={expiredMonth}
+        expiredYear={expiredYear}
+        handleExpiredMonth={handleExpiredMonth}
+        handleExpiredYear={handleExpiredYear}
+      />
       <div className="input-container">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <span className="input-title">카드 소유자 이름</span>
@@ -121,6 +106,7 @@ function CardInfoEdit({
           value={userName}
           onChange={(e) => handleUserName(e.target.value)}
         />
+        <div style={{ height: "10px", paddingTop: "5px" }}></div>
       </div>
       <div className="input-container">
         <span className="input-title">보안코드(CVC/CVV)</span>
@@ -134,6 +120,7 @@ function CardInfoEdit({
           />
           <Icon name="questionCircle" />
         </div>
+        <div style={{ height: "10px", paddingTop: "5px" }}></div>
       </div>
       <div className="input-container">
         <span className="input-title">카드 비밀번호</span>
@@ -154,6 +141,7 @@ function CardInfoEdit({
           />
           <div className="flex-center w-15">•</div>
           <div className="flex-center w-15">•</div>
+          <div style={{ height: "10px", paddingTop: "5px" }}></div>
         </div>
       </div>
       <div
