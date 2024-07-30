@@ -51,6 +51,7 @@ const CardAlias = () => {
                   ref={inputRef}
                   placeholder='카드 별칭(선택)'
                   defaultValue={cardAlias}
+                  maxLength={10}
                 />
               </InputWrapper>
             </S.InputContainer>
