@@ -1,9 +1,12 @@
-const suffle = <T extends Array<any>>(arr: T) => {
-  for (let i = arr.length - 1; i > 0; i--) {
+const suffle = <T extends unknown[]>(arr: T) => {
+  const suffledArray = [...arr];
+
+  for (let i = suffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+
+    [suffledArray[i], suffledArray[j]] = [suffledArray[j], suffledArray[i]];
   }
-  return arr;
+  return suffledArray;
 };
 
 export default suffle;
