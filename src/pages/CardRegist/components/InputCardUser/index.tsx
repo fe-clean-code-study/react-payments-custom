@@ -6,6 +6,7 @@ import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
 
 const InputCardUser = () => {
   const { control } = useFormContext();
+  const MAX_LENGTH = 30;
 
   return (
     <Card>
@@ -16,13 +17,13 @@ const InputCardUser = () => {
         <InputWrapper>
           <Controller
             name='cardUser'
-            rules={{ maxLength: 20 }}
+            rules={{ maxLength: MAX_LENGTH }}
             control={control}
             render={({ field: { onChange } }) => (
               <Input
                 onChange={onChange}
                 placeholder='카드에 표시된 이름과 동일하게 입력하세요.'
-                maxLength={20}
+                maxLength={MAX_LENGTH}
               />
             )}
           />
