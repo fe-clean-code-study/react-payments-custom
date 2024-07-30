@@ -22,12 +22,6 @@ export const cardRegsitFormValidate = {
     },
   },
   cardUser: {
-    type: {
-      validate: (value: string | undefined) => {
-        return typeof value === 'string';
-      },
-      message: '카드 사용자 이름은 문자로 입력해주세요.',
-    },
     length: {
       validate: (value: string) => {
         return value.length <= 30;
@@ -159,6 +153,44 @@ export const cardRegsitFormValidate = {
         return value.length > 0;
       },
       message: '보안코드를 입력해주세요.',
+    },
+  },
+  form: {
+    numbers: {
+      validate: (value: string[]) => {
+        return value.every((v) => v.length === 4);
+      },
+      message: '카드번호를 정확히 입력해주세요.',
+    },
+    cardUser: {
+      validate: (value: string) => {
+        return value.length <= 30;
+      },
+      message: '카드 사용자 이름은 30자 이하여야합니다.',
+    },
+    company: {
+      validate: (value: string) => {
+        return value in cardCompany;
+      },
+      message: '카드사를 선택해주세요.',
+    },
+    endDate: {
+      validate: (value: { month: string; day: string }) => {
+        return value.month.length === 2 && value.day.length === 2;
+      },
+      message: '만료일을 정확히 입력해주세요.',
+    },
+    password: {
+      validate: (value: string[]) => {
+        return value.every((v) => v.length === 1);
+      },
+      message: '비밀번호를 정확히 입력해주세요.',
+    },
+    securityCode: {
+      validate: (value: string) => {
+        return value.length === 3;
+      },
+      message: '보안코드를 정확히 입력해주세요.',
     },
   },
 };

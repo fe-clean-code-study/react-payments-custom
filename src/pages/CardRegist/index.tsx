@@ -23,7 +23,19 @@ import {
 import { useModal } from '~/hooks';
 import { addCard } from '~/store';
 import { CardForm } from '~/types';
+import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
 import generateID from '~/utils/generateID';
+import { validateHelper } from '~/utils/validateHelper';
+
+function isFormKey(
+  key: string,
+): key is keyof typeof cardRegsitFormValidate.form {
+  return key in cardRegsitFormValidate.form;
+}
+
+function isValueKey(key: string, value: CardForm): key is keyof CardForm {
+  return key in value;
+}
 
 const CardRegist = () => {
   const dispatch = useDispatch();
@@ -31,6 +43,17 @@ const CardRegist = () => {
   const { isOpen, close, open } = useModal(true);
   const methods = useForm<CardForm>({
     mode: 'onChange',
+    defaultValues: {
+      numbers: ['', '', '', ''],
+      endDate: {
+        month: '',
+        day: '',
+      },
+      cardUser: '',
+      company: undefined,
+      securityCode: '',
+      password: ['', ''],
+    },
   });
   const { watch, formState, getValues } = methods;
 
@@ -44,6 +67,23 @@ const CardRegist = () => {
 
   const handleClickConfirmButton = () => {
     const id = generateID();
+    const formValues = getValues();
+
+    for (const key in formValues) {
+      if (!isFormKey(key)) continue;
+      if (!isValueKey(key, formValues)) continue;
+      const fieldValue = formValues[key];
+
+      const result = validateHelper(
+        cardRegsitFormValidate.form[key],
+        fieldValue,
+      );
+
+      if (result !== true) {
+        alert(result);
+        return;
+      }
+    }
 
     dispatch(addCard({ card: { ...getValues(), id } }));
     navigate(`/card-alias/${id}`);

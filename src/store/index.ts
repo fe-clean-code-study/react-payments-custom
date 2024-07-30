@@ -18,7 +18,6 @@ const cardSlice = createSlice({
   reducers: {
     addCard: (state, actions) => {
       const { card } = actions.payload;
-      console.log(card);
       state.cards.push(card);
     },
     removeCard: (state, actions) => {
