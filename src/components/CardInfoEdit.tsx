@@ -36,12 +36,17 @@ function CardInfoEdit({
       userName,
       cardName,
       color,
+      cardSecurityCode,
+      cardPassword,
     },
     handleCardNumber,
     handleExpiredMonth,
     handleExpiredYear,
     handleUserName,
     handleCardNameAndColor,
+    handleCardSecurityCode,
+    handleCardPassword,
+    isValidForm,
   } = cardForm;
   const { isOpen, onOpen, onClose } = useModal(true);
 
@@ -149,15 +154,33 @@ function CardInfoEdit({
       <div className="input-container">
         <span className="input-title">보안코드(CVC/CVV)</span>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <Input className="input-basic w-25" type="password" maxLength={3} />
+          <Input
+            className="input-basic w-25"
+            type="password"
+            maxLength={3}
+            value={cardSecurityCode}
+            onChange={(e) => handleCardSecurityCode(e.target.value)}
+          />
           <Icon name="questionCircle" />
         </div>
       </div>
       <div className="input-container">
         <span className="input-title">카드 비밀번호</span>
         <div style={{ display: "flex", gap: "5px" }}>
-          <Input className="input-basic w-15" type="password" maxLength={1} />
-          <Input className="input-basic w-15" type="password" maxLength={1} />
+          <Input
+            className="input-basic w-15"
+            type="password"
+            maxLength={1}
+            value={cardPassword[0]}
+            onChange={(e) => handleCardPassword(e.target.value, 0)}
+          />
+          <Input
+            className="input-basic w-15"
+            type="password"
+            maxLength={1}
+            value={cardPassword[1]}
+            onChange={(e) => handleCardPassword(e.target.value, 1)}
+          />
           <div className="flex-center w-15">•</div>
           <div className="flex-center w-15">•</div>
         </div>
@@ -170,7 +193,11 @@ function CardInfoEdit({
           right: "33px",
         }}
       >
-        <Button className="button-text" onClick={onNextStep}>
+        <Button
+          className="button-text"
+          onClick={onNextStep}
+          disabled={isValidForm()}
+        >
           다음
         </Button>
       </div>
