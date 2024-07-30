@@ -20,8 +20,8 @@ export const ButtonLabel = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  width: 400px;
-  height: 700px;
+  width: 450px;
+  height: 750px;
   background-color: ${({ theme }) => theme.color.white};
 
   overflow: hidden;
