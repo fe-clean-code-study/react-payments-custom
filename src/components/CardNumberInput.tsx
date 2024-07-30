@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "./Input";
+import ValidationMessage from "./ValidationMessage";
 
 interface CardNumberInputProps {
   cardNumber: string[];
@@ -58,13 +59,11 @@ const CardNumberInput = ({
           }}
         />
       </div>
-      <div style={{ height: "10px", paddingTop: "5px" }}>
-        {blurred && !cardNumber.every((number) => number.length === 4) && (
-          <span className="input-title" style={{ color: "red" }}>
-            카드 번호가 유효하지 않습니다.
-          </span>
-        )}
-      </div>
+      <ValidationMessage
+        isValid={() => !cardNumber.every((number) => number.length === 4)}
+        errorMessage="카드 번호가 유효하지 않습니다."
+        showOnBlur={blurred}
+      />
     </div>
   );
 };

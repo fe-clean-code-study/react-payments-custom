@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "./Input";
+import ValidationMessage from "./ValidationMessage";
 
 interface CardExpiryInputProps {
   expiredMonth: string;
@@ -40,13 +41,11 @@ const CardExpiryInput = ({
           onBlur={() => setBlurred(true)}
         />
       </div>
-      <div style={{ height: "10px", paddingTop: "5px" }}>
-        {blurred && (expiredMonth.length !== 2 || expiredYear.length !== 2) && (
-          <span className="input-title" style={{ color: "red" }}>
-            카드 번호가 유효하지 않습니다.
-          </span>
-        )}
-      </div>
+      <ValidationMessage
+        isValid={() => expiredMonth.length !== 2 || expiredYear.length !== 2}
+        errorMessage="카드 만료일이 유효하지 않습니다."
+        showOnBlur={blurred}
+      />
     </div>
   );
 };
