@@ -7,6 +7,7 @@ import Modal from "./Modal";
 import Input from "./Input";
 import CardNumberInput from "./CardNumberInput";
 import CardExpiryInput from "./CardExpiryInput";
+import CardUsernameInput from "./CardUsernameInput";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -94,20 +95,7 @@ function CardInfoEdit({
         handleExpiredMonth={handleExpiredMonth}
         handleExpiredYear={handleExpiredYear}
       />
-      <div className="input-container">
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span className="input-title">카드 소유자 이름</span>
-          <span className="input-title">{userName.length}/30</span>
-        </div>
-        <Input
-          className="input-basic"
-          placeholder="카드에 표시된 이름과 동일하게 입력하세요."
-          maxLength={30}
-          value={userName}
-          onChange={(e) => handleUserName(e.target.value)}
-        />
-        <div style={{ height: "10px", paddingTop: "5px" }}></div>
-      </div>
+      <CardUsernameInput username={userName} handleUsername={handleUserName} />
       <div className="input-container">
         <span className="input-title">보안코드(CVC/CVV)</span>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
