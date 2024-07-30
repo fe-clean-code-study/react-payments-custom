@@ -12,6 +12,7 @@ import {
   CardBody,
   CardFooter,
 } from '~/components';
+import { cardCompany } from '~/constants';
 import { addCardName, CardState, RootState } from '~/store';
 
 const CardAlias = () => {
@@ -27,8 +28,12 @@ const CardAlias = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClickConfirmButton = () => {
+    const cardAlias =
+      inputRef.current?.value === ''
+        ? cardCompany[targetCard.company]
+        : inputRef.current?.value;
     navigate('/card-list');
-    dispatch(addCardName({ id, cardAlias: inputRef.current?.value }));
+    dispatch(addCardName({ id, cardAlias }));
   };
 
   return (
