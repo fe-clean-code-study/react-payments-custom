@@ -4,12 +4,15 @@ import * as S from './index.style';
 import TitleText from '../TitleText';
 
 import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
+import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
+import { validateHelper } from '~/utils/validateHelper';
 
 const InputCardUser = () => {
   const { control, getValues } = useFormContext();
   const currentInputLength = getValues('cardUser')
     ? getValues('cardUser').length
     : 0;
+
   const MAX_LENGTH = 30;
 
   return (
@@ -26,7 +29,10 @@ const InputCardUser = () => {
         <InputWrapper>
           <Controller
             name='cardUser'
-            rules={{ maxLength: MAX_LENGTH }}
+            rules={{
+              validate: (value) =>
+                validateHelper(cardRegsitFormValidate.cardUser, value),
+            }}
             control={control}
             render={({ field: { onChange } }) => (
               <Input

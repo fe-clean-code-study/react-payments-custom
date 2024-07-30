@@ -6,6 +6,8 @@ import TitleText from '../TitleText';
 
 import { Card, CardBody, CardHeader, InputWrapper } from '~/components';
 import { Input } from '~/components';
+import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
+import { validateHelper } from '~/utils/validateHelper';
 
 const InputCardNumbers = () => {
   const { control, getFieldState, formState } = useFormContext();
@@ -32,8 +34,8 @@ const InputCardNumbers = () => {
                   name={`numbers.${index}`}
                   control={control}
                   rules={{
-                    validate: (value) => value.length === 4,
-                    required: true,
+                    validate: (value) =>
+                      validateHelper(cardRegsitFormValidate.numbers, value),
                   }}
                   render={({ field: { onChange } }) => (
                     <Input

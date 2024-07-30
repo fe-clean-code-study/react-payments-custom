@@ -8,6 +8,8 @@ import TitleText from '../TitleText';
 
 import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
 import { useModal } from '~/hooks';
+import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
+import { validateHelper } from '~/utils/validateHelper';
 
 const InputPassword = () => {
   const [index, setIndex] = useState(0);
@@ -50,9 +52,8 @@ const InputPassword = () => {
                   name={`password.${index}`}
                   control={control}
                   rules={{
-                    required: true,
                     validate: (value) =>
-                      value !== undefined && value.length === 1,
+                      validateHelper(cardRegsitFormValidate.password, value),
                   }}
                   render={({ field: { value, onChange, ref } }) => (
                     <Input

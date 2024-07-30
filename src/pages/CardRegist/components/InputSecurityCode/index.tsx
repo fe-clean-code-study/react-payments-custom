@@ -4,6 +4,8 @@ import * as S from './index.style';
 import TitleText from '../TitleText';
 
 import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
+import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
+import { validateHelper } from '~/utils/validateHelper';
 
 const InputSecurityCode = () => {
   const { control, getFieldState, formState } = useFormContext();
@@ -21,8 +23,8 @@ const InputSecurityCode = () => {
               name='securityCode'
               control={control}
               rules={{
-                required: true,
-                validate: (value) => value.length === 3,
+                validate: (value) =>
+                  validateHelper(cardRegsitFormValidate.securityCode, value),
               }}
               render={({ field: { onChange } }) => (
                 <Input

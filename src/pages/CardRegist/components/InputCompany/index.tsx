@@ -3,7 +3,8 @@ import { Controller, useFormContext } from 'react-hook-form';
 import * as S from './index.style';
 
 import { CompanySelection, DeemBackground } from '~/components';
-import { cardCompany } from '~/constants';
+import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
+import { validateHelper } from '~/utils/validateHelper';
 
 interface InputCompanyProps {
   isOpen: boolean;
@@ -22,8 +23,8 @@ const InputCompany = ({ isOpen, close }: InputCompanyProps) => {
               name='company'
               control={control}
               rules={{
-                required: true,
-                validate: (value) => value in cardCompany,
+                validate: (value) =>
+                  validateHelper(cardRegsitFormValidate.company, value),
               }}
               render={({ field: { onChange } }) => (
                 <CompanySelection onClick={onChange} />

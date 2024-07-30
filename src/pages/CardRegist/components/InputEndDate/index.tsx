@@ -5,6 +5,8 @@ import * as S from './index.style';
 import TitleText from '../TitleText';
 
 import { Card, CardBody, CardHeader, InputWrapper, Input } from '~/components';
+import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
+import { validateHelper } from '~/utils/validateHelper';
 
 const InputEndDate = () => {
   const { control, getFieldState, formState } = useFormContext();
@@ -21,7 +23,10 @@ const InputEndDate = () => {
           <InputWrapper isInvalidation={invalid}>
             <Controller
               name='endDate.month'
-              rules={{ minLength: 2, min: 1, max: 12, required: true }}
+              rules={{
+                validate: (value) =>
+                  validateHelper(cardRegsitFormValidate.endDate.month, value),
+              }}
               control={control}
               render={({ field: { onChange } }) => (
                 <Input
@@ -41,7 +46,10 @@ const InputEndDate = () => {
             <Controller
               name='endDate.day'
               control={control}
-              rules={{ minLength: 2, min: 1, max: 31, required: true }}
+              rules={{
+                validate: (value) =>
+                  validateHelper(cardRegsitFormValidate.endDate.day, value),
+              }}
               render={({ field: { onChange } }) => (
                 <Input
                   ref={(element) => (InputRefArray.current[1] = element)}
