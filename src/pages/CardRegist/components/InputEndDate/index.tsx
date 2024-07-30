@@ -21,7 +21,7 @@ const InputEndDate = () => {
           <InputWrapper isInvalidation={invalid}>
             <Controller
               name='endDate.month'
-              rules={{ minLength: 2, max: 12, required: true }}
+              rules={{ minLength: 2, min: 1, max: 12, required: true }}
               control={control}
               render={({ field: { onChange } }) => (
                 <Input
@@ -41,7 +41,7 @@ const InputEndDate = () => {
             <Controller
               name='endDate.day'
               control={control}
-              rules={{ minLength: 2, max: 31, required: true }}
+              rules={{ minLength: 2, min: 1, max: 31, required: true }}
               render={({ field: { onChange } }) => (
                 <Input
                   ref={(element) => (InputRefArray.current[1] = element)}
