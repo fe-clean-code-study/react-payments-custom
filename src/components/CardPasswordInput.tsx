@@ -1,5 +1,6 @@
 import { cardValidator } from "../domain";
 import { useBlur, useFocusNext } from "../hooks";
+import { filterDigits } from "../utils";
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
 
@@ -30,7 +31,7 @@ const CardPasswordInput = ({
             onChange={(e) => {
               handleCardPassword(e.target.value, index);
 
-              focusNext(e.target, (value) => value?.length === 1);
+              focusNext(e.target, (value) => filterDigits(value).length === 1);
             }}
             onBlur={(e) => e.target.value.length !== 1 && handleBlur()}
             ref={register}
