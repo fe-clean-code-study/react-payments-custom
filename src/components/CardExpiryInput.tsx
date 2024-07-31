@@ -1,6 +1,6 @@
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
-import { useBlur } from "../hooks";
+import { useBlur, useFocusNext } from "../hooks";
 import { cardValidator } from "../domain";
 
 interface CardExpiryInputProps {
@@ -17,6 +17,7 @@ const CardExpiryInput = ({
   handleExpiredYear,
 }: CardExpiryInputProps) => {
   const { blurred, handleBlur } = useBlur();
+  const { register, focusNext } = useFocusNext(["month", "year"]);
 
   return (
     <div className="input-container">
@@ -28,9 +29,15 @@ const CardExpiryInput = ({
           min={1}
           max={12}
           maxLength={cardValidator.expiry.maxLength}
+          name="month"
           value={expiredMonth}
-          onChange={(e) => handleExpiredMonth(e.target.value)}
-          onBlur={() => expiredMonth.length !== 2 && handleBlur()}
+          onChange={(e) => {
+            handleExpiredMonth(e.target.value);
+
+            focusNext(e.target, (value) => value?.length === 2);
+          }}
+          onBlur={(e) => e.target.value.length !== 2 && handleBlur()}
+          ref={register}
         />
         /
         <Input
@@ -38,8 +45,10 @@ const CardExpiryInput = ({
           placeholder="YY"
           maxLength={cardValidator.expiry.maxLength}
           value={expiredYear}
+          name="year"
           onChange={(e) => handleExpiredYear(e.target.value)}
           onBlur={handleBlur}
+          ref={register}
         />
       </div>
       <ValidationMessage

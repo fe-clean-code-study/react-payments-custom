@@ -1,7 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
-import { useBlur } from "../hooks";
+import { useBlur, useFocusNext } from "../hooks";
 import { cardValidator } from "../domain";
 
 interface CardNumberInputProps {
@@ -14,6 +14,12 @@ const CardNumberInput = ({
   handleCardNumber,
 }: CardNumberInputProps) => {
   const { blurred, handleBlur } = useBlur();
+  const { register, focusNext } = useFocusNext([
+    "num1",
+    "num2",
+    "num3",
+    "num4",
+  ]);
 
   return (
     <div className="input-container">
@@ -27,11 +33,14 @@ const CardNumberInput = ({
               maxLength={cardValidator.number.maxLength}
               type={index > 1 ? "password" : "text"}
               value={value}
-              onChange={(e) => handleCardNumber(e.target.value, index)}
-              onBlur={() =>
-                cardValidator.number.check(cardNumber.slice(0, index + 1)) &&
-                handleBlur()
-              }
+              name={`num${index + 1}`}
+              onChange={(e) => {
+                handleCardNumber(e.target.value, index);
+
+                focusNext(e.target, (value) => value?.length === 4);
+              }}
+              onBlur={(e) => e.target.value.length !== 4 && handleBlur()}
+              ref={register}
             />
           </Fragment>
         ))}

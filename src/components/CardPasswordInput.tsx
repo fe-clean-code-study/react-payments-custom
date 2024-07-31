@@ -1,5 +1,5 @@
 import { cardValidator } from "../domain";
-import { useBlur } from "../hooks";
+import { useBlur, useFocusNext } from "../hooks";
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
 
@@ -13,6 +13,7 @@ const CardPasswordInput = ({
   handleCardPassword,
 }: CardPasswordInputProps) => {
   const { blurred, handleBlur } = useBlur();
+  const { register, focusNext } = useFocusNext(["pw1", "pw2"]);
 
   return (
     <div className="input-container">
@@ -24,11 +25,14 @@ const CardPasswordInput = ({
             type="password"
             maxLength={cardValidator.password.maxLength}
             value={value}
-            onChange={(e) => handleCardPassword(e.target.value, index)}
-            onBlur={() =>
-              cardValidator.password.check(cardPassword.slice(0, index + 1)) &&
-              handleBlur()
-            }
+            name={`pw${index + 1}`}
+            onChange={(e) => {
+              handleCardPassword(e.target.value, index);
+
+              focusNext(e.target, (value) => value?.length === 1);
+            }}
+            onBlur={(e) => e.target.value.length !== 1 && handleBlur()}
+            ref={register}
           />
         ))}
         <div className="flex-center w-15">•</div>
