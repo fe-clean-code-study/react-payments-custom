@@ -4,11 +4,11 @@ import Card from "./Card";
 import Title from "./Title";
 import Icon from "./Icon";
 import Modal from "./Modal";
-import Input from "./Input";
 import CardNumberInput from "./CardNumberInput";
 import CardExpiryInput from "./CardExpiryInput";
 import CardUsernameInput from "./CardUsernameInput";
 import CardSecurityCodeInput from "./CardSecurityCodeInput";
+import CardPasswordInput from "./CardPasswordInput";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -101,28 +101,10 @@ function CardInfoEdit({
         cardSecurityCode={cardSecurityCode}
         handleCardSecurityCode={handleCardSecurityCode}
       />
-      <div className="input-container">
-        <span className="input-title">카드 비밀번호</span>
-        <div style={{ display: "flex", gap: "5px" }}>
-          <Input
-            className="input-basic w-15"
-            type="password"
-            maxLength={1}
-            value={cardPassword[0]}
-            onChange={(e) => handleCardPassword(e.target.value, 0)}
-          />
-          <Input
-            className="input-basic w-15"
-            type="password"
-            maxLength={1}
-            value={cardPassword[1]}
-            onChange={(e) => handleCardPassword(e.target.value, 1)}
-          />
-          <div className="flex-center w-15">•</div>
-          <div className="flex-center w-15">•</div>
-          <div style={{ height: "10px", paddingTop: "5px" }}></div>
-        </div>
-      </div>
+      <CardPasswordInput
+        cardPassword={cardPassword}
+        handleCardPassword={handleCardPassword}
+      />
       <div
         className="button-box"
         style={{

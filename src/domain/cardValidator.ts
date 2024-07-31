@@ -21,6 +21,11 @@ const cardValidator = {
     errorMessage: "보안 코드가 유효하지 않습니다.",
     maxLength: 3,
   },
+  password: {
+    check: (password: string[]) => !password.every((word) => word.length === 1),
+    errorMessage: "카드 비밀번호를 입력해주세요.",
+    maxLength: 1,
+  },
 };
 
 export default cardValidator;
