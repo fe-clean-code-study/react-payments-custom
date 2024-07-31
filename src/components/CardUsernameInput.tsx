@@ -19,13 +19,13 @@ const CardUsernameInput = ({
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <span className="input-title">카드 소유자 이름</span>
         <span className="input-title">
-          {username.length}/{cardValidator.number.maxLength}
+          {username.length}/{cardValidator.username.maxLength}
         </span>
       </div>
       <Input
         className="input-basic"
         placeholder="카드에 표시된 이름과 동일하게 입력하세요."
-        maxLength={cardValidator.number.maxLength}
+        maxLength={cardValidator.username.maxLength}
         value={username}
         onChange={(e) => handleUsername(e.target.value)}
         onBlur={handleBlur}
