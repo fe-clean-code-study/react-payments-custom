@@ -1,6 +1,7 @@
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
 import { useBlur } from "../hooks";
+import { cardValidator } from "../domain";
 
 interface CardExpiryInputProps {
   expiredMonth: string;
@@ -26,7 +27,7 @@ const CardExpiryInput = ({
           placeholder="MM"
           min={1}
           max={12}
-          maxLength={2}
+          maxLength={cardValidator.expiry.maxLength}
           value={expiredMonth}
           onChange={(e) => handleExpiredMonth(e.target.value)}
           onBlur={handleBlur}
@@ -35,15 +36,15 @@ const CardExpiryInput = ({
         <Input
           className="input-basic"
           placeholder="YY"
-          maxLength={2}
+          maxLength={cardValidator.expiry.maxLength}
           value={expiredYear}
           onChange={(e) => handleExpiredYear(e.target.value)}
           onBlur={handleBlur}
         />
       </div>
       <ValidationMessage
-        isValid={() => expiredMonth.length !== 2 || expiredYear.length !== 2}
-        errorMessage="카드 만료일이 유효하지 않습니다."
+        isValid={() => cardValidator.expiry.check(expiredMonth, expiredYear)}
+        errorMessage={cardValidator.expiry.errorMessage}
         showOnBlur={blurred}
       />
     </div>

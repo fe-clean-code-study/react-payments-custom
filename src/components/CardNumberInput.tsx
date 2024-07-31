@@ -24,7 +24,7 @@ const CardNumberInput = ({
             {index > 0 && "-"}
             <Input
               className="input-basic"
-              maxLength={4}
+              maxLength={cardValidator.number.maxLength}
               type={index > 1 ? "password" : "text"}
               value={value}
               onChange={(e) => handleCardNumber(e.target.value, index)}

@@ -1,6 +1,7 @@
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
 import { useBlur } from "../hooks";
+import { cardValidator } from "../domain";
 
 interface CardUsernameInputProps {
   username: string;
@@ -17,19 +18,21 @@ const CardUsernameInput = ({
     <div className="input-container">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <span className="input-title">카드 소유자 이름</span>
-        <span className="input-title">{username.length}/30</span>
+        <span className="input-title">
+          {username.length}/{cardValidator.number.maxLength}
+        </span>
       </div>
       <Input
         className="input-basic"
         placeholder="카드에 표시된 이름과 동일하게 입력하세요."
-        maxLength={30}
+        maxLength={cardValidator.number.maxLength}
         value={username}
         onChange={(e) => handleUsername(e.target.value)}
         onBlur={handleBlur}
       />
       <ValidationMessage
-        isValid={() => username.length < 1}
-        errorMessage="카드 소유자 이름을 입력해주세요."
+        isValid={() => cardValidator.username.check(username)}
+        errorMessage={cardValidator.username.errorMessage}
         showOnBlur={blurred}
       />
     </div>
