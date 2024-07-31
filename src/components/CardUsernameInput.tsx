@@ -29,6 +29,7 @@ const CardUsernameInput = ({
         value={username}
         onChange={(e) => handleUsername(e.target.value)}
         onBlur={handleBlur}
+        style={{ color: username.length > 0 ? "royalblue" : "" }}
       />
       <ValidationMessage
         isValid={() => cardValidator.username.check(username)}

@@ -33,6 +33,7 @@ const CardPasswordInput = ({
             }}
             onBlur={(e) => e.target.value.length !== 1 && handleBlur()}
             ref={register}
+            style={{ color: value.length === 1 ? "royalblue" : "" }}
           />
         ))}
         <div className="flex-center w-15">•</div>

@@ -26,6 +26,7 @@ const CardSecurityCodeInput = ({
           value={cardSecurityCode}
           onChange={(e) => handleCardSecurityCode(e.target.value)}
           onBlur={handleBlur}
+          style={{ color: cardSecurityCode.length === 3 ? "royalblue" : "" }}
         />
         <Icon name="questionCircle" />
       </div>

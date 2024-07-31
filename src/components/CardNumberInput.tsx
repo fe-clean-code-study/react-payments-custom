@@ -41,6 +41,7 @@ const CardNumberInput = ({
               }}
               onBlur={(e) => e.target.value.length !== 4 && handleBlur()}
               ref={register}
+              style={{ color: value.length === 4 ? "royalblue" : "" }}
             />
           </Fragment>
         ))}

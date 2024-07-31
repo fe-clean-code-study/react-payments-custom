@@ -38,6 +38,7 @@ const CardExpiryInput = ({
           }}
           onBlur={(e) => e.target.value.length !== 2 && handleBlur()}
           ref={register}
+          style={{ color: expiredMonth.length === 2 ? "royalblue" : "" }}
         />
         /
         <Input
@@ -49,6 +50,7 @@ const CardExpiryInput = ({
           onChange={(e) => handleExpiredYear(e.target.value)}
           onBlur={handleBlur}
           ref={register}
+          style={{ color: expiredYear.length === 2 ? "royalblue" : "" }}
         />
       </div>
       <ValidationMessage
