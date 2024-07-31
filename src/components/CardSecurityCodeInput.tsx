@@ -2,6 +2,7 @@ import { cardValidator } from "../domain";
 import { useBlur } from "../hooks";
 import Icon from "./Icon";
 import Input from "./Input";
+import Tooltip from "./Tooltip";
 import ValidationMessage from "./ValidationMessage";
 
 interface CardSecurityCodeInputProps {
@@ -28,7 +29,9 @@ const CardSecurityCodeInput = ({
           onBlur={handleBlur}
           style={{ color: cardSecurityCode.length === 3 ? "royalblue" : "" }}
         />
-        <Icon name="questionCircle" />
+        <Tooltip message="보안코드는 3자리 숫자로 입력해주세요.">
+          <Icon name="questionCircle" />
+        </Tooltip>
       </div>
       <ValidationMessage
         isValid={() => cardValidator.securityCode.check(cardSecurityCode)}
