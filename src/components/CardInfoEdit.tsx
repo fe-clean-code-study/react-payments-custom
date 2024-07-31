@@ -8,6 +8,7 @@ import Input from "./Input";
 import CardNumberInput from "./CardNumberInput";
 import CardExpiryInput from "./CardExpiryInput";
 import CardUsernameInput from "./CardUsernameInput";
+import CardSecurityCodeInput from "./CardSecurityCodeInput";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },
@@ -96,20 +97,10 @@ function CardInfoEdit({
         handleExpiredYear={handleExpiredYear}
       />
       <CardUsernameInput username={userName} handleUsername={handleUserName} />
-      <div className="input-container">
-        <span className="input-title">보안코드(CVC/CVV)</span>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <Input
-            className="input-basic w-25"
-            type="password"
-            maxLength={3}
-            value={cardSecurityCode}
-            onChange={(e) => handleCardSecurityCode(e.target.value)}
-          />
-          <Icon name="questionCircle" />
-        </div>
-        <div style={{ height: "10px", paddingTop: "5px" }}></div>
-      </div>
+      <CardSecurityCodeInput
+        cardSecurityCode={cardSecurityCode}
+        handleCardSecurityCode={handleCardSecurityCode}
+      />
       <div className="input-container">
         <span className="input-title">카드 비밀번호</span>
         <div style={{ display: "flex", gap: "5px" }}>

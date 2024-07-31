@@ -16,6 +16,11 @@ const cardValidator = {
     errorMessage: "카드 만료일이 유효하지 않습니다.",
     maxLength: 2,
   },
+  securityCode: {
+    check: (code: string) => code.length !== 3,
+    errorMessage: "보안 코드가 유효하지 않습니다.",
+    maxLength: 3,
+  },
 };
 
 export default cardValidator;
