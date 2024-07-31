@@ -27,11 +27,11 @@ interface CardInfoEditProps {
   onNavigateBack: () => void;
 }
 
-function CardInfoEdit({
+const CardInfoEdit = ({
   cardForm,
   onNextStep,
   onNavigateBack,
-}: CardInfoEditProps) {
+}: CardInfoEditProps) => {
   const {
     cardInfo: {
       cardNumber,
@@ -145,6 +145,6 @@ function CardInfoEdit({
       </Modal>
     </div>
   );
-}
+};
 
 export default CardInfoEdit;

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Title } from "../components";
 import { useCardInfo } from "../contexts";
 
-function CardListPage() {
+const CardListPage = () => {
   const navigate = useNavigate();
   const { cardInfoList, dispatch } = useCardInfo();
 
@@ -60,6 +60,6 @@ function CardListPage() {
       </div>
     </div>
   );
-}
+};
 
 export default CardListPage;

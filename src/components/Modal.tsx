@@ -3,11 +3,11 @@ interface ModalProps {
   onClose: () => void;
 }
 
-function Modal({
+const Modal = ({
   children,
   isOpen,
   onClose,
-}: React.PropsWithChildren<ModalProps>) {
+}: React.PropsWithChildren<ModalProps>) => {
   const stopModalEventPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
@@ -23,6 +23,6 @@ function Modal({
       )}
     </>
   );
-}
+};
 
 export default Modal;

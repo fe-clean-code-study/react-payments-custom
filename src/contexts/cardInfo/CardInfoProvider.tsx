@@ -2,7 +2,7 @@ import { useMemo, useReducer } from "react";
 import CardInfoContext from "./CardInfoContext";
 import cardInfoReducer from "./cardInfoReducer";
 
-function CardInfoProvider({ children }: React.PropsWithChildren) {
+const CardInfoProvider = ({ children }: React.PropsWithChildren) => {
   const [cardInfoList, dispatch] = useReducer(cardInfoReducer, []);
 
   const cardInfoContextValue = useMemo(
@@ -15,6 +15,6 @@ function CardInfoProvider({ children }: React.PropsWithChildren) {
       {children}
     </CardInfoContext.Provider>
   );
-}
+};
 
 export default CardInfoProvider;

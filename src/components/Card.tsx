@@ -17,7 +17,7 @@ interface EmptyCard extends BaseCard {
 
 type CardProps = FilledCard | EmptyCard;
 
-function Card(props: CardProps) {
+const Card = (props: CardProps) => {
   const handleClick = () => {
     const { onClick } = props;
 
@@ -74,6 +74,6 @@ function Card(props: CardProps) {
       )}
     </div>
   );
-}
+};
 
 export default Card;

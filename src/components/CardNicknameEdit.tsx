@@ -13,14 +13,14 @@ interface CardNicknameEditProps {
   onConfirm: () => void;
 }
 
-function CardNicknameEdit({
+const CardNicknameEdit = ({
   title,
   placeholder,
   cardInfo,
   nickname,
   onChangeNickname,
   onConfirm,
-}: CardNicknameEditProps) {
+}: CardNicknameEditProps) => {
   const { cardNumber, expiredMonth, expiredYear, userName, cardName, color } =
     cardInfo;
 
@@ -68,6 +68,6 @@ function CardNicknameEdit({
       </div>
     </div>
   );
-}
+};
 
 export default CardNicknameEdit;

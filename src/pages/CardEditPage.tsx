@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCardInfo } from "../contexts";
 import { useCardForm } from "../hooks";
 
-function CardEditPage() {
+const CardEditPage = () => {
   const navigate = useNavigate();
   const { dispatch } = useCardInfo();
   const [step, setStep] = useState<"init" | "nickname">("init");
@@ -52,6 +52,6 @@ function CardEditPage() {
       )}
     </>
   );
-}
+};
 
 export default CardEditPage;

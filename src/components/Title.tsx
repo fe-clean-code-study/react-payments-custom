@@ -4,12 +4,12 @@ interface TitleProps {
   style?: React.CSSProperties;
 }
 
-function Title({
+const Title = ({
   level,
   className,
   style,
   children,
-}: React.PropsWithChildren<TitleProps>) {
+}: React.PropsWithChildren<TitleProps>) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
 
   return (
@@ -17,6 +17,6 @@ function Title({
       {children}
     </Tag>
   );
-}
+};
 
 export default Title;

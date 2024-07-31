@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useCardInfo } from "../contexts";
 import { CardNicknameEdit } from "../components";
 
-function CardNicknameEditPage() {
+const CardNicknameEditPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { cardInfoList, dispatch } = useCardInfo();
@@ -34,6 +34,6 @@ function CardNicknameEditPage() {
       onConfirm={handleUpdateNickname}
     />
   );
-}
+};
 
 export default CardNicknameEditPage;

@@ -2,7 +2,7 @@ interface IconProps {
   name: "arrowLeft" | "questionCircle";
 }
 
-function Icon({ name }: IconProps) {
+const Icon = ({ name }: IconProps) => {
   if (name === "arrowLeft") {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -28,6 +28,6 @@ function Icon({ name }: IconProps) {
       </svg>
     );
   }
-}
+};
 
 export default Icon;

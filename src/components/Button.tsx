@@ -6,14 +6,14 @@ interface ButtonProps {
   style?: React.CSSProperties;
 }
 
-function Button({
+const Button = ({
   type = "button",
   disabled = false,
   children,
   onClick,
   className,
   style,
-}: React.PropsWithChildren<ButtonProps>) {
+}: React.PropsWithChildren<ButtonProps>) => {
   return (
     <button
       className={className}
@@ -33,6 +33,6 @@ function Button({
       {children}
     </button>
   );
-}
+};
 
 export default Button;
