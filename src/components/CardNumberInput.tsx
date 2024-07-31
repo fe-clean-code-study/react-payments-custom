@@ -1,6 +1,8 @@
+import { Fragment } from "react/jsx-runtime";
 import Input from "./Input";
 import ValidationMessage from "./ValidationMessage";
 import { useBlur } from "../hooks";
+import { cardValidator } from "../domain";
 
 interface CardNumberInputProps {
   cardNumber: string[];
@@ -17,43 +19,26 @@ const CardNumberInput = ({
     <div className="input-container">
       <span className="input-title">카드 번호</span>
       <div className="input-box">
-        <Input
-          className="input-basic"
-          maxLength={4}
-          value={cardNumber[0]}
-          onChange={(e) => handleCardNumber(e.target.value, 0)}
-          onBlur={handleBlur}
-        />
-        -
-        <Input
-          className="input-basic"
-          maxLength={4}
-          value={cardNumber[1]}
-          onChange={(e) => handleCardNumber(e.target.value, 1)}
-          onBlur={handleBlur}
-        />
-        -
-        <Input
-          className="input-basic"
-          type="password"
-          maxLength={4}
-          value={cardNumber[2]}
-          onChange={(e) => handleCardNumber(e.target.value, 2)}
-          onBlur={handleBlur}
-        />
-        -
-        <Input
-          className="input-basic"
-          type="password"
-          maxLength={4}
-          value={cardNumber[3]}
-          onChange={(e) => handleCardNumber(e.target.value, 3)}
-          onBlur={handleBlur}
-        />
+        {cardNumber.map((value, index) => (
+          <Fragment key={index}>
+            {index > 0 && "-"}
+            <Input
+              className="input-basic"
+              maxLength={4}
+              type={index > 1 ? "password" : "text"}
+              value={value}
+              onChange={(e) => handleCardNumber(e.target.value, index)}
+              onBlur={() =>
+                cardValidator.number.check(cardNumber.slice(0, index + 1)) &&
+                handleBlur()
+              }
+            />
+          </Fragment>
+        ))}
       </div>
       <ValidationMessage
-        isValid={() => !cardNumber.every((number) => number.length === 4)}
-        errorMessage="카드 번호가 유효하지 않습니다."
+        isValid={() => cardValidator.number.check(cardNumber)}
+        errorMessage={cardValidator.number.errorMessage}
         showOnBlur={blurred}
       />
     </div>
