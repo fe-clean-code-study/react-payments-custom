@@ -117,6 +117,7 @@ function CardInfoEdit({
           className="button-text"
           onClick={onNextStep}
           disabled={isValidForm()}
+          style={{ cursor: isValidForm() ? "not-allowed" : "pointer" }}
         >
           다음
         </Button>
