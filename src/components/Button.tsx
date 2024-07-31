@@ -1,4 +1,4 @@
-interface ButtonProps {
+export interface ButtonProps {
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
   onClick: () => void;
