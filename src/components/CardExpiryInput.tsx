@@ -30,7 +30,7 @@ const CardExpiryInput = ({
           maxLength={cardValidator.expiry.maxLength}
           value={expiredMonth}
           onChange={(e) => handleExpiredMonth(e.target.value)}
-          onBlur={handleBlur}
+          onBlur={() => expiredMonth.length !== 2 && handleBlur()}
         />
         /
         <Input
