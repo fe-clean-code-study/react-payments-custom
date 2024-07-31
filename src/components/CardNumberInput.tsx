@@ -37,7 +37,7 @@ const CardNumberInput = ({
               onChange={(e) => {
                 handleCardNumber(e.target.value, index);
 
-                focusNext(e.target, (value) => value?.length === 4);
+                focusNext(e.target, (value) => value.length === 4);
               }}
               onBlur={(e) => e.target.value.length !== 4 && handleBlur()}
               ref={register}

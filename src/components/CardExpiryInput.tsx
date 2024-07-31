@@ -34,7 +34,7 @@ const CardExpiryInput = ({
           onChange={(e) => {
             handleExpiredMonth(e.target.value);
 
-            focusNext(e.target, (value) => value?.length === 2);
+            focusNext(e.target, (value) => value.length === 2);
           }}
           onBlur={(e) => e.target.value.length !== 2 && handleBlur()}
           ref={register}
