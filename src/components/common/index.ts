@@ -5,3 +5,4 @@ export { default as Modal } from "./Modal";
 export { default as Icon } from "./Icon";
 export { default as Tooltip } from "./Tooltip";
 export { default as ValidationMessage } from "./ValidationMessage";
+export { default as Flex } from "./Flex";
