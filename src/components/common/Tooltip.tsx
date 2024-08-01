@@ -1,4 +1,4 @@
-import { useTooltip } from "../hooks";
+import { useTooltip } from "../../hooks";
 
 interface TooltipProps {
   message: string;
