@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Title } from "../components/common";
+import { Button, Flex, Title } from "../components/common";
 import { Card } from "../components/card";
 import { useCardInfo } from "../contexts";
 
@@ -16,15 +16,12 @@ const CardListPage = () => {
       <Title level={2} className="page-title mb-10">
         보유 카드
       </Title>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "15px",
-          paddingBottom: "50px",
-        }}
+      <Flex
+        direction="column"
+        justify="center"
+        align="center"
+        gap="15px"
+        style={{ paddingBottom: "50px" }}
       >
         {cardInfoList.map((cardInfo) => (
           <div
@@ -58,7 +55,7 @@ const CardListPage = () => {
         ))}
 
         <Card type="empty" onClick={() => navigate("card-edit")} />
-      </div>
+      </Flex>
     </div>
   );
 };
