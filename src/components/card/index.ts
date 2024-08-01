@@ -4,3 +4,5 @@ export { default as CardExpiryInput } from "./CardExpiryInput";
 export { default as CardUsernameInput } from "./CardUsernameInput";
 export { default as CardSecurityCodeInput } from "./CardSecurityCodeInput";
 export { default as CardPasswordInput } from "./CardPasswordInput";
+export { default as CardNameList } from "./CardNameList";
+export { default as CardNicknameInput } from "./CardNicknameInput";
