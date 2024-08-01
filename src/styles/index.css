@@ -5,11 +5,12 @@
 @import "./utils.css";
 
 body {
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   align-items: center;
   justify-content: center;
+  height: 100vh;
   background-color: #e5e5e5;
 }
 
@@ -28,7 +29,8 @@ input {
 
 .app {
   height: 100%;
-  padding: 16px 24px;
+  padding: 0 24px;
+  overflow-y: auto;
 }
 
 .page-title {
@@ -37,6 +39,6 @@ input {
   line-height: 22px;
   display: flex;
   align-items: center;
-
+  padding-top: 5px;
   color: #383838;
 }

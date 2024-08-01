@@ -1,5 +1,5 @@
 .input-container {
-  margin: 16px 0;
+  margin: 8px 0;
 }
 
 .input-box {
@@ -45,4 +45,26 @@
   padding: 4px 0;
 
   border-bottom: 1px solid #383838;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.error-vibrate {
+  animation: vibrate 0.3s linear;
 }
