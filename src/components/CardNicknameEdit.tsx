@@ -1,6 +1,6 @@
 import { CardInfo } from "../types";
-import { Card } from "./card";
-import { Button, Input, Title } from "./common";
+import { Card, CardNicknameInput } from "./card";
+import { Button, Flex, Title } from "./common";
 
 interface CardNicknameEditProps {
   title: string;
@@ -23,12 +23,13 @@ const CardNicknameEdit = ({
     cardInfo;
 
   return (
-    <div className="app flex-column-center">
-      <div className="flex-center">
+    <Flex direction="column" justify="center" align="center" className="app">
+      <Flex justify="center" align="center">
         <Title level={2} className="page-title mb-10">
           {title}
         </Title>
-      </div>
+      </Flex>
+
       <Card
         type="filled"
         size="big"
@@ -40,15 +41,11 @@ const CardNicknameEdit = ({
         nickname=""
         color={color}
       />
-      <div className="input-container flex-center w-100">
-        <Input
-          className="input-underline w-75"
-          placeholder={placeholder}
-          value={nickname}
-          maxLength={10}
-          onChange={(e) => onChangeNickname(e.target.value)}
-        />
-      </div>
+      <CardNicknameInput
+        placeholder={placeholder}
+        nickname={nickname}
+        onNicknameChange={onChangeNickname}
+      />
       <div
         className="button-box"
         style={{
@@ -61,7 +58,7 @@ const CardNicknameEdit = ({
           확인
         </Button>
       </div>
-    </div>
+    </Flex>
   );
 };
 

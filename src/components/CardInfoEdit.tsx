@@ -1,14 +1,15 @@
-import { CARD_NAME_LIST } from "../constants";
 import { useCardForm, useModal } from "../hooks";
 import {
   Card,
   CardExpiryInput,
+  CardNameList,
   CardNumberInput,
   CardPasswordInput,
   CardSecurityCodeInput,
   CardUsernameInput,
 } from "./card";
-import { Button, Icon, Modal, Title } from "./common";
+
+import { Button, Flex, Icon, Modal, Title } from "./common";
 
 interface CardInfoEditProps {
   cardForm: ReturnType<typeof useCardForm>;
@@ -43,9 +44,14 @@ const CardInfoEdit = ({
   } = cardForm;
   const { isOpen, onOpen, onClose } = useModal(true);
 
+  const handleCardNameClick = (name: string, color: string) => {
+    handleCardNameAndColor(name, color);
+    onClose();
+  };
+
   return (
     <div className="app">
-      <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+      <Flex align="center" gap="5px">
         <button
           style={{
             padding: 0,
@@ -62,7 +68,7 @@ const CardInfoEdit = ({
         <Title level={3} className="page-title">
           카드 추가
         </Title>
-      </div>
+      </Flex>
       <Card
         type="filled"
         size="small"
@@ -113,24 +119,7 @@ const CardInfoEdit = ({
       </div>
 
       <Modal isOpen={isOpen} onClose={onClose}>
-        <div className="flex-center" style={{ flexWrap: "wrap", gap: "10px" }}>
-          {CARD_NAME_LIST.map(({ name, color }) => (
-            <div
-              key={name}
-              className="modal-item-container pointer"
-              onClick={() => {
-                handleCardNameAndColor(name, color);
-                onClose();
-              }}
-            >
-              <div
-                className="modal-item-dot"
-                style={{ backgroundColor: color }}
-              ></div>
-              <span className="modal-item-name">{name}</span>
-            </div>
-          ))}
-        </div>
+        <CardNameList onCardNameClick={handleCardNameClick} />
       </Modal>
     </div>
   );
