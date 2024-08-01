@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Title } from "../components";
+import { Button, Title } from "../components/common";
+import { Card } from "../components/card";
 import { useCardInfo } from "../contexts";
 
 const CardListPage = () => {

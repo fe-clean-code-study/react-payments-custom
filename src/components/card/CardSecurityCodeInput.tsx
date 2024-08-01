@@ -1,9 +1,6 @@
-import { cardValidator } from "../domain";
-import { useBlur } from "../hooks";
-import Icon from "./Icon";
-import Input from "./Input";
-import Tooltip from "./Tooltip";
-import ValidationMessage from "./ValidationMessage";
+import { cardValidator } from "../../domain";
+import { useBlur } from "../../hooks";
+import { Icon, Input, Tooltip, ValidationMessage } from "../common";
 
 interface CardSecurityCodeInputProps {
   cardSecurityCode: string;

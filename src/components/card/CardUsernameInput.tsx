@@ -1,7 +1,6 @@
-import Input from "./Input";
-import ValidationMessage from "./ValidationMessage";
-import { useBlur } from "../hooks";
-import { cardValidator } from "../domain";
+import { useBlur } from "../../hooks";
+import { cardValidator } from "../../domain";
+import { Input, ValidationMessage } from "../common";
 
 interface CardUsernameInputProps {
   username: string;

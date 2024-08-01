@@ -1,14 +1,13 @@
 import { useCardForm, useModal } from "../hooks";
-import Button from "./Button";
-import Card from "./Card";
-import Title from "./Title";
-import Icon from "./Icon";
-import Modal from "./Modal";
-import CardNumberInput from "./CardNumberInput";
-import CardExpiryInput from "./CardExpiryInput";
-import CardUsernameInput from "./CardUsernameInput";
-import CardSecurityCodeInput from "./CardSecurityCodeInput";
-import CardPasswordInput from "./CardPasswordInput";
+import {
+  Card,
+  CardExpiryInput,
+  CardNumberInput,
+  CardPasswordInput,
+  CardSecurityCodeInput,
+  CardUsernameInput,
+} from "./card";
+import { Button, Icon, Modal, Title } from "./common";
 
 const CARD_NAME_LIST = [
   { name: "찬욱 카드", color: "#E24141" },

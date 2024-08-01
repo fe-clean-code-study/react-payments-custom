@@ -1,5 +1,5 @@
-import { formatCardNumber, formatExpiredDate } from "../domain";
-import { CardInfo } from "../types";
+import { formatCardNumber, formatExpiredDate } from "../../domain";
+import { CardInfo } from "../../types";
 
 interface BaseCard {
   type: "filled" | "empty";

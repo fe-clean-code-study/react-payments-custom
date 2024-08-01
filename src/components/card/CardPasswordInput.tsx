@@ -1,8 +1,7 @@
-import { cardValidator } from "../domain";
-import { useBlur, useFocusNext } from "../hooks";
-import { filterDigits } from "../utils";
-import Input from "./Input";
-import ValidationMessage from "./ValidationMessage";
+import { cardValidator } from "../../domain";
+import { useBlur, useFocusNext } from "../../hooks";
+import { filterDigits } from "../../utils";
+import { Input, ValidationMessage } from "../common";
 
 interface CardPasswordInputProps {
   cardPassword: string[];

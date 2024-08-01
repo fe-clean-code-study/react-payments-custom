@@ -1,8 +1,6 @@
 import { CardInfo } from "../types";
-import Button from "./Button";
-import Card from "./Card";
-import Input from "./Input";
-import Title from "./Title";
+import { Card } from "./card";
+import { Button, Input, Title } from "./common";
 
 interface CardNicknameEditProps {
   title: string;
@@ -62,9 +60,6 @@ const CardNicknameEdit = ({
         <Button className="button-text" onClick={onConfirm}>
           확인
         </Button>
-        {/* <span className="button-text pointer" onClick={onConfirm}>
-          확인
-        </span> */}
       </div>
     </div>
   );
