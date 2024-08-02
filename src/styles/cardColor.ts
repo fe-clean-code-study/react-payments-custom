@@ -1,6 +1,6 @@
 import { CardCompany } from '../types';
 
-const cardColor: Record<CardCompany, string> = {
+const cardColor: Record<CardCompany, string> & { none: string } = {
   none: '#94dacd',
   suyeon: '#E24141',
   sejin: '#547CE4',

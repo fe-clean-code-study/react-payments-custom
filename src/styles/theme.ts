@@ -1,6 +1,7 @@
 import { Theme } from '@emotion/react';
-import color from './color';
+
 import cardColor from './cardColor';
+import color from './color';
 
 const theme: Theme = {
   color,

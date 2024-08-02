@@ -35,7 +35,6 @@ export const CreditCard = styled.div<CreditCardProps>`
     company ? theme.cardColor[company] : theme.cardColor.none};
   box-shadow: 3px 3px 5px ${({ theme }) => theme.color.blackAlpha30};
 
-  user-select: ${({ company }) => (company === 'none' ? 'none' : 'auto')};
   border-radius: 5px;
   padding: 10px 20px;
 

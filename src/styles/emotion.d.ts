@@ -1,7 +1,6 @@
 import '@emotion/react';
-import color from './color';
 import cardColor from './cardColor';
-import { CardCompany } from '../types';
+import color from './color';
 
 export type Color = typeof color;
 export type CardColor = typeof cardColor;
@@ -12,7 +11,7 @@ declare module '@emotion/react' {
       [key in keyof Color]: string;
     };
     cardColor: {
-      [key in CardCompany]: string;
+      [key in cardColor]: string;
     };
   }
 }
