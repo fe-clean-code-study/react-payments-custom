@@ -17,10 +17,7 @@ const KeypadModal = ({ isOpen, close, onSelect }: KeypadModalProps) => {
     isOpen && (
       <DeemBackground onClose={close}>
         <S.KeypadContainer>
-          <Keypad
-            onClick={onSelect}
-            numbers={suffle<number, 10>(keypadNumbers)}
-          />
+          <Keypad onClick={onSelect} numbers={suffle(keypadNumbers)} />
         </S.KeypadContainer>
       </DeemBackground>
     )
