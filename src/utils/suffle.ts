@@ -1,4 +1,8 @@
-const suffle = <T extends unknown[]>(arr: T) => {
+import { TupleOfLength } from '~/types';
+
+const suffle = <T, N extends number>(
+  arr: TupleOfLength<N, T>,
+): TupleOfLength<N, T> => {
   const suffledArray = [...arr];
 
   for (let i = suffledArray.length - 1; i > 0; i--) {
@@ -6,7 +10,8 @@ const suffle = <T extends unknown[]>(arr: T) => {
 
     [suffledArray[i], suffledArray[j]] = [suffledArray[j], suffledArray[i]];
   }
-  return suffledArray;
+
+  return suffledArray as TupleOfLength<N, T>;
 };
 
 export default suffle;

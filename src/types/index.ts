@@ -2,10 +2,6 @@ import { cardCompany } from '../constants';
 
 export type CardCompany = keyof typeof cardCompany;
 
-export type CardNumber = [string, string, string, string];
-
-export type CardPassword = [string, string];
-
 export interface CardEndDate {
   month: string;
   day: string;
@@ -28,15 +24,12 @@ export interface CardForm extends Omit<RegisteredCard, 'id'> {
   password: CardPassword;
 }
 
-export type KeypadNumbers = [
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-];
+export type TupleOfLength<N extends number, T = unknown> = [T, ...T[]] & {
+  length: N;
+};
+
+export type CardNumber = TupleOfLength<4, string>;
+
+export type CardPassword = TupleOfLength<2, string>;
+
+export type KeypadNumbers = TupleOfLength<10, number>;
