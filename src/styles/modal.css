@@ -9,6 +9,11 @@
   align-items: center;
   flex-wrap: wrap;
 
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
   background: #fff;
   z-index: 10;
 }
