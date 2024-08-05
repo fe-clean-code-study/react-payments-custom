@@ -1,6 +1,6 @@
 import { CSSProperties, PropsWithChildren } from "react";
+import { useResponsiveValue } from "../../hooks/common/useResponsiveValue";
 import { ResponsiveValue } from "../../utils/responsive";
-import { createFlexStyle } from "./Flex.css";
 
 export interface FlexProps {
   direction?: ResponsiveValue<"row" | "column">;
@@ -22,14 +22,17 @@ export const Flex = ({
   align = "stretch",
   wrap = "nowrap",
   gap = 0,
+  style,
 }: PropsWithChildren<FlexProps>) => {
-  const flexStyle = createFlexStyle({
-    direction,
-    justify,
-    align,
-    wrap,
-    gap,
-  });
+  const flexStyle: CSSProperties = {
+    display: "flex",
+    flexDirection: useResponsiveValue(direction, "row"),
+    justifyContent: useResponsiveValue(justify, "flex-start"),
+    alignItems: useResponsiveValue(align, "stretch"),
+    flexWrap: useResponsiveValue(wrap, "nowrap"),
+    gap: useResponsiveValue(gap, 0),
+    ...(typeof style === "object" && !("mobile" in style) ? style : {}),
+  };
 
-  return <div className={flexStyle}>{children}</div>;
+  return <div style={flexStyle}>{children}</div>;
 };
