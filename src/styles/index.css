@@ -26,6 +26,22 @@ input {
   border-radius: 15px;
 }
 
+:root {
+  --current-breakpoint: mobile;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --current-breakpoint: tablet;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --current-breakpoint: desktop;
+  }
+}
+
 .app {
   height: 100%;
   padding: 16px 24px;
