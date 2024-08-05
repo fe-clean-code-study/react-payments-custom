@@ -5,11 +5,11 @@ import {useRouter} from "../../../libs/router";
 import {Input, InputContainer, Label} from '../../components/input'
 import CardInputWrapper from "./CardInputWrapper.tsx";
 import ModalInput from "../../components/input/ModalInput.tsx";
-import {HTMLAttributes} from "react";
+import CardTypeSelector from "./CardTypeSelector.tsx";
 
-export default function CreateForm() {
+export default function CreateCardForm() {
   const { addCard } = usePayments()
-  const { register, handleSubmit } = useFormContext<ICard>()
+  const { register, handleSubmit, watch, setValue } = useFormContext<ICard>()
   const router = useRouter()
 
   const onSubmit = (formData: ICard) => {
@@ -19,7 +19,11 @@ export default function CreateForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <ModalInput inputProps={register('type')}>hello..</ModalInput>
+      <ModalInput inputProps={register('type')}>
+        <CardTypeSelector cardType={watch('type') as string} onSelect={(type) => {
+          setValue('type', type)
+        }}/>
+      </ModalInput>
       <CardInputWrapper title='카드 번호'>
         {
           Array.from({length: 4}).map((_, index) => (

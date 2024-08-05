@@ -1,8 +1,8 @@
 import useForm from "../../../libs/form/useForm.ts";
-import {ICard} from "../type.ts";
+import {ICard} from "../../types/paymentTypes.ts";
 import {createCardFormOptions, initialCard} from "./createCardFormOptions.ts";
 import {FormProvider} from "../../../libs/form";
-import CreateForm from "./CreateForm.tsx";
+import CreateCardForm from "./CreateCardForm.tsx";
 import Card from "../Card.tsx";
 
 export default function Page() {
@@ -13,7 +13,7 @@ export default function Page() {
     <div>
       <Card {...cardValues}/>
       <FormProvider formMethods={formMethods}>
-        <CreateForm />
+        <CreateCardForm />
       </FormProvider>
     </div>
   )

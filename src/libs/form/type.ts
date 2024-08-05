@@ -40,7 +40,7 @@ export interface UseFormReturnType<T> {
     type?: string;
     defaultValue?: string;
   };
-  watch: (key?: FormKey<T>) => string | T;
+  watch: (key?: FormKey<T>) => typeof key extends undefined ? T : string;
   setValue: (key: FormKey<T>, value: unknown) => void;
   getValues: (key?: FormKey<T>) => string | T;
   handleSubmit: (submitFn: (formData: T) => void) => (e: React.FormEvent) => void;
