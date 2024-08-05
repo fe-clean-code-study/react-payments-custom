@@ -1,13 +1,17 @@
-import { style } from "@vanilla-extract/css";
 import { isObject } from "./isObject";
 import { BreakpointAlias } from "../constants/breakpoint";
-import { vars } from "../styles/breakpointTheme.css";
 
 type ResponsiveValueConfig<T = string> = {
   [Breakpoint in BreakpointAlias]?: T;
 };
 
 export type ResponsiveValue<T> = T | ResponsiveValueConfig<T>;
+
+const breakpoints = {
+  mobile: 0,
+  tablet: 768,
+  desktop: 1024,
+};
 
 const isResponsiveValueConfig = <T>(
   value: unknown
@@ -20,29 +24,32 @@ const isResponsiveValueConfig = <T>(
 
 export const getCurrentBreakpoint = (): BreakpointAlias => {
   return getComputedStyle(document.documentElement)
-    .getPropertyValue("--currentBreakpoint")
+    .getPropertyValue("--current-breakpoint")
     .trim() as BreakpointAlias;
 };
 
 export const createResponsiveStyle = <T extends string | number>(
   property: string,
   value: ResponsiveValue<T>
-) => {
+): string => {
   if (!isResponsiveValueConfig(value)) {
-    return style({ [property]: value });
+    return `${property}: ${value};`;
   }
 
-  return style({
-    [property]: value.mobile,
-    "@media": {
-      [`(min-width: ${vars.breakpoints.tablet})`]: {
-        [property]: value.tablet,
-      },
-      [`(min-width: ${vars.breakpoints.desktop})`]: {
-        [property]: value.desktop,
-      },
-    },
-  });
+  const breakpointEntries = Object.entries(breakpoints) as [
+    BreakpointAlias,
+    number
+  ][];
+  return breakpointEntries.reduce((acc, [breakpoint, minWidth], index) => {
+    if (value[breakpoint] !== undefined) {
+      if (index === 0) {
+        acc += `${property}: ${value[breakpoint]};`;
+      } else {
+        acc += `@media (min-width: ${minWidth}px) { ${property}: ${value[breakpoint]}; }`;
+      }
+    }
+    return acc;
+  }, "");
 };
 
 export const getResponsiveValue = <T>(
