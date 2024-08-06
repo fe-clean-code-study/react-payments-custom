@@ -6,8 +6,8 @@ interface ModalInputProps {
   inputProps: HTMLAttributes<HTMLInputElement>
 }
 
-const ModalInput = forwardRef(
-  ({ children, inputProps }: ModalInputProps, ref) => {
+const ModalInput = forwardRef<HTMLInputElement, ModalInputProps>(
+  ({ children, inputProps }, ref) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     const handleFocus = () => {
@@ -33,7 +33,7 @@ const ModalInput = forwardRef(
             <div className='modal-dimmed'>
               <div className='modal'>{children}</div>
             </div>,
-            AppContainer,
+            AppContainer!,
           )}
       </>
     )

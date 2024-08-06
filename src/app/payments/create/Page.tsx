@@ -10,7 +10,7 @@ export default function Page() {
     formOptions: createCardFormOptions,
     defaultValues: initialCard,
   })
-  const cardValues = formMethods.watch()
+  const cardValues = formMethods.watchAll()
 
   return (
     <div>

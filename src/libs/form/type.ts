@@ -6,10 +6,10 @@ export type FormKey<ObjectType> = ObjectType extends object
         infer ItemType
       >
         ? ItemType extends object
-          ? `${PropertyName & string}.${number}.${FormKey<ItemType>}`
+          ? `${PropertyName & string}.${number}.${FormKey<ItemType> & string}`
           : `${PropertyName & string}.${number}`
         : ObjectType[PropertyName] extends object | undefined
-          ? `${PropertyName & string}.${FormKey<ObjectType[PropertyName]>}`
+          ? `${PropertyName & string}.${FormKey<ObjectType[PropertyName]> & string}`
           : PropertyName
     }[keyof ObjectType]
   : never
@@ -24,26 +24,40 @@ export interface IFormData {
   [key: string]: unknown
 }
 
-export interface IFormOptions<T> {
-  [key: FormKey<T>]: {
-    type?: HTMLInputTypeAttribute
-    default?: unknown
-    check?: (value: unknown) => boolean
-    nextField?: FormKey<T>
-  }
-}
+// export interface IFormOptions<T> {
+//   [key: FormKey<T>]: {
+//     type?: HTMLInputTypeAttribute
+//     default?: unknown
+//     check?: (value: unknown) => boolean
+//     nextField?: FormKey<T>
+//   }
+// }
+
+export type IFormOptions<T> = Partial<
+  Record<
+    FormKey<T>,
+    {
+      type?: HTMLInputTypeAttribute
+      default?: string
+      check?: (value: string) => boolean
+      nextField?: FormKey<T>
+    }
+  >
+>
 
 export interface UseFormReturnType<T> {
   register: (key: FormKey<T> | string) => {
-    name: string
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     ref: (element: HTMLInputElement | null) => void
-    type?: string
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     defaultValue?: string
+    name: string
+    type?: React.HTMLInputTypeAttribute
   }
-  watch: (key?: FormKey<T>) => typeof key extends undefined ? T : string
-  setValue: (key: FormKey<T>, value: unknown) => void
-  getValues: (key?: FormKey<T>) => string | T
+  watch: (key: FormKey<T>) => T extends unknown ? unknown : string
+  watchAll: () => T extends unknown ? unknown : T
+  setValue: (key: FormKey<T>, value: string) => void
+  getValue: (key: FormKey<T>) => T extends unknown ? unknown : string
+  getValues: () => T extends unknown ? unknown : T
   handleSubmit: (
     submitFn: (formData: T) => void,
   ) => (e: React.FormEvent) => void
