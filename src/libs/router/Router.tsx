@@ -14,8 +14,19 @@ export const Router = ({ children }: IRouterProviderProps) => {
   const depth = parentRouteContext === null ? 0 : parentRouteContext.depth + 1
 
   const routes: IRouteType[] = React.Children.toArray(children)
-    .filter(({ type }) => type === Route)
-    .map(({ props: { path, element, ...data } }) => ({ path, element, data }))
+    .filter(
+      (
+        child,
+      ): child is React.ReactElement<{
+        path: string
+        element: React.ReactNode
+      }> => React.isValidElement(child) && child.type === Route,
+    )
+    .map(({ props: { path, element, ...data } }) => ({
+      path,
+      element,
+      data,
+    }))
 
   const [location, setLocation] = useState(window.location.pathname)
 
@@ -31,7 +42,7 @@ export const Router = ({ children }: IRouterProviderProps) => {
           path ===
           (locationSegments.length === depth ? '/' : locationSegments[depth])
         )
-      }) ?? {},
+      }),
     [depth, location, routes],
   )
 

@@ -3,9 +3,14 @@ import { useContext } from 'react'
 import { RouterContext } from './Router.tsx'
 
 export default function Route({ path, element }: TRouteProps) {
-  const { currentRoute } = useContext(RouterContext)
+  const routerContext = useContext(RouterContext)
+  if (!routerContext) {
+    throw new Error('RouterContext must be provided')
+  }
 
-  if (path === currentRoute.path) {
+  const { currentRoute } = routerContext
+
+  if (path === currentRoute?.path) {
     return element
   } else {
     return null
