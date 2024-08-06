@@ -24,7 +24,7 @@ const ModalInput = forwardRef<HTMLInputElement, ModalInputProps>(
         <input
           ref={ref}
           onFocus={handleFocus}
-          onBlur={handleCloseModal}
+          // onBlur={handleCloseModal} TODO : 외부 클릭할때로 변경
           {...inputProps}
           style={{ width: 0, height: 0, opacity: 0 }}
         />

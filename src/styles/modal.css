@@ -45,6 +45,11 @@
     width: 2.8rem;
     height: 2.8rem;
     background-color: #94dacd;
+    cursor: pointer;
+}
+
+.modal-item-dot:hover {
+    transform: scale(1.02);
 }
 
 .modal-item-name {

@@ -55,9 +55,10 @@ export default function CreateCardForm() {
           {...register('owner')}
         />
       </CardInputWrapper>
-      <CardInputWrapper title='보안코드(CVC/CVV)'>
+      <InputContainer>
+        <Label>보안코드(CVC/CVV)</Label>
         <Input className='w-25' {...register('securityCode')} />
-      </CardInputWrapper>
+      </InputContainer>
       <InputContainer>
         <Label>카드 비밀번호</Label>
         {Array.from({ length: 4 }).map((_, index) => (

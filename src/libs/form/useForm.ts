@@ -62,7 +62,10 @@ const useForm = <T extends Record<never, unknown>>({
 
   const setValue = (key: FormKey<T>, value: string) => {
     if (inputRef.current[key]) {
-      inputRef.current[key].value = value
+      inputRef.current[key].setAttribute('value', value)
+      inputRef.current[key].dispatchEvent(
+        new Event('change', { bubbles: true }),
+      )
     }
   }
 

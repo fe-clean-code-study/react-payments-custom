@@ -24,6 +24,7 @@ const makeFormValues = <T>(
     }, result)
   })
 
+  console.log(inputValues, result)
   return result
 }
 

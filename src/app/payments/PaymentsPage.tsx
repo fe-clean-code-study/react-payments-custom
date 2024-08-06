@@ -1,9 +1,9 @@
 import { Route, Router } from '../../libs/router'
-import ListPage from './list/ListPage.tsx'
-import EditPage from './edit/EditPage.tsx'
 import Header from '../../components/Header.tsx'
 import { PaymentsProvider } from './paymentsContext.tsx'
-import { CreatePage } from './create'
+import CreatePage from './create/CreatePage.tsx'
+import ListPage from './list/ListPage.tsx'
+import EditPage from './edit/EditPage.tsx'
 
 export default function PaymentsPage() {
   return (
