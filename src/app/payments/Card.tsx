@@ -1,4 +1,5 @@
-import { ICard } from '../types/paymentTypes.ts'
+import { ICard } from '../../types/paymentTypes.ts'
+import { CARD_TYPES } from '../../constants/cardTypes.ts'
 
 export default function Card({
   type,
@@ -11,7 +12,10 @@ export default function Card({
   return (
     <>
       <div className='card-box'>
-        <div className='small-card'>
+        <div
+          className='small-card'
+          style={{ backgroundColor: CARD_TYPES[type]?.color }}
+        >
           <div className='card-top'>
             <span className='card-text'>{type}</span>
           </div>

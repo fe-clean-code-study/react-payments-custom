@@ -45,7 +45,7 @@ export type IFormOptions<T> = Partial<
   >
 >
 
-export interface UseFormReturnType<T> {
+export interface UseFormReturnType<T = null> {
   register: (key: FormKey<T> | string) => {
     ref: (element: HTMLInputElement | null) => void
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -53,11 +53,11 @@ export interface UseFormReturnType<T> {
     name: string
     type?: React.HTMLInputTypeAttribute
   }
-  watch: (key: FormKey<T>) => T extends unknown ? unknown : string
-  watchAll: () => T extends unknown ? unknown : T
+  watch: (key: FormKey<T>) => T extends null ? unknown : string
+  watchAll: () => T extends null ? unknown : T
   setValue: (key: FormKey<T>, value: string) => void
-  getValue: (key: FormKey<T>) => T extends unknown ? unknown : string
-  getValues: () => T extends unknown ? unknown : T
+  getValue: (key: FormKey<T>) => T extends null ? unknown : string
+  getValues: () => T extends null ? unknown : T
   handleSubmit: (
     submitFn: (formData: T) => void,
   ) => (e: React.FormEvent) => void

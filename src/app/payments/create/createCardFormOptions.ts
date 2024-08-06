@@ -1,5 +1,5 @@
 import { IFormOptions } from '../../../libs/form'
-import { ICard } from '../../types/paymentTypes.ts'
+import { ICard } from '../../../types/paymentTypes.ts'
 
 export const createCardFormOptions: IFormOptions<ICard> = {
   'cardNumbers.0.numbers': {

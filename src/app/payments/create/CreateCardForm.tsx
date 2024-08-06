@@ -1,11 +1,12 @@
 import { useFormContext } from '../../../libs/form'
-import { ICard } from '../../types/paymentTypes.ts'
+import { ICard } from '../../../types/paymentTypes.ts'
 import { usePayments } from '../paymentsContext.tsx'
 import { useRouter } from '../../../libs/router'
-import { Input, InputContainer, Label } from '../../components/input'
+import { Input, InputContainer, Label } from '../../../components/input'
 import CardInputWrapper from './CardInputWrapper.tsx'
-import ModalInput from '../../components/input/ModalInput.tsx'
+import ModalInput from '../../../components/input/ModalInput.tsx'
 import CardTypeSelector from './CardTypeSelector.tsx'
+import { CARD_TYPES } from '../../../constants/cardTypes.ts'
 
 export default function CreateCardForm() {
   const { addCard } = usePayments()
@@ -21,7 +22,15 @@ export default function CreateCardForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <ModalInput inputProps={register('type')}>
         <CardTypeSelector
-          cardType={watch('type') as string}
+          options={Object.entries(CARD_TYPES).slice(0, 4)}
+          cardType={watch('type')}
+          onSelect={(type) => {
+            setValue('type', type)
+          }}
+        />
+        <CardTypeSelector
+          options={Object.entries(CARD_TYPES).slice(4, 8)}
+          cardType={watch('type')}
           onSelect={(type) => {
             setValue('type', type)
           }}

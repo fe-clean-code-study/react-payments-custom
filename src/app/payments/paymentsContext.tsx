@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-import { ICard } from '../types/paymentTypes.ts'
+import { ICard } from '../../types/paymentTypes.ts'
 
 interface IPaymentContext {
   cards: Array<ICard>

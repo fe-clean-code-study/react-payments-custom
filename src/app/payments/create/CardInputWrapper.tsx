@@ -1,4 +1,4 @@
-import { InputBox, InputContainer, Label } from '../../components/input'
+import { InputBox, InputContainer, Label } from '../../../components/input'
 import React from 'react'
 
 interface CardInputWrapperProps {
