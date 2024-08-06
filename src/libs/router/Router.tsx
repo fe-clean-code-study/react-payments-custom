@@ -1,12 +1,6 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState
-} from "react";
-import {IRouterContextValue, IRouteType, TRouteType} from "./type.ts";
-import Route from "./Route.tsx";
+import React, { createContext, useContext, useMemo, useState } from 'react'
+import { IRouterContextValue, IRouteType } from './type.ts'
+import Route from './Route.tsx'
 
 export const RouterContext = createContext<IRouterContextValue | null>(null)
 
@@ -23,20 +17,28 @@ export const Router = ({ children }: IRouterProviderProps) => {
     .filter(({ type }) => type === Route)
     .map(({ props: { path, element, ...data } }) => ({ path, element, data }))
 
-  const [location, setLocation] = useState(window.location.pathname);
+  const [location, setLocation] = useState(window.location.pathname)
 
-  const currentRoute = useMemo(() => routes.find(({ path }) => {
-    const locationSegments = location
-      .split('/')
-      .map(segment => `/${segment}`)
-      .slice(1)
+  const currentRoute = useMemo(
+    () =>
+      routes.find(({ path }) => {
+        const locationSegments = location
+          .split('/')
+          .map((segment) => `/${segment}`)
+          .slice(1)
 
-    return path === (locationSegments.length === depth ? '/' : locationSegments[depth])
-  }) ?? {}, [depth, location, routes])
-
+        return (
+          path ===
+          (locationSegments.length === depth ? '/' : locationSegments[depth])
+        )
+      }) ?? {},
+    [depth, location, routes],
+  )
 
   return (
-    <RouterContext.Provider value={{ routes, depth, location, setLocation, currentRoute }}>
+    <RouterContext.Provider
+      value={{ routes, depth, location, setLocation, currentRoute }}
+    >
       {children}
     </RouterContext.Provider>
   )

@@ -1,16 +1,16 @@
 button {
-  border: none;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
 }
 
 .button-box {
-  width: 100%;
-  text-align: right;
+    width: 100%;
+    text-align: right;
 }
 
 .button-text {
-  margin-right: 10px;
+    margin-right: 10px;
 }

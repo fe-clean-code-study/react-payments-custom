@@ -1,5 +1,5 @@
-import {useContext, useEffect} from "react";
-import { RouterContext } from "./Router.tsx";
+import { useContext, useEffect } from 'react'
+import { RouterContext } from './Router.tsx'
 
 const useRouter = () => {
   const routerContext = useContext(RouterContext)
@@ -11,20 +11,20 @@ const useRouter = () => {
 
   useEffect(() => {
     const handlePopState = () => {
-      setLocation(window.location.pathname);
-    };
-    window.addEventListener('popstate', handlePopState);
+      setLocation(window.location.pathname)
+    }
+    window.addEventListener('popstate', handlePopState)
     return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, [setLocation]);
+      window.removeEventListener('popstate', handlePopState)
+    }
+  }, [setLocation])
 
   const go = (path: string | -1) => {
-    if (path === -1){
-      window.history.back();
-    }else{
-      window.history.pushState({}, '', path);
-      setLocation(path);
+    if (path === -1) {
+      window.history.back()
+    } else {
+      window.history.pushState({}, '', path)
+      setLocation(path)
     }
   }
 

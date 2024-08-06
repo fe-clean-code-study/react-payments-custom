@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react'
 
 type TRouterData = Record<string, string>
-
 
 export interface IRouteType {
   path: `/${string}`
