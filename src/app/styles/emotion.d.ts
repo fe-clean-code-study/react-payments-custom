@@ -1,6 +1,5 @@
 import '@emotion/react';
-import cardColor from './cardColor';
-import color from './color';
+import { color, cardColor } from './color';
 
 export type Color = typeof color;
 export type CardColor = typeof cardColor;
