@@ -1,4 +1,4 @@
-const suffle = <T extends unknown[]>(arr: T) => {
+const suffleArray = <T extends unknown[]>(arr: T) => {
   const suffledArray = [...arr];
 
   for (let i = suffledArray.length - 1; i > 0; i--) {
@@ -9,4 +9,4 @@ const suffle = <T extends unknown[]>(arr: T) => {
   return suffledArray as T;
 };
 
-export default suffle;
+export default suffleArray;
