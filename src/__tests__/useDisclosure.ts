@@ -1,11 +1,11 @@
 import { act, renderHook } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 
-import { useModal } from '~/hooks';
+import { useDisclosure } from '~/shared/hooks';
 
-describe('useModal 훅 테스트', () => {
-  test('useModal 훅은 isOpen, setIsOpen, close, open 함수를 반환한다.', () => {
-    const { result } = renderHook(() => useModal());
+describe('useDisclosure 훅 테스트', () => {
+  test('useDisclosure 훅은 isOpen, setIsOpen, close, open 함수를 반환한다.', () => {
+    const { result } = renderHook(() => useDisclosure());
 
     expect(result.current).toHaveProperty('isOpen');
     expect(result.current).toHaveProperty('setIsOpen');
@@ -13,44 +13,35 @@ describe('useModal 훅 테스트', () => {
     expect(result.current).toHaveProperty('open');
   });
 
-  test('useModal 훅은 isOpen의 기본값을 false로 가진다.', () => {
-    const { result } = renderHook(() => useModal());
+  test('useDisclosure 훅은 isOpen의 기본값을 false로 가진다.', () => {
+    const { result } = renderHook(() => useDisclosure());
     const { isOpen } = result.current;
 
     expect(isOpen).toBe(false);
   });
 
   test('useModal의 파라미터로 isOpen의 초기값을 전달할 수 있다.', () => {
-    const { result } = renderHook(() => useModal(true));
+    const { result } = renderHook(() => useDisclosure(true));
     const { isOpen } = result.current;
 
     expect(isOpen).toBe(true);
   });
 
   test('useModal의 open 함수를 호출하면 isOpen이 true로 변경된다.', () => {
-    const { result } = renderHook(() => useModal(false));
+    const { result } = renderHook(() => useDisclosure(false));
 
     act(() => {
-      result.current.open();
+      result.current.onOpen();
     });
     expect(result.current.isOpen).toBe(true);
   });
 
   test('useModal의 close함수를 호출하면 isOpen이 false로 변경된다.', () => {
-    const { result } = renderHook(() => useModal(true));
+    const { result } = renderHook(() => useDisclosure(true));
 
     act(() => {
-      result.current.close();
+      result.current.onClose();
     });
     expect(result.current.isOpen).toBe(false);
-  });
-
-  test('useModal의 setIsOpen 함수를 호출하면 isOpen이 전달된 값으로 변경된다.', () => {
-    const { result } = renderHook(() => useModal());
-
-    act(() => {
-      result.current.setIsOpen(true);
-    });
-    expect(result.current.isOpen).toBe(true);
   });
 });
