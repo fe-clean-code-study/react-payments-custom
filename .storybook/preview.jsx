@@ -1,6 +1,6 @@
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { ThemeProvider } from '@emotion/react';
-import theme from '../src/styles/theme';
+import { theme } from '../src/app/styles';
 
 export const decorators = [
   withThemeFromJSXProvider({
