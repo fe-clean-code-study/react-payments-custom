@@ -1,5 +1,7 @@
 import { ComponentProps, CSSProperties, PropsWithChildren } from 'react';
 
+import * as S from './Button.style';
+
 export interface LabelProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
@@ -10,9 +12,9 @@ const Label = ({
   ...props
 }: PropsWithChildren<LabelProps>) => {
   return (
-    <div style={{ width: '100%', ...style }} {...props}>
+    <S.Label style={{ ...style }} {...props}>
       {children}
-    </div>
+    </S.Label>
   );
 };
 
