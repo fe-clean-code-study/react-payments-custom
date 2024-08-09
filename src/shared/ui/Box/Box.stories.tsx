@@ -1,7 +1,7 @@
 import { Box, BoxProps } from './index';
 
 export default {
-  title: 'layouts/Box',
+  title: 'components/Box',
   component: Box,
   argTypes: {
     style: {
