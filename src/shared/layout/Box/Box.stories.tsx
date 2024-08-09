@@ -1,0 +1,25 @@
+import { Box, BoxProps } from './index';
+
+export default {
+  title: 'layouts/Box',
+  component: Box,
+  argTypes: {
+    style: {
+      control: 'object',
+    },
+    props: {
+      control: 'object',
+    },
+  },
+  args: {
+    style: {
+      width: '100px',
+      height: '100px',
+      backgroundColor: '#eee',
+    },
+  },
+};
+
+export const Root = ({ ...props }: BoxProps) => {
+  return <Box {...props} />;
+};
