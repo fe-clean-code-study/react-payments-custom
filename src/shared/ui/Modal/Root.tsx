@@ -1,11 +1,8 @@
-import { ComponentProps, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
-import { ModalProvider } from './context';
+import { ModalContextValue, ModalProvider } from './context';
 
-export interface RootProps extends ComponentProps<'div'> {
-  isOpen: boolean;
-  onClose: () => void;
-}
+export interface RootProps extends ModalContextValue {}
 
 const Root = ({ isOpen, onClose, children }: PropsWithChildren<RootProps>) => {
   return (
