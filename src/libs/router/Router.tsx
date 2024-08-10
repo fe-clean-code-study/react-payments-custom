@@ -20,9 +20,10 @@ export const Router = ({ children }: IRouterProviderProps) => {
       ): child is React.ReactElement<{
         path: string
         element: React.ReactNode
+        data: Record<string, string>
       }> => React.isValidElement(child) && child.type === Route,
     )
-    .map(({ props: { path, element, ...data } }) => ({
+    .map(({ props: { path, element, data = {} } }) => ({
       path,
       element,
       data,

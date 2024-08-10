@@ -28,7 +28,8 @@ const useRouter = () => {
     }
   }
 
-  return { location, go, path: currentRoute.path, data: currentRoute.data }
+  console.log(currentRoute)
+  return { location, go, path: currentRoute?.path, data: currentRoute?.data }
 }
 
 export default useRouter

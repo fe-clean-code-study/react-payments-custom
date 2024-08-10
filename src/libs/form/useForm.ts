@@ -21,6 +21,7 @@ const useForm = <T extends Record<never, unknown>>({
   const [watchValues, setWatchValues] = useState<TInputValues<T>>(
     {} as TInputValues<T>,
   )
+  const values = useRef<TInputValues<T>>({} as TInputValues<T>)
 
   let watchUsedAll = false
   let watchUsed = {} as TWatchUsed<T>
@@ -34,7 +35,8 @@ const useForm = <T extends Record<never, unknown>>({
     }
   }
 
-  const updateWatchValue = (key: FormKey<T>, value: string) => {
+  const updateValue = (key: FormKey<T>, value: string) => {
+    values.current[key] = value
     if (watchUsedAll || watchUsed[key]) {
       setWatchValues((prev) => ({ ...prev, [key]: value }))
     }
@@ -47,7 +49,7 @@ const useForm = <T extends Record<never, unknown>>({
 
       onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target
-        updateWatchValue(formKey, value)
+        updateValue(formKey, value)
         focusNextField(formKey, value)
       },
 
@@ -84,15 +86,7 @@ const useForm = <T extends Record<never, unknown>>({
   }
 
   const getValues = () => {
-    const values = Object.entries<HTMLInputElement | null>(
-      inputRef.current,
-    ).reduce((acc, [key, element]) => {
-      if (element) {
-        acc[key as FormKey<T>] = element.value
-      }
-      return acc
-    }, {} as TInputValues<T>)
-    return makeFormValues(values, defaultValues)
+    return makeFormValues(values.current, defaultValues)
   }
 
   const handleSubmit = (submitFn: (formData: T) => void) => {

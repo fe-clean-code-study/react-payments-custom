@@ -20,7 +20,7 @@ export default function CreateCardForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <ModalInput inputProps={register('type')}>
+      <ModalInput {...register('type')}>
         <CardTypeSelector
           options={Object.entries(CARD_TYPES).slice(0, 4)}
           cardType={watch('type')}

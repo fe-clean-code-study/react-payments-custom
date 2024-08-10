@@ -4,11 +4,10 @@ import React from 'react'
 export default function Header({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const {
-    data: { title },
-  } = useRouter()
+  const { data } = useRouter()
 
-  if (!title) return null
+  const pageTitle = data?.title
+  if (!pageTitle) return null
 
-  return <div {...props}>{title}</div>
+  return <div {...props}>{pageTitle}</div>
 }

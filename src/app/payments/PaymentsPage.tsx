@@ -12,8 +12,16 @@ export default function PaymentsPage() {
         <Router>
           <Header className='page-title' />
           <Route path='/' element={<ListPage />} />
-          <Route path='/create' element={<CreatePage />} title='카드 추가' />
-          <Route path='/edit' element={<EditPage />} title='별칭 수정' />
+          <Route
+            path='/create'
+            element={<CreatePage />}
+            data={{ title: '카드 추가' }}
+          />
+          <Route
+            path='/edit'
+            element={<EditPage />}
+            data={{ title: '별칭 수정' }}
+          />
         </Router>
       </PaymentsProvider>
     </div>

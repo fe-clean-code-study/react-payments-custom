@@ -1,43 +1,43 @@
-import React, { forwardRef, HTMLAttributes, useState } from 'react'
+import { forwardRef, useState } from 'react'
 import ReactDOM from 'react-dom'
+import useOutsideClick from '../../hooks/useOutsideClick.ts'
+import { SlotComponentProps } from '../../types/componentTypes.ts'
 
-interface ModalInputProps {
-  children: React.ReactNode
-  inputProps: HTMLAttributes<HTMLInputElement>
-}
+const ModalInput = forwardRef<
+  HTMLInputElement,
+  SlotComponentProps<HTMLInputElement>
+>(({ children, ...inputProps }, ref) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-const ModalInput = forwardRef<HTMLInputElement, ModalInputProps>(
-  ({ children, inputProps }, ref) => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
+  const handleFocus = () => {
+    setIsModalOpen(true)
+  }
 
-    const handleFocus = () => {
-      setIsModalOpen(true)
-    }
-    const handleCloseModal = () => {
-      setIsModalOpen(false)
-    }
+  const insideRef = useOutsideClick<HTMLDivElement>(() => {
+    setIsModalOpen(false)
+  })
 
-    const AppContainer = document.querySelector('.root')
+  const AppContainer = document.querySelector('.root')
 
-    return (
-      <>
-        <input
-          ref={ref}
-          onFocus={handleFocus}
-          // onBlur={handleCloseModal} TODO : 외부 클릭할때로 변경
-          {...inputProps}
-          style={{ width: 0, height: 0, opacity: 0 }}
-        />
-        {isModalOpen &&
-          ReactDOM.createPortal(
-            <div className='modal-dimmed'>
-              <div className='modal'>{children}</div>
-            </div>,
-            AppContainer!,
-          )}
-      </>
-    )
-  },
-)
+  return (
+    <>
+      <input
+        ref={ref}
+        onFocus={handleFocus}
+        {...inputProps}
+        style={{ width: 0, height: 0, opacity: 0 }}
+      />
+      {isModalOpen &&
+        ReactDOM.createPortal(
+          <div className='modal-dimmed'>
+            <div className='modal' ref={insideRef}>
+              {children}
+            </div>
+          </div>,
+          AppContainer!,
+        )}
+    </>
+  )
+})
 
 export default ModalInput

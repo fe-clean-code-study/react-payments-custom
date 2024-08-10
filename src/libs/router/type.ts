@@ -5,10 +5,8 @@ type TRouterData = Record<string, string>
 export interface IRouteType {
   path: string
   element: React.ReactNode
-  data: TRouterData
+  data?: TRouterData
 }
-
-export type TRouteProps = Omit<IRouteType, 'data'> & TRouterData
 
 export interface IRouterContextValue {
   depth: number
