@@ -2,11 +2,11 @@ import { createContext, useContext } from 'react'
 import { UseFormReturnType } from './type.ts'
 
 interface FormProviderProps {
-  formMethods: UseFormReturnType<unknown>
+  formMethods: UseFormReturnType<any>
   children: React.ReactNode
 }
 
-const FormContext = createContext<UseFormReturnType<unknown> | null>(null)
+const FormContext = createContext<UseFormReturnType<any> | null>(null)
 
 export function FormProvider({ children, formMethods }: FormProviderProps) {
   return (

@@ -6,6 +6,7 @@ import {
   TInputRef,
   TInputValues,
   TWatchUsed,
+  UseFormReturnType,
 } from './type'
 
 interface UseFormParams<T> {
@@ -16,7 +17,7 @@ interface UseFormParams<T> {
 const useForm = <T extends Record<never, unknown>>({
   formOptions,
   defaultValues,
-}: UseFormParams<T> = {}) => {
+}: UseFormParams<T> = {}): UseFormReturnType<T> => {
   const inputRef = useRef<TInputRef<T>>({} as TInputRef<T>)
   const [watchValues, setWatchValues] = useState<TInputValues<T>>(
     {} as TInputValues<T>,
@@ -82,7 +83,7 @@ const useForm = <T extends Record<never, unknown>>({
   }
 
   const getValue = (key: FormKey<T>) => {
-    return inputRef.current[key]?.value
+    return inputRef.current[key]?.value ?? ''
   }
 
   const getValues = () => {

@@ -53,11 +53,11 @@ export interface UseFormReturnType<T = null> {
     name: string
     type?: React.HTMLInputTypeAttribute
   }
-  watch: (key: FormKey<T>) => T extends null ? unknown : string
-  watchAll: () => T extends null ? unknown : T
+  watch: (key: FormKey<T>) => string
+  watchAll: () => T
   setValue: (key: FormKey<T>, value: string) => void
-  getValue: (key: FormKey<T>) => T extends null ? unknown : string
-  getValues: () => T extends null ? unknown : T
+  getValue: (key: FormKey<T>) => string
+  getValues: () => T
   handleSubmit: (
     submitFn: (formData: T) => void,
   ) => (e: React.FormEvent) => void
