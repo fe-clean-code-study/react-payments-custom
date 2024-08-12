@@ -34,6 +34,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+  font-size: 20px;
 `;
 
 export const Body = styled.div`
