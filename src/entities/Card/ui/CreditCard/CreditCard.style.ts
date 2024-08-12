@@ -1,26 +1,17 @@
 import styled from '@emotion/styled';
 
-import { CardCompany } from '~/types';
+import { Company } from '~/entities/Card/types';
 
 interface CreditCardProps {
   size: 'small' | 'big';
-  company?: CardCompany;
-  clickable: boolean;
+  company?: Company;
 }
 
 interface CardChipProps {
   size: 'small' | 'big';
 }
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin: 10px 0;
-`;
-
-export const CreditCard = styled.div<CreditCardProps>`
+export const Root = styled.div<CreditCardProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,16 +23,14 @@ export const CreditCard = styled.div<CreditCardProps>`
   font-size: ${({ size }) => (size === 'small' ? 12 : 16)}px;
 
   background: ${({ theme, company }) =>
-    company ? theme.cardColor[company] : theme.cardColor.none};
-  box-shadow: 3px 3px 5px ${({ theme }) => theme.color.blackAlpha30};
+    company ? theme.cardColor[company] : theme.cardColor.NONE};
+  box-shadow: 3px 3px 5px ${({ theme }) => theme.color.blackAlpha};
 
   border-radius: 5px;
   padding: 10px 20px;
-
-  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
 `;
 
-export const CardTop = styled.div`
+export const Top = styled.div`
   width: 100%;
   height: 100%;
 
@@ -49,17 +38,17 @@ export const CardTop = styled.div`
   align-items: center;
 `;
 
-export const CardChip = styled.div<CardChipProps>`
+export const Chip = styled.div<CardChipProps>`
   width: ${({ size }) => (size === 'small' ? 40 : 55.04)}px;
   height: ${({ size }) => (size === 'small' ? 26 : 35.77)}px;
   left: 20px;
   top: 40px;
 
-  background: ${({ theme }) => theme.color.darkYellow};
+  background: ${({ theme }) => theme.color.yellow500};
   border-radius: 4px;
 `;
 
-export const CardMiddle = styled.div`
+export const Center = styled.div`
   width: 100%;
   height: 100%;
 
@@ -68,7 +57,7 @@ export const CardMiddle = styled.div`
   gap: 5px;
 `;
 
-export const CardBottom = styled.div`
+export const Bottom = styled.div`
   width: 100%;
   height: 100%;
 

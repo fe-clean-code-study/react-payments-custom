@@ -1,43 +1,30 @@
 import { CARD_COMPANY } from '../constants';
 
-export type CardCompany = keyof typeof CARD_COMPANY;
+export type Company = keyof typeof CARD_COMPANY;
 
-export type CardNumber = [string, string, string, string];
+export type Numbers = [string, string, string, string];
 
-export type CardPassword = [string, string];
+export type Password = [string, string];
 
-export interface CardEndDate {
+export interface ExpirationDate {
   month: string;
-  day: string;
+  year: string;
 }
 
 export interface DefaultCard {
-  numbers: CardNumber;
-  endDate: CardEndDate;
+  numbers: Numbers;
+  expirationDate: ExpirationDate;
   cardUser?: string;
-  company: CardCompany;
+  company: Company;
 }
 
+// ! 이건 feature애 있어야 함
 export interface RegisteredCard extends DefaultCard {
   id: string;
-  cardAlias?: string;
+  alias?: string;
 }
 
 export interface CardForm extends Omit<RegisteredCard, 'id'> {
   securityCode: string;
-  password: CardPassword;
+  password: Password;
 }
-
-// ! 이거 옮겨야 함
-export type KeypadNumbers = [
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-];
