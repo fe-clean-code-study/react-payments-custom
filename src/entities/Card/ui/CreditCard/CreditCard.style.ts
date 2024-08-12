@@ -12,12 +12,14 @@ interface CardChipProps {
 }
 
 export const Root = styled.div<CreditCardProps>`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
 
+  padding: 10px 20px;
   width: ${({ size }) => (size === 'small' ? 208 : 290)}px;
   height: ${({ size }) => (size === 'small' ? 130 : 180)}px;
   font-size: ${({ size }) => (size === 'small' ? 12 : 16)}px;
@@ -27,7 +29,6 @@ export const Root = styled.div<CreditCardProps>`
   box-shadow: 3px 3px 5px ${({ theme }) => theme.color.blackAlpha};
 
   border-radius: 5px;
-  padding: 10px 20px;
 `;
 
 export const Top = styled.div`
@@ -68,14 +69,10 @@ export const Bottom = styled.div`
 export const CardNumberList = styled.div`
   display: flex;
   justify-content: space-around;
+  gap: 5px;
 `;
 
 export const CardNumberItem = styled.div`
-  min-width: 30px;
   flex-grow: 1;
   text-align: center;
 `;
-
-export const CardBottomLeft = styled.div``;
-
-export const CardBottomRight = styled.div``;

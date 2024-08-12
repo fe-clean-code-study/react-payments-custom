@@ -28,6 +28,7 @@ export default {
     },
   },
   args: {
+    size: 'small',
     numbers: ['1234', '5678', '9101', '1121'],
     expirationDate: {
       month: '12',
