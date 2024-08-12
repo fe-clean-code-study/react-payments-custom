@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import * as S from './index.style';
 
 import { Button, DeemBackground } from '~/components';
-import { useModal } from '~/hooks';
+import { useModal } from '~/shared/hooks';
 
 const Home = () => {
   const navigate = useNavigate();

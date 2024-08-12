@@ -7,7 +7,7 @@ import ReadonlyPassword from './ReadonlyPassword';
 import TitleText from '../TitleText';
 
 import { Card, CardBody, CardHeader, Input, InputWrapper } from '~/components';
-import { useModal } from '~/hooks';
+import { useModal } from '~/shared/hooks';
 import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
 import { validateHelper } from '~/utils/validateHelper';
 

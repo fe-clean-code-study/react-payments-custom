@@ -20,7 +20,7 @@ import {
   Button,
   GoogleIcon,
 } from '~/components';
-import { useModal } from '~/hooks';
+import { useModal } from '~/shared/hooks';
 import { addCard } from '~/store';
 import { CardForm } from '~/types';
 import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
