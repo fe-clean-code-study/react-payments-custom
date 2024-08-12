@@ -23,8 +23,6 @@ export default function EditPage() {
     return null
   }
 
-  console.log(targetCard)
-
   const onSubmit = (updatedData: ICard) => {
     editCard(id, updatedData)
     go('/payments')

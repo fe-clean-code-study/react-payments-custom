@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { ICard } from '../../types/paymentTypes.ts'
 
 interface IPaymentContext {
@@ -29,10 +29,6 @@ export const PaymentsProvider = ({
     const newCard = { ...card, id: 'new' }
     setCards((prev) => [...prev, newCard])
   }
-
-  useEffect(() => {
-    console.log(cards)
-  }, [cards])
 
   const editCard = (id: string, updatedCard: Partial<ICard>) => {
     const cardId = id === 'new' ? `${new Date().getTime()}` : id

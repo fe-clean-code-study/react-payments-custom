@@ -10,11 +10,10 @@ export default function CreatePage() {
     formOptions: createCardFormOptions,
     defaultValues: initialCard,
   })
-  const cardValues = formMethods.watchAll()
 
   return (
     <div>
-      <Card {...cardValues} />
+      <Card {...formMethods.watchAll()} />
       <FormProvider formMethods={formMethods}>
         <CreateCardForm />
       </FormProvider>
