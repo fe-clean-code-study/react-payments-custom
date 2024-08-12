@@ -1,21 +1,21 @@
 import { CSSProperties, ComponentProps } from 'react';
 
+import * as S from './Card.style';
+
 export interface HeaderProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
 const Header = ({ children, style, ...props }: HeaderProps) => {
   return (
-    <div
+    <S.Header
       style={{
-        padding: '10px',
-        fontWeight: 'bold',
         ...style,
       }}
       {...props}
     >
       {children}
-    </div>
+    </S.Header>
   );
 };
 

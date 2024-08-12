@@ -1,20 +1,21 @@
 import { ComponentProps, CSSProperties } from 'react';
 
+import * as S from './Card.style';
+
 export interface FooterProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
 const Footer = ({ children, style, ...props }: FooterProps) => {
   return (
-    <div
+    <S.Footer
       style={{
-        padding: '10px',
         ...style,
       }}
       {...props}
     >
       {children}
-    </div>
+    </S.Footer>
   );
 };
 
