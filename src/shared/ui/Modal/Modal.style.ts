@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Modal = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@ export const Content = styled.div`
   align-items: center;
   gap: 10px;
 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px ${({ theme }) => theme.color.blackAlpha};
 `;
 
 export const Header = styled.div`

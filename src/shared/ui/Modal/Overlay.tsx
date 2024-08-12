@@ -4,7 +4,7 @@ import * as S from './Modal.style';
 const Overlay = () => {
   const { onClose } = useModalContext();
 
-  return <S.Modal onClick={onClose}></S.Modal>;
+  return <S.Overlay onClick={onClose}></S.Overlay>;
 };
 
 export default Overlay;
