@@ -1,4 +1,4 @@
-import { CardCompany } from '~/entities/Card';
+import { Company } from '~/entities/Card';
 
 export const color = {
   white: '#ffffff',
@@ -13,7 +13,7 @@ export const color = {
   red500: '#E24141',
 };
 
-export const cardColor: Record<CardCompany, string> & { NONE: string } = {
+export const cardColor: Record<Company, string> & { NONE: string } = {
   NONE: '#94dacd',
   SUYEON: '#E24141',
   SEJIN: '#547CE4',
