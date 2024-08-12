@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { ICard } from '../../types/paymentTypes.ts'
 
 interface IPaymentContext {
   cards: Array<ICard>
   addCard: (card: ICard) => void
+  editCard: (id: string, card: Partial<ICard>) => string
   removeCard: (id: string) => void
 }
 
@@ -25,13 +26,28 @@ export const PaymentsProvider = ({
   const [cards, setCards] = useState<ICard[]>([])
 
   const addCard = (card: ICard) => {
-    setCards((prev) => [
-      ...prev,
-      {
-        ...card,
-        id: `${new Date().getTime()}`,
-      },
-    ])
+    const newCard = { ...card, id: 'new' }
+    setCards((prev) => [...prev, newCard])
+  }
+
+  useEffect(() => {
+    console.log(cards)
+  }, [cards])
+
+  const editCard = (id: string, updatedCard: Partial<ICard>) => {
+    const cardId = id === 'new' ? `${new Date().getTime()}` : id
+    setCards((prev) =>
+      prev.map((card) =>
+        card.id === id
+          ? {
+              ...card,
+              id: cardId,
+              ...updatedCard,
+            }
+          : card,
+      ),
+    )
+    return cardId
   }
 
   const removeCard = (id: string) => {
@@ -43,6 +59,7 @@ export const PaymentsProvider = ({
       value={{
         cards,
         addCard,
+        editCard,
         removeCard,
       }}
     >

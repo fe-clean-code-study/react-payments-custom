@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useMemo, useState } from 'react'
 import { IRouterContextValue, IRouteType } from './type.ts'
 import Route from './Route.tsx'
+import extractParams from './extractParams.ts'
 
 export const RouterContext = createContext<IRouterContextValue | null>(null)
 
@@ -30,26 +31,43 @@ export const Router = ({ children }: IRouterProviderProps) => {
     }))
 
   const [location, setLocation] = useState(window.location.pathname)
+  const locationSegments = location
+    .split('/')
+    .map((segment) => `/${segment}`)
+    .slice(1)
 
   const currentRoute = useMemo(
     () =>
-      routes.find(({ path }) => {
-        const locationSegments = location
-          .split('/')
-          .map((segment) => `/${segment}`)
-          .slice(1)
-
-        return (
+      routes.find(
+        ({ path }) =>
           path ===
-          (locationSegments.length === depth ? '/' : locationSegments[depth])
-        )
-      }),
-    [depth, location, routes],
+            (locationSegments.length === depth
+              ? '/'
+              : locationSegments[depth]) || path.startsWith('/:'),
+      ),
+    [depth, locationSegments, routes],
   )
+
+  const params: Record<string, string> = useMemo(() => {
+    const nonParams = routes
+      .map(({ path }) => path)
+      .includes(locationSegments[depth])
+
+    if (nonParams) {
+      return {}
+    }
+    return routes.reduce(
+      (params, { path }) => ({
+        ...params,
+        ...extractParams(path, locationSegments[depth]),
+      }),
+      {},
+    )
+  }, [depth, locationSegments, routes])
 
   return (
     <RouterContext.Provider
-      value={{ routes, depth, location, setLocation, currentRoute }}
+      value={{ routes, depth, location, setLocation, currentRoute, params }}
     >
       {children}
     </RouterContext.Provider>

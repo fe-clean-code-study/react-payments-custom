@@ -17,11 +17,7 @@ export default function PaymentsPage() {
             element={<CreatePage />}
             data={{ title: '카드 추가' }}
           />
-          <Route
-            path='/edit'
-            element={<EditPage />}
-            data={{ title: '별칭 수정' }}
-          />
+          <Route path='/:id' element={<EditPage />} />
         </Router>
       </PaymentsProvider>
     </div>

@@ -14,4 +14,5 @@ export interface IRouterContextValue {
   currentRoute?: IRouteType
   location: string
   setLocation: (value: string) => void
+  params: Record<string, string>
 }

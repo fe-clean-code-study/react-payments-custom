@@ -15,7 +15,7 @@ export default function CreateCardForm() {
 
   const onSubmit = (formData: ICard) => {
     addCard(formData)
-    router.go('/payments')
+    router.go('/payments/new')
   }
 
   return (

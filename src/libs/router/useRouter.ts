@@ -7,7 +7,7 @@ const useRouter = () => {
     throw new Error('useRouter must be used in <Router>...</Router>')
   }
 
-  const { location, setLocation, currentRoute } = routerContext
+  const { location, setLocation, currentRoute, params } = routerContext
 
   useEffect(() => {
     const handlePopState = () => {
@@ -28,8 +28,13 @@ const useRouter = () => {
     }
   }
 
-  console.log(currentRoute)
-  return { location, go, path: currentRoute?.path, data: currentRoute?.data }
+  return {
+    location,
+    go,
+    path: currentRoute?.path,
+    data: currentRoute?.data,
+    params,
+  }
 }
 
 export default useRouter

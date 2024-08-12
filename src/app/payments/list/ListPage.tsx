@@ -12,7 +12,13 @@ export default function ListPage() {
         <h2 className='page-title mb-10'>보유 카드</h2>
       </div>
       {cards.map((card) => (
-        <Card key={card.id} {...card} />
+        <Card
+          key={card.id}
+          onClick={() => {
+            router.go(`/payments/${card.id}`)
+          }}
+          {...card}
+        />
       ))}
       <div
         className='card-box'

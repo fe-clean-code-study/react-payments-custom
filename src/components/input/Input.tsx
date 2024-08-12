@@ -1,12 +1,16 @@
 import React from 'react'
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
-  ({ type = 'text', className = '', ...props }, ref) => {
+interface InputProps extends React.ComponentProps<'input'> {
+  variant?: 'underline' | 'basic'
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ type = 'text', className = '', variant = 'basic', ...props }, ref) => {
     return (
       <input
         ref={ref}
         type={type}
-        className={`input-basic ${className}`}
+        className={`input-${variant} ${className}`}
         autoComplete={type === 'password' ? 'new-password' : ''}
         {...props}
       />
