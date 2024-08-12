@@ -1,25 +1,21 @@
 import { ComponentProps, CSSProperties } from 'react';
 
+import * as S from './Field.style';
+
 export interface RootProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
 const Root = ({ children, style, ...props }: RootProps) => {
   return (
-    <div
+    <S.Root
       style={{
-        padding: '10px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '5px',
-        backgroundColor: 'white',
-        borderRadius: '7px',
         ...style,
       }}
       {...props}
     >
       {children}
-    </div>
+    </S.Root>
   );
 };
 

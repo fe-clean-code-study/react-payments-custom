@@ -1,18 +1,21 @@
 import { ComponentProps, CSSProperties } from 'react';
 
+import * as S from './Field.style';
+
 export interface ErrorTextProps extends ComponentProps<'p'> {
   style?: CSSProperties;
 }
 
-const ErrorText = ({ style, ...props }: ErrorTextProps) => {
+const ErrorText = ({ style, children, ...props }: ErrorTextProps) => {
   return (
-    <p
+    <S.ErrorText
       style={{
-        color: 'red',
         ...style,
       }}
       {...props}
-    />
+    >
+      {children}
+    </S.ErrorText>
   );
 };
 

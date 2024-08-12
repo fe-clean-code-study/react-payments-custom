@@ -7,6 +7,8 @@ import {
   useState,
 } from 'react';
 
+import * as S from './Field.style';
+
 export interface InputProps extends ComponentProps<'input'> {
   onComplete?: (event?: ChangeEvent<HTMLInputElement>) => void;
   onlyNumber?: boolean;
@@ -42,12 +44,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <input
+      <S.Input
         style={{
-          padding: '10px',
-          borderRadius: '5px',
-          outline: 'none',
-          border: '1px solid #eee',
           ...style,
         }}
         ref={ref}
