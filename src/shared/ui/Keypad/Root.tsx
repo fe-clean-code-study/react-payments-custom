@@ -1,5 +1,7 @@
 import { ComponentProps, CSSProperties } from 'react';
 
+import * as S from './Keypad.style';
+
 export interface RootProps extends ComponentProps<'div'> {
   style?: CSSProperties;
   row?: number;
@@ -8,7 +10,7 @@ export interface RootProps extends ComponentProps<'div'> {
 
 const Root = ({ style, row, col, children, ...props }: RootProps) => {
   return (
-    <div
+    <S.Root
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${col}, 1fr)`,
@@ -18,7 +20,7 @@ const Root = ({ style, row, col, children, ...props }: RootProps) => {
       {...props}
     >
       {children}
-    </div>
+    </S.Root>
   );
 };
 

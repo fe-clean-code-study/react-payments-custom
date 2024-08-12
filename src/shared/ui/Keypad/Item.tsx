@@ -1,23 +1,21 @@
 import { ComponentProps, CSSProperties } from 'react';
 
+import * as S from './Keypad.style';
+
 export interface ItemProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
 const Item = ({ style, children, ...props }: ItemProps) => {
   return (
-    <div
+    <S.Item
       style={{
-        padding: '10px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         ...style,
       }}
       {...props}
     >
       {children}
-    </div>
+    </S.Item>
   );
 };
 
