@@ -12,7 +12,6 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <div id='root-modal'></div>
         <ThemeProvider theme={theme}>
           <RouterProvider router={Router} />
         </ThemeProvider>
