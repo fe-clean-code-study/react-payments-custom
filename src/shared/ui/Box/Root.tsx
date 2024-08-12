@@ -1,14 +1,16 @@
 import { ComponentProps, CSSProperties } from 'react';
 
+import * as S from './Box.style';
+
 export interface RootProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
 const Root = ({ style, children, ...props }: RootProps) => {
   return (
-    <div style={{ width: '10px', height: '10px', ...style }} {...props}>
+    <S.Root style={{ ...style }} {...props}>
       {children}
-    </div>
+    </S.Root>
   );
 };
 
