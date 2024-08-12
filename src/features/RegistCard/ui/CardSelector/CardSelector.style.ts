@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-import { CardCompany } from '~/types';
+import { Company } from '~/entities/Card/types';
 
 interface PaleteProps {
-  companey: CardCompany;
+  companey: Company;
 }
 
 export const Container = styled.div`
@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   background-color: ${({ theme }) => theme.color.white};
 `;
 
