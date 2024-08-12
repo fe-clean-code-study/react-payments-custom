@@ -10,7 +10,8 @@ import { CARD_TYPES } from '../../../constants/cardTypes.ts'
 
 export default function CreateCardForm() {
   const { addCard } = usePayments()
-  const { register, handleSubmit, watch, setValue } = useFormContext<ICard>()
+  const { register, handleSubmit, watch, setValue, checkValueAll } =
+    useFormContext<ICard>()
   const router = useRouter()
 
   const onSubmit = (formData: ICard) => {
@@ -46,8 +47,12 @@ export default function CreateCardForm() {
         ))}
       </CardInputWrapper>
       <CardInputWrapper title='만료일' boxWidth={50}>
-        <Input placeholder='MM' {...register('expirationMonth')} />
-        <Input placeholder='YY' {...register('expirationYear')} />
+        <Input
+          placeholder='MM'
+          maxLength={2}
+          {...register('expirationMonth')}
+        />
+        <Input placeholder='YY' maxLength={2} {...register('expirationYear')} />
       </CardInputWrapper>
       <CardInputWrapper title='카드 소유자 이름(선택)'>
         <Input
@@ -57,7 +62,7 @@ export default function CreateCardForm() {
       </CardInputWrapper>
       <InputContainer>
         <Label>보안코드(CVC/CVV)</Label>
-        <Input className='w-25' {...register('securityCode')} />
+        <Input className='w-25' maxLength={3} {...register('securityCode')} />
       </InputContainer>
       <InputContainer>
         <Label>카드 비밀번호</Label>
@@ -70,7 +75,7 @@ export default function CreateCardForm() {
           />
         ))}
       </InputContainer>
-      <button className='button-box'>
+      <button className='button-box' disabled={!checkValueAll()}>
         <span className='button-text'>다음</span>
       </button>
     </form>

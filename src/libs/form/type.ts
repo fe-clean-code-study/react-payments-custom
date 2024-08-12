@@ -61,4 +61,6 @@ export interface UseFormReturnType<T = null> {
   handleSubmit: (
     submitFn: (formData: T) => void,
   ) => (e: React.FormEvent) => void
+  checkValue: (key: FormKey<T>) => boolean
+  checkValueAll: () => boolean
 }

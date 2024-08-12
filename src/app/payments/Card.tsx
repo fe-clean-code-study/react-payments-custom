@@ -35,7 +35,10 @@ export default function Card({
               <span className={`card-text__${cardSize}`}>
                 {cardNumbers
                   .map(({ numbers, isPrivate }) =>
-                    isPrivate ? 'oooo' : numbers.padEnd(4, '_'),
+                    (isPrivate ? '*'.repeat(numbers.length) : numbers).padEnd(
+                      4,
+                      '_',
+                    ),
                   )
                   .join(' - ')}
               </span>

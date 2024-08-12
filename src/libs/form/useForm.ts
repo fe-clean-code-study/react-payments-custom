@@ -63,6 +63,20 @@ const useForm = <T extends Record<never, unknown>>({
     }
   }
 
+  const checkValue = (key: FormKey<T>): boolean => {
+    const value = values.current[key]
+    if (formOptions?.[key]?.check === undefined) {
+      return true
+    }
+    return formOptions[key].check(value ?? '')
+  }
+
+  const checkValueAll = () => {
+    return Object.keys(formOptions ?? {}).every((key) =>
+      checkValue(key as FormKey<T>),
+    )
+  }
+
   const setValue = (key: FormKey<T>, value: string) => {
     if (inputRef.current[key]) {
       inputRef.current[key].setAttribute('value', value)
@@ -105,6 +119,8 @@ const useForm = <T extends Record<never, unknown>>({
     getValue,
     getValues,
     handleSubmit,
+    checkValue,
+    checkValueAll,
   }
 }
 
