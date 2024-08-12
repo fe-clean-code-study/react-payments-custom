@@ -1,4 +1,4 @@
-import { ComponentProps, CSSProperties, PropsWithChildren } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 import * as S from './Modal.style';
 
@@ -6,11 +6,7 @@ export interface FooterProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
-const Footer = ({
-  style,
-  children,
-  ...props
-}: PropsWithChildren<FooterProps>) => {
+const Footer = ({ style, children, ...props }: FooterProps) => {
   return (
     <S.Footer
       style={{

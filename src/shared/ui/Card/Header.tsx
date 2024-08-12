@@ -1,14 +1,10 @@
-import { CSSProperties, ComponentProps, PropsWithChildren } from 'react';
+import { CSSProperties, ComponentProps } from 'react';
 
 export interface HeaderProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
-const Header = ({
-  children,
-  style,
-  ...props
-}: PropsWithChildren<HeaderProps>) => {
+const Header = ({ children, style, ...props }: HeaderProps) => {
   return (
     <div
       style={{

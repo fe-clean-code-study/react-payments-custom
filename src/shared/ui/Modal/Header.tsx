@@ -1,4 +1,4 @@
-import { ComponentProps, CSSProperties, PropsWithChildren } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 import * as S from './Modal.style';
 
@@ -6,11 +6,7 @@ export interface HeaderProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
-const Header = ({
-  style,
-  children,
-  ...props
-}: PropsWithChildren<HeaderProps>) => {
+const Header = ({ style, children, ...props }: HeaderProps) => {
   return (
     <S.Header
       style={{

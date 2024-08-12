@@ -1,14 +1,10 @@
-import { ComponentProps, CSSProperties, PropsWithChildren } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 export interface LabelProps extends ComponentProps<'label'> {
   style?: CSSProperties;
 }
 
-const Label = ({
-  children,
-  style,
-  ...props
-}: PropsWithChildren<LabelProps>) => {
+const Label = ({ children, style, ...props }: LabelProps) => {
   return (
     <label
       style={{

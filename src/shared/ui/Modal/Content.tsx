@@ -1,4 +1,4 @@
-import { ComponentProps, CSSProperties, PropsWithChildren } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 import * as S from './Modal.style';
 
@@ -6,11 +6,7 @@ export interface ContentProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
-const Content = ({
-  style,
-  children,
-  ...props
-}: PropsWithChildren<ContentProps>) => {
+const Content = ({ style, children, ...props }: ContentProps) => {
   return (
     <S.Content
       style={{

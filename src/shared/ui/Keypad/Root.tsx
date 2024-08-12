@@ -1,4 +1,4 @@
-import { ComponentProps, CSSProperties, PropsWithChildren } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 export interface RootProps extends ComponentProps<'div'> {
   style?: CSSProperties;
@@ -6,13 +6,7 @@ export interface RootProps extends ComponentProps<'div'> {
   col?: number;
 }
 
-const Root = ({
-  style,
-  row,
-  col,
-  children,
-  ...props
-}: PropsWithChildren<RootProps>) => {
+const Root = ({ style, row, col, children, ...props }: RootProps) => {
   return (
     <div
       style={{

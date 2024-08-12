@@ -1,10 +1,10 @@
-import { ComponentProps, CSSProperties, PropsWithChildren } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 export interface ItemProps extends ComponentProps<'div'> {
   style?: CSSProperties;
 }
 
-const Item = ({ style, children, ...props }: PropsWithChildren<ItemProps>) => {
+const Item = ({ style, children, ...props }: ItemProps) => {
   return (
     <div
       style={{
