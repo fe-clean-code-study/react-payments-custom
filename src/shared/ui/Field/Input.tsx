@@ -11,12 +11,13 @@ import * as S from './Field.style';
 
 export interface InputProps extends ComponentProps<'input'> {
   onComplete?: (event?: ChangeEvent<HTMLInputElement>) => void;
+  styleType?: 'fill' | 'outline' | 'flushed' | 'ghost';
   onlyNumber?: boolean;
   style?: CSSProperties;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ style, onComplete, onlyNumber, ...props }, ref) => {
+  ({ style, styleType = 'fill', onComplete, onlyNumber, ...props }, ref) => {
     const [value, setValue] = useState(props.value);
 
     useEffect(() => {
@@ -48,6 +49,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         style={{
           ...style,
         }}
+        styleType={styleType}
         ref={ref}
         value={value}
         onChange={handleChangeInput}
