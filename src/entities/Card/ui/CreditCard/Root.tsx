@@ -6,7 +6,7 @@ import { CARD_COMPANY } from '~/entities/Card/constants';
 import { DefaultCard } from '~/entities/Card/types';
 
 export interface RootProps extends ComponentProps<'div'>, Partial<DefaultCard> {
-  size: 'small' | 'big';
+  size?: 'small' | 'big';
   showChip?: boolean;
 }
 
