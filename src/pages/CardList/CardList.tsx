@@ -2,26 +2,16 @@ import { MouseEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import * as S from './index.style';
+import * as S from './CardList.style';
 
-import {
-  Button,
-  CreditCard,
-  CardBody,
-  CardHeader,
-  GoogleIcon,
-  AddCreditCard,
-} from '~/components';
+import { GoogleIcon } from '~/shared/ui';
 import { removeCard, RootState } from '~/store';
+import { Header } from '~/widgets/CardList';
 
 const CardList = () => {
   const cards = useSelector((state: RootState) => state.cards);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const handleClickBackButton = () => {
-    navigate('/payment');
-  };
 
   const handleClickRemoveButton = (id: string) => {
     dispatch(removeCard({ id }));
@@ -54,13 +44,13 @@ const CardList = () => {
 
   return (
     <>
-      <CardHeader>
+      <Header>
         <S.HeaderText>
-          <GoogleIcon name='arrowBack' onClick={handleClickBackButton} />
+          <GoogleIcon name='arrowBack' />
           보유 카드
         </S.HeaderText>
-      </CardHeader>
-      <CardBody>
+      </Header>
+      {/* <CardBody>
         <S.CardUl onClick={handleClickCardUL}>
           {cards.length > 0 ? (
             cards.map((card) => (
@@ -75,7 +65,7 @@ const CardList = () => {
           )}
         </S.CardUl>
         <AddCreditCard onClick={handleClickAddCard} />
-      </CardBody>
+      </CardBody> */}
     </>
   );
 };
