@@ -28,11 +28,13 @@ export const Input = ({
 }: InputProps) => {
   const { props } = args as { props: InputProps };
   return (
-    <Field.Input
-      style={style}
-      onComplete={onComplete}
-      onlyNumber={onlyNumber}
-      {...props}
-    />
+    <Field.InputWrapper>
+      <Field.Input
+        style={style}
+        onComplete={onComplete}
+        onlyNumber={onlyNumber}
+        {...props}
+      />
+    </Field.InputWrapper>
   );
 };
