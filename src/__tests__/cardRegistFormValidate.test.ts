@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { cardRegsitFormValidate } from '~/utils/cardRegistFormValidate';
+import { cardRegsitFormValidate } from '~/entities/Card/utils/cardRegistFormValidate';
 
 describe('카드 등록시 유효성 검사 로직.', () => {
   test('카드 번호의 문자열은 4자리여야 한다.', () => {
