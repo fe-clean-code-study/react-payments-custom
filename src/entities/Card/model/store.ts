@@ -28,7 +28,7 @@ const cardSlice = createSlice({
       const { id, cardAlias } = actions.payload;
       const targetCard = state.cards.find((card) => card.id === id);
       if (targetCard) {
-        targetCard.cardAlias = cardAlias;
+        targetCard.alias = cardAlias;
       }
     },
   },
