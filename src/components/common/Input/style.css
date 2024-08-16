@@ -1,0 +1,21 @@
+.input-basic {
+  height: 45px;
+  width: 100%;
+  background-color: #ecebf1;
+  text-align: center;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border: none;
+  border-color: #9ca3af;
+  border-radius: 0.25rem;
+}
+
+.input-underline {
+  text-align: center;
+  border: none;
+  background: none;
+  outline: none;
+  border-bottom: 1px solid #383838;
+  margin: 16px 0;
+  padding: 4px 0;
+}
