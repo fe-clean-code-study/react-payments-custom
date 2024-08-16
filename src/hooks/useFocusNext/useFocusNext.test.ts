@@ -1,6 +1,6 @@
 import { renderHook, act } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
-import { useFocusNext } from "../hooks";
+import useFocusNext from ".";
 
 describe("useFocusNext", () => {
   test("조건이 충족되면 다음 입력 요소로 포커스를 이동시킨다.", () => {

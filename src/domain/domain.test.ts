@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { formatCardNumber, formatExpiredDate } from "../domain";
+import { formatCardNumber, formatExpiredDate } from ".";
 
 describe("formatCardNumber 함수 테스트", () => {
   test.each([

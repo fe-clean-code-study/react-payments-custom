@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { act, renderHook } from "@testing-library/react";
-import { useCardForm } from "../hooks";
+import useCardForm from ".";
 
 describe("useCardForm 훅 테스트", () => {
   test("기본값으로 초기화되어야 한다.", () => {
