@@ -1,4 +1,4 @@
-.input-basic {
+[data-scope="input"][data-part="basic"] {
   height: 45px;
   width: 100%;
   background-color: #ecebf1;
@@ -10,7 +10,7 @@
   border-radius: 0.25rem;
 }
 
-.input-underline {
+[data-scope="input"][data-part="underline"] {
   text-align: center;
   border: none;
   background: none;

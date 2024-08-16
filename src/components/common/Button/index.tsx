@@ -7,7 +7,6 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
 const Button = ({
   variant = "basic",
   children,
-  className,
   style,
   ...props
 }: ButtonProps) => {
@@ -19,7 +18,8 @@ const Button = ({
 
   return (
     <button
-      className={`button-${variant} ${className}`}
+      data-scope="button"
+      data-part={variant}
       style={baseStyle}
       {...props}
     >

@@ -1,9 +1,9 @@
-.button-basic {
+[data-scope="button"][data-part="basic"] {
   border: none;
   background-color: transparent;
 }
 
-.button-circle {
+[data-scope="button"][data-part="circle"] {
   border-radius: 50%;
   aspect-ratio: 1 / 1;
   background-color: #e5e5e5;
