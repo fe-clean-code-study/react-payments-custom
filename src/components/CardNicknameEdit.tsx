@@ -46,14 +46,7 @@ const CardNicknameEdit = ({
         nickname={nickname}
         onNicknameChange={onChangeNickname}
       />
-      <div
-        className="button-box"
-        style={{
-          position: "absolute",
-          bottom: "25px",
-          right: "33px",
-        }}
-      >
+      <div className="button-box">
         <Button className="button-text" onClick={onConfirm}>
           확인
         </Button>
