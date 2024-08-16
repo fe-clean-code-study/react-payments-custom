@@ -1,21 +1,18 @@
-import { Modal } from '~/shared/ui';
-import { RegistedCards, AddCard, Header } from '~/widgets/CardList';
-import { Layout } from '~/widgets/Common';
+import { RegistedCards, AddCard, Header } from './ui';
+
+import { Common } from '~/widgets/Common';
 
 const CardList = () => {
   return (
-    <Modal.Root isOpen={true} onClose={() => {}}>
-      <Modal.Overlay />
-      <Layout.Content>
-        <Layout.Header>
-          <Header />
-        </Layout.Header>
-        <Modal.Body>
-          <RegistedCards />
-        </Modal.Body>
+    <Common.Root>
+      <Common.Header>
+        <Header />
+      </Common.Header>
+      <Common.Content>
+        <RegistedCards />
         <AddCard />
-      </Layout.Content>
-    </Modal.Root>
+      </Common.Content>
+    </Common.Root>
   );
 };
 
