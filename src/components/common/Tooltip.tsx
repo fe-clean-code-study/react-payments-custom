@@ -8,16 +8,16 @@ const Tooltip = ({
   children,
   message,
 }: React.PropsWithChildren<TooltipProps>) => {
-  const { showTooltip, showTooltipHandler, hideTooltipHandler } = useTooltip();
+  const tooltip = useTooltip();
 
   return (
     <div
       style={{ position: "relative", cursor: "help" }}
-      onMouseEnter={showTooltipHandler}
-      onMouseLeave={hideTooltipHandler}
+      onMouseEnter={tooltip.show}
+      onMouseLeave={tooltip.hide}
     >
       {children}
-      {showTooltip && (
+      {tooltip.isShow && (
         <div
           style={{
             position: "absolute",
