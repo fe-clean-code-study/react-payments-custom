@@ -1,4 +1,5 @@
-import { useCardForm, useModal } from "../hooks";
+import { useState } from "react";
+import { useCardForm } from "../hooks";
 import {
   Card,
   CardExpiryInput,
@@ -42,85 +43,94 @@ const CardInfoEdit = ({
     handleCardPassword,
     isValidForm,
   } = cardForm;
-  const { isOpen, onOpen, onClose } = useModal(true);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleCardNameClick = (name: string, color: string) => {
     handleCardNameAndColor(name, color);
-    onClose();
+    setIsOpen(false);
   };
 
   return (
     <div className="app">
-      <Flex align="center" gap="5px">
-        <button
+      <Modal.Root open={isOpen} onOpenChange={setIsOpen}>
+        <Flex align="center" gap="5px">
+          <button
+            style={{
+              padding: 0,
+              height: "24px",
+              marginLeft: "-10px",
+              border: "none",
+              backgroundColor: "transparent",
+              cursor: "pointer",
+            }}
+            onClick={onNavigateBack}
+          >
+            <Icon name="arrowLeft" />
+          </button>
+          <Title level={3} className="page-title">
+            카드 추가
+          </Title>
+        </Flex>
+        <Modal.Opener>
+          <Card
+            type="filled"
+            size="small"
+            cardName={cardName}
+            cardNumber={cardNumber}
+            userName={userName}
+            expiredMonth={expiredMonth}
+            expiredYear={expiredYear}
+            nickname=""
+            color={color}
+          />
+        </Modal.Opener>
+        <CardNumberInput
+          cardNumber={cardNumber}
+          handleCardNumber={handleCardNumber}
+        />
+        <CardExpiryInput
+          expiredMonth={expiredMonth}
+          expiredYear={expiredYear}
+          handleExpiredMonth={handleExpiredMonth}
+          handleExpiredYear={handleExpiredYear}
+        />
+        <CardUsernameInput
+          username={userName}
+          handleUsername={handleUserName}
+        />
+        <CardSecurityCodeInput
+          cardSecurityCode={cardSecurityCode}
+          handleCardSecurityCode={handleCardSecurityCode}
+        />
+        <CardPasswordInput
+          cardPassword={cardPassword}
+          handleCardPassword={handleCardPassword}
+        />
+        <div
+          className="button-box"
           style={{
-            padding: 0,
-            height: "24px",
-            marginLeft: "-10px",
-            border: "none",
-            backgroundColor: "transparent",
-            cursor: "pointer",
+            position: "absolute",
+            bottom: "25px",
+            right: "33px",
           }}
-          onClick={onNavigateBack}
         >
-          <Icon name="arrowLeft" />
-        </button>
-        <Title level={3} className="page-title">
-          카드 추가
-        </Title>
-      </Flex>
-      <Card
-        type="filled"
-        size="small"
-        cardName={cardName}
-        cardNumber={cardNumber}
-        userName={userName}
-        expiredMonth={expiredMonth}
-        expiredYear={expiredYear}
-        nickname=""
-        color={color}
-        onClick={onOpen}
-      />
-      <CardNumberInput
-        cardNumber={cardNumber}
-        handleCardNumber={handleCardNumber}
-      />
-      <CardExpiryInput
-        expiredMonth={expiredMonth}
-        expiredYear={expiredYear}
-        handleExpiredMonth={handleExpiredMonth}
-        handleExpiredYear={handleExpiredYear}
-      />
-      <CardUsernameInput username={userName} handleUsername={handleUserName} />
-      <CardSecurityCodeInput
-        cardSecurityCode={cardSecurityCode}
-        handleCardSecurityCode={handleCardSecurityCode}
-      />
-      <CardPasswordInput
-        cardPassword={cardPassword}
-        handleCardPassword={handleCardPassword}
-      />
-      <div
-        className="button-box"
-        style={{
-          position: "absolute",
-          bottom: "25px",
-          right: "33px",
-        }}
-      >
-        <Button
-          className="button-text"
-          onClick={onNextStep}
-          disabled={isValidForm()}
-          style={{ cursor: isValidForm() ? "not-allowed" : "pointer" }}
-        >
-          다음
-        </Button>
-      </div>
+          <Button
+            className="button-text"
+            onClick={onNextStep}
+            disabled={isValidForm()}
+            style={{ cursor: isValidForm() ? "not-allowed" : "pointer" }}
+          >
+            다음
+          </Button>
+        </div>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <CardNameList onCardNameClick={handleCardNameClick} />
-      </Modal>
+        <Modal.Backdrop />
+        <Modal.Positioner>
+          <Modal.Content>
+            <CardNameList onCardNameClick={handleCardNameClick} />
+          </Modal.Content>
+        </Modal.Positioner>
+      </Modal.Root>
     </div>
   );
 };
