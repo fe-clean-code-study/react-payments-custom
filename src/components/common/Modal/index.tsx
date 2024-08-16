@@ -11,16 +11,16 @@ const ModalContext = createContext<ModalContextType>({
   setIsOpen: () => {},
 });
 
-interface ModalRootProps {
+export interface ModalRootProps {
   open?: boolean;
   onOpenChange?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function ModalRoot({
+const ModalRoot = ({
   children,
   open,
   onOpenChange,
-}: React.PropsWithChildren<ModalRootProps>) {
+}: React.PropsWithChildren<ModalRootProps>) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const modalContextValue = useMemo(() => {
@@ -39,9 +39,9 @@ function ModalRoot({
       {children}
     </ModalContext.Provider>
   );
-}
+};
 
-function ModalBackdrop() {
+const ModalBackdrop = () => {
   const { isOpen, setIsOpen } = useContext(ModalContext);
 
   if (!isOpen) {
@@ -55,9 +55,9 @@ function ModalBackdrop() {
       onClick={() => setIsOpen(false)}
     />
   );
-}
+};
 
-function ModalPositioner({ children }: React.ComponentProps<"div">) {
+const ModalPositioner = ({ children }: React.PropsWithChildren) => {
   const { isOpen } = useContext(ModalContext);
 
   if (!isOpen) {
@@ -69,9 +69,9 @@ function ModalPositioner({ children }: React.ComponentProps<"div">) {
       {children}
     </div>
   );
-}
+};
 
-function ModalContent({ children }: React.ComponentProps<"div">) {
+const ModalContent = ({ children }: React.PropsWithChildren) => {
   const { isOpen } = useContext(ModalContext);
 
   if (!isOpen) {
@@ -83,19 +83,19 @@ function ModalContent({ children }: React.ComponentProps<"div">) {
       {children}
     </div>
   );
-}
+};
 
-function ModalOpener({ children }: React.ComponentProps<"div">) {
+const ModalOpener = ({ children }: React.PropsWithChildren) => {
   const { setIsOpen } = useContext(ModalContext);
 
   return <div onClick={() => setIsOpen(true)}>{children}</div>;
-}
+};
 
-function ModalCloseer({ children }: React.ComponentProps<"div">) {
+const ModalCloseer = ({ children }: React.PropsWithChildren) => {
   const { setIsOpen } = useContext(ModalContext);
 
   return <div onClick={() => setIsOpen(false)}>{children}</div>;
-}
+};
 
 export {
   ModalRoot as Root,

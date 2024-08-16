@@ -1,16 +1,16 @@
 import "./style.css";
 
-interface ButtonProps extends React.ComponentProps<"button"> {
+export interface ButtonProps extends React.ComponentProps<"button"> {
   variant?: "basic" | "circle";
 }
 
-export default function Button({
+const Button = ({
   variant = "basic",
   children,
   className,
   style,
   ...props
-}: ButtonProps) {
+}: ButtonProps) => {
   const baseStyle: React.CSSProperties = {
     fontSize: "1rem",
     cursor: props.disabled ? "not-allowed" : "pointer",
@@ -26,4 +26,6 @@ export default function Button({
       {children}
     </button>
   );
-}
+};
+
+export default Button;
