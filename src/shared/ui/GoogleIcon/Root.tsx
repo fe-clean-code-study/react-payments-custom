@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react';
 
+import { googleIcon } from '~/shared/constants';
 import { GoogleIconName } from '~/shared/types';
 
 export interface RootProps {
@@ -10,7 +11,7 @@ export interface RootProps {
 const Root = ({ name, style }: RootProps) => {
   return (
     <span style={{ ...style }} className='material-symbols-outlined'>
-      {name}
+      {googleIcon[name]}
     </span>
   );
 };
