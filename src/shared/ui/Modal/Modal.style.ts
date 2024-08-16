@@ -32,7 +32,6 @@ export const Content = styled.div`
 export const Header = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
   font-weight: bold;
   font-size: 20px;
 `;
