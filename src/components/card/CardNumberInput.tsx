@@ -28,7 +28,6 @@ const CardNumberInput = ({
           <Fragment key={index}>
             {index > 0 && "-"}
             <Input
-              className="input-basic"
               maxLength={cardValidator.number.maxLength}
               type={index > 1 ? "password" : "text"}
               value={value}

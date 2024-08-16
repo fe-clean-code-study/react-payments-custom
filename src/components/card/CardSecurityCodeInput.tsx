@@ -18,7 +18,7 @@ const CardSecurityCodeInput = ({
       <span className="input-title">보안코드(CVC/CVV)</span>
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <Input
-          className="input-basic w-25"
+          className="w-25"
           type="password"
           maxLength={cardValidator.securityCode.maxLength}
           value={cardSecurityCode}

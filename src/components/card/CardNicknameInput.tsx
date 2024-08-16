@@ -14,7 +14,8 @@ const CardNicknameInput = ({
   return (
     <Flex justify="center" align="center" className="input-container w-100">
       <Input
-        className="input-underline w-75"
+        variant="underline"
+        className="w-75"
         placeholder={placeholder}
         value={nickname}
         maxLength={10}

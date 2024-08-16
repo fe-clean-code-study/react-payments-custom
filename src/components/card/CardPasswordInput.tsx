@@ -22,7 +22,7 @@ const CardPasswordInput = ({
         {cardPassword.map((value, index) => (
           <Input
             key={index}
-            className="input-basic w-15"
+            className="w-15"
             type="password"
             maxLength={cardValidator.password.maxLength}
             value={value}
