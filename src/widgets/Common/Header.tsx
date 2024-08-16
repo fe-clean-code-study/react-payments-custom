@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-import * as S from './Layout.style';
+import * as S from './Common.style';
 
 export interface HeaderProps extends ComponentProps<'div'> {}
 
