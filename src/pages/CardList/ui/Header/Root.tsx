@@ -1,8 +1,6 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
-export interface RootProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
-}
+export interface RootProps extends ComponentProps<'div'> {}
 
 const Root = ({ style, ...props }: RootProps) => {
   return (
