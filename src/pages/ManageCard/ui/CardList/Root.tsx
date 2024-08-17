@@ -2,10 +2,11 @@ import { MouseEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import * as S from './RegistedCards.style';
+import * as S from './CardList.style';
 
 import { RootState, cardAction } from '~/entities/Card';
 import { CreditCard } from '~/entities/Card/ui/CreditCard';
+import { AddCard } from '~/features/ManageCard/ui';
 import { GoogleIcon } from '~/shared/ui';
 
 export const Root = () => {
@@ -49,6 +50,9 @@ export const Root = () => {
           <S.CardAlias>{card.alias}</S.CardAlias>
         </li>
       ))}
+      <li>
+        <AddCard size={'small'} onClick={() => navigate('/card-regist')} />
+      </li>
     </S.Container>
   );
 };

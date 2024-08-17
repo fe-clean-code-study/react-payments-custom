@@ -1,8 +1,8 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 // import CardAlias from '~/pages/CardAlias';
-import { CardList } from '~/pages/CardList';
 import { CardRegist } from '~/pages/CardRegist';
+import { CardList } from '~/pages/ManageCard';
 
 const Router = createBrowserRouter([
   { element: <Navigate to='/card-list' />, path: '/' },

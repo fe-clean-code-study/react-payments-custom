@@ -1,19 +1,18 @@
-import { RegistedCards, AddCard, Header } from './ui';
+import { Header, CardList } from './ui';
 
 import { Common } from '~/widgets/Common';
 
-const CardList = () => {
+const ManageCard = () => {
   return (
     <Common.Root>
       <Common.Header>
         <Header />
       </Common.Header>
       <Common.Body>
-        <RegistedCards />
-        <AddCard />
+        <CardList />
       </Common.Body>
     </Common.Root>
   );
 };
 
-export default CardList;
+export default ManageCard;
