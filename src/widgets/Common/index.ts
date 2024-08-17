@@ -1,9 +1,9 @@
-import Content from './Content';
+import Body from './Body';
 import Header from './Header';
 import Root from './Root';
 
 export const Common = {
   Root,
-  Content,
+  Body,
   Header,
 };

@@ -4,8 +4,8 @@ import * as S from './Common.style';
 
 export interface ContentProps extends ComponentProps<'div'> {}
 
-const Content = ({ children, ...props }: ContentProps) => {
-  return <S.Content {...props}>{children}</S.Content>;
+const Body = ({ children, ...props }: ContentProps) => {
+  return <S.Body {...props}>{children}</S.Body>;
 };
 
-export default Content;
+export default Body;

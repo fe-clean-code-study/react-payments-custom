@@ -8,10 +8,10 @@ const CardList = () => {
       <Common.Header>
         <Header />
       </Common.Header>
-      <Common.Content>
+      <Common.Body>
         <RegistedCards />
         <AddCard />
-      </Common.Content>
+      </Common.Body>
     </Common.Root>
   );
 };

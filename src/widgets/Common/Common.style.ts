@@ -8,7 +8,7 @@ export const Root = styled(Modal.Root)`
   }
 `;
 
-export const Content = styled(Modal.Content)`
+export const Body = styled(Modal.Body)`
   width: 400px;
   height: 700px;
 `;
