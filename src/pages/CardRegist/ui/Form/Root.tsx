@@ -1,9 +1,11 @@
 import { FormProvider, useForm } from 'react-hook-form';
 
+import * as S from './Form.style';
+
 import { CardDesign } from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
 
-const CardRegistForm = () => {
+const Root = () => {
   const methods = useForm({
     defaultValues: {
       numbers: ['', '', '', ''],
@@ -22,10 +24,12 @@ const CardRegistForm = () => {
   // const passwordDrawerDisclosre = useDisclosure();
 
   return (
-    <FormProvider {...methods}>
-      <CardDesign onClick={companyDrawerDisclosure.onOpen} />
-    </FormProvider>
+    <S.Container>
+      <FormProvider {...methods}>
+        <CardDesign onClick={companyDrawerDisclosure.onOpen} />
+      </FormProvider>
+    </S.Container>
   );
 };
 
-export default CardRegistForm;
+export default Root;

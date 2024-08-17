@@ -1,4 +1,4 @@
-import { Header, CardRegistForm } from './ui';
+import { Header, Form } from './ui';
 
 import { Common } from '~/widgets/Common';
 
@@ -9,7 +9,7 @@ const CardRegist = () => {
         <Header />
       </Common.Header>
       <Common.Body>
-        <CardRegistForm />
+        <Form />
       </Common.Body>
     </Common.Root>
   );
