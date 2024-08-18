@@ -1,19 +1,20 @@
 import { ComponentProps, MouseEvent } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import * as S from './CardSelector.style';
+import * as S from './CompanyField.style';
 
 import { CARD_COMPANY } from '~/entities/Card';
 import { CompanyItem } from '~/entities/Card/ui/CompanyItem';
 
-export interface RootProps extends ComponentProps<'div'> {
-  onSelectCompany: (company: string) => void;
-}
+export interface RootProps extends ComponentProps<'div'> {}
 
 function isCardCompany(key: string): key is keyof typeof CARD_COMPANY {
   return key in CARD_COMPANY;
 }
 
-const Root = ({ onSelectCompany, ...props }: RootProps) => {
+const Root = ({ ...props }: RootProps) => {
+  const { setValue } = useFormContext();
+
   const handleClickCompany = (event: MouseEvent<HTMLDivElement>) => {
     const { target } = event;
 
@@ -24,7 +25,7 @@ const Root = ({ onSelectCompany, ...props }: RootProps) => {
         const { company } = $palateItem.dataset;
 
         if (company && isCardCompany(company)) {
-          onSelectCompany && onSelectCompany(company);
+          setValue('company', company, { shouldValidate: true });
         }
       }
     }

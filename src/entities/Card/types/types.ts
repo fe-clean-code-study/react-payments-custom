@@ -12,10 +12,10 @@ export interface ExpirationDate {
 }
 
 export interface DefaultCard {
-  numbers: Numbers;
-  expirationDate: ExpirationDate;
+  numbers?: Numbers;
+  expirationDate?: ExpirationDate;
   cardUser?: string;
-  company: Company;
+  company?: Company;
 }
 
 // ! 이건 feature애 있어야 함

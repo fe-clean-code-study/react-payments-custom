@@ -7,11 +7,7 @@ interface PaleteProps {
 }
 
 export const Container = styled.div`
-  position: absolute;
-  bottom: 0;
-
   width: 100%;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;

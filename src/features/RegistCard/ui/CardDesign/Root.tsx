@@ -8,9 +8,9 @@ export interface RootProps {
 }
 
 const Root = ({ onClick }: RootProps) => {
-  const { getValues } = useFormContext();
+  const { watch } = useFormContext();
 
-  return <CreditCard {...getValues()} onClick={onClick} />;
+  return <CreditCard {...watch()} onClick={onClick} />;
 };
 
 export default Root;
