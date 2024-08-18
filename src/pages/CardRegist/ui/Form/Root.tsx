@@ -35,7 +35,9 @@ const Root = () => {
             <CompanyField />
           </Drawer.Content>
         </Drawer.Root>
-        <CardUserField />
+        <S.FieldContainer>
+          <CardUserField />
+        </S.FieldContainer>
       </FormProvider>
     </S.Container>
   );
