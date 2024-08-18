@@ -2,8 +2,9 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import * as S from './Form.style';
 
-import { CardDesign } from '~/features/RegistCard';
+import { CardDesign, CompanyField, CardUserField } from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
+import { Drawer } from '~/shared/ui';
 
 const Root = () => {
   const methods = useForm({
@@ -19,6 +20,7 @@ const Root = () => {
       password: ['', ''],
       alias: '',
     },
+    mode: 'onBlur',
   });
   const companyDrawerDisclosure = useDisclosure();
   // const passwordDrawerDisclosre = useDisclosure();
@@ -27,6 +29,13 @@ const Root = () => {
     <S.Container>
       <FormProvider {...methods}>
         <CardDesign onClick={companyDrawerDisclosure.onOpen} />
+        <Drawer.Root {...companyDrawerDisclosure}>
+          <Drawer.Overlay />
+          <Drawer.Content>
+            <CompanyField />
+          </Drawer.Content>
+        </Drawer.Root>
+        <CardUserField />
       </FormProvider>
     </S.Container>
   );
