@@ -1,4 +1,4 @@
-import { cardCompany } from './../constants/index';
+import { CARD_COMPANY } from '../../entities/Card/constants';
 
 export const cardRegsitFormValidate = {
   numbers: {
@@ -44,7 +44,7 @@ export const cardRegsitFormValidate = {
     },
     valueInCompany: {
       validate: (value: string) => {
-        return value in cardCompany;
+        return value in CARD_COMPANY;
       },
       message: '올바른 카드사가 아닙니다.',
     },
@@ -170,7 +170,7 @@ export const cardRegsitFormValidate = {
     },
     company: {
       validate: (value: string) => {
-        return value in cardCompany;
+        return value in CARD_COMPANY;
       },
       message: '카드사를 선택해주세요.',
     },
