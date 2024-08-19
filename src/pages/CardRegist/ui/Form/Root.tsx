@@ -7,6 +7,7 @@ import {
   CompanyField,
   CardUserField,
   NumbersField,
+  CVCField,
 } from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
 import { Drawer } from '~/shared/ui';
@@ -45,6 +46,9 @@ const Root = () => {
         </S.FieldContainer>
         <S.FieldContainer>
           <CardUserField />
+        </S.FieldContainer>
+        <S.FieldContainer>
+          <CVCField />
         </S.FieldContainer>
       </FormProvider>
     </S.Container>
