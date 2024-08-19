@@ -23,11 +23,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       if (onlyNumber && isNaN(Number(value))) {
         return;
       }
+      setInputValue(value);
+      onChange && onChange(event);
       if (value.length === maxLengthNumber) {
         onComplete && onComplete(event);
       }
-      setInputValue(value);
-      onChange && onChange(event);
     };
 
     return (

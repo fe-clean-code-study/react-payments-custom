@@ -19,8 +19,6 @@ const Root = () => {
             name={name}
             control={control}
             rules={{
-              maxLength: 4,
-              required: true,
               validate: (value) =>
                 validateHelper(cardRegsitFormValidate['numbers'], value),
             }}
