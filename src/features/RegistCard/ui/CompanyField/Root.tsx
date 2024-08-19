@@ -5,6 +5,7 @@ import * as S from './CompanyField.style';
 
 import { CARD_COMPANY } from '~/entities/Card';
 import { CompanyItem } from '~/entities/Card/ui/CompanyItem';
+import { cardRegsitFormValidate, validateHelper } from '~/features/utils';
 
 export interface RootProps extends ComponentProps<'div'> {}
 
@@ -13,7 +14,11 @@ function isCardCompany(key: string): key is keyof typeof CARD_COMPANY {
 }
 
 const Root = ({ ...props }: RootProps) => {
-  const { setValue } = useFormContext();
+  const { setValue, register } = useFormContext();
+  register('company', {
+    validate: (value) =>
+      validateHelper(cardRegsitFormValidate['company'], value),
+  });
 
   const handleClickCompany = (event: MouseEvent<HTMLDivElement>) => {
     const { target } = event;
