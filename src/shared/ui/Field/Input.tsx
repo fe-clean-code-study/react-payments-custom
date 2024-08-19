@@ -1,4 +1,10 @@
-import { ChangeEvent, ComponentProps, forwardRef, useState } from 'react';
+import {
+  ChangeEvent,
+  ComponentProps,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react';
 
 import * as S from './Field.style';
 
@@ -10,10 +16,23 @@ export interface InputProps extends ComponentProps<'input'> {
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { styleType = 'fill', onlyNumber = false, onComplete, onChange, ...props },
+    {
+      styleType = 'fill',
+      onlyNumber = false,
+      value,
+      onComplete,
+      onChange,
+      ...props
+    },
     ref,
   ) => {
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState<
+      string | number | readonly string[] | undefined
+    >();
+
+    useEffect(() => {
+      setInputValue(value);
+    }, [value]);
 
     const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
       const { maxLength } = props;

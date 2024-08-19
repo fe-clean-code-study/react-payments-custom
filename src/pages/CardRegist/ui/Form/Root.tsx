@@ -8,6 +8,7 @@ import {
   CardUserField,
   NumbersField,
   CVCField,
+  PasswordField,
 } from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
 import { Drawer } from '~/shared/ui';
@@ -49,6 +50,9 @@ const Root = () => {
         </S.FieldContainer>
         <S.FieldContainer>
           <CVCField />
+        </S.FieldContainer>
+        <S.FieldContainer>
+          <PasswordField />
         </S.FieldContainer>
       </FormProvider>
     </S.Container>
