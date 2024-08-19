@@ -45,6 +45,8 @@ const useForm = <T extends Record<never, unknown>>({
 
   const register = (key: FormKey<T> | string) => {
     const formKey = key as FormKey<T>
+    values.current[formKey] = ''
+
     return {
       name: String(formKey),
 
@@ -78,6 +80,8 @@ const useForm = <T extends Record<never, unknown>>({
   }
 
   const setValue = (key: FormKey<T>, value: string) => {
+    values.current[key] = value
+
     if (inputRef.current[key]) {
       inputRef.current[key].setAttribute('value', value)
       inputRef.current[key].dispatchEvent(
@@ -97,7 +101,7 @@ const useForm = <T extends Record<never, unknown>>({
   }
 
   const getValue = (key: FormKey<T>) => {
-    return inputRef.current[key]?.value ?? ''
+    return values.current[key] ?? ''
   }
 
   const getValues = () => {
