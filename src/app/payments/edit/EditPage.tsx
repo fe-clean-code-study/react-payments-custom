@@ -1,7 +1,7 @@
 import { useRouter } from '../../../libs/router'
 import { usePayments } from '../paymentsContext.tsx'
-import Card from '../Card.tsx'
-import { Input, InputContainer } from '../../../components/input'
+import PaymentCard from '../PaymentCard.tsx'
+import Input from '../../../components/input'
 import { useForm } from '../../../libs/form'
 import { ICard } from '../../../types/paymentTypes.ts'
 
@@ -35,15 +35,15 @@ export default function EditPage() {
           {id === 'new' ? '카드등록이 완료되었습니다.' : '별칭 수정'}
         </h2>
       </div>
-      <Card {...targetCard} cardSize='big' />
-      <InputContainer className='flex-center w-100'>
-        <Input
+      <PaymentCard {...targetCard} cardSize='big' />
+      <Input.Container className='flex-center w-100'>
+        <Input.Value
           className='w-75'
           variant='underline'
           placeholder='카드의 별칭을 입력해주세요.'
           {...register('nickname')}
         />
-      </InputContainer>
+      </Input.Container>
       <button className='button-box mt-50'>
         <span className='button-text'>다음</span>
       </button>

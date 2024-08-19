@@ -1,10 +1,10 @@
 import React from 'react'
 
-interface InputProps extends React.ComponentProps<'input'> {
+export interface ValueProps extends React.ComponentProps<'input'> {
   variant?: 'underline' | 'basic'
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Value = React.forwardRef<HTMLInputElement, ValueProps>(
   ({ type = 'text', className = '', variant = 'basic', ...props }, ref) => {
     return (
       <input
@@ -18,4 +18,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   },
 )
 
-export default Input
+export default Value

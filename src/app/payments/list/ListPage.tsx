@@ -1,6 +1,6 @@
 import { usePayments } from '../paymentsContext.tsx'
 import { useRouter } from '../../../libs/router'
-import Card from '../Card.tsx'
+import PaymentCard from '../PaymentCard.tsx'
 
 export default function ListPage() {
   const { cards } = usePayments()
@@ -12,7 +12,7 @@ export default function ListPage() {
         <h2 className='page-title mb-10'>보유 카드</h2>
       </div>
       {cards.map((card) => (
-        <Card
+        <PaymentCard
           key={card.id}
           onClick={() => {
             router.go(`/payments/${card.id}`)

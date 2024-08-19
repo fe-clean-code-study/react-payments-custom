@@ -3,7 +3,7 @@ import { ICard } from '../../../types/paymentTypes.ts'
 import { createCardFormOptions, initialCard } from './createCardFormOptions.ts'
 import { FormProvider } from '../../../libs/form'
 import CreateCardForm from './CreateCardForm.tsx'
-import Card from '../Card.tsx'
+import PaymentCard from '../PaymentCard.tsx'
 
 export default function CreatePage() {
   const formMethods = useForm<ICard>({
@@ -13,7 +13,7 @@ export default function CreatePage() {
 
   return (
     <div>
-      <Card {...formMethods.watchAll()} />
+      <PaymentCard {...formMethods.watchAll()} />
       <FormProvider formMethods={formMethods}>
         <CreateCardForm />
       </FormProvider>

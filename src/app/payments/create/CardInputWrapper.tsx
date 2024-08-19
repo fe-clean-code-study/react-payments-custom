@@ -1,4 +1,4 @@
-import { InputBox, InputContainer, Label } from '../../../components/input'
+import Input from '../../../components/input'
 import React from 'react'
 
 interface CardInputWrapperProps {
@@ -13,11 +13,11 @@ export default function CardInputWrapper({
   children,
 }: CardInputWrapperProps) {
   return (
-    <InputContainer>
-      <Label>{title}</Label>
-      <InputBox className={boxWidth ? `w-${boxWidth}` : ''}>
+    <Input.Container>
+      <Input.Label>{title}</Input.Label>
+      <Input.Box className={boxWidth ? `w-${boxWidth}` : ''}>
         {children}
-      </InputBox>
-    </InputContainer>
+      </Input.Box>
+    </Input.Container>
   )
 }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import useOutsideClick from '../../hooks/useOutsideClick.ts'
 import { SlotComponentProps } from '../../types/componentTypes.ts'
 
-const ModalInput = forwardRef<
+const Modal = forwardRef<
   HTMLInputElement,
   SlotComponentProps<HTMLInputElement>
 >(({ children, ...inputProps }, ref) => {
@@ -40,4 +40,4 @@ const ModalInput = forwardRef<
   )
 })
 
-export default ModalInput
+export default Modal
