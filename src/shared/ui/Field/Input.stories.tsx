@@ -20,21 +20,11 @@ export default {
   },
 };
 
-export const Input = ({
-  onlyNumber,
-  onComplete,
-  style,
-  ...args
-}: InputProps) => {
+export const Input = ({ onComplete, style, ...args }: InputProps) => {
   const { props } = args as { props: InputProps };
   return (
     <Field.InputWrapper>
-      <Field.Input
-        style={style}
-        onComplete={onComplete}
-        onlyNumber={onlyNumber}
-        {...props}
-      />
+      <Field.Input style={style} onComplete={onComplete} {...props} />
     </Field.InputWrapper>
   );
 };

@@ -1,47 +1,26 @@
-import {
-  ChangeEvent,
-  ComponentProps,
-  CSSProperties,
-  forwardRef,
-  useEffect,
-  useState,
-} from 'react';
+import { ChangeEvent, ComponentProps, CSSProperties, forwardRef } from 'react';
 
 import * as S from './Field.style';
 
 export interface InputProps extends ComponentProps<'input'> {
   onComplete?: (event?: ChangeEvent<HTMLInputElement>) => void;
   styleType?: 'fill' | 'outline' | 'flushed' | 'ghost';
-  onlyNumber?: boolean;
   style?: CSSProperties;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ style, styleType = 'fill', onComplete, onlyNumber, ...props }, ref) => {
-    const [value, setValue] = useState(props.value);
-
-    useEffect(() => {
-      setValue(props.value);
-    }, [props.value]);
-
+  ({ style, styleType = 'fill', onComplete, ...props }, ref) => {
     const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-      const { onChange, maxLength } = props;
+      const { maxLength } = props;
       const { value } = event.target;
       const maxLengthNumber = Number(maxLength);
 
-      if (onlyNumber === true && isNaN(Number(value))) {
+      if (isNaN(maxLengthNumber) === true) {
         return;
       }
-      if (isNaN(maxLengthNumber) === false) {
-        if (value.length === maxLengthNumber) {
-          onComplete && onComplete(event);
-        }
-        if (value.length > maxLengthNumber) {
-          return;
-        }
+      if (value.length === maxLengthNumber) {
+        onComplete && onComplete(event);
       }
-      onChange && onChange(event);
-      setValue(event.target.value);
     };
 
     return (
@@ -51,7 +30,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         }}
         styleType={styleType}
         ref={ref}
-        value={value}
         onChange={handleChangeInput}
         {...props}
       />
