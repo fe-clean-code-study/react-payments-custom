@@ -9,6 +9,7 @@ import {
   NumbersField,
   CVCField,
   PasswordField,
+  ExpirationDateField,
 } from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
 import { Drawer } from '~/shared/ui';
@@ -44,6 +45,9 @@ const Root = () => {
         </Drawer.Root>
         <S.FieldContainer>
           <NumbersField />
+        </S.FieldContainer>
+        <S.FieldContainer>
+          <ExpirationDateField />
         </S.FieldContainer>
         <S.FieldContainer>
           <CardUserField />

@@ -83,36 +83,36 @@ export const cardRegsitFormValidate = {
         message: '월은 12이하의 숫자로 입력해주세요.',
       },
     },
-    day: {
+    year: {
       type: {
         validate: (value: string | undefined) => {
           return !isNaN(Number(value));
         },
-        message: '일은 숫자로 입력해주세요.',
+        message: '년은 숫자로 입력해주세요.',
       },
       required: {
         validate: (value: string) => {
           return value.length > 0;
         },
-        message: '일을 입력해주세요.',
+        message: '년을 입력해주세요.',
       },
       length: {
         validate: (value: string) => {
           return value.length === 2;
         },
-        message: '일은 2자리로 입력해주세요.',
+        message: '년은 2자리로 입력해주세요.',
       },
       min: {
         validate: (value: string) => {
           return Number(value) >= 1;
         },
-        message: '일은 1이상의 숫자로 입력해주세요.',
+        message: '년은 1이상의 숫자로 입력해주세요.',
       },
       max: {
         validate: (value: string) => {
           return Number(value) <= 31;
         },
-        message: '일은 31이하의 숫자로 입력해주세요.',
+        message: '년은 99이하의 숫자로 입력해주세요.',
       },
     },
   },
