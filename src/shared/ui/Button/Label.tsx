@@ -1,17 +1,11 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Button.style';
 
-export interface LabelProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
-}
+export interface LabelProps extends ComponentProps<'div'> {}
 
-const Label = ({ children, style, ...props }: LabelProps) => {
-  return (
-    <S.Label style={{ ...style }} {...props}>
-      {children}
-    </S.Label>
-  );
+const Label = ({ children, ...props }: LabelProps) => {
+  return <S.Label {...props}>{children}</S.Label>;
 };
 
 export default Label;

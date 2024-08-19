@@ -4,7 +4,6 @@ export const cardRegsitFormValidate = {
   numbers: {
     type: {
       validate: (value: string | undefined) => {
-        console.log(value);
         return !isNaN(Number(value));
       },
       message: '카드번호는 숫자만 입력 가능합니다.',

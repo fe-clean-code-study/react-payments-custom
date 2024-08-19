@@ -1,4 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import * as S from './Form.style';
 
@@ -12,9 +13,10 @@ import {
   ExpirationDateField,
 } from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
-import { Drawer } from '~/shared/ui';
+import { Button, Drawer } from '~/shared/ui';
 
 const Root = () => {
+  const navigate = useNavigate();
   const methods = useForm({
     defaultValues: {
       numbers: ['', '', '', ''],
@@ -31,7 +33,7 @@ const Root = () => {
     mode: 'onBlur',
   });
   const companyDrawerDisclosure = useDisclosure();
-  // const passwordDrawerDisclosre = useDisclosure();
+  const { formState } = methods;
 
   return (
     <S.Container>
@@ -59,6 +61,17 @@ const Root = () => {
           <PasswordField />
         </S.FieldContainer>
       </FormProvider>
+      {formState.isValid && (
+        <S.ButtonContainer>
+          <S.ButtonRoot
+            onClick={() => {
+              navigate('/card-alias');
+            }}
+          >
+            <Button.Label>다음</Button.Label>
+          </S.ButtonRoot>
+        </S.ButtonContainer>
+      )}
     </S.Container>
   );
 };
