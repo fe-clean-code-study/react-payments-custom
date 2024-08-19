@@ -1,24 +1,15 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Keypad.style';
 
 export interface RootProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
   row?: number;
   col?: number;
 }
 
-const Root = ({ style, row, col, children, ...props }: RootProps) => {
+const Root = ({ row, col, children, ...props }: RootProps) => {
   return (
-    <S.Root
-      style={{
-        display: 'grid',
-        gridTemplateColumns: `repeat(${col}, 1fr)`,
-        gridTemplateRows: `repeat(${row}, 1fr)`,
-        ...style,
-      }}
-      {...props}
-    >
+    <S.Root row={row} col={col} {...props}>
       {children}
     </S.Root>
   );

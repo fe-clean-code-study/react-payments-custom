@@ -1,22 +1,11 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Field.style';
 
-export interface LabelProps extends ComponentProps<'label'> {
-  style?: CSSProperties;
-}
+export interface LabelProps extends ComponentProps<'label'> {}
 
-const Label = ({ children, style, ...props }: LabelProps) => {
-  return (
-    <S.Label
-      style={{
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </S.Label>
-  );
+const Label = ({ children, ...props }: LabelProps) => {
+  return <S.Label {...props}>{children}</S.Label>;
 };
 
 export default Label;

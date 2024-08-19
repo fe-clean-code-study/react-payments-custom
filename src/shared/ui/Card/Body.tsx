@@ -1,17 +1,11 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Card.style';
 
-export interface BodyProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
-}
+export interface BodyProps extends ComponentProps<'div'> {}
 
-const Body = ({ children, style, ...props }: BodyProps) => {
-  return (
-    <S.Body style={{ ...style }} {...props}>
-      {children}
-    </S.Body>
-  );
+const Body = ({ children, ...props }: BodyProps) => {
+  return <S.Body {...props}>{children}</S.Body>;
 };
 
 export default Body;

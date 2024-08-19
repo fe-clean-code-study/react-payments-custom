@@ -1,20 +1,18 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Field.style';
 
 export interface InputWrapperProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
   styleType?: 'fill' | 'outline' | 'flushed' | 'ghost';
 }
 
 const InputWrapper = ({
-  style,
   styleType = 'fill',
   children,
   ...props
 }: InputWrapperProps) => {
   return (
-    <S.InputWrapper styleType={styleType} style={style} {...props}>
+    <S.InputWrapper styleType={styleType} {...props}>
       {children}
     </S.InputWrapper>
   );

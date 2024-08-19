@@ -1,22 +1,11 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Keypad.style';
 
-export interface ItemProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
-}
+export interface ItemProps extends ComponentProps<'div'> {}
 
-const Item = ({ style, children, ...props }: ItemProps) => {
-  return (
-    <S.Item
-      style={{
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </S.Item>
-  );
+const Item = ({ children, ...props }: ItemProps) => {
+  return <S.Item {...props}>{children}</S.Item>;
 };
 
 export default Item;

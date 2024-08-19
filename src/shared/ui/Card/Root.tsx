@@ -1,22 +1,11 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Card.style';
 
-export interface RootProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
-}
+export interface RootProps extends ComponentProps<'div'> {}
 
-const Root = ({ children, style, ...props }: RootProps) => {
-  return (
-    <S.Root
-      style={{
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </S.Root>
-  );
+const Root = ({ children, ...props }: RootProps) => {
+  return <S.Root {...props}>{children}</S.Root>;
 };
 
 export default Root;

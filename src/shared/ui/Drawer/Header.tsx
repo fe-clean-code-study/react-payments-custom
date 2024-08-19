@@ -1,22 +1,11 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import * as S from './Drawer.style';
 
-export interface HeaderProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
-}
+export interface HeaderProps extends ComponentProps<'div'> {}
 
-const Header = ({ style, children, ...props }: HeaderProps) => {
-  return (
-    <S.Header
-      style={{
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </S.Header>
-  );
+const Header = ({ children, ...props }: HeaderProps) => {
+  return <S.Header {...props}>{children}</S.Header>;
 };
 
 export default Header;

@@ -1,25 +1,14 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 
 import { useDrawerContext } from './context';
 import * as S from './Drawer.style';
 
-export interface ContentProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
-}
+export interface ContentProps extends ComponentProps<'div'> {}
 
-const Content = ({ style, children }: ContentProps) => {
+const Content = ({ children }: ContentProps) => {
   const { placement } = useDrawerContext();
 
-  return (
-    <S.Content
-      placement={placement ?? 'bottom'}
-      style={{
-        ...style,
-      }}
-    >
-      {children}
-    </S.Content>
-  );
+  return <S.Content placement={placement ?? 'bottom'}>{children}</S.Content>;
 };
 
 export default Content;
