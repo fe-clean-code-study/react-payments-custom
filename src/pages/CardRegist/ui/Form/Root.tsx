@@ -2,7 +2,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import * as S from './Form.style';
 
-import { CardDesign, CompanyField, CardUserField } from '~/features/RegistCard';
+import {
+  CardDesign,
+  CompanyField,
+  CardUserField,
+  NumbersField,
+} from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
 import { Drawer } from '~/shared/ui';
 
@@ -35,6 +40,9 @@ const Root = () => {
             <CompanyField />
           </Drawer.Content>
         </Drawer.Root>
+        <S.FieldContainer>
+          <NumbersField />
+        </S.FieldContainer>
         <S.FieldContainer>
           <CardUserField />
         </S.FieldContainer>
