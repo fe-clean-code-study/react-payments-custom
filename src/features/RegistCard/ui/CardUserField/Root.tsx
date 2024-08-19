@@ -1,5 +1,5 @@
 import { ComponentProps, CSSProperties } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import * as S from './CardUserField.style';
 
@@ -12,7 +12,7 @@ export interface RootProps extends ComponentProps<'div'> {
 }
 
 export const Root = ({ style, isError = false, ...props }: RootProps) => {
-  const { register, watch } = useFormContext();
+  const { control, watch } = useFormContext();
   const MAX_LENGTH = 20;
   const currentLength = watch('cardUser').length;
 
@@ -26,12 +26,21 @@ export const Root = ({ style, isError = false, ...props }: RootProps) => {
           </div>
         </S.LabelContainer>
       </Field.Label>
-      <Field.Input
-        {...register('cardUser', {
+      <Controller
+        name='cardUser'
+        control={control}
+        rules={{
           validate: (value) =>
             validateHelper(cardRegsitFormValidate['cardUser'], value),
-        })}
-        placeholder='카드 사용자 이름을 입력해주세요.'
+        }}
+        render={({ field: { onChange, onBlur } }) => (
+          <Field.Input
+            maxLength={20}
+            onChange={onChange}
+            onBlur={onBlur}
+            placeholder='카드 사용자 이름을 입력해주세요.'
+          />
+        )}
       />
       <Field.ErrorText isShow={isError}>
         카드 사용자 이름을 입력해주세요.
