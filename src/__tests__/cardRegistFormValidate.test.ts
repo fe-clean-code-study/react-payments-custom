@@ -79,32 +79,32 @@ describe('카드 등록시 유효성 검사 로직.', () => {
 
   test('카드 만료일의 일은 2자리여야 한다.', () => {
     const endDate = '12';
-    const result = cardRegsitFormValidate.endDate.day.type.validate(endDate);
+    const result = cardRegsitFormValidate.endDate.year.type.validate(endDate);
     expect(result).toBe(true);
   });
 
   test('카드 만료일의 일은 필수로 입력되어야 한다.', () => {
     const endDate = '12';
     const result =
-      cardRegsitFormValidate.endDate.day.required.validate(endDate);
+      cardRegsitFormValidate.endDate.year.required.validate(endDate);
     expect(result).toBe(true);
   });
 
   test('카드 만료일의 일은 숫자로만 이루어져야 한다.', () => {
     const endDate = '12';
-    const result = cardRegsitFormValidate.endDate.day.type.validate(endDate);
+    const result = cardRegsitFormValidate.endDate.year.type.validate(endDate);
     expect(result).toBe(true);
   });
 
   test('카드 만료일의 일은 1이상의 숫자여야 한다.', () => {
     const endDate = '12';
-    const result = cardRegsitFormValidate.endDate.day.min.validate(endDate);
+    const result = cardRegsitFormValidate.endDate.year.min.validate(endDate);
     expect(result).toBe(true);
   });
 
   test('카드 만료일의 일은 31이하의 숫자여야 한다.', () => {
     const endDate = '12';
-    const result = cardRegsitFormValidate.endDate.day.max.validate(endDate);
+    const result = cardRegsitFormValidate.endDate.year.max.validate(endDate);
     expect(result).toBe(true);
   });
 
@@ -166,7 +166,7 @@ describe('카드 등록시 유효성 검사 로직.', () => {
   });
 
   test('카드 만료일은 각각 2자리의 월, 일로 이루어져야 한다.', () => {
-    const endDate = { month: '12', day: '31' };
+    const endDate = { month: '12', year: '31' };
     const result = cardRegsitFormValidate.form.endDate.validate(endDate);
     expect(result).toBe(true);
   });

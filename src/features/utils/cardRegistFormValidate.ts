@@ -175,8 +175,8 @@ export const cardRegsitFormValidate = {
       message: '카드사를 선택해주세요.',
     },
     endDate: {
-      validate: (value: { month: string; day: string }) => {
-        return value.month.length === 2 && value.day.length === 2;
+      validate: (value: { month: string; year: string }) => {
+        return value.month.length === 2 && value.year.length === 2;
       },
       message: '만료일을 정확히 입력해주세요.',
     },
