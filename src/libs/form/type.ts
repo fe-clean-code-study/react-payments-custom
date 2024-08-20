@@ -24,15 +24,6 @@ export interface IFormData {
   [key: string]: unknown
 }
 
-// export interface IFormOptions<T> {
-//   [key: FormKey<T>]: {
-//     type?: HTMLInputTypeAttribute
-//     default?: unknown
-//     check?: (value: unknown) => boolean
-//     nextField?: FormKey<T>
-//   }
-// }
-
 export type IFormOptions<T> = Partial<
   Record<
     FormKey<T>,

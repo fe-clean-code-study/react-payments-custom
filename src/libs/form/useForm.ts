@@ -45,7 +45,9 @@ const useForm = <T extends Record<never, unknown>>({
 
   const register = (key: FormKey<T> | string) => {
     const formKey = key as FormKey<T>
-    values.current[formKey] = ''
+    if (!values.current[formKey]) {
+      values.current[formKey] = ''
+    }
 
     return {
       name: String(formKey),
