@@ -34,19 +34,32 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       setInputValue(value);
     }, [value]);
 
-    const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const changeValue = (
+      value: string,
+      event: ChangeEvent<HTMLInputElement>,
+    ) => {
       const { maxLength } = props;
-      const { value } = event.target;
       const maxLengthNumber = Number(maxLength);
 
-      if (onlyNumber && isNaN(Number(value))) {
-        return;
-      }
       setInputValue(value);
       onChange && onChange(event);
+
       if (value.length === maxLengthNumber) {
         onComplete && onComplete(event);
       }
+    };
+
+    const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+
+      if (onlyNumber) {
+        const onlyNumberValue = value.replace(/[^0-9]/g, '');
+
+        changeValue(onlyNumberValue, event);
+        return;
+      }
+
+      changeValue(value, event);
     };
 
     return (
