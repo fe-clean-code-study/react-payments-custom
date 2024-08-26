@@ -8,9 +8,3 @@ export const CARD_COMPANY = Object.freeze({
   JINGYEONG: '진경카드',
   GEONWOO: '건우카드',
 });
-
-// ! 이거 옮겨야함
-export const googleIcon = Object.freeze({
-  arrowBack: 'arrow_back',
-  add: 'add',
-});

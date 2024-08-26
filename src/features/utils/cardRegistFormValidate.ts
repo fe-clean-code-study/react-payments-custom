@@ -30,15 +30,9 @@ export const cardRegsitFormValidate = {
     },
   },
   company: {
-    type: {
+    required: {
       validate: (value: string | undefined) => {
         return typeof value === 'string';
-      },
-      message: '카드사는 문자로 입력해주세요.',
-    },
-    required: {
-      validate: (value: string) => {
-        return value.length > 0;
       },
       message: '카드사를 선택해주세요.',
     },

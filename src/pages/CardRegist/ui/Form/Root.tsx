@@ -25,7 +25,7 @@ const Root = () => {
         year: '',
       },
       cardUser: '',
-      company: undefined,
+      company: '',
       securityCode: '',
       password: ['', ''],
       alias: '',

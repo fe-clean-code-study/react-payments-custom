@@ -30,7 +30,9 @@ const Root = ({ ...props }: RootProps) => {
         const { company } = $palateItem.dataset;
 
         if (company && isCardCompany(company)) {
-          setValue('company', company, { shouldValidate: true });
+          setValue('company', company, {
+            shouldValidate: true,
+          });
         }
       }
     }
