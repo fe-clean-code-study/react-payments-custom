@@ -42,13 +42,13 @@ export const Root = () => {
   return (
     <S.Container onClick={handleClickCardUL}>
       {cards.map((card) => (
-        <li>
-          <CreditCard />
+        <S.CardContainer>
+          <CreditCard {...card} />
           <S.DeleteButton>
             <GoogleIcon name='close' />
           </S.DeleteButton>
           <S.CardAlias>{card.alias}</S.CardAlias>
-        </li>
+        </S.CardContainer>
       ))}
       <li>
         <AddCard size={'small'} onClick={() => navigate('/card-regist')} />
