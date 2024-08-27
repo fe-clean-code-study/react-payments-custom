@@ -30,7 +30,11 @@ const Root = () => {
   return (
     <S.BodyContainer>
       <CreditCard size='big' {...targetCard} />
-      <Field.Input ref={inputRef} styleType={'flushed'} />
+      <Field.Input
+        value={targetCard?.alias}
+        ref={inputRef}
+        styleType={'flushed'}
+      />
       <S.ButtonContainer>
         <Button.Root onClick={handleClickButton}>
           <S.ButtonLabel>완료</S.ButtonLabel>
