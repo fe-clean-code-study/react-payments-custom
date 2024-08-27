@@ -30,4 +30,6 @@ export const DeleteButton = styled(Button.Root)`
 export const CardAlias = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 30px;
 `;
