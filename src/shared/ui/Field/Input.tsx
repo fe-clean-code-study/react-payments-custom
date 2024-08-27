@@ -28,18 +28,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const [inputValue, setInputValue] = useState<
       string | number | readonly string[] | undefined
-    >();
+    >('');
 
     useEffect(() => {
       setInputValue(value);
     }, [value]);
 
-    const changeValue = (
-      value: string,
-      event: ChangeEvent<HTMLInputElement>,
-    ) => {
+    const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
       const { maxLength } = props;
       const maxLengthNumber = Number(maxLength);
+
+      if (onlyNumber && isNaN(Number(value))) {
+        return;
+      }
 
       setInputValue(value);
       onChange && onChange(event);
@@ -49,26 +51,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       }
     };
 
-    const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-      const { value } = event.target;
-
-      if (onlyNumber) {
-        const onlyNumberValue = value.replace(/[^0-9]/g, '');
-
-        changeValue(onlyNumberValue, event);
-        return;
-      }
-
-      changeValue(value, event);
-    };
-
     return (
       <S.Input
+        {...props}
         styleType={styleType}
         ref={ref}
         value={inputValue}
         onChange={handleChangeInput}
-        {...props}
       />
     );
   },

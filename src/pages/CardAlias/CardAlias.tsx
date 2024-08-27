@@ -1,4 +1,4 @@
-import { Header } from './ui';
+import { Header, InputAlias } from './ui';
 
 import { Common } from '~/widgets/Common';
 
@@ -8,7 +8,9 @@ const CardAlias = () => {
       <Common.Header>
         <Header />
       </Common.Header>
-      <Common.Body></Common.Body>
+      <Common.Body>
+        <InputAlias />
+      </Common.Body>
     </Common.Root>
   );
 };
