@@ -42,7 +42,7 @@ export const Root = () => {
   return (
     <S.Container onClick={handleClickCardUL}>
       {cards.map((card) => (
-        <S.CardContainer>
+        <S.CardContainer data-id={card.id} key={card.id}>
           <CreditCard {...card} />
           <S.DeleteButton>
             <GoogleIcon name='close' />
