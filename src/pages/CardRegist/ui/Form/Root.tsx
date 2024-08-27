@@ -1,8 +1,10 @@
 import { FormProvider, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import * as S from './Form.style';
 
+import { cardAction } from '~/entities/Card';
 import {
   CardDesign,
   CompanyField,
@@ -14,11 +16,14 @@ import {
 } from '~/features/RegistCard';
 import { useDisclosure } from '~/shared/hooks';
 import { Button, Drawer } from '~/shared/ui';
+import { generateID } from '~/shared/utils';
 
 const Root = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const methods = useForm({
     defaultValues: {
+      id: generateID(),
       numbers: ['', '', '', ''],
       expirationDate: {
         month: '',
@@ -33,7 +38,7 @@ const Root = () => {
     mode: 'onBlur',
   });
   const companyDrawerDisclosure = useDisclosure();
-  const { formState } = methods;
+  const { formState, getValues } = methods;
 
   return (
     <S.Container>
@@ -65,7 +70,8 @@ const Root = () => {
         <S.ButtonContainer>
           <S.ButtonRoot
             onClick={() => {
-              navigate('/card-alias');
+              dispatch(cardAction.addCard({ card: getValues() }));
+              navigate(`/card-alias/${getValues('id')}`);
             }}
           >
             <Button.Label>다음</Button.Label>
