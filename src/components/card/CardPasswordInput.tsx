@@ -1,7 +1,7 @@
 import { cardValidator } from "../../domain";
 import { useBlur, useFocusNext } from "../../hooks";
 import { filterDigits } from "../../utils";
-import { Input, ValidationMessage } from "../common";
+import { Flex, Input, ValidationMessage } from "../common";
 
 interface CardPasswordInputProps {
   cardPassword: string[];
@@ -18,11 +18,10 @@ const CardPasswordInput = ({
   return (
     <div className="input-container">
       <span className="input-title">카드 비밀번호</span>
-      <div style={{ display: "flex", gap: "5px" }}>
+      <Flex gap="5px">
         {cardPassword.map((value, index) => (
           <Input
             key={index}
-            className="w-15"
             type="password"
             maxLength={cardValidator.password.maxLength}
             value={value}
@@ -34,12 +33,19 @@ const CardPasswordInput = ({
             }}
             onBlur={(e) => e.target.value.length !== 1 && handleBlur()}
             ref={register}
-            style={{ color: value.length === 1 ? "royalblue" : "" }}
+            style={{
+              width: "15%",
+              color: value.length === 1 ? "royalblue" : "",
+            }}
           />
         ))}
-        <div className="flex-center w-15">•</div>
-        <div className="flex-center w-15">•</div>
-      </div>
+        <Flex justify="center" align="center" width="15%">
+          •
+        </Flex>
+        <Flex justify="center" align="center" width="15%">
+          •
+        </Flex>
+      </Flex>
       <ValidationMessage
         isValid={() => cardValidator.password.check(cardPassword)}
         errorMessage={cardValidator.password.errorMessage}

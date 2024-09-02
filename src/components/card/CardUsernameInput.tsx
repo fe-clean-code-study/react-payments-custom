@@ -1,6 +1,6 @@
 import { useBlur } from "../../hooks";
 import { cardValidator } from "../../domain";
-import { Input, ValidationMessage } from "../common";
+import { Flex, Input, ValidationMessage } from "../common";
 
 interface CardUsernameInputProps {
   username: string;
@@ -15,12 +15,12 @@ const CardUsernameInput = ({
 
   return (
     <div className="input-container">
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <Flex justify="space-between">
         <span className="input-title">카드 소유자 이름</span>
         <span className="input-title">
           {username.length}/{cardValidator.username.maxLength}
         </span>
-      </div>
+      </Flex>
       <Input
         placeholder="카드에 표시된 이름과 동일하게 입력하세요."
         maxLength={cardValidator.username.maxLength}

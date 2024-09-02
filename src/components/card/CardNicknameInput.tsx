@@ -12,7 +12,12 @@ const CardNicknameInput = ({
   onNicknameChange,
 }: CardNicknameInputProps) => {
   return (
-    <Flex justify="center" align="center" className="input-container w-100">
+    <Flex
+      justify="center"
+      align="center"
+      width="100%"
+      className="input-container"
+    >
       <Input
         variant="underline"
         className="w-75"
