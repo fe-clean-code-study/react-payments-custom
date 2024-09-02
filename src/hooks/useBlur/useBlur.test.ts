@@ -15,20 +15,20 @@ describe("useBlur 훅 테스트", () => {
     expect(result.current.blurred).toBe(true);
   });
 
-  test("handleBlur가 호출되면 blurred가 true로 설정되어야 한다.", () => {
+  test("handleBlur가 호출되면 blurred가 true로 설정되어야 한다.", async () => {
     const { result } = renderHook(() => useBlur());
 
-    act(() => {
+    await act(async () => {
       result.current.handleBlur();
     });
 
     expect(result.current.blurred).toBe(true);
   });
 
-  test("resetBlur가 호출되면 blurred가 true로 설정되어야 한다.", () => {
+  test("resetBlur가 호출되면 blurred가 true로 설정되어야 한다.", async () => {
     const { result } = renderHook(() => useBlur());
 
-    act(() => {
+    await act(async () => {
       result.current.resetBlur();
     });
 

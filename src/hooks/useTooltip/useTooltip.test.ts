@@ -15,20 +15,20 @@ describe("useTooltip 훅 테스트", () => {
     expect(result.current.isShow).toBe(true);
   });
 
-  test("show를 호출되면 isShow이 true가 된다.", () => {
+  test("show를 호출되면 isShow이 true가 된다.", async () => {
     const { result } = renderHook(() => useTooltip());
 
-    act(() => {
+    await act(async () => {
       result.current.show();
     });
 
     expect(result.current.isShow).toBe(true);
   });
 
-  test("hide가 호출되면 isShow이 false가 된다.", () => {
+  test("hide가 호출되면 isShow이 false가 된다.", async () => {
     const { result } = renderHook(() => useTooltip());
 
-    act(() => {
+    await act(async () => {
       result.current.hide();
     });
 

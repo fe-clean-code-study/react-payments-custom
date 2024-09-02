@@ -3,7 +3,7 @@ import { describe, expect, test, vi } from "vitest";
 import useFocusNext from ".";
 
 describe("useFocusNext", () => {
-  test("조건이 충족되면 다음 입력 요소로 포커스를 이동시킨다.", () => {
+  test("조건이 충족되면 다음 입력 요소로 포커스를 이동시킨다.", async () => {
     const order = ["input1", "input2", "input3"];
     const { result } = renderHook(() => useFocusNext(order));
 
@@ -15,14 +15,14 @@ describe("useFocusNext", () => {
     document.body.appendChild(input1);
     document.body.appendChild(input2);
 
-    act(() => {
+    await act(async () => {
       result.current.register(input1);
       result.current.register(input2);
     });
 
     const shouldMoveFocus = vi.fn().mockReturnValue(true);
 
-    act(() => {
+    await act(async () => {
       result.current.focusNext(input1, shouldMoveFocus);
     });
 
@@ -32,7 +32,7 @@ describe("useFocusNext", () => {
     document.body.removeChild(input2);
   });
 
-  test("조건이 충족되지 않으면 포커스를 이동시키지 않는다.", () => {
+  test("조건이 충족되지 않으면 포커스를 이동시키지 않는다.", async () => {
     const order = ["input1", "input2", "input3"];
     const { result } = renderHook(() => useFocusNext(order));
 
@@ -44,14 +44,14 @@ describe("useFocusNext", () => {
     document.body.appendChild(input1);
     document.body.appendChild(input2);
 
-    act(() => {
+    await act(async () => {
       result.current.register(input1);
       result.current.register(input2);
     });
 
     const shouldMoveFocus = vi.fn().mockReturnValue(false);
 
-    act(() => {
+    await act(async () => {
       result.current.focusNext(input1, shouldMoveFocus);
     });
 
