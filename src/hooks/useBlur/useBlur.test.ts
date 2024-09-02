@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
-import { useBlur } from "../hooks";
+import useBlur from ".";
 
 describe("useBlur 훅 테스트", () => {
   test("기본적으로 false로 초기화되어야 한다.", () => {

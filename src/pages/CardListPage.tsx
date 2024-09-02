@@ -38,14 +38,11 @@ const CardListPage = () => {
               onClick={() => navigate(`card-edit/${cardInfo.id}`)}
             />
             <Button
+              variant="circle"
               style={{
                 position: "absolute",
                 top: "-10px",
                 right: "-10px",
-                width: "25px",
-                height: "25px",
-                backgroundColor: "#e5e5e5",
-                borderRadius: "50%",
               }}
               onClick={() => handleDeleteCard(cardInfo.id)}
             >

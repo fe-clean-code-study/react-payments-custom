@@ -12,9 +12,15 @@ const CardNicknameInput = ({
   onNicknameChange,
 }: CardNicknameInputProps) => {
   return (
-    <Flex justify="center" align="center" className="input-container w-100">
+    <Flex
+      justify="center"
+      align="center"
+      width="100%"
+      className="input-container"
+    >
       <Input
-        className="input-underline w-75"
+        variant="underline"
+        className="w-75"
         placeholder={placeholder}
         value={nickname}
         maxLength={10}

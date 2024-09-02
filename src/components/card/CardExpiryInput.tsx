@@ -23,7 +23,6 @@ const CardExpiryInput = ({
       <span className="input-title">만료일</span>
       <div className="input-box w-50">
         <Input
-          className="input-basic"
           placeholder="MM"
           min={1}
           max={12}
@@ -41,7 +40,6 @@ const CardExpiryInput = ({
         />
         /
         <Input
-          className="input-basic"
           placeholder="YY"
           maxLength={cardValidator.expiry.maxLength}
           value={expiredYear}
