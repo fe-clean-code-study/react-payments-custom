@@ -103,7 +103,7 @@ export const cardRegsitFormValidate = {
       },
       max: {
         validate: (value: string) => {
-          return Number(value) <= 31;
+          return Number(value) <= 99;
         },
         message: '년은 99이하의 숫자로 입력해주세요.',
       },
