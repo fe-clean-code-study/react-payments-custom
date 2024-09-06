@@ -8,7 +8,7 @@ export interface RootProps extends ComponentProps<'div'> {}
 
 const Root = ({ children }: RootProps) => {
   return (
-    <S.Root isOpen={true} onClose={() => {}}>
+    <S.Root initialOpen={true}>
       <Modal.Overlay />
       <Modal.Content>{children}</Modal.Content>
     </S.Root>
