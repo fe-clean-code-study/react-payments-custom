@@ -19,7 +19,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     {
       styleType = 'fill',
       onlyNumber = false,
-      value,
+      value = '',
       onComplete,
       onChange,
       ...props
@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const [inputValue, setInputValue] = useState<
       string | number | readonly string[] | undefined
-    >('');
+    >(value);
 
     useEffect(() => {
       setInputValue(value);
@@ -40,6 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       const maxLengthNumber = Number(maxLength);
 
       if (onlyNumber && isNaN(Number(value))) {
+        setInputValue('');
         return;
       }
 
