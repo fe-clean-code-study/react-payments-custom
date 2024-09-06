@@ -38,13 +38,19 @@ const Root = () => {
     mode: 'onBlur',
   });
   const companyDrawerDisclosure = useDisclosure();
-  const { formState, getValues } = methods;
+  const { formState, getValues, trigger } = methods;
 
   return (
     <S.Container>
       <FormProvider {...methods}>
         <CardDesign onClick={companyDrawerDisclosure.onOpen} />
-        <Drawer.Root {...companyDrawerDisclosure}>
+        <Drawer.Root
+          {...companyDrawerDisclosure}
+          onClose={() => {
+            trigger('company');
+            companyDrawerDisclosure.onClose();
+          }}
+        >
           <Drawer.Overlay />
           <Drawer.Content>
             <CompanyField />

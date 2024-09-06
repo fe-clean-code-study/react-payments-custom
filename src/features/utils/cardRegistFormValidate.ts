@@ -32,7 +32,7 @@ export const cardRegsitFormValidate = {
   company: {
     required: {
       validate: (value: string | undefined) => {
-        return typeof value === 'string';
+        return typeof value === 'string' && value.length > 0;
       },
       message: '카드사를 선택해주세요.',
     },
