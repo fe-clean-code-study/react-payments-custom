@@ -8,7 +8,7 @@ const Root = () => {
   const navigate = useNavigate();
 
   const handleClickBack = () => {
-    navigate('/card-list');
+    navigate('/manage-card');
   };
 
   return (
