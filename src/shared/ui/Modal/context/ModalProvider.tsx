@@ -1,14 +1,20 @@
 import { PropsWithChildren } from 'react';
 
-import { ModalContext, ModalContextValue } from './ModalContext';
+import { ModalContext } from './ModalContext';
+
+import { useDisclosure } from '~/shared/hooks';
+import { DisclosureContextProps } from '~/shared/types/ui';
 
 const ModalProvider = ({
-  isOpen,
+  initialOpen,
   onClose,
+  onOpen,
   children,
-}: ModalContextValue & PropsWithChildren) => {
+}: DisclosureContextProps & PropsWithChildren) => {
+  const disclosure = useDisclosure({ initialOpen, onClose, onOpen });
+
   return (
-    <ModalContext.Provider value={{ isOpen, onClose }}>
+    <ModalContext.Provider value={{ ...disclosure }}>
       {children}
     </ModalContext.Provider>
   );

@@ -6,9 +6,13 @@ import * as S from './Drawer.style';
 export interface ContentProps extends ComponentProps<'div'> {}
 
 const Content = ({ children }: ContentProps) => {
-  const { placement } = useDrawerContext();
+  const { placement, isOpen } = useDrawerContext();
 
-  return <S.Content placement={placement ?? 'bottom'}>{children}</S.Content>;
+  return (
+    isOpen && (
+      <S.Content placement={placement ?? 'bottom'}>{children}</S.Content>
+    )
+  );
 };
 
 export default Content;

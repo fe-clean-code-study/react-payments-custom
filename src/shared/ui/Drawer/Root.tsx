@@ -1,19 +1,15 @@
 import { PropsWithChildren } from 'react';
 
-import { DrawerContextValue, DrawerProvider } from './context';
+import { DrawerProvider } from './context';
 
-export interface RootProps extends DrawerContextValue {}
+import { DisclosureContextProps, Placement } from '~/shared/types/ui';
+
+export interface RootProps extends DisclosureContextProps {
+  placement?: Placement;
+}
 
 const Root = ({ children, ...contextProps }: PropsWithChildren<RootProps>) => {
-  const { placement } = contextProps;
-  return (
-    <DrawerProvider
-      {...contextProps}
-      placement={placement ? placement : 'bottom'}
-    >
-      {contextProps.isOpen ? children : null}
-    </DrawerProvider>
-  );
+  return <DrawerProvider {...contextProps}>{children}</DrawerProvider>;
 };
 
 export default Root;

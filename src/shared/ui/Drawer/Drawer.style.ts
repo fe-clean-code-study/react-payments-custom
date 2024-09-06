@@ -127,3 +127,8 @@ export const Footer = styled.div`
   width: 100%;
   display: flex;
 `;
+
+export const CloseButton = styled.button`
+  background-color: transparent;
+  border: none;
+`;

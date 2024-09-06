@@ -1,15 +1,19 @@
 import Body from './Body';
+import CloseButton from './CloseButton';
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
 import Overlay from './Overlay';
 import Root from './Root';
+import Trigger from './Trigger';
 
 export type { RootProps } from './Root';
 export type { ContentProps } from './Content';
 export type { HeaderProps } from './Header';
 export type { BodyProps } from './Body';
 export type { FooterProps } from './Footer';
+export type { TriggerProps } from './Trigger';
+export type { CloseButtonProps } from './CloseButton';
 
 export const Modal = {
   Root,
@@ -18,4 +22,6 @@ export const Modal = {
   Header,
   Body,
   Footer,
+  Trigger,
+  CloseButton,
 };

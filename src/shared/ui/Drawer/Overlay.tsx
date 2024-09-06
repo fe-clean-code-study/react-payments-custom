@@ -2,9 +2,9 @@ import { useDrawerContext } from './context';
 import * as S from './Drawer.style';
 
 const Overlay = () => {
-  const { onClose } = useDrawerContext();
+  const { close, isOpen } = useDrawerContext();
 
-  return <S.Overlay onClick={onClose}></S.Overlay>;
+  return isOpen && <S.Overlay onClick={close}></S.Overlay>;
 };
 
 export default Overlay;

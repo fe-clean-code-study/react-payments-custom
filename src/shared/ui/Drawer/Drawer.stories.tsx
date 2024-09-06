@@ -1,6 +1,5 @@
 import { Drawer, RootProps } from './index';
 
-import { useDisclosure } from '~/shared/hooks';
 import { Button } from '~/shared/ui';
 
 export default {
@@ -20,18 +19,14 @@ export default {
 type Placement = Pick<RootProps, 'placement'>;
 
 export const Default = (placement: Placement) => {
-  const { isOpen, onClose, onOpen } = useDisclosure();
-
   return (
     <>
-      <Button.Root onClick={onOpen}>
-        <Button.Label>Open Drawer</Button.Label>
-      </Button.Root>
-      <Drawer.Root
-        isOpen={isOpen}
-        onClose={onClose}
-        placement={placement.placement}
-      >
+      <Drawer.Root placement={placement.placement}>
+        <Drawer.Trigger>
+          <Button.Root>
+            <Button.Label>Open Drawer</Button.Label>
+          </Button.Root>
+        </Drawer.Trigger>
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.Header>Header</Drawer.Header>

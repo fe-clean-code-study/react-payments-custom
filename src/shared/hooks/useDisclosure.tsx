@@ -1,17 +1,26 @@
 import { useState } from 'react';
 
-const useDisclosure = (initialOpen?: boolean) => {
+interface UseDisclosureProps {
+  initialOpen?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
+}
+
+const useDisclosure = (option?: UseDisclosureProps) => {
+  const { initialOpen, onOpen, onClose } = option || {};
   const [isOpen, setIsOpen] = useState(initialOpen || false);
 
-  const onOpen = () => {
+  const open = () => {
     setIsOpen(true);
+    onOpen && onOpen();
   };
 
-  const onClose = () => {
+  const close = () => {
     setIsOpen(false);
+    onClose && onClose();
   };
 
-  return { isOpen, onOpen, onClose };
+  return { isOpen, open, close };
 };
 
 export default useDisclosure;

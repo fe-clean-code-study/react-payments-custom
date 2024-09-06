@@ -45,3 +45,8 @@ export const Footer = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
+export const CloseButton = styled.button`
+  background-color: transparent;
+  border: none;
+`;

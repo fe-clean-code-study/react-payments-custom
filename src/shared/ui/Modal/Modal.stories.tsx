@@ -1,6 +1,5 @@
 import { Modal } from './index';
 
-import { useDisclosure } from '~/shared/hooks';
 import { Button } from '~/shared/ui';
 
 export default {
@@ -9,22 +8,24 @@ export default {
 };
 
 export const Root = () => {
-  const { isOpen, onClose, onOpen } = useDisclosure();
-
   return (
     <>
-      <Button.Root onClick={onOpen}>
-        <Button.Label>Open Modal</Button.Label>
-      </Button.Root>
-      <Modal.Root isOpen={isOpen} onClose={onClose}>
+      <Modal.Root>
+        <Modal.Trigger>
+          <Button.Root>
+            <Button.Label>Open Modal</Button.Label>
+          </Button.Root>
+        </Modal.Trigger>
         <Modal.Overlay />
         <Modal.Content>
           <Modal.Header>Header</Modal.Header>
           <Modal.Body>Body</Modal.Body>
           <Modal.Footer>
-            <Button.Root onClick={onClose}>
-              <Button.Label>Close Modal</Button.Label>
-            </Button.Root>
+            <Modal.CloseButton>
+              <Button.Root onClick={close}>
+                <Button.Label>Close Modal</Button.Label>
+              </Button.Root>
+            </Modal.CloseButton>
           </Modal.Footer>
         </Modal.Content>
       </Modal.Root>

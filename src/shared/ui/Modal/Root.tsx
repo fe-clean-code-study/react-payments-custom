@@ -1,15 +1,16 @@
 import { PropsWithChildren } from 'react';
 
-import { ModalContextValue, ModalProvider } from './context';
+import { ModalProvider } from './context';
 
-export interface RootProps extends ModalContextValue {}
+import { DisclosureContextProps } from '~/shared/types/ui';
 
-const Root = ({ isOpen, onClose, children }: PropsWithChildren<RootProps>) => {
-  return (
-    <ModalProvider isOpen={isOpen} onClose={onClose}>
-      {isOpen ? children : null}
-    </ModalProvider>
-  );
+export interface RootProps extends DisclosureContextProps {}
+
+const Root = ({
+  children,
+  ...disclosureProps
+}: PropsWithChildren<RootProps>) => {
+  return <ModalProvider {...disclosureProps}>{children}</ModalProvider>;
 };
 
 export default Root;
