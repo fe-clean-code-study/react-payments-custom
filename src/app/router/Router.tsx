@@ -5,7 +5,7 @@ import { CardRegist } from '~/pages/CardRegist';
 import { ManageCard } from '~/pages/ManageCard';
 
 const Router = createBrowserRouter([
-  { element: <Navigate to='/card-list' />, path: '/' },
+  { element: <Navigate to='/manage-card' />, path: '/' },
   { element: <ManageCard />, path: '/manage-card' },
   { element: <CardRegist />, path: '/card-regist' },
   { element: <CardAlias />, path: '/card-alias/:id' },
