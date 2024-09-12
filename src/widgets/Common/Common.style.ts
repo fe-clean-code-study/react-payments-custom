@@ -9,8 +9,8 @@ export const Root = styled(Modal.Root)`
 `;
 
 export const Body = styled(Modal.Body)`
-  width: 400px;
-  height: 700px;
+  width: 350px;
+  height: 600px;
 `;
 
 export const Header = styled(Modal.Header)`
