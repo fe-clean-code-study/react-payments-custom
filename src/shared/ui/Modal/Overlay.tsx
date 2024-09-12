@@ -2,9 +2,13 @@ import { useModalContext } from './context';
 import * as S from './Modal.style';
 
 const Overlay = () => {
-  const { close, isOpen } = useModalContext();
+  const { close, isOpen, closeDisabled } = useModalContext();
 
-  return isOpen && <S.Overlay onClick={close}></S.Overlay>;
+  const handleClickOverlay = () => {
+    closeDisabled || close();
+  };
+
+  return isOpen && <S.Overlay onClick={handleClickOverlay}></S.Overlay>;
 };
 
 export default Overlay;

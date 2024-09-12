@@ -7,6 +7,7 @@ export interface DisclosureContextProps {
   initialOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
+  closeDisabled?: boolean;
 }
 
 export interface DisclosureContextValue
