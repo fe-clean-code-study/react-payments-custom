@@ -23,17 +23,19 @@ export const Root = () => {
   };
 
   const handleClickCardUL = (event: MouseEvent<HTMLUListElement>) => {
-    const { currentTarget, target } = event;
+    const { target } = event;
 
-    if (currentTarget instanceof HTMLUListElement) {
-      const $li = currentTarget.querySelector('li') as HTMLLIElement;
+    if (target instanceof HTMLElement) {
+      const $li = target.closest('li') as HTMLLIElement;
+      const $button = target.closest('button');
       const { id } = $li.dataset;
 
-      if (target instanceof HTMLButtonElement) {
+      if ($button instanceof HTMLButtonElement) {
         id && handleClickRemoveButton(id);
+        return;
       }
 
-      if (target instanceof HTMLDivElement) {
+      if ($li instanceof HTMLLIElement) {
         id && handleClickRegisteredCard(id);
       }
     }
