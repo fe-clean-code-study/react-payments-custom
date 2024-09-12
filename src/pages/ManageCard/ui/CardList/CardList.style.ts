@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Button } from '~/shared/ui';
 
 export const Container = styled.ul`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

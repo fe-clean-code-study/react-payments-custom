@@ -16,5 +16,5 @@ export const Body = styled(Modal.Body)`
 
 export const Header = styled(Modal.Header)`
   width: 100%;
-  height: 50px;
+  margin-bottom: 10px;
 `;
