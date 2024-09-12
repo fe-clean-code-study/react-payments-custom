@@ -11,6 +11,7 @@ export const Root = styled(Modal.Root)`
 export const Body = styled(Modal.Body)`
   width: 350px;
   height: 600px;
+  overflow-y: scroll;
 `;
 
 export const Header = styled(Modal.Header)`
