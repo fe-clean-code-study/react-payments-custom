@@ -13,6 +13,7 @@ export type { HeaderProps } from './Header';
 export type { BodyProps } from './Body';
 export type { FooterProps } from './Footer';
 export type { TriggerProps } from './Trigger';
+export type { OverlayProps } from './Overlay';
 export type { CloseButtonProps } from './CloseButton';
 
 export const Drawer = {

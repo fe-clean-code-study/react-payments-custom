@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 interface UseDisclosureProps {
   initialOpen?: boolean;
@@ -10,15 +10,15 @@ const useDisclosure = (option?: UseDisclosureProps) => {
   const { initialOpen, onOpen, onClose } = option || {};
   const [isOpen, setIsOpen] = useState(initialOpen || false);
 
-  const open = () => {
+  const open = useCallback(() => {
     setIsOpen(true);
     onOpen && onOpen();
-  };
+  }, [onOpen]);
 
-  const close = () => {
+  const close = useCallback(() => {
     setIsOpen(false);
     onClose && onClose();
-  };
+  }, [onClose]);
 
   return { isOpen, open, close };
 };

@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import * as S from './CardDesign.style';
 
 export interface RootProps {
-  onClick: (event?: MouseEvent<HTMLDivElement>) => void;
+  onClick?: (event?: MouseEvent<HTMLDivElement>) => void;
 }
 
 const Root = ({ onClick }: RootProps) => {

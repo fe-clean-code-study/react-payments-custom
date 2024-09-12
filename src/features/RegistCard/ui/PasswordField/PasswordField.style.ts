@@ -7,6 +7,11 @@ export const InputContainer = styled.div`
   gap: 5px;
 `;
 
+export const TriggerInputContainer = styled.div`
+  display: flex;
+  gap: 5px;
+`;
+
 export const Input = styled(Field.Input)`
   width: 50px;
   text-align: center;

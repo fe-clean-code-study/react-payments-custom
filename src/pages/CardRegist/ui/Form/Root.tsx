@@ -14,7 +14,6 @@ import {
   PasswordField,
   ExpirationDateField,
 } from '~/features/RegistCard';
-import { useDisclosure } from '~/shared/hooks';
 import { Button, Drawer } from '~/shared/ui';
 import { generateID } from '~/shared/utils';
 
@@ -37,20 +36,19 @@ const Root = () => {
     },
     mode: 'onBlur',
   });
-  const companyDrawerDisclosure = useDisclosure();
   const { formState, getValues, trigger } = methods;
 
   return (
     <S.Container>
       <FormProvider {...methods}>
-        <CardDesign onClick={companyDrawerDisclosure.onOpen} />
         <Drawer.Root
-          {...companyDrawerDisclosure}
           onClose={() => {
             trigger('company');
-            companyDrawerDisclosure.onClose();
           }}
         >
+          <Drawer.Trigger>
+            <CardDesign />
+          </Drawer.Trigger>
           <Drawer.Overlay />
           <Drawer.Content>
             <CompanyField />
