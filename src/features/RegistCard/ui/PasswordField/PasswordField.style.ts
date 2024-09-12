@@ -10,6 +10,7 @@ export const InputContainer = styled.div`
 export const Input = styled(Field.Input)`
   width: 50px;
   text-align: center;
+  cursor: pointer;
 `;
 
 export const EmptyInput = styled(Field.Input)`

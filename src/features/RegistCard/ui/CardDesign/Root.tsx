@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { CreditCard } from '~/entities/Card';
+import * as S from './CardDesign.style';
 
 export interface RootProps {
   onClick: (event?: MouseEvent<HTMLDivElement>) => void;
@@ -10,7 +10,7 @@ export interface RootProps {
 const Root = ({ onClick }: RootProps) => {
   const { watch } = useFormContext();
 
-  return <CreditCard {...watch()} onClick={onClick} />;
+  return <S.StyledCreditCard {...watch()} onClick={onClick} />;
 };
 
 export default Root;
