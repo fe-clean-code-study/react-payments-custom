@@ -1,4 +1,4 @@
-import { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import * as S from './CardUserField.style';
@@ -7,7 +7,6 @@ import { cardRegsitFormValidate, validateHelper } from '~/features/utils';
 import { Field } from '~/shared/ui';
 
 export interface RootProps extends ComponentProps<'div'> {
-  style?: CSSProperties;
   isError?: boolean;
 }
 
