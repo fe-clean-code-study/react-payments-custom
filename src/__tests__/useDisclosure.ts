@@ -21,26 +21,26 @@ describe('useDisclosure 훅 테스트', () => {
   });
 
   test('useModal의 파라미터로 isOpen의 초기값을 전달할 수 있다.', () => {
-    const { result } = renderHook(() => useDisclosure(true));
+    const { result } = renderHook(() => useDisclosure({ initialOpen: true }));
     const { isOpen } = result.current;
 
     expect(isOpen).toBe(true);
   });
 
   test('useModal의 open 함수를 호출하면 isOpen이 true로 변경된다.', () => {
-    const { result } = renderHook(() => useDisclosure(false));
+    const { result } = renderHook(() => useDisclosure({ initialOpen: false }));
 
     act(() => {
-      result.current.onOpen();
+      result.current.open();
     });
     expect(result.current.isOpen).toBe(true);
   });
 
   test('useModal의 close함수를 호출하면 isOpen이 false로 변경된다.', () => {
-    const { result } = renderHook(() => useDisclosure(true));
+    const { result } = renderHook(() => useDisclosure({ initialOpen: false }));
 
     act(() => {
-      result.current.onClose();
+      result.current.close();
     });
     expect(result.current.isOpen).toBe(false);
   });

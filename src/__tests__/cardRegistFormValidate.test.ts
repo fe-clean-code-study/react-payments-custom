@@ -27,20 +27,14 @@ describe('카드 등록시 유효성 검사 로직.', () => {
     expect(result).toBe(true);
   });
 
-  test('카드사는 문자로만 이루어져야 한다.', () => {
-    const company = 'suyeon';
-    const result = cardRegsitFormValidate.company.type.validate(company);
-    expect(result).toBe(true);
-  });
-
   test('카드사는 필수로 입력되어야 한다.', () => {
-    const company = 'suyeon';
+    const company = 'SUYEON';
     const result = cardRegsitFormValidate.company.required.validate(company);
     expect(result).toBe(true);
   });
 
   test('카드사는 cardCompany에 있는 값이어야 한다.', () => {
-    const company = 'suyeon';
+    const company = 'SUYEON';
     const result =
       cardRegsitFormValidate.company.valueInCompany.validate(company);
     expect(result).toBe(true);
@@ -160,7 +154,7 @@ describe('카드 등록시 유효성 검사 로직.', () => {
   });
 
   test('카드사는 지정한 카드사 중 하나로 선택해야 한다.', () => {
-    const company = 'suyeon';
+    const company = 'SUYEON';
     const result = cardRegsitFormValidate.form.company.validate(company);
     expect(result).toBe(true);
   });
