@@ -11,6 +11,9 @@ export default {
       options: [...Object.keys(CARD_COMPANY)],
     },
   },
+  args: {
+    company: 'SUYEON',
+  },
 };
 
 export const Default = (args: CompanyItemProps) => {
