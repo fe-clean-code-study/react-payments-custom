@@ -7,7 +7,7 @@ export default {
   component: Modal.Root,
 };
 
-export const Root = () => {
+export const Default = () => {
   return (
     <>
       <Modal.Root>

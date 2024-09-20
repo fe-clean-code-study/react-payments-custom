@@ -20,6 +20,6 @@ export default {
   },
 };
 
-export const Root = ({ ...props }: BoxProps) => {
+export const Default = ({ ...props }: BoxProps) => {
   return <Box {...props} />;
 };

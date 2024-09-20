@@ -10,7 +10,7 @@ export default {
   },
 };
 
-export const Root = (args: RootProps) => {
+export const Default = (args: RootProps) => {
   return (
     <Card.Root {...args}>
       <Card.Header>Header</Card.Header>

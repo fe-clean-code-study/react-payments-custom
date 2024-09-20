@@ -5,7 +5,7 @@ export default {
   component: Field,
 };
 
-export const Root = (args: RootProps) => {
+export const Default = (args: RootProps) => {
   return (
     <Field.Root {...args}>
       <Field.Label>Label</Field.Label>

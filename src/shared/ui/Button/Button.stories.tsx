@@ -10,7 +10,7 @@ export default {
   },
 };
 
-export const Root = (args: RootProps) => {
+export const Default = (args: RootProps) => {
   return (
     <Button.Root {...args}>
       <Button.Label>Button</Button.Label>

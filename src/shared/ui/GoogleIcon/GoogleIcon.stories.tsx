@@ -16,6 +16,6 @@ export default {
   },
 };
 
-export const Root = (args: GoogleIconProps) => {
+export const Default = (args: GoogleIconProps) => {
   return <GoogleIcon {...args} />;
 };

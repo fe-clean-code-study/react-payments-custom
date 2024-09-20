@@ -21,7 +21,7 @@ export default {
   },
 };
 
-export const Root = ({ row, col, ...props }: RootProps) => {
+export const Default = ({ row, col, ...props }: RootProps) => {
   return (
     <Keypad.Root row={row} col={col} {...props}>
       <Keypad.Item>1</Keypad.Item>
