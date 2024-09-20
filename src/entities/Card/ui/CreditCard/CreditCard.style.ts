@@ -72,7 +72,7 @@ export const CardNumberList = styled.div`
   gap: 5px;
 `;
 
-export const CardNumberItem = styled.div`
+export const CardNumberItem = styled.span`
   flex-grow: 1;
   text-align: center;
 `;

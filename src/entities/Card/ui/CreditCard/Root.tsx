@@ -20,13 +20,6 @@ const Root = ({
   children,
   ...props
 }: RootProps) => {
-  const encryptedNumbers = Array.from(numbers).map((number, index) => {
-    if (typeof number === 'string') {
-      return index < 2 ? number : '●'.repeat(number.length);
-    }
-    return number;
-  });
-
   return (
     <S.Root size={size} company={company} {...props}>
       {children}
@@ -34,8 +27,10 @@ const Root = ({
       <S.Center>
         {showChip && <S.Chip size={size} />}
         <S.CardNumberList>
-          {encryptedNumbers?.map((number, index) => (
-            <S.CardNumberItem key={index}>{number}</S.CardNumberItem>
+          {numbers?.map((number, index) => (
+            <S.CardNumberItem key={index}>
+              {index < 2 ? number : number.replace(/\d/g, '•')}
+            </S.CardNumberItem>
           ))}
         </S.CardNumberList>
       </S.Center>

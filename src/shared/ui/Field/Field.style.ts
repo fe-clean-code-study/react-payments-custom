@@ -19,7 +19,7 @@ export const Input = styled.input<InputProps>`
   padding: 15px 10px;
   outline: none;
   background-color: ${({ theme, styleType }) =>
-    styleType === 'fill' ? theme.color.gray100 : theme.color.white};
+    styleType === 'fill' ? theme.color.gray100 : 'transparent'};
   border: ${({ theme, styleType }) =>
     styleType === 'outline' ? `1px solid ${theme.color.gray100}` : 'none'};
   border-bottom: ${({ theme, styleType }) =>
@@ -28,7 +28,7 @@ export const Input = styled.input<InputProps>`
       : 'none'};
   border-radius: 5px;
   font-size: 16px;
-  color: ${({ theme }) => theme.color.green500};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const ErrorText = styled.p`

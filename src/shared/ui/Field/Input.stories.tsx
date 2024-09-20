@@ -23,8 +23,14 @@ export default {
 export const Input = ({ onComplete, style, ...args }: InputProps) => {
   const { props } = args as { props: InputProps };
   return (
-    <Field.InputWrapper>
-      <Field.Input style={style} onComplete={onComplete} {...props} />
-    </Field.InputWrapper>
+    <Field.Root>
+      <Field.Label htmlFor='storybook-label'>Label</Field.Label>
+      <Field.Input
+        id='storybook-label'
+        style={style}
+        onComplete={onComplete}
+        {...props}
+      />
+    </Field.Root>
   );
 };
