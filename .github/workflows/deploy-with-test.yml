@@ -48,6 +48,7 @@ jobs:
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
   Deploy-Production:
+    needs: chromatic
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
