@@ -47,8 +47,8 @@ jobs:
         uses: chromaui/action@latest
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   Deploy-Production:
-    needs: chromatic
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
